@@ -49,4 +49,4 @@ Use fixtures until sandbox access is available. No PAYable SDK, credentials, API
 
 Passed locally: frontend ESLint, TypeScript, production build and HTTP health check; backend framework smoke tests (2), Pint formatting, Composer validation; dependency audits reported no known vulnerabilities; staged secret scan found no leaks. Business functionality is not yet implemented.
 
-GitHub publication is blocked: push returns HTTP 403, including when using the connected GitHub CLI credential. The account reports repository push permissions, so confirm the credential grants repository Contents write and Workflows write access (the commit adds a workflow). CI has been configured locally but has not run on GitHub.
+The foundation is published to GitHub main. Updated GitHub credentials resolved the initial HTTP 403 push failure. GitHub Actions runs the frontend checks/build/audit and backend formatting/tests/audit; see the repository Actions tab for current results.

@@ -7,7 +7,7 @@
 - [x] Document commands and service prerequisites.
 - [x] Review generated files for credentials and unintended dependencies.
 - [x] Commit the verified frontend/API/docs foundation locally.
-- [ ] Publish to GitHub: blocked by HTTP 403 on push, including with the connected GitHub CLI credential. Account-level repository permissions report push access; credential-level write access needs checking.
+- [x] Publish the verified foundation to GitHub main using the updated credentials.
 
 ## Next slice (not implemented)
 

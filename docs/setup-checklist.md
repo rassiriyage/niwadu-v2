@@ -44,3 +44,9 @@ Official developer references reviewed during setup:
 - https://dev-developers.payable.lk/docs/ipg-refund-api/authentication
 
 Use fixtures until sandbox access is available. No PAYable SDK, credentials, API calls or simulated-success production path have been added. The eventual payment implementation must verify server notifications, invoice/amount/currency and booking state; a browser return alone is insufficient proof of payment.
+
+## Foundation verification
+
+Passed locally: frontend ESLint, TypeScript, production build and HTTP health check; backend framework smoke tests (2), Pint formatting, Composer validation; dependency audits reported no known vulnerabilities; staged secret scan found no leaks. Business functionality is not yet implemented.
+
+GitHub publication is blocked: push returns HTTP 403, including when using the connected GitHub CLI credential. The account reports repository push permissions, so confirm the credential grants repository Contents write and Workflows write access (the commit adds a workflow). CI has been configured locally but has not run on GitHub.

@@ -6,7 +6,8 @@
 - [x] Scaffold Laravel; verify framework tests and isolated local database setup.
 - [x] Document commands and service prerequisites.
 - [x] Review generated files for credentials and unintended dependencies.
-- [ ] Commit frontend/docs and publish the verified foundation.
+- [x] Commit the verified frontend/API/docs foundation locally.
+- [ ] Publish to GitHub: blocked by HTTP 403 on push, including with the connected GitHub CLI credential. Account-level repository permissions report push access; credential-level write access needs checking.
 
 ## Next slice (not implemented)
 

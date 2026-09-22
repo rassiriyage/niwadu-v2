@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+.next/
+out/
+vendor/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.log
+*.tsbuildinfo
+coverage/
+playwright-report/
+test-results/

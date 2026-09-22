@@ -1,0 +1,12 @@
+{
+  "name": "niwadu-v2",
+  "private": true,
+  "engines": { "node": "24.x" },
+  "scripts": {
+    "dev:web": "npm --prefix apps/web run dev -- --hostname 127.0.0.1",
+    "build:web": "npm --prefix apps/web run build",
+    "check:web": "npm --prefix apps/web run lint && npm --prefix apps/web run typecheck",
+    "dev:api": "cd apps/api && php artisan serve --host=127.0.0.1 --port=8000",
+    "test:api": "cd apps/api && php artisan test"
+  }
+}

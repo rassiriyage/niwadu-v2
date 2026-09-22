@@ -2,7 +2,7 @@
 
 The user authorized starting the build after defining the architecture and product requirements. See docs/requirements.md for the confirmed scope and remaining decisions.
 
-## Current slice: project foundation
+## Completed slice: project foundation
 
 Create the Next.js/TypeScript frontend and Laravel API in one repository. Verify frontend build/type/lint checks and backend tests. Document local setup and service prerequisites. This slice does not implement or deploy the public site, authentication, payments or PMS booking.
 
@@ -31,3 +31,13 @@ For steps 2–8, break each into implementation-sized tasks before starting it. 
 ## First milestone
 
 An authorized Niwadu employee creates a hotel, invites its manager in a test environment, adds manual inventory and completes a test booking; a second hotel proves access isolation. Then verify the equivalent booking through a sandbox Surge connection.
+
+## Completed slice: hotel access
+
+Use Laravel session authentication behind the frontend's same-origin API proxy, with CSRF protection, login throttling and private responses. No public registration or client-editable platform role. A console command bootstraps the platform administrator with a hidden password prompt.
+
+Administrators can create hotels and assign/revoke hotel memberships. Onboarding employees work only on their own drafts. Hotel managers may edit their assigned hotel's profile; reservations/inventory/viewer roles can read the profile but do not acquire unrelated write permissions. Hotel managers cannot grant staff roles in this initial version. New staff accounts receive password-setup links through Laravel's broker; local mail remains log-only. Existing account passwords are never replaced when assigning a hotel.
+
+Expose versioned endpoints for session login/logout, hotels and hotel staff. Allowlist profile fields and reject payment/PMS settings, publication status and role injection. Record hotel creation/profile changes and membership grants/revocations in an audit table. Test cross-hotel IDs, stale/revoked memberships, invalid roles, password setup, session/CSRF behavior and employee scope. The public website and full seven-step onboarding remain subsequent slices.
+
+Validation: 20 API tests (105 assertions), five Chromium browser scenarios, frontend lint/type checking and production build. Browser fixtures use a separate SQLite database. Next slice: guided autosaved hotel onboarding and publication readiness; no live integrations are enabled.

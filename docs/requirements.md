@@ -1,6 +1,6 @@
 # Niwadu OTA — architecture proposal
 
-Status: product requirements confirmed through the conversation; implementation started with the framework foundation. Feature implementation remains pending.
+Status: product requirements confirmed through the conversation; framework foundation and hotel profile/staff access are implemented. Onboarding, inventory, booking and integrations remain pending.
 
 ## Confirmed requirements
 

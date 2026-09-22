@@ -9,10 +9,10 @@
 - [x] Commit the verified frontend/API/docs foundation locally.
 - [x] Publish the verified foundation to GitHub main using the updated credentials.
 
-## Next slice (not implemented)
+## Hotel access slice
 
-- [ ] Specify and implement hotel memberships and platform/hotel permissions.
-  - Acceptance: hotel A cannot read/write/export hotel B records; hotel users cannot change payment/PMS settings.
+- [x] Implement hotel memberships, session authentication and profile/staff permissions.
+  - Acceptance: hotel A cannot read/write hotel B profiles or staff rosters; profile writes reject payment/PMS settings. Export and inventory permissions must be tested when those endpoints exist.
   - Verification: API authorization tests using separate hotel users and forged record IDs.
   - Depends on: framework foundation.
 - [ ] Specify guided onboarding and publication checks.

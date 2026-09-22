@@ -42,17 +42,36 @@ npm run dev:api
 
 Frontend process health: http://127.0.0.1:3000/api/health. API framework health: http://127.0.0.1:8000/up. These checks do not certify PMS or payment connectivity. The public homepage is intentionally unimplemented and returns 404; no redesign or placeholder hotel listings have been added. Search indexing is disabled during development and must be configured per environment before launch.
 
+## Hotel management
+
+Open http://localhost:3000/admin after starting both services. Create your first platform administrator from `apps/api`:
+
+```sh
+php artisan niwadu:create-administrator you@example.com --name="Your name"
+```
+
+The command asks for a hidden password (at least 12 characters). There are no default production credentials or public registration. Existing users cannot be promoted by this command.
+
+Administrators can create private hotel drafts, edit profiles, and grant/revoke hotel staff access. Hotel managers can edit only their assigned profiles and view their staff roster; reservations, inventory and viewer roles currently have read-only profile access. Booking and inventory operations are not implemented yet. Onboarding employees are limited to drafts they created; employee provisioning is a later platform-administration feature.
+
+New accounts receive a single-use password link; administrators can resend it from the staff roster. Local mail uses `MAIL_MAILER=log`, so development links appear in `apps/api/storage/logs/laravel.log`. Configure a real mail provider and `FRONTEND_URL` before inviting real staff. A failed delivery does not revoke the saved membership: refresh the roster and use **Send password link** to retry.
+
+The public homepage, full onboarding wizard, inventory, PMS adapters and PAYable integration remain upcoming work. Payment/PMS configuration is excluded from hotel profile writes.
+
 ## Verification
 
 ```sh
 npm run check:web
 npm run build:web
 npm run test:api
+npm --prefix apps/web run test:e2e
 ```
+
+Browser tests require Chromium (`cd apps/web && npx playwright install chromium`). They start local servers on ports 3101/8101 and use a separate SQLite test database with guarded test-only accounts.
 
 ## Structure
 
-- `apps/web`: React/Next.js, public and future staff interfaces.
+- `apps/web`: React/Next.js, public and staff interfaces.
 - `apps/api`: Laravel, domain operations, authorization and integration workers.
 - `docs/requirements.md`: confirmed product requirements and architecture context.
 - `docs/setup-checklist.md`: external accounts and migration inputs.

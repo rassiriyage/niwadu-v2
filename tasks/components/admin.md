@@ -22,3 +22,11 @@ Branch: `team/admin`, based on `bad09b5`. The implementation and this report are
 ## Boundaries and dependency requests
 
 Payment/PMS configuration endpoints do not exist yet: coverage proves current profile/onboarding field rejection and no administrator role, not future integration authorization. QA should independently review this commit together with inherited access/onboarding rules. Product owner should forward later QA/design findings before dispatching the next bounded increment. No shared schema decision or external account is required for this slice.
+
+## QA-01 password-reset session revocation
+
+- Enabled Laravel 13.33 `auth.session` across the versioned API, including `/session`. This installed framework already seeds `password_hash_web` in `SessionGuard::login`; no custom session schema or deletion loop is needed. Password reset continues rotating the remember token.
+- API guest redirects return no redirect target, avoiding an undefined web login route when Laravel rejects a stale hash. Workspace opens sign-in after a 401 during session introspection.
+- Five focused feature tests cover immediate login-then-reset revocation at both `/session` and `/hotels`, new versus old password, reset-link reuse denial, unaffected unrelated users, obsolete remember cookies and untrusted remember input. Normal login does not support remember-me.
+- Red evidence: two tests returned 200 before middleware; green: full 41 API tests / 277 assertions passed; Pint passed. QA's independent browser reproduction was adapted to accept the first stale request as 401 and then guest state; it passed with database sessions, separate browser contexts, log-only mail and ports 3203/8203. New password succeeds, old password and reused link fail, unrelated employee remains authenticated.
+- Existing sessions created by this baseline have the login fingerprint. Any future authentication path must continue using Laravel's session guard login mechanism. No live accounts or PMS databases were used.

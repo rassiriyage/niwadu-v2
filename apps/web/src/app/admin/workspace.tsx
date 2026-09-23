@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { api, type Hotel, type Session, type StaffUser } from "@/lib/admin-api";
+import { api, ApiError, type Hotel, type Session, type StaffUser } from "@/lib/admin-api";
 import HotelProfile from "./hotel-profile";
 import Onboarding from "./onboarding";
 
@@ -14,7 +14,7 @@ export default function Workspace({ hotelId, onboarding = false }: { hotelId?: n
   const [busy, setBusy] = useState(false);
   useEffect(() => {
     let active = true;
-    api<Session>("session").then(s => { if (active) setUser(s.user); }).catch(() => { if (active) setError("We cannot reach hotel management. Please refresh to try again."); });
+    api<Session>("session").then(s => { if (active) setUser(s.user); }).catch(e => { if (active) { if (e instanceof ApiError && e.status === 401) setUser(null); else setError("We cannot reach hotel management. Please refresh to try again."); } });
     return () => { active = false; };
   }, []);
 

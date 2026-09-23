@@ -14,7 +14,7 @@ Route::get('/', function (): JsonResponse {
     return response()->json(['service' => 'niwadu-api']);
 });
 
-Route::prefix('api/v1')->middleware(PrivateApiResponse::class)->group(function () {
+Route::prefix('api/v1')->middleware([PrivateApiResponse::class, 'auth.session'])->group(function () {
     Route::get('session', [SessionController::class, 'show']);
     Route::post('login', [SessionController::class, 'store'])->middleware('throttle:login');
     Route::post('password/setup', [PasswordController::class, 'store'])->middleware('throttle:10,1');

@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { api, type Hotel, type Session, type StaffUser } from "@/lib/admin-api";
 import HotelProfile from "./hotel-profile";
+import Onboarding from "./onboarding";
 
-export default function Workspace({ hotelId }: { hotelId?: number }) {
+export default function Workspace({ hotelId, onboarding = false }: { hotelId?: number; onboarding?: boolean }) {
+  const beforeLeaveRef = useRef<(() => Promise<void>) | null>(null);
   const [user, setUser] = useState<StaffUser | null>();
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -25,7 +27,7 @@ export default function Workspace({ hotelId }: { hotelId?: number }) {
   }
   async function signOut() {
     setBusy(true); setError("");
-    try { await api("logout", "POST"); setUser(null); }
+    try { await beforeLeaveRef.current?.(); await api("logout", "POST"); setUser(null); }
     catch (e) { setError((e as Error).message); }
     finally { setBusy(false); }
   }
@@ -47,7 +49,7 @@ export default function Workspace({ hotelId }: { hotelId?: number }) {
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="admin-header"><Link className="wordmark" href="/admin">niwadu<span>hotel management</span></Link><div className="account"><span>{user.name}</span><button className="secondary" onClick={signOut} disabled={busy}>Sign out</button></div></header>
     <div className="admin-body"><aside><nav aria-label="Management"><Link className="nav-active" href="/admin">Hotels</Link></nav><p>{user.platform_role ? "Niwadu workspace" : "Your hotel workspace"}</p></aside>
-    <main id="main">{error && <p role="alert" className="error">{error}</p>}{hotelId ? <HotelProfile key={hotelId} id={hotelId} /> : <HotelList user={user} />}</main></div>
+    <main id="main">{error && <p role="alert" className="error">{error}</p>}{hotelId && onboarding ? <Onboarding id={hotelId} beforeLeaveRef={beforeLeaveRef} /> : hotelId ? <HotelProfile key={hotelId} id={hotelId} /> : <HotelList user={user} />}</main></div>
   </>;
 }
 
@@ -71,7 +73,7 @@ function HotelList({ user }: { user: StaffUser }) {
     event.preventDefault(); setBusy(true); setError("");
     try {
       const hotel = await api<{ data: Hotel }>("hotels", "POST", Object.fromEntries(new FormData(event.currentTarget)));
-      router.push(`/admin/hotels/${hotel.data.id}`);
+      router.push(`/admin/hotels/${hotel.data.id}/onboarding`);
     } catch (e) { setError((e as Error).message); setBusy(false); }
   }
 

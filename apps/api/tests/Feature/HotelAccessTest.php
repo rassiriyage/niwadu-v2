@@ -45,7 +45,7 @@ class HotelAccessTest extends TestCase
         foreach (['hotel_manager' => 200, 'reservations' => 403, 'inventory_manager' => 403, 'viewer' => 403] as $role => $status) {
             $user = User::factory()->create();
             $hotel->users()->attach($user, ['role' => $role]);
-            $this->actingAs($user)->patchJson('/api/v1/hotels/'.$hotel->id, ['city' => 'Kandy'])->assertStatus($status);
+            $this->actingAs($user)->patchJson('/api/v1/hotels/'.$hotel->id, ['city' => 'Kandy', 'version' => 0])->assertStatus($status);
         }
     }
 
@@ -68,7 +68,7 @@ class HotelAccessTest extends TestCase
         $other = Hotel::factory()->create();
         $published = Hotel::factory()->create(['created_by' => $employee->id, 'status' => 'published']);
         $this->actingAs($employee)->getJson('/api/v1/hotels')->assertJsonCount(1, 'data');
-        $this->patchJson('/api/v1/hotels/'.$own->id, ['city' => 'Ella'])->assertOk();
+        $this->patchJson('/api/v1/hotels/'.$own->id, ['city' => 'Ella', 'version' => 0])->assertOk();
         $this->getJson('/api/v1/hotels/'.$other->id)->assertNotFound();
         $this->getJson('/api/v1/hotels/'.$published->id)->assertNotFound();
     }

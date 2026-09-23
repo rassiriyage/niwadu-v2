@@ -16,7 +16,7 @@ export default function HotelProfile({ id }: { id: number }) {
   }, [id]);
   async function save(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setBusy(true); setError(""); setMessage("");
-    try { const r = await api<{ data: Hotel }>(`hotels/${id}`, "PATCH", Object.fromEntries(new FormData(event.currentTarget))); setHotel(r.data); setMessage("Hotel details saved."); }
+    try { const r = await api<{ data: Hotel }>(`hotels/${id}`, "PATCH", { ...Object.fromEntries(new FormData(event.currentTarget)), version: hotel?.version }); setHotel(r.data); setMessage("Hotel details saved."); }
     catch (e) { setError((e as Error).message); }
     finally { setBusy(false); }
   }
@@ -25,6 +25,7 @@ export default function HotelProfile({ id }: { id: number }) {
     <Link className="back-link" href="/admin">← All hotels</Link>
     <div className="page-heading"><div><p className="eyebrow">PROPERTY DETAILS</p><h1>{hotel.name}</h1><p>{hotel.city || "Add the hotel's location"}</p></div><span className="badge">{hotel.status}</span></div>
     {hotel.status === "draft" && <p className="notice">Private draft · This hotel is not published and cannot receive bookings.</p>}
+    {hotel.status === "draft" && hotel.permissions.manage_staff && <p><Link className="button-link" href={`/admin/hotels/${id}/onboarding`}>Continue hotel setup</Link></p>}
     <section className="panel"><h2>Hotel profile</h2><p>Keep the details your team needs in one place.</p>
       <form onSubmit={save} className="form-grid"><fieldset disabled={!hotel.permissions.edit_profile || busy} className="form-grid full">
         <label>Hotel name<input name="name" defaultValue={hotel.name} required maxLength={255} /></label>
@@ -42,7 +43,7 @@ export default function HotelProfile({ id }: { id: number }) {
   </>;
 }
 
-function Staff({ hotel }: { hotel: Hotel }) {
+export function Staff({ hotel, title = "Hotel staff" }: { hotel: Hotel; title?: string }) {
   const [members, setMembers] = useState<Member[]>();
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
@@ -78,7 +79,7 @@ function Staff({ hotel }: { hotel: Hotel }) {
     catch (e) { setError((e as Error).message); }
     finally { setBusy(false); }
   }
-  return <section className="panel"><h2>Hotel staff</h2><p>These people have access to {hotel.name}.</p>
+  return <section className="panel"><h2>{title}</h2><p>These people have access to {hotel.name}.</p>
     {members?.map(member => <div className="member-row" key={member.id}><div><strong>{member.name}</strong><span>{member.email}</span></div><span>{roles[member.role]}</span>
       {hotel.permissions.manage_staff && <button className="secondary" disabled={busy} onClick={() => sendPasswordLink(member)}>Send password link<span className="sr-only"> to {member.name}</span></button>}
       {hotel.permissions.manage_staff && (revoking === member.id ? <div className="revoke-confirm"><span>Remove this hotel access?</span><button className="danger" disabled={busy} onClick={() => revoke(member)}>Confirm removal</button><button className="secondary" onClick={() => setRevoking(null)}>Keep access</button></div> : <button className="secondary" onClick={() => setRevoking(member.id)}>Remove access<span className="sr-only"> for {member.name}</span></button>)}

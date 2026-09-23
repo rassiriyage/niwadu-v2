@@ -14,6 +14,11 @@ class Hotel extends Model
 {
     use HasFactory;
 
+    protected function casts(): array
+    {
+        return ['onboarding_data' => 'array', 'onboarding_version' => 'integer', 'onboarding_step' => 'integer', 'created_by' => 'integer'];
+    }
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class)->withPivot('role')->withTimestamps();

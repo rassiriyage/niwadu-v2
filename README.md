@@ -56,7 +56,11 @@ Administrators can create private hotel drafts, edit profiles, and grant/revoke 
 
 New accounts receive a single-use password link; administrators can resend it from the staff roster. Local mail uses `MAIL_MAILER=log`, so development links appear in `apps/api/storage/logs/laravel.log`. Configure a real mail provider and `FRONTEND_URL` before inviting real staff. A failed delivery does not revoke the saved membership: refresh the roster and use **Send password link** to retry.
 
-The public homepage, full onboarding wizard, inventory, PMS adapters and PAYable integration remain upcoming work. Payment/PMS configuration is excluded from hotel profile writes.
+The seven-step onboarding wizard is available after creating a hotel, or through **Continue hotel setup** on its profile. It autosaves partial drafts, remembers the current step, accepts private hotel/room photographs, and records room types, indicative LKR rates, policies and staff access. Concurrent edits return a conflict instead of overwriting newer work. Profile PATCH requests must include the `version` returned by the hotel API.
+
+Rooms and rates in this wizard are draft inputs, not sellable inventory. The final review lists missing information and launch requirements; there is no publication endpoint. Room photos currently use captions to identify the room; structured room/media mapping and the public listing preview belong to the catalog work. Photos use private local storage in development (JPG/PNG/WebP, up to 5 MB and 50 photos per hotel). Configure PHP/web-server upload limits to support 5 MB files and private object storage before staging.
+
+The public homepage, live inventory, PMS adapters and PAYable integration remain upcoming work. Payment/PMS configuration is excluded from hotel profile writes.
 
 ## Verification
 
@@ -78,3 +82,11 @@ Browser tests require Chromium (`cd apps/web && npx playwright install chromium`
 - `tasks/`: implementation plan and current progress.
 
 Each application owns its dependency lockfile. Never commit credentials, customer exports, database files or build outputs. See AGENTS.md for project boundaries.
+
+## Railway service roots
+
+This repository contains two isolated applications. The frontend Railway service root must be `/apps/web`, with build `npm run build`, start `npm run start -- --hostname 0.0.0.0 --port $PORT`, and healthcheck `/api/health`. Building the repository root fails because its package only contains development/delegation scripts. See [Railway's monorepo guide](https://docs.railway.com/deployments/monorepo).
+
+The API is a separate service rooted at `/apps/api`; its database, app key, runtime, durable photo storage and trusted proxy/session configuration must be set up before staff sign-in works. Set frontend `API_ORIGIN` to the reachable API origin before building, because the Next.js rewrite is generated at build time. Do not use localhost for a separate Railway service. The homepage is still unimplemented and returns 404; use the process-health path above for deployment checks.
+
+Component ownership and independent QA/design responsibilities are recorded in [tasks/team.md](tasks/team.md).

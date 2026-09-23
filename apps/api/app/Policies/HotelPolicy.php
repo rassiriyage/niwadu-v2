@@ -8,6 +8,11 @@ use Illuminate\Auth\Access\Response;
 
 class HotelPolicy
 {
+    public function onboard(User $user, Hotel $hotel): bool
+    {
+        return $hotel->status === 'draft' && $this->manageStaff($user, $hotel);
+    }
+
     public function create(User $user): bool
     {
         return in_array($user->platform_role, ['administrator', 'onboarding'], true);

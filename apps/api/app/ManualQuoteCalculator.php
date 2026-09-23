@@ -11,20 +11,20 @@ final class ManualQuoteCalculator
     /**
      * Pure calculation over synthetic, complete inputs; not a catalog or inventory guarantee.
      * Nightly amounts cover this room and adult occupancy; zero charges must be explicit.
+     * Catalog must resolve availability, restrictions, relationships and freshness before use.
      * Expiry is supplied by the caller, not a hold or a checkout timing policy.
      *
-     * @param  array{hotel_id:int,room_type_id:int,rate_plan_id:int,timezone:string,currency:string,inventory_mode:string,quantity:int,adults:int,max_adults:int,children_ages:array,arrival:string,departure:string,policy:array{version:string,text:string},mandatory_charges_complete:bool,nightly:list<array{date:string,base_minor:int,tax_minor:int,fee_minor:int,available:int,stop_sell:bool,restrictions_passed:bool}>}  $input
+     * @param  array{hotel_id:int,room_type_id:int,rate_plan_id:int,timezone:string,currency:string,inventory_mode:string,quantity:int,adults:int,max_adults:int,children_ages:array,arrival:string,departure:string,policy:array{version:string,text:string},nightly:list<array{stay_date:string,base_minor:int,tax_minor:int,fee_minor:int,mandatory_charges_complete:bool}>}  $input
      * @return array<string, mixed>
      */
     public function calculate(array $input, DateTimeImmutable $now, DateTimeImmutable $expiresAt): array
     {
-        $this->keys($input, ['hotel_id', 'room_type_id', 'rate_plan_id', 'timezone', 'currency', 'inventory_mode', 'quantity', 'adults', 'max_adults', 'children_ages', 'arrival', 'departure', 'policy', 'mandatory_charges_complete', 'nightly']);
+        $this->keys($input, ['hotel_id', 'room_type_id', 'rate_plan_id', 'timezone', 'currency', 'inventory_mode', 'quantity', 'adults', 'max_adults', 'children_ages', 'arrival', 'departure', 'policy', 'nightly']);
         foreach (['hotel_id', 'room_type_id', 'rate_plan_id', 'adults', 'max_adults'] as $field) {
             $this->require(is_int($input[$field]) && $input[$field] > 0, "Invalid $field.");
         }
         $this->require($input['quantity'] === 1 && $input['children_ages'] === [] && $input['adults'] <= $input['max_adults'], 'Only one room with supported adult occupancy is allowed.');
         $this->require($input['currency'] === 'LKR' && $input['inventory_mode'] === 'manual', 'Only manual LKR inputs are supported.');
-        $this->require($input['mandatory_charges_complete'] === true, 'Mandatory charges must be complete.');
         $this->require(is_string($input['timezone']) && in_array($input['timezone'], DateTimeZone::listIdentifiers(), true), 'Invalid hotel timezone.');
         $timezone = new DateTimeZone($input['timezone']);
         $arrival = $this->date($input['arrival'], $timezone);
@@ -44,9 +44,9 @@ final class ManualQuoteCalculator
         $lines = [];
         foreach ($input['nightly'] as $offset => $night) {
             $this->require(is_array($night), 'Invalid nightly input.');
-            $this->keys($night, ['date', 'base_minor', 'tax_minor', 'fee_minor', 'available', 'stop_sell', 'restrictions_passed']);
-            $this->require($night['date'] === $arrival->modify("+$offset days")->format('Y-m-d'), 'Missing or out-of-order stay night.');
-            $this->require(is_int($night['available']) && $night['available'] >= 1 && $night['stop_sell'] === false && $night['restrictions_passed'] === true, 'Night is unavailable or restricted.');
+            $this->keys($night, ['stay_date', 'base_minor', 'tax_minor', 'fee_minor', 'mandatory_charges_complete']);
+            $this->require($night['stay_date'] === $arrival->modify("+$offset days")->format('Y-m-d'), 'Missing or out-of-order stay night.');
+            $this->require($night['mandatory_charges_complete'] === true, 'Mandatory charges must be complete for every night.');
             $lineTotal = 0;
             foreach (['base_minor', 'tax_minor', 'fee_minor'] as $field) {
                 $amount = $night[$field];
@@ -55,8 +55,8 @@ final class ManualQuoteCalculator
             }
             $total = $this->add($total, $lineTotal);
             $lines[] = [
-                'date' => $night['date'], 'base_minor' => $night['base_minor'],
-                'tax_minor' => $night['tax_minor'], 'fee_minor' => $night['fee_minor'], 'total_minor' => $lineTotal,
+                'stay_date' => $night['stay_date'], 'base_minor' => $night['base_minor'],
+                'tax_minor' => $night['tax_minor'], 'fee_minor' => $night['fee_minor'], 'total_minor' => $lineTotal, 'mandatory_charges_complete' => true,
             ];
         }
 

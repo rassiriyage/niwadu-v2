@@ -52,9 +52,17 @@ php artisan niwadu:create-administrator you@example.com --name="Your name"
 
 The command asks for a hidden password (at least 12 characters). There are no default production credentials or public registration. Existing users cannot be promoted by this command.
 
-Administrators can create private hotel drafts, edit profiles, and grant/revoke hotel staff access. Hotel managers can edit only their assigned profiles and view their staff roster; reservations, inventory and viewer roles currently have read-only profile access. Booking and inventory operations are not implemented yet. Onboarding employees are limited to drafts they created; employee provisioning is a later platform-administration feature.
+Administrators can create private hotel drafts, edit profiles, and grant/revoke hotel staff access. Hotel managers can edit only their assigned profiles and view their staff roster; reservations, inventory and viewer roles currently have read-only profile access. Booking and inventory operations are not implemented yet. Onboarding employees are limited to drafts they created.
 
-New accounts receive a single-use password link; administrators can resend it from the staff roster. Local mail uses `MAIL_MAILER=log`, so development links appear in `apps/api/storage/logs/laravel.log`. Configure a real mail provider and `FRONTEND_URL` before inviting real staff. A failed delivery does not revoke the saved membership: refresh the roster and use **Send password link** to retry.
+To provision a Niwadu onboarding employee, an authorized operator runs this dedicated command from `apps/api` against the intended Niwadu database:
+
+```sh
+php artisan niwadu:create-onboarding-employee employee@example.com --name="Employee name"
+```
+
+It prompts for a hidden password of 12–1024 characters and hashes it; omit `--name` to enter the name interactively. Use the employee’s real email and a unique password, then share the credentials through your approved secure channel. The command sends no email, assigns no hotel membership, and never changes an existing account. The employee signs in at `/admin` to create and resume their own hotel drafts; this does not grant administrator powers or payment/PMS configuration access. Keep local development on its own Niwadu database with `MAIL_MAILER=log`.
+
+Hotel staff provisioning is separate: new accounts receive a single-use password link; administrators can resend it from the staff roster. Local mail uses `MAIL_MAILER=log`, so development links appear in `apps/api/storage/logs/laravel.log`. Configure a real mail provider and `FRONTEND_URL` before inviting real staff. A failed delivery does not revoke the saved membership: refresh the roster and use **Send password link** to retry.
 
 The seven-step onboarding wizard is available after creating a hotel, or through **Continue hotel setup** on its profile. It autosaves partial drafts, remembers the current step, accepts private hotel/room photographs, and records room types, indicative LKR rates, policies and staff access. Concurrent edits return a conflict instead of overwriting newer work. Profile PATCH requests must include the `version` returned by the hotel API.
 

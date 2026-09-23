@@ -169,3 +169,24 @@ test("retry recovers server failures but is not offered for forbidden writes", a
   await expect(page.getByRole("button", { name: "Retry save" })).toHaveCount(0);
   await expect(page.getByLabel("About the hotel")).toHaveValue("Local description");
 });
+
+for (const status of [422, 409, 503]) {
+  test(`sign out offers keep editing or explicit discard after a ${status} save failure`, async ({ page }) => {
+    await createDraft(page);
+    await page.route("**/onboarding", route => route.request().method() === "PATCH" ? route.fulfill({ status, json: { message: "Draft could not be saved" } }) : route.continue());
+    await page.getByLabel("City or destination").fill("Unsaved city");
+    await expect(page.getByText("Changes not saved", { exact: true })).toBeVisible();
+    await page.getByRole("button", { name: "Sign out", exact: true }).click();
+    const decision = page.getByRole("dialog", { name: "Sign out without saving?" });
+    await expect(decision).toBeVisible();
+    await expect(decision.getByRole("button", { name: "Keep editing" })).toBeFocused();
+    await page.keyboard.press("Enter");
+    await expect(decision).not.toBeVisible();
+    await expect(page.getByLabel("City or destination")).toHaveValue("Unsaved city");
+    await page.getByRole("button", { name: "Sign out", exact: true }).click();
+    await decision.getByRole("button", { name: "Discard unsaved changes and sign out" }).click();
+    await expect(page.getByRole("heading", { name: "Welcome back" })).toBeVisible();
+    expect((await (await page.request.get("/api/v1/session")).json()).user).toBeNull();
+    expect((await page.request.get("/api/v1/hotels")).status()).toBe(401);
+  });
+}

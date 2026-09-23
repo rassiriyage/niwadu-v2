@@ -84,3 +84,6 @@ body:has(.admin-app) { margin:0; }
 .admin-app .field-error { color:#86241e; font-weight:400; }
 .admin-app [aria-invalid="true"] { border-color:#a62a23; }
 .admin-app .error p { color:inherit; }
+
+.admin-app dialog { max-width:min(32rem, calc(100vw - 2rem)); padding:1.5rem; border:1px solid var(--line); border-radius:8px; color:var(--ink); }
+.admin-app dialog::backdrop { background:rgb(24 60 80 / 40%); }

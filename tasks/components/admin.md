@@ -30,3 +30,8 @@ Payment/PMS configuration endpoints do not exist yet: coverage proves current pr
 - Five focused feature tests cover immediate login-then-reset revocation at both `/session` and `/hotels`, new versus old password, reset-link reuse denial, unaffected unrelated users, obsolete remember cookies and untrusted remember input. Normal login does not support remember-me.
 - Red evidence: two tests returned 200 before middleware; green: full 41 API tests / 277 assertions passed; Pint passed. QA's independent browser reproduction was adapted to accept the first stale request as 401 and then guest state; it passed with database sessions, separate browser contexts, log-only mail and ports 3203/8203. New password succeeds, old password and reused link fail, unrelated employee remains authenticated.
 - Existing sessions created by this baseline have the login fingerprint. Any future authentication path must continue using Laravel's session guard login mechanism. No live accounts or PMS databases were used.
+
+## QA-03 explicit sign-out recovery
+
+- If draft flushing fails, a native modal offers Keep editing (initial keyboard focus) or explicit Discard unsaved changes and sign out. Escape keeps editing. The discard action calls backend logout without repeating the failed save; a401 means the session is already gone. Failed logout keeps the decision visible with an error.
+- Regression first failed because no decision existed. Chromium checks passed for422 validation,409 conflict and503 server failures, including keep-editing value preservation, explicit discard, guest session and401 on private hotel data. Type checking and lint passed. No P2 layout redesign included.

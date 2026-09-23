@@ -14,12 +14,12 @@ final class ManualQuoteCalculator
      * Catalog must resolve availability, restrictions, relationships and freshness before use.
      * Expiry is supplied by the caller, not a hold or a checkout timing policy.
      *
-     * @param  array{hotel_id:int,room_type_id:int,rate_plan_id:int,timezone:string,currency:string,inventory_mode:string,quantity:int,adults:int,max_adults:int,children_ages:array,arrival:string,departure:string,policy:array{version:string,text:string},nightly:list<array{stay_date:string,base_minor:int,tax_minor:int,fee_minor:int,mandatory_charges_complete:bool}>}  $input
+     * @param  array{hotel_id:int,room_type_id:int,rate_plan_id:int,timezone:string,currency:string,inventory_mode:string,quantity:int,adults:int,max_adults:int,children_ages:array,arrival:string,departure:string,policy:array{version:string,text:string},nightly:list<array{stay_date:string,base_minor:int,tax_minor:int,fee_minor:int,mandatory_charges_complete:bool}>,nightly_conditions:list<array{stay_date:string,available:int,stop_sell:bool,restrictions_passed:bool}>}  $input
      * @return array<string, mixed>
      */
     public function calculate(array $input, DateTimeImmutable $now, DateTimeImmutable $expiresAt): array
     {
-        $this->keys($input, ['hotel_id', 'room_type_id', 'rate_plan_id', 'timezone', 'currency', 'inventory_mode', 'quantity', 'adults', 'max_adults', 'children_ages', 'arrival', 'departure', 'policy', 'nightly']);
+        $this->keys($input, ['hotel_id', 'room_type_id', 'rate_plan_id', 'timezone', 'currency', 'inventory_mode', 'quantity', 'adults', 'max_adults', 'children_ages', 'arrival', 'departure', 'policy', 'nightly', 'nightly_conditions']);
         foreach (['hotel_id', 'room_type_id', 'rate_plan_id', 'adults', 'max_adults'] as $field) {
             $this->require(is_int($input[$field]) && $input[$field] > 0, "Invalid $field.");
         }
@@ -40,6 +40,8 @@ final class ManualQuoteCalculator
         }
         $this->require(is_array($input['nightly']) && array_is_list($input['nightly']) && count($input['nightly']) === $nights, 'Every stay night must be supplied exactly once in date order.');
 
+        $this->require(is_array($input['nightly_conditions']) && array_is_list($input['nightly_conditions']) && count($input['nightly_conditions']) === $nights, 'Every stay night requires matching conditions in date order.');
+
         $total = 0;
         $lines = [];
         foreach ($input['nightly'] as $offset => $night) {
@@ -47,6 +49,11 @@ final class ManualQuoteCalculator
             $this->keys($night, ['stay_date', 'base_minor', 'tax_minor', 'fee_minor', 'mandatory_charges_complete']);
             $this->require($night['stay_date'] === $arrival->modify("+$offset days")->format('Y-m-d'), 'Missing or out-of-order stay night.');
             $this->require($night['mandatory_charges_complete'] === true, 'Mandatory charges must be complete for every night.');
+            $conditions = $input['nightly_conditions'][$offset];
+            $this->require(is_array($conditions), 'Invalid nightly conditions.');
+            $this->keys($conditions, ['stay_date', 'available', 'stop_sell', 'restrictions_passed']);
+            $this->require($conditions['stay_date'] === $night['stay_date'], 'Conditions must match the quoted stay night.');
+            $this->require(is_int($conditions['available']) && $conditions['available'] >= 1 && $conditions['stop_sell'] === false && $conditions['restrictions_passed'] === true, 'Night is unavailable or restricted.');
             $lineTotal = 0;
             foreach (['base_minor', 'tax_minor', 'fee_minor'] as $field) {
                 $amount = $night[$field];

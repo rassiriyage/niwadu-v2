@@ -18,6 +18,10 @@ class ManualQuoteCalculatorTest extends TestCase
             'quantity' => 1, 'adults' => 2, 'max_adults' => 2, 'children_ages' => [],
             'arrival' => '2026-10-01', 'departure' => '2026-10-03',
             'policy' => ['version' => 'v1', 'text' => 'Non-refundable; full payment required.'],
+            'nightly_conditions' => [
+                ['stay_date' => '2026-10-01', 'available' => 1, 'stop_sell' => false, 'restrictions_passed' => true],
+                ['stay_date' => '2026-10-02', 'available' => 1, 'stop_sell' => false, 'restrictions_passed' => true],
+            ],
             'nightly' => [
                 ['stay_date' => '2026-10-01', 'base_minor' => 10001, 'tax_minor' => 1800, 'fee_minor' => 500, 'mandatory_charges_complete' => true],
                 ['stay_date' => '2026-10-02', 'base_minor' => 20002, 'tax_minor' => 3600, 'fee_minor' => 0, 'mandatory_charges_complete' => true],
@@ -56,6 +60,24 @@ class ManualQuoteCalculatorTest extends TestCase
     public static function invalidInputs(): array
     {
         return [
+            'first night sold out' => [['nightly_conditions' => [0 => ['available' => 0]]]],
+            'second night sold out' => [['nightly_conditions' => [1 => ['available' => 0]]]],
+            'negative availability' => [['nightly_conditions' => [1 => ['available' => -1]]]],
+            'float availability' => [['nightly_conditions' => [1 => ['available' => 1.5]]]],
+            'string availability' => [['nightly_conditions' => [1 => ['available' => '1']]]],
+            'unknown availability' => [['nightly_conditions' => [1 => ['available' => null]]]],
+            'first night stopped' => [['nightly_conditions' => [0 => ['stop_sell' => true]]]],
+            'second night stopped' => [['nightly_conditions' => [1 => ['stop_sell' => true]]]],
+            'unknown stop sell' => [['nightly_conditions' => [1 => ['stop_sell' => null]]]],
+            'falsy stop sell' => [['nightly_conditions' => [1 => ['stop_sell' => 0]]]],
+            'first night restricted' => [['nightly_conditions' => [0 => ['restrictions_passed' => false]]]],
+            'second night restricted' => [['nightly_conditions' => [1 => ['restrictions_passed' => false]]]],
+            'unknown restrictions' => [['nightly_conditions' => [1 => ['restrictions_passed' => null]]]],
+            'truthy restrictions' => [['nightly_conditions' => [1 => ['restrictions_passed' => 1]]]],
+            'duplicate condition date' => [['nightly_conditions' => [1 => ['stay_date' => '2026-10-01']]]],
+            'misaligned condition date' => [['nightly_conditions' => [1 => ['stay_date' => '2026-10-03']]]],
+            'unknown conditions' => [['nightly_conditions' => null]],
+            'unknown condition row' => [['nightly_conditions' => [1 => null]]],
             'no tax' => [['nightly' => [0 => ['tax_minor' => null]]]],
             'no fee' => [['nightly' => [1 => ['fee_minor' => null]]]],
             'first night incomplete' => [['nightly' => [0 => ['mandatory_charges_complete' => false]]]],
@@ -112,6 +134,34 @@ class ManualQuoteCalculatorTest extends TestCase
         }
     }
 
+    #[DataProvider('missingConditions')]
+    public function test_missing_conditions_reject(string $path): void
+    {
+        $input = $this->input();
+        if ($path === 'all') {
+            unset($input['nightly_conditions']);
+        } elseif ($path === 'first' || $path === 'second') {
+            unset($input['nightly_conditions'][$path === 'first' ? 0 : 1]);
+        } else {
+            unset($input['nightly_conditions'][1][$path]);
+        }
+        $this->expectException(InvalidArgumentException::class);
+        $this->calculate($input);
+    }
+
+    public static function missingConditions(): array
+    {
+        return array_map(fn (string $path): array => [$path], ['all', 'first', 'second', 'stay_date', 'available', 'stop_sell', 'restrictions_passed']);
+    }
+
+    public function test_reordered_conditions_reject(): void
+    {
+        $input = $this->input();
+        $input['nightly_conditions'] = array_reverse($input['nightly_conditions']);
+        $this->expectException(InvalidArgumentException::class);
+        $this->calculate($input);
+    }
+
     public function test_expiry_is_exclusive(): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -133,7 +183,9 @@ class ManualQuoteCalculatorTest extends TestCase
         $night['tax_minor'] = 0;
         $night['fee_minor'] = 0;
         $input['nightly'] = [];
+        $input['nightly_conditions'] = [];
         for ($day = 1; $day <= 30; $day++) {
+            $input['nightly_conditions'][] = ['stay_date' => sprintf('2026-10-%02d', $day), 'available' => 1, 'stop_sell' => false, 'restrictions_passed' => true];
             $input['nightly'][] = array_replace($night, ['stay_date' => sprintf('2026-10-%02d', $day)]);
         }
         $this->assertSame(3000, $this->calculate($input)['total_minor']);

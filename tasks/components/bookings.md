@@ -158,3 +158,11 @@ No extension rejection is needed on the basic hold/intent architecture. The firs
 Catalog follow-up received at `780b7f1` (contract `5202ee5`): Stage A1 supplies integer room IDs and read APIs only, with no rate-plan/pool/hold implementation. Calculator remains unbound. Alignment is confirmed on rate_plan_id as future selection ID, stable booking intent/idempotency keys, inventory-owned holds and no offering alias. Fingerprint includes complete selection, nightly mandatory amounts, policy and source ownership/revision; changes require requote, not silent acceptance. Final snapshot hashing/schema and cancellation/release contract must be agreed through PO when catalog reaches that slice.
 
 Review verification: read-only review of the proposal and comparison to this contract/current pure calculator. No new runtime code or tests required; documentation whitespace checked. Manual quote implementation and its 59-test regression result remain unchanged.
+
+## Final contract alignment pending QA/catalog evidence
+
+Product owner confirmed explicit per-night `base_minor`, `tax_minor`, `fee_minor` and charge completeness as the catalog pricing contract. Totals are derived; unknown charges never become zero. Unsupported stay-level fee allocations block quoting until catalog can represent them completely and correctly across nights. This resolves the earlier inclusive-versus-decomposed amount decision; real catalog data/binding evidence remains outstanding.
+
+Catalog must resolve actual hotel/room/rate relationships, sales readiness, current ownership, restrictions and freshness before supplying inputs. The pure calculator validates synthetic input shape and arithmetic only; it does not establish these facts, prove sellability, or authorize guest access. No quote endpoint or real-catalog integration is approved in this increment.
+
+Calculator commit `e0c0cbb` is queued for independent QA. Product owner accepted the three channel review gaps and is routing one revised proposal to PMS; provider implementation remains gated. Await QA findings and catalog data evidence before further code. This alignment changes documentation only; no scaffolding or runtime behavior added, and no additional tests needed. Whitespace check passed.

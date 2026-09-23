@@ -13,3 +13,6 @@ vendor/
 coverage/
 playwright-report/
 test-results/
+
+# Checkout-owned PostgreSQL test cluster and credentials
+/.runtime/

@@ -6,6 +6,7 @@ use App\Http\Controllers\HotelOnboardingController;
 use App\Http\Controllers\HotelPhotoController;
 use App\Http\Controllers\HotelStaffController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\SessionController;
 use App\Http\Middleware\PrivateApiResponse;
 use Illuminate\Http\JsonResponse;
@@ -28,7 +29,9 @@ Route::prefix('api/v1')->middleware([PrivateApiResponse::class, 'auth.session'])
         Route::post('hotels', [HotelController::class, 'store']);
         Route::get('hotels/{hotel}/photos', [HotelPhotoController::class, 'index']);
         Route::post('hotels/{hotel}/photos', [HotelPhotoController::class, 'store'])->middleware('throttle:30,1');
-        Route::get('hotels/{hotel}/photos/{photo}', [HotelPhotoController::class, 'show']);
+        Route::get('hotels/{hotel}/photos/{photo}', [HotelPhotoController::class, 'show'])->name('hotel-photos.show');
+        Route::get('hotels/{hotel}/room-types', [RoomTypeController::class, 'index']);
+        Route::get('hotels/{hotel}/room-types/{room}', [RoomTypeController::class, 'show'])->whereNumber('room');
         Route::delete('hotels/{hotel}/photos/{photo}', [HotelPhotoController::class, 'destroy']);
         Route::get('hotels/{hotel}/onboarding', [HotelOnboardingController::class, 'show']);
         Route::patch('hotels/{hotel}/onboarding', [HotelOnboardingController::class, 'update']);

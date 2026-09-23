@@ -3,7 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 #[Fillable(['hotel_id', 'path', 'mime_type', 'caption'])]
-class HotelPhoto extends Model {}
+class HotelPhoto extends Model
+{
+    use HasFactory;
+}

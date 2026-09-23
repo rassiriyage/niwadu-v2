@@ -5,49 +5,65 @@
         "href": "/hotels/sulanga-83c3e2d1-0670-431f-98cc-e5e38bb57b5e",
         "title": "Sulanga Luxury Chalets",
         "image": "/reference/railway/82c2afd39b1b16f1ae2a.jpg",
-        "detail": "Nuwara Eliya"
+        "detail": "Nuwara Eliya",
+        "imageWidth": 1024,
+        "imageHeight": 576
       },
       {
         "href": "/hotels/the-burrow",
         "title": "The Burrow",
         "image": "/reference/railway/c12cb372b224ffaee44b.jpg",
-        "detail": "Nuwara Eliya"
+        "detail": "Nuwara Eliya",
+        "imageWidth": 573,
+        "imageHeight": 322
       },
       {
         "href": "/hotels/dels-haven",
         "title": "Del’s Haven",
         "image": "/reference/railway/0f8d33241a1f2f9e4886.jpg",
-        "detail": "Nuwara Eliya"
+        "detail": "Nuwara Eliya",
+        "imageWidth": 1024,
+        "imageHeight": 576
       },
       {
         "href": "/hotels/ferncliff-bungalow-2b9fe2aa-cbd3-4075-a216-e7999de04cea",
         "title": "Ferncliff Bungalow",
         "image": "/reference/railway/c36022cd822c5ca6c602.png",
-        "detail": "Nuwara Eliya"
+        "detail": "Nuwara Eliya",
+        "imageWidth": 832,
+        "imageHeight": 468
       },
       {
         "href": "/hotels/the-edgware-cabana-59c09f82-bc55-4807-a19d-68fc87506ce9",
         "title": "The Edgware Cabana",
         "image": "/reference/railway/f9a1abb11ecc0515c5da.png",
-        "detail": "Nuwara Eliya"
+        "detail": "Nuwara Eliya",
+        "imageWidth": 747,
+        "imageHeight": 420
       },
       {
         "href": "/hotels/araliya-green-city-c9224794-ed08-4357-8881-82318d0d14ec",
         "title": "Araliya Green City",
         "image": "/reference/railway/43436c74165568f50459.jpg",
-        "detail": "Nuwara Eliya"
+        "detail": "Nuwara Eliya",
+        "imageWidth": 1024,
+        "imageHeight": 576
       },
       {
         "href": "/hotels/black-pool-villa-68381f05-5e76-48e6-bbee-7547ead67ed0",
         "title": "Black Pool Villa",
         "image": "/reference/railway/80414b381687fd931d4a.jpg",
-        "detail": "Nuwara Eliya"
+        "detail": "Nuwara Eliya",
+        "imageWidth": 1042,
+        "imageHeight": 586
       },
       {
         "href": "/hotels/villa-mount-royal",
         "title": "Villa Mount Royal",
         "image": "/reference/railway/6de46225bda79c687fe4.jpg",
-        "detail": "Nuwara Eliya"
+        "detail": "Nuwara Eliya",
+        "imageWidth": 1025,
+        "imageHeight": 577
       }
     ],
     "title": "Popular stays in Nuwara Eliya",
@@ -59,49 +75,65 @@
         "href": "/hotels/sri-sharavi-beach-villas-spa",
         "title": "Sri Sharavi Beach Villas & Spa",
         "image": "/reference/railway/e0fc2f06c3f6515f2638.png",
-        "detail": "Mirissa"
+        "detail": "Mirissa",
+        "imageWidth": 1248,
+        "imageHeight": 702
       },
       {
         "href": "/hotels/firemoon-garden-c8071cbe-1730-4d28-9699-13bff0e9d0c3",
         "title": "FireMoon Garden",
         "image": "/reference/railway/4d7e3230dd6dd6157338.jpg",
-        "detail": "Mirissa"
+        "detail": "Mirissa",
+        "imageWidth": 1113,
+        "imageHeight": 626
       },
       {
         "href": "/hotels/lavendra-villa-mirissa",
         "title": "Lavendra Villa Mirissa",
         "image": "/reference/railway/f5163f0d4dee6bb56576.jpg",
-        "detail": "Mirissa"
+        "detail": "Mirissa",
+        "imageWidth": 1024,
+        "imageHeight": 576
       },
       {
         "href": "/hotels/handagedara-resort-a0af9078-ab9f-4e5a-94bb-c9a9b3ab3548",
         "title": "Handagedara Resort",
         "image": "/reference/railway/eabc9df5488e35ae8cd5.png",
-        "detail": "Mirissa"
+        "detail": "Mirissa",
+        "imageWidth": 1248,
+        "imageHeight": 702
       },
       {
         "href": "/hotels/esprit-dici-hotel-6a782f49-94dd-48f2-a242-5a22b434cd3e",
         "title": "Esprit d'ici Hotel",
         "image": "/reference/railway/c639911fb0a49e486c37.png",
-        "detail": "Mirissa"
+        "detail": "Mirissa",
+        "imageWidth": 1024,
+        "imageHeight": 576
       },
       {
         "href": "/hotels/green-hill-13101d8c-88c3-4dad-afa8-ef31a58e44cc",
         "title": "Green Hills Mirissa",
         "image": "/reference/railway/45622e92772d4225d941.jpg",
-        "detail": "Mirissa"
+        "detail": "Mirissa",
+        "imageWidth": 573,
+        "imageHeight": 322
       },
       {
         "href": "/hotels/one-world-mirissa-a5e2bf1d-1e44-45b6-bd31-681aefe37d5c",
         "title": "One World Mirissa",
         "image": "/reference/railway/59e9091ea62c2845658a.jpg",
-        "detail": "Mirissa"
+        "detail": "Mirissa",
+        "imageWidth": 1024,
+        "imageHeight": 576
       },
       {
         "href": "/hotels/randiya-sea-view-33c2e0e9-b8e1-49e5-b49f-fbfe18c7e838",
         "title": "Randiya Sea View",
         "image": "/reference/railway/953bae3a8dae43bbb53a.jpg",
-        "detail": "Mirissa"
+        "detail": "Mirissa",
+        "imageWidth": 2555,
+        "imageHeight": 1437
       }
     ],
     "title": "Popular stays in Mirissa",
@@ -113,49 +145,65 @@
         "href": "/hotels/the-kandy-house-c0e1194d-cc21-446c-a1cb-ec98a3b7e14f",
         "title": "The Kandy House",
         "image": "/reference/railway/8f230ee1f7a1ac5cc01a.jpg",
-        "detail": "Kandy"
+        "detail": "Kandy",
+        "imageWidth": 1025,
+        "imageHeight": 577
       },
       {
         "href": "/hotels/the-elephant-stables-716f66df-3b94-4c6e-8f62-1ea83be105ba",
         "title": "The Elephant Stables",
         "image": "/reference/railway/80724a18574daa79d0a2.jpg",
-        "detail": "Kandy"
+        "detail": "Kandy",
+        "imageWidth": 1022,
+        "imageHeight": 574
       },
       {
         "href": "/hotels/hotel-travellers-nest-kandy",
         "title": "Hotel Travellers Nest Kandy",
         "image": "/reference/railway/f2278af63a347b1696ff.jpg",
-        "detail": "Kandy"
+        "detail": "Kandy",
+        "imageWidth": 1023,
+        "imageHeight": 575
       },
       {
         "href": "/hotels/h20-holiday-bungalow",
         "title": "H2O Holiday Bungalow",
         "image": "/reference/railway/239b31cfc290b6dd3b84.jpg",
-        "detail": "Kandy"
+        "detail": "Kandy",
+        "imageWidth": 1277,
+        "imageHeight": 718
       },
       {
         "href": "/hotels/hanthana-nature-cottage",
         "title": "Hanthana Nature Cottage",
         "image": "/reference/railway/1f1f478b9f0384e345e2.jpg",
-        "detail": "Kandy"
+        "detail": "Kandy",
+        "imageWidth": 1024,
+        "imageHeight": 576
       },
       {
         "href": "/hotels/simpsons-forest-hotel",
         "title": "Simpson's Forest Hotel",
         "image": "/reference/railway/42f2a52383326b6a8413.jpg",
-        "detail": "Kandy"
+        "detail": "Kandy",
+        "imageWidth": 1024,
+        "imageHeight": 576
       },
       {
         "href": "/hotels/the-weir-house",
         "title": "Back of Beyond - The Weir House",
         "image": "/reference/railway/9726cb7cdaf10cdc5ce9.jpg",
-        "detail": "Kandy"
+        "detail": "Kandy",
+        "imageWidth": 1024,
+        "imageHeight": 576
       },
       {
         "href": "/hotels/lavender-holiday-resort",
         "title": "Lavender Holiday Resort",
         "image": "/reference/railway/a1f542de6e5805e65e71.jpg",
-        "detail": "Kandy"
+        "detail": "Kandy",
+        "imageWidth": 720,
+        "imageHeight": 405
       }
     ],
     "title": "Popular stays in Kandy",
@@ -167,73 +215,97 @@
         "href": "/hotels/sriyantha-rest",
         "title": "Sriyantha Villa",
         "image": "/reference/railway/ac26df9dd7ad4904b851.jpg",
-        "detail": "Kataragama"
+        "detail": "Kataragama",
+        "imageWidth": 720,
+        "imageHeight": 333
       },
       {
         "href": "/hotels/lakmini-luxury-lodge",
         "title": "Lakmini Luxury Lodge",
         "image": "/reference/railway/1498f73706d9fc576086.jpg",
-        "detail": "Kalawana"
+        "detail": "Kalawana",
+        "imageWidth": 1270,
+        "imageHeight": 714
       },
       {
         "href": "/hotels/ivory-inn",
         "title": "Ivory Inn",
         "image": "/reference/railway/4e081717922a28d0c16b.jpg",
-        "detail": "Kandy"
+        "detail": "Kandy",
+        "imageWidth": 1280,
+        "imageHeight": 720
       },
       {
         "href": "/hotels/black-pool-red-rose",
         "title": "Black Pool Red Rose",
         "image": "/reference/railway/bf7000f73feec8c9fe7d.jpg",
-        "detail": "Nuwara Eliya"
+        "detail": "Nuwara Eliya",
+        "imageWidth": 713,
+        "imageHeight": 401
       },
       {
         "href": "/hotels/cave-n-falls-nature-resort-waterpark",
         "title": "Cave N Falls Nature Resort & Waterpark",
         "image": "/reference/railway/f0b6ea7ae7518edf4f93.jpg",
-        "detail": "Kithulgala"
+        "detail": "Kithulgala",
+        "imageWidth": 999,
+        "imageHeight": 562
       },
       {
         "href": "/hotels/kandy-spice-villa",
         "title": "Spice Villa",
         "image": "/reference/railway/df5822d53fc6189f0b0e.jpg",
-        "detail": "Kandy"
+        "detail": "Kandy",
+        "imageWidth": 1957,
+        "imageHeight": 1101
       },
       {
         "href": "/hotels/golden-king-residencies",
         "title": "Golden King Kandy",
         "image": "/reference/railway/bc6378a941d3fe61beec.png",
-        "detail": "Kandy"
+        "detail": "Kandy",
+        "imageWidth": 1223,
+        "imageHeight": 688
       },
       {
         "href": "/hotels/bel-view-guest-house",
         "title": "Bel View Guest House",
         "image": "/reference/railway/1e165db8a4bc6efb97c4.jpg",
-        "detail": "Haputale"
+        "detail": "Haputale",
+        "imageWidth": 1024,
+        "imageHeight": 576
       },
       {
         "href": "/hotels/volunteer-ceylon",
         "title": "Volunteer Ceylon",
         "image": "/reference/railway/1ef6d491199bf2a0768c.jpg",
-        "detail": "Ratnapura"
+        "detail": "Ratnapura",
+        "imageWidth": 1800,
+        "imageHeight": 1012
       },
       {
         "href": "/hotels/hotel-holiday-inn",
         "title": "Hotel Holiday Inn",
         "image": "/reference/railway/202274e46282d083aab6.jpg",
-        "detail": "Galle"
+        "detail": "Galle",
+        "imageWidth": 1600,
+        "imageHeight": 900
       },
       {
         "href": "/hotels/hotel-janara-52940cd0-6d24-4cd5-a6a0-0c6ee34633b7",
         "title": "Hotel Janara",
         "image": "/reference/railway/6b2f66727570a938f650.jpg",
-        "detail": "Kurunagala"
+        "detail": "Kurunagala",
+        "imageWidth": 1024,
+        "imageHeight": 683
       },
       {
         "href": "/hotels/belmand-lake",
         "title": "Delmand Lake",
         "image": "/reference/railway/cce21c5549f1b6a687f9.jpg",
-        "detail": "Anuradhapura"
+        "detail": "Anuradhapura",
+        "imageWidth": 1246,
+        "imageHeight": 701
       }
     ],
     "title": "More stays to explore",
@@ -245,55 +317,73 @@
         "href": "/packages/hikkaduwa-and-unawatuna-delights",
         "title": "Coastal Escapes Sri Lanka",
         "image": "/reference/railway/8f3e0017c8651c06b10a.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 4256,
+        "imageHeight": 2832
       },
       {
         "href": "/packages/mirissa-and-tangalle-getaway",
         "title": "Visit Sri Lanka 5 Days 4 Nights Tour Package",
         "image": "/reference/railway/82f4748532564ee4843d.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 3000,
+        "imageHeight": 2000
       },
       {
         "href": "/packages/cultural-triangle-immersion",
         "title": "Sri Lanka Tourism 4 Days 3 Nights Tour Package",
         "image": "/reference/railway/38dbcbe6ecb762c148a7.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 4578,
+        "imageHeight": 3491
       },
       {
         "href": "/packages/majestic-cultural-triangle-9c903ea5-48c7-46e5-b65e-5049d1b0f4e4",
         "title": "Majestic Cultural Triangle",
         "image": "/reference/railway/2186e3d419348198f07c.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 4566,
+        "imageHeight": 3502
       },
       {
         "href": "/packages/ancient-treasures-expedition-985d3ff8-3cae-4269-b309-46eeb5102ff3",
         "title": "Ancient Treasures Expedition",
         "image": "/reference/railway/0332640cc2b42919d184.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 4260,
+        "imageHeight": 2652
       },
       {
         "href": "/packages/cultural-heritage-trail-f7c671ce-e917-4a22-a7ae-3aa2a65fcf6e",
         "title": "Cultural Heritage Trail",
         "image": "/reference/railway/be223b1d658496ecf79c.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 5616,
+        "imageHeight": 3744
       },
       {
         "href": "/packages/sacred-sites-discovery-fc757c52-6cb2-4e4d-8a9d-76398992f278",
         "title": "Sacred Sites Discovery",
         "image": "/reference/railway/6a7667f1aebf45cb94d1.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 3481,
+        "imageHeight": 2321
       },
       {
         "href": "/packages/unawatuna-and-galle-exploration",
         "title": "Travel Galle Sri Lanka 3 Days 2 Nights Tour Package",
         "image": "/reference/railway/9b0ab5bdd528fc7f554f.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 3000,
+        "imageHeight": 2000
       },
       {
         "href": "/packages/arugam-bay-surfing-adventure",
         "title": "Explore Arugam Bay Surfing Adventure Tour Package",
         "image": "/reference/railway/a5ced2c577cb584eecc2.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 4950,
+        "imageHeight": 3300
       }
     ],
     "title": "Experiences with the stays built in",
@@ -305,43 +395,57 @@
         "href": "/destinations/galle",
         "title": "Galle",
         "image": "/reference/railway/27a6b7abf51cb306f06f.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 551,
+        "imageHeight": 310
       },
       {
         "href": "/destinations/kataragama",
         "title": "Kataragama",
         "image": "/reference/railway/20d370621df2ddc445e2.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 651,
+        "imageHeight": 366
       },
       {
         "href": "/destinations/meemure",
         "title": "Meemure",
         "image": "/reference/railway/28c4070a558fe6c6d3e9.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 501,
+        "imageHeight": 281
       },
       {
         "href": "/destinations/mirissa",
         "title": "Mirissa",
         "image": "/reference/railway/4b525ade03a81041b108.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 1002,
+        "imageHeight": 564
       },
       {
         "href": "/destinations/negombo",
         "title": "Negombo",
         "image": "/reference/railway/17408d382d1ff67d8d98.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 800,
+        "imageHeight": 450
       },
       {
         "href": "/destinations/nuwara-eliya",
         "title": "Nuwara Eliya",
         "image": "/reference/railway/788efbb5f33d78776431.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 635,
+        "imageHeight": 357
       },
       {
         "href": "/destinations/unawatuna",
         "title": "Unawatuna",
         "image": "/reference/railway/93127e1fee26ff9d4fe4.jpg",
-        "detail": "Sri Lanka"
+        "detail": "Sri Lanka",
+        "imageWidth": 3464,
+        "imageHeight": 1948
       }
     ],
     "title": "Explore by destination",

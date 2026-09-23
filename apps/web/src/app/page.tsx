@@ -22,7 +22,7 @@ function Row({ section, index }: { section: typeof content[number]; index: numbe
     {section.cards.map((card, cardIndex) => <li key={card.href}>
       <div className="card-wrap">
         <PreviewAction label={card.title} className="listing-card">
-          <span className="card-image"><CardImage src={card.image} priority={index === 0 && cardIndex === 0} />{index < 3 && <span className="featured">Featured</span>}</span>
+          <span className="card-image"><CardImage src={card.image} width={card.imageWidth} height={card.imageHeight} priority={index === 0 && cardIndex === 0} />{index < 3 && <span className="featured">Featured</span>}</span>
           <span className="card-copy"><span className="card-name">{card.title}</span><span className="card-location">{card.detail}</span><span className="card-rate">{section.kind === "hotel" ? "Rates unavailable" : "Explore in preview"}</span></span>
         </PreviewAction>
         {section.kind === "hotel" && <PreviewAction className="wishlist" accessibleName={`Save ${card.title} to wishlist`} label={`Save ${card.title} to wishlist`}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28S2 20 2 10C2 2 12 1 16 8c4-7 14-6 14 2 0 10-14 18-14 18Z" /></svg></PreviewAction>}

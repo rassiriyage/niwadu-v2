@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import content from "../src/app/homepage-content.json";
 
 test("reference homepage stays local and honest", async ({ page }) => {
   await page.goto("/");
@@ -47,6 +48,11 @@ test("public photos use responsive optimized delivery with one priority image", 
   const source = await photo.evaluate((img: HTMLImageElement) => img.currentSrc);
   expect(new URL(source).pathname).toBe("/_next/image");
   expect(new URL(source).searchParams.get("q")).toBe("90");
+  const box = await photo.boundingBox();
+  const dpr = await page.evaluate(() => window.devicePixelRatio);
+  const first = content[0].cards[0];
+  const requiredWidth = Math.max(box!.width, box!.height * first.imageWidth / first.imageHeight) * dpr;
+  expect(Number(new URL(source).searchParams.get("w"))).toBeGreaterThanOrEqual(Math.floor(requiredWidth));
   const response = await page.request.get(source, { headers: { Accept: "image/webp" } });
   expect(response.status()).toBe(200);
   expect(response.headers()["content-type"]).toBe("image/webp");

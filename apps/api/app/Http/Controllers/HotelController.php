@@ -41,10 +41,15 @@ class HotelController extends Controller
     public function update(SaveHotelRequest $request, Hotel $hotel): HotelResource
     {
         DB::transaction(function () use ($request, $hotel) {
-            $hotel->update($request->validated());
+            $hotel = Hotel::whereKey($hotel->id)->lockForUpdate()->firstOrFail();
+            Gate::authorize('view', $hotel);
+            Gate::authorize('update', $hotel);
+            $hotel->fill($request->validated());
+            $hotel->onboarding_version++;
+            $hotel->save();
             $hotel->recordAccessEvent($request->user(), 'hotel.updated');
         });
 
-        return new HotelResource($hotel);
+        return new HotelResource($hotel->refresh());
     }
 }

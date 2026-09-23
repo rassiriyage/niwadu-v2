@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\HotelOnboardingController;
+use App\Http\Controllers\HotelPhotoController;
 use App\Http\Controllers\HotelStaffController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\SessionController;
@@ -20,6 +22,12 @@ Route::prefix('api/v1')->middleware(PrivateApiResponse::class)->group(function (
         Route::post('logout', [SessionController::class, 'destroy']);
         Route::get('hotels', [HotelController::class, 'index']);
         Route::post('hotels', [HotelController::class, 'store']);
+        Route::get('hotels/{hotel}/photos', [HotelPhotoController::class, 'index']);
+        Route::post('hotels/{hotel}/photos', [HotelPhotoController::class, 'store'])->middleware('throttle:30,1');
+        Route::get('hotels/{hotel}/photos/{photo}', [HotelPhotoController::class, 'show']);
+        Route::delete('hotels/{hotel}/photos/{photo}', [HotelPhotoController::class, 'destroy']);
+        Route::get('hotels/{hotel}/onboarding', [HotelOnboardingController::class, 'show']);
+        Route::patch('hotels/{hotel}/onboarding', [HotelOnboardingController::class, 'update']);
         Route::get('hotels/{hotel}', [HotelController::class, 'show']);
         Route::patch('hotels/{hotel}', [HotelController::class, 'update']);
         Route::get('hotels/{hotel}/staff', [HotelStaffController::class, 'index']);

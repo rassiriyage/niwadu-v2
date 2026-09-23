@@ -5,37 +5,38 @@ import { useCallback, useEffect, useRef, useState, type FormEvent, type RefObjec
 import { useRouter } from "next/navigation";
 import { api, ApiError, type Hotel } from "@/lib/admin-api";
 import { Staff } from "./hotel-profile";
+import { readRecovery, writeRecovery, recoveryKey, type Fields, type Room, type Recovery } from "./onboarding-recovery";
 
-type Room = { name: string; occupancy: number | null; quantity: number | null; rate: number | null };
-type Fields = { name: string; city: string | null; country: string; address: string | null; contact_email: string | null; phone: string | null; description: string | null; property_type: string | null; amenities: string[]; rooms: Room[]; inventory_request: string | null; check_in: string | null; check_out: string | null; cancellation_policy: string | null; guest_rules: string | null };
 type Draft = { hotel_id: number; step: number; version: number; fields: Fields; missing: string[]; can_publish: boolean; launch_requirements: string[] };
 type LeaveRef = RefObject<(() => Promise<void>) | null>;
 const steps = ["Hotel basics", "Listing & photos", "Room types", "Rates & availability", "Policies", "Hotel staff", "Review"];
 const amenities = { wifi: "Wi-Fi", parking: "Parking", pool: "Swimming pool", restaurant: "Restaurant", air_conditioning: "Air conditioning", beach_access: "Beach access", airport_transfer: "Airport transfer", accessible_rooms: "Accessible rooms" };
 
-export default function Onboarding({ id, beforeLeaveRef }: { id: number; beforeLeaveRef: LeaveRef }) {
-  const [loaded, setLoaded] = useState<{ draft: Draft; hotel: Hotel }>();
+export default function Onboarding({ id, userId, beforeLeaveRef }: { id: number; userId: number; beforeLeaveRef: LeaveRef }) {
+  const [loaded, setLoaded] = useState<{ draft: Draft; hotel: Hotel; recovery?: Recovery }>();
   const [error, setError] = useState("");
   useEffect(() => {
     let active = true;
     Promise.all([api<Draft>(`hotels/${id}/onboarding`), api<{ data: Hotel }>(`hotels/${id}`)])
-      .then(([draft, hotel]) => { if (active) setLoaded({ draft, hotel: hotel.data }); })
+      .then(([draft, hotel]) => { if (active) setLoaded({ draft, hotel: hotel.data, recovery: readRecovery(recoveryKey(userId, id)) }); })
       .catch(e => { if (active) setError(e.message); });
     return () => { active = false; };
-  }, [id]);
+  }, [id, userId]);
   if (!loaded) return <p role={error ? "alert" : "status"}>{error || "Opening hotel setup…"}</p>;
-  return <Wizard initial={loaded.draft} hotel={loaded.hotel} beforeLeaveRef={beforeLeaveRef} />;
+  return <Wizard initial={loaded.draft} recovered={loaded.recovery} storageKey={recoveryKey(userId, id)} hotel={loaded.hotel} beforeLeaveRef={beforeLeaveRef} />;
 }
 
-function Wizard({ initial, hotel, beforeLeaveRef }: { initial: Draft; hotel: Hotel; beforeLeaveRef: LeaveRef }) {
-  const [fields, setFields] = useState(initial.fields);
-  const [step, setStep] = useState(initial.step);
+function Wizard({ initial, hotel, beforeLeaveRef, recovered, storageKey }: { initial: Draft; hotel: Hotel; beforeLeaveRef: LeaveRef; recovered?: Recovery; storageKey: string }) {
+  const recoveredPatch: Partial<Fields> = recovered ? Object.fromEntries(recovered.pendingKeys.map(key => [key, recovered.fields[key]])) : {};
+  const recoveredConflict = recovered && recovered.version !== initial.version ? new ApiError("This draft changed in another window.", 409) : null;
+  const [fields, setFields] = useState(recovered?.fields ?? initial.fields);
+  const [step, setStep] = useState(recovered?.step ?? initial.step);
   const [review, setReview] = useState(initial);
-  const [status, setStatus] = useState("All changes saved");
-  const [error, setError] = useState<Error | null>(null);
-  const [unsaved, setUnsaved] = useState<Partial<Fields>>({});
+  const [status, setStatus] = useState(recovered ? "Recovered unsaved changes. Review them before saving." : "All changes saved");
+  const [error, setError] = useState<Error | null>(recoveredConflict);
+  const [unsaved, setUnsaved] = useState<Partial<Fields>>(recoveredPatch);
   const [copyStatus, setCopyStatus] = useState("");
-  const conflict = useRef<ApiError | null>(null);
+  const conflict = useRef<ApiError | null>(recoveredConflict);
   const summary = useRef<HTMLDivElement>(null);
   const recoveryText = useRef<HTMLTextAreaElement>(null);
   const fieldErrors = error instanceof ApiError ? error.fieldErrors : {};
@@ -43,13 +44,25 @@ function Wizard({ initial, hotel, beforeLeaveRef }: { initial: Draft; hotel: Hot
   const retryable = error && (!(error instanceof ApiError) || error.status >= 500 || error.status === 408 || error.status === 429);
   const [moving, setMoving] = useState(false);
   const [retryStep, setRetryStep] = useState<number | null>();
-  const version = useRef(initial.version);
-  const pending = useRef<Partial<Fields>>({});
+  const version = useRef(recovered?.version ?? initial.version);
+  const pending = useRef<Partial<Fields>>(recoveredPatch);
+  const currentFields = useRef(recovered?.fields ?? initial.fields);
+  const currentStep = useRef(recovered?.step ?? initial.step);
+  const inFlight = useRef<Partial<Fields>>({});
+  const active = useRef(true);
+  const [storageError, setStorageError] = useState("");
   const running = useRef<Promise<void> | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const router = useRouter();
   const path = `hotels/${hotel.id}/onboarding`;
+
+  const persist = useCallback(() => {
+    if (!active.current) return;
+    const pendingKeys = Object.keys({ ...inFlight.current, ...pending.current }) as (keyof Fields)[];
+    const saved = pendingKeys.length ? { version: version.current, step: currentStep.current, fields: currentFields.current, pendingKeys } : undefined;
+    setStorageError(writeRecovery(storageKey, saved) ? "" : "This browser could not keep a recovery copy. Keep this tab open and copy your unsaved values before leaving.");
+  }, [storageKey]);
 
   const flush = useCallback(async (): Promise<void> => {
     if (timer.current) clearTimeout(timer.current);
@@ -57,15 +70,15 @@ function Wizard({ initial, hotel, beforeLeaveRef }: { initial: Draft; hotel: Hot
     if (conflict.current) throw conflict.current;
     if (!Object.keys(pending.current).length) return;
     const save = async () => {
-      while (Object.keys(pending.current).length) {
+      while (active.current && Object.keys(pending.current).length) {
         const patch = pending.current;
-        pending.current = {};
+        inFlight.current = patch; pending.current = {};
         setStatus("Saving…");
         try {
           const result = await api<Draft>(path, "PATCH", { version: version.current, fields: patch });
-          version.current = result.version; setReview(result); setError(null);
+          version.current = result.version; inFlight.current = {}; persist(); setReview(result); setError(null);
         } catch (e) {
-          pending.current = { ...patch, ...pending.current };
+          pending.current = { ...patch, ...pending.current }; inFlight.current = {}; persist();
           if (e instanceof ApiError && e.status === 409) {
             conflict.current = e;
             setUnsaved({ ...pending.current });
@@ -78,9 +91,10 @@ function Wizard({ initial, hotel, beforeLeaveRef }: { initial: Draft; hotel: Hot
     };
     running.current = save();
     try { await running.current; } finally { running.current = null; }
-  }, [path]);
+  }, [path, persist]);
 
   useEffect(() => {
+    active.current = true;
     beforeLeaveRef.current = flush;
     function warn(event: BeforeUnloadEvent) {
       if (Object.keys(pending.current).length || running.current) event.preventDefault();
@@ -96,6 +110,7 @@ function Wizard({ initial, hotel, beforeLeaveRef }: { initial: Draft; hotel: Hot
     window.addEventListener("beforeunload", warn);
     document.addEventListener("click", follow, true);
     return () => {
+      active.current = false;
       beforeLeaveRef.current = null;
       if (timer.current) clearTimeout(timer.current);
       window.removeEventListener("beforeunload", warn);
@@ -104,8 +119,9 @@ function Wizard({ initial, hotel, beforeLeaveRef }: { initial: Draft; hotel: Hot
   }, [beforeLeaveRef, flush]);
 
   function change<K extends keyof Fields>(key: K, value: Fields[K]) {
-    setFields(current => ({ ...current, [key]: value }));
-    pending.current = { ...pending.current, [key]: value };
+    currentFields.current = { ...currentFields.current, [key]: value };
+    setFields(currentFields.current);
+    pending.current = { ...pending.current, [key]: value }; persist();
     if (conflict.current) {
       setUnsaved({ ...pending.current }); setCopyStatus("");
       return;
@@ -121,7 +137,7 @@ function Wizard({ initial, hotel, beforeLeaveRef }: { initial: Draft; hotel: Hot
       await flush();
       if (next === undefined) { router.push(`/admin/hotels/${hotel.id}`); return; }
       const result = await api<Draft>(path, "PATCH", { version: version.current, step: next });
-      version.current = result.version; setReview(result); setStep(next); setError(null); setRetryStep(undefined); setStatus("All changes saved");
+      version.current = result.version; setReview(result); setStep(next); currentStep.current = next; setError(null); setRetryStep(undefined); setStatus("All changes saved");
       requestAnimationFrame(() => heading.current?.focus());
     } catch (e) {
       if (e instanceof ApiError && e.status === 409) {
@@ -138,6 +154,7 @@ function Wizard({ initial, hotel, beforeLeaveRef }: { initial: Draft; hotel: Hot
     try {
       const latest = await api<Draft>(path);
       version.current = latest.version; pending.current = {}; conflict.current = null;
+      currentFields.current = latest.fields; currentStep.current = latest.step; inFlight.current = {}; persist();
       setFields(latest.fields); setReview(latest); setStep(latest.step);
       setError(null); setRetryStep(undefined); setUnsaved({}); setCopyStatus(""); setStatus("All changes saved");
       requestAnimationFrame(() => heading.current?.focus());
@@ -164,7 +181,7 @@ function Wizard({ initial, hotel, beforeLeaveRef }: { initial: Draft; hotel: Hot
     const field = key.replace(/^fields\./, "");
     const root = field.split(".")[0];
     const targetStep = root === "rooms" ? (field.endsWith(".rate") ? 4 : 3) : ["description", "amenities"].includes(root) ? 2 : root === "inventory_request" ? 4 : ["check_in", "check_out", "cancellation_policy", "guest_rules"].includes(root) ? 5 : 1;
-    setStep(targetStep);
+    setStep(targetStep); currentStep.current = targetStep; persist();
     requestAnimationFrame(() => document.getElementById(`setup-${field}`)?.focus());
   }
   function text(key: keyof Fields, label: string, options: { type?: string; max?: number; multiline?: boolean; hint?: string } = {}) {
@@ -196,6 +213,7 @@ function Wizard({ initial, hotel, beforeLeaveRef }: { initial: Draft; hotel: Hot
         <p role="status">{copyStatus}</p>
       </>}
     </div>}
+    {storageError && <p className="error" role="alert">{storageError}</p>}
     <section className="panel wizard-panel"><h2 ref={heading} tabIndex={-1}>{steps[step - 1]}</h2>
       <fieldset disabled={moving} className="wizard-fields">
       {step === 1 && <><p>Start with the details a guest needs to find and contact the hotel.</p><div className="form-grid">

@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { api, ApiError, type Hotel, type Session, type StaffUser } from "@/lib/admin-api";
 import HotelProfile from "./hotel-profile";
 import Onboarding from "./onboarding";
+import { clearDraftRecovery } from "./onboarding-recovery";
 
 export default function Workspace({ hotelId, onboarding = false }: { hotelId?: number; onboarding?: boolean }) {
   const signOutDialog = useRef<HTMLDialogElement>(null);
@@ -16,7 +17,7 @@ export default function Workspace({ hotelId, onboarding = false }: { hotelId?: n
   const [busy, setBusy] = useState(false);
   useEffect(() => {
     let active = true;
-    api<Session>("session").then(s => { if (active) setUser(s.user); }).catch(e => { if (active) { if (e instanceof ApiError && e.status === 401) setUser(null); else setError("We cannot reach hotel management. Please refresh to try again."); } });
+    api<Session>("session").then(s => { if (active) { if (!s.user) clearDraftRecovery(); setUser(s.user); } }).catch(e => { if (active) { if (e instanceof ApiError && e.status === 401) { clearDraftRecovery(); setUser(null); } else setError("We cannot reach hotel management. Please refresh to try again."); } });
     return () => { active = false; };
   }, []);
 
@@ -40,9 +41,9 @@ export default function Workspace({ hotelId, onboarding = false }: { hotelId?: n
         catch { setDiscardPrompt(true); return; }
       }
       await api("logout", "POST");
-      setDiscardPrompt(false); setUser(null);
+      clearDraftRecovery(); setDiscardPrompt(false); setUser(null);
     } catch (e) {
-      if (e instanceof ApiError && e.status === 401) { setDiscardPrompt(false); setUser(null); }
+      if (e instanceof ApiError && e.status === 401) { clearDraftRecovery(); setDiscardPrompt(false); setUser(null); }
       else setError((e as Error).message);
     } finally { setBusy(false); }
   }
@@ -70,7 +71,7 @@ export default function Workspace({ hotelId, onboarding = false }: { hotelId?: n
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="admin-header"><Link className="wordmark" href="/admin">niwadu<span>hotel management</span></Link><div className="account"><span>{user.name}</span><button className="secondary" onClick={() => signOut()} disabled={busy}>Sign out</button></div></header>
     <div className="admin-body"><aside><nav aria-label="Management"><Link className="nav-active" href="/admin">Hotels</Link></nav><p>{user.platform_role ? "Niwadu workspace" : "Your hotel workspace"}</p></aside>
-    <main id="main">{error && <p role="alert" className="error">{error}</p>}{hotelId && onboarding ? <Onboarding id={hotelId} beforeLeaveRef={beforeLeaveRef} /> : hotelId ? <HotelProfile key={hotelId} id={hotelId} /> : <HotelList user={user} />}</main></div>
+    <main id="main">{error && <p role="alert" className="error">{error}</p>}{hotelId && onboarding ? <Onboarding key={`${user.id}:${hotelId}`} userId={user.id} id={hotelId} beforeLeaveRef={beforeLeaveRef} /> : hotelId ? <HotelProfile key={hotelId} id={hotelId} /> : <HotelList user={user} />}</main></div>
   </>;
 }
 

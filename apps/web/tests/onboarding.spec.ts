@@ -85,7 +85,7 @@ test("stale browser edits are preserved on screen and cannot overwrite newer ser
 
 test("conflict recovery copies local input, explicitly reloads latest, and resumes saving", async ({ page, context }) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
-  await createDraft(page);
+  await createDraft(page, "conflict@example.test");
   const second = await context.newPage();
   await second.goto(page.url());
   await expect(second.getByLabel("City or destination")).toBeVisible();
@@ -115,7 +115,7 @@ test("conflict recovery copies local input, explicitly reloads latest, and resum
 });
 
 test("validation stays at the field during autosave and keyboard Continue focuses linked errors", async ({ page }) => {
-  await createDraft(page);
+  await createDraft(page, "validation@example.test");
   const email = page.getByLabel("Hotel contact email", { exact: true });
   await email.fill("invalid-email");
   await expect(email).toHaveAttribute("aria-invalid", "true");
@@ -156,7 +156,7 @@ test("validation stays at the field during autosave and keyboard Continue focuse
 
 
 test("retry recovers server failures but is not offered for forbidden writes", async ({ page }) => {
-  await createDraft(page);
+  await createDraft(page, "retry@example.test");
   await page.route("**/onboarding", route => route.request().method() === "PATCH" ? route.fulfill({ status: 503, json: { message: "Temporarily unavailable" } }) : route.continue());
   await page.getByRole("button", { name: "Save and continue", exact: true }).click();
   await expect(page.getByRole("button", { name: "Retry save" })).toBeVisible();
@@ -172,7 +172,7 @@ test("retry recovers server failures but is not offered for forbidden writes", a
 
 for (const status of [422, 409, 503]) {
   test(`sign out offers keep editing or explicit discard after a ${status} save failure`, async ({ page }) => {
-    await createDraft(page);
+    await createDraft(page, `signout-${status}@example.test`);
     await page.route("**/onboarding", route => route.request().method() === "PATCH" ? route.fulfill({ status, json: { message: "Draft could not be saved" } }) : route.continue());
     await page.getByLabel("City or destination").fill("Unsaved city");
     await expect(page.getByText("Changes not saved", { exact: true })).toBeVisible();
@@ -188,5 +188,67 @@ for (const status of [422, 409, 503]) {
     await expect(page.getByRole("heading", { name: "Welcome back" })).toBeVisible();
     expect((await (await page.request.get("/api/v1/session")).json()).user).toBeNull();
     expect((await page.request.get("/api/v1/hotels")).status()).toBe(401);
+    await page.unroute("**/onboarding");
+    await page.getByLabel("Email address").fill(`signout-${status}@example.test`);
+    await page.getByLabel("Password", { exact: true }).fill("browser-test-password");
+    await page.getByRole("button", { name: "Sign in", exact: true }).click();
+    await expect(page.getByLabel("City or destination")).toHaveValue("");
   });
 }
+
+test("browser Back and Forward recover pending fields without silently overwriting another editor", async ({ page }) => {
+  await createDraft(page, "recovery@example.test");
+  const url = page.url();
+  const id = url.match(/hotels\/(\d+)/)![1];
+  await page.route("**/onboarding", route => route.request().method() === "PATCH" ? route.abort("failed") : route.continue());
+  await page.getByLabel("City or destination").fill("Unsaved city");
+  await expect(page.getByText("Changes not saved", { exact: true })).toBeVisible();
+  await page.goBack();
+  await expect(page.getByRole("heading", { name: "Hotels", exact: true })).toBeVisible();
+  await page.goForward();
+  await expect(page.getByLabel("City or destination")).toHaveValue("Unsaved city");
+  await page.goBack();
+  await expect(page.getByRole("heading", { name: "Hotels", exact: true })).toBeVisible();
+  const session = await (await page.request.get("/api/v1/session")).json();
+  expect((await page.request.patch(`/api/v1/hotels/${id}`, { headers: { "X-CSRF-TOKEN": session.csrf_token, Accept: "application/json" }, data: { city: "Other editor", version: 0 } })).ok()).toBe(true);
+  await page.unroute("**/onboarding");
+  await page.goto(url);
+  await expect(page.getByLabel("City or destination")).toHaveValue("Unsaved city");
+  await expect(page.getByRole("alert").filter({ hasText: "changed in another window" })).toBeVisible();
+  expect((await (await page.request.get(`/api/v1/hotels/${id}`)).json()).data.city).toBe("Other editor");
+  await page.getByRole("button", { name: "Discard unsaved changes and reload latest" }).click();
+  await expect(page.getByLabel("City or destination")).toHaveValue("Other editor");
+  await page.getByLabel("City or destination").fill("Reviewed city");
+  await expect(page.getByText("All changes saved", { exact: true })).toBeVisible();
+  await page.reload();
+  await expect(page.getByLabel("City or destination")).toHaveValue("Reviewed city");
+});
+
+
+test("room edits recover before debounce and sign out clears drafts left by browser Back", async ({ page }) => {
+  await createDraft(page, "rooms-recovery@example.test");
+  const url = page.url();
+  await next(page, "Listing & photos");
+  await next(page, "Room types");
+  await page.route("**/onboarding", route => route.request().method() === "PATCH" ? route.abort("failed") : route.continue());
+  await page.getByRole("button", { name: "Add room type", exact: true }).click();
+  await page.getByLabel("Room type name", { exact: true }).fill("Unsaved suite");
+  await page.getByLabel("Number of rooms", { exact: true }).fill("7");
+  await page.goBack();
+  await expect(page.getByRole("heading", { name: "Hotels", exact: true })).toBeVisible();
+  await page.goForward();
+  await expect(page.getByLabel("Room type name", { exact: true })).toHaveValue("Unsaved suite");
+  await expect(page.getByLabel("Number of rooms", { exact: true })).toHaveValue("7");
+  await page.goBack();
+  await expect(page.getByRole("heading", { name: "Hotels", exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Sign out", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Welcome back" })).toBeVisible();
+  await page.unroute("**/onboarding");
+  await page.getByLabel("Email address").fill("rooms-recovery@example.test");
+  await page.getByLabel("Password", { exact: true }).fill("browser-test-password");
+  await page.getByRole("button", { name: "Sign in", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Add hotel" })).toBeVisible();
+  await page.goto(url);
+  await expect(page.getByRole("heading", { name: "Room types", exact: true })).toBeVisible();
+  await expect(page.getByLabel("Room type name", { exact: true })).toHaveCount(0);
+});

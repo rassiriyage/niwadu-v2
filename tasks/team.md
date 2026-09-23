@@ -57,3 +57,9 @@ Product owner: this task, `01a0ca89-da16-7280-890e-6902df930d72`. The product ow
 - PAYable owner will resolve official documentation/version/signature and refund/lookup gaps and prepare a concise provider question list. No ambiguous signing formula is accepted as verified, and no generic placeholder payment framework is needed while sandbox/provider evidence is missing.
 
 Evidence reports live in each component's `tasks/components/` directory. QA and design remain independent review gates; no component report alone authorizes deployment or a merge.
+
+### PAYable evidence gate
+
+Payments evidence increment accepted at `team/payments` commit `86f8992`. Provider questions are in `/Users/rashmiassiriyage/niwadu-worktrees/payments/tasks/components/payments.md`, section “Provider questions — prepared for the PO, not sent”. The report records unavailable official detail pages and unresolved field/signature-example discrepancies; no signing implementation or compatibility claim is approved.
+
+This task is awaiting external provider inputs: supported Direct API/refund version and complete specs, independent signing vectors, timeout lookup/idempotency and expiry/capture/refund guarantees, Niwadu-owned sandbox access, HTTPS staging and confirmation of the OTA collection model. The account owner can forward the prepared questions to PAYable. No contact was sent and no credentials are requested in chat. Further speculative research/scaffolding is deferred until new provider evidence arrives. Catalog, manual quoting and other independent work continue.

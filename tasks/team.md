@@ -31,7 +31,8 @@ Product owner: this task, `01a0ca89-da16-7280-890e-6902df930d72`. The product ow
 - PR #1: hotel access, `https://github.com/rassiriyage/niwadu-v2/pull/1`.
 - PR #2: guided onboarding, `https://github.com/rassiriyage/niwadu-v2/pull/2`, stacked on #1.
 - Local verification at `bad09b5`: 26 API tests (149 assertions), seven browser scenarios, frontend lint/type/build and feature-diff secret scan passed. Independent QA/design review is now requested; prior local results are evidence, not a substitute.
-+## Task directory
+
+## Task directory
 
 - Niwadu — QA and code quality: `01a0cd9e-01d1-7f82-8467-3a7c6dfd81c6`; worktree `/Users/rashmiassiriyage/niwadu-worktrees/qa`; branch `team/qa`.
 - Niwadu — Design lead: `01a0cd9e-1522-79d2-a651-8382ed7abd0f`; worktree `/Users/rashmiassiriyage/niwadu-worktrees/design`; branch `team/design`.

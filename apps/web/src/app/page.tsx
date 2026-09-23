@@ -25,7 +25,7 @@ function Row({ section, index }: { section: typeof content[number]; index: numbe
           <span className="card-image"><Image src={card.image} alt="" fill quality={90} loading="eager" sizes="(max-width: 639px) 46vw, (max-width: 1023px) 25vw, 224px" />{index < 3 && <span className="featured">Featured</span>}</span>
           <span className="card-copy"><span className="card-name">{card.title}</span><span className="card-location">{card.detail}</span><span className="card-rate">{section.kind === "hotel" ? "Rates unavailable" : "Explore in preview"}</span></span>
         </PreviewAction>
-        {section.kind === "hotel" && <PreviewAction className="wishlist" label={`Save ${card.title} to wishlist`}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28S2 20 2 10C2 2 12 1 16 8c4-7 14-6 14 2 0 10-14 18-14 18Z" /></svg></PreviewAction>}
+        {section.kind === "hotel" && <PreviewAction className="wishlist" accessibleName={`Save ${card.title} to wishlist`} label={`Save ${card.title} to wishlist`}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28S2 20 2 10C2 2 12 1 16 8c4-7 14-6 14 2 0 10-14 18-14 18Z" /></svg></PreviewAction>}
       </div>
     </li>)}
   </Carousel>;
@@ -53,6 +53,6 @@ export default function Home() {
     <footer className="site-footer"><div className="public-container footer-columns">{footer.map(group => <div key={group.title}><h3>{group.title}</h3><ul>{group.links.map(label => <li key={label}><PreviewAction label={label}>{label}</PreviewAction></li>)}</ul></div>)}</div>
       <div className="footer-bottom"><div className="public-container"><p>© {new Date().getFullYear()} Niwadu.com · <PreviewAction label="Privacy">Privacy</PreviewAction> · <PreviewAction label="Terms">Terms</PreviewAction> · <a href="tel:+94760730139">+94 76 073 0139</a> · <a href="mailto:bookings@niwadu.com">Email</a> · <Link href="/">Home</Link></p><span>English (LK) · LKR</span></div></div>
     </footer>
-    <PreviewAction className="contact-float" label="Contact Niwadu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a9 9 0 0 1-13.5 7.8L3 21l1.7-4.5A9 9 0 1 1 21 11.5Z" /></svg></PreviewAction>
+    <PreviewAction className="contact-float" accessibleName="Contact Niwadu" label="Contact Niwadu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a9 9 0 0 1-13.5 7.8L3 21l1.7-4.5A9 9 0 1 1 21 11.5Z" /></svg></PreviewAction>
   </PreviewNavigation></div>;
 }

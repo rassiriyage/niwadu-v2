@@ -21,9 +21,9 @@ export function PreviewNavigation({ children }: { children: ReactNode }) {
   </PreviewContext.Provider>;
 }
 
-export function PreviewAction({ label, className, children }: { label: string; className?: string; children: ReactNode }) {
+export function PreviewAction({ label, accessibleName, className, children }: { label: string; accessibleName?: string; className?: string; children: ReactNode }) {
   const showPreview = useContext(PreviewContext);
-  return <button type="button" className={className} aria-label={label} onClick={() => showPreview(label)}>{children}</button>;
+  return <button type="button" className={className} aria-label={accessibleName} onClick={() => showPreview(label)}>{children}</button>;
 }
 
 export function Carousel({ id, title, kind, children }: { id: string; title: string; kind: string; children: ReactNode }) {
@@ -63,7 +63,7 @@ export function ReferenceHeader() {
   const menu = useRef<HTMLDetailsElement>(null);
   return <><header className="site-header"><div className="public-container header-nav">
     <Link href="/" className="site-logo" aria-label="Niwadu home"><AnimatedWordmark /></Link>
-    <PreviewAction className="search-pill" label="Search stays"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M13 24a11 11 0 1 0 0-22 11 11 0 0 0 0 22zm8-3 9 9" /></svg><span className="desktop-search-copy"><strong>Anywhere</strong><i/><strong>Any week</strong><i/><span>Add guests</span></span><span className="mobile-search-copy"><strong>Where to?</strong><span>Anywhere · Any week · Add guests</span></span></PreviewAction>
+    <div className="search-center"><PreviewAction className="search-pill" label="Search stays"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M13 24a11 11 0 1 0 0-22 11 11 0 0 0 0 22zm8-3 9 9" /></svg><span className="desktop-search-copy"><strong>Anywhere</strong><i/><strong>Any week</strong><i/><span>Add guests</span></span><span className="mobile-search-copy"><strong>Where to?</strong><span>Anywhere · Any week · Add guests</span></span></PreviewAction></div>
     <div className="header-actions"><PreviewAction className="plan-nav" label="Plan a trip">Plan a trip</PreviewAction><PreviewAction className="currency" label="Currency">LKR⌄</PreviewAction>
       <details ref={menu} className="menu" onKeyDown={event => { if(event.key === "Escape" && menu.current?.open) { menu.current.open=false; menu.current.querySelector("summary")?.focus(); } }}><summary aria-label="Menu"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 8h28M2 16h28M2 24h28" /></svg><span className="profile-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .7C7.56.7.7 7.56.7 16S7.56 31.3 16 31.3 31.3 24.44 31.3 16 24.44.7 16 .7zm0 28c-4.02 0-7.6-1.88-9.93-4.81a12.43 12.43 0 0 1 6.45-4.4A6.5 6.5 0 0 1 9.5 14a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-3.02 5.49 12.42 12.42 0 0 1 6.45 4.4A12.67 12.67 0 0 1 16 28.7z"/></svg></span></summary><nav aria-label="Main navigation">{["Wishlists", "Plan a trip", "Cover Sri Lanka", "All stays", "Destinations", "Experiences", "About Niwadu", "Help Centre", "Contact", "Profile", "Log In", "Sign Up"].map(label => <PreviewAction key={label} label={label}>{label}</PreviewAction>)}</nav></details>
     </div>

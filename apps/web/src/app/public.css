@@ -37,3 +37,13 @@ body:has(.public-site){margin:0}
 @media (prefers-reduced-motion: reduce) { .logo-plane, .logo-boat, .logo-boat-rock { animation: none; } .logo-plane { offset-distance: 62%; } }
 
 .profile-icon svg{width:24px!important;height:24px!important;fill:currentColor!important;stroke:none!important}
+
+/* Reference header proportions and narrow-screen truncation. */
+.site-logo{flex:none;flex-shrink:0}
+.search-center{display:flex;justify-content:center;flex:1;min-width:0}
+.header-actions{flex:none;flex-shrink:0}
+.public-site .search-pill{min-width:0}
+.search-pill svg{flex-shrink:0}
+.mobile-search-copy{min-width:0}
+.mobile-search-copy>*{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:767px){.public-site .search-pill{width:100%}}

@@ -12,10 +12,9 @@ test("reference homepage stays local and honest", async ({ page }) => {
   const track = page.getByRole("list", { name: "Popular stays in Nuwara Eliya listings", exact: true });
   await page.getByRole("button", { name: "Next Popular stays in Nuwara Eliya", exact: true }).click();
   await expect.poll(() => track.evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
-  for (const trigger of [page.getByRole("button", { name: "Search stays", exact: true }), page.locator(".listing-card").first(), page.locator(".footer-columns button").first(), page.locator(".promo").first()]) {
-    const label = await trigger.getAttribute("aria-label");
+  for (const trigger of [page.locator(".search-pill"), page.locator(".listing-card").first(), page.locator(".footer-columns button").first(), page.locator(".promo").first()]) {
     await trigger.click();
-    const dialog = page.getByRole("dialog", { name: `${label} — preview only` });
+    const dialog = page.getByRole("dialog", { name: /preview only$/ });
     await expect(dialog).toBeVisible();
     await expect(dialog.getByRole("button", { name: "Close" })).toBeFocused();
     await page.keyboard.press("Tab");

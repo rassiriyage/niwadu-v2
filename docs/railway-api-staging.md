@@ -1,6 +1,6 @@
 # Private API staging candidate on Railway
 
-Preparation only, 2026-09-23. No Railway configuration, database connection, migration or deployment has been performed. The user reports creating PostgreSQL; its service name, version and connectivity remain unverified. Existence of the Laravel API service is also unverified.
+Local implementation candidate, 2026-09-23. The user confirms an empty `niwadu-api` service, database service `Postgres`, and frontend `https://niwadu-v2-production.up.railway.app`. The user saved `DB_CONNECTION=pgsql` and the `DB_URL` reference on the API. No source is attached yet. This task performed no hosted configuration, database connection, migration or deployment; PostgreSQL version/connectivity remain unverified.
 
 Use the approved administration code at `07309ccb9e665522c6c24b18c5d89ad753a14547` (code equivalent to `61b0913`), or a coordinator integration commit containing those fixes. Public preview commit `e65d817` contains an older administration baseline and is **not** the approved private-backend deployment candidate.
 
@@ -14,8 +14,8 @@ Candidate API variables below contain placeholders, not credentials. Replace `Po
 APP_NAME=Niwadu
 APP_ENV=production
 APP_DEBUG=false
-APP_URL=https://<staging-frontend-host>
-FRONTEND_URL=https://<staging-frontend-host>
+APP_URL=https://niwadu-v2-production.up.railway.app
+FRONTEND_URL=https://niwadu-v2-production.up.railway.app
 APP_KEY=<one securely generated persistent Laravel key>
 PORT=8080
 DB_CONNECTION=pgsql
@@ -41,18 +41,24 @@ Leave `SESSION_DOMAIN` unset: the browser receives a host-only cookie through th
 
 Generate `APP_KEY` once through an approved secure operator workflow, store it as a service secret, and preserve it across builds/restarts. Never place it in this document, source control or chat; never run key generation during startup. Staging must have its own database and key.
 
-On the frontend service, the candidate is `API_ORIGIN=http://${{API.RAILWAY_PRIVATE_DOMAIN}}:8080`, replacing `API` with the actual Laravel service alias. It is a server-only variable, with no `NEXT_PUBLIC_` prefix. Rebuild/redeploy the frontend when changing its rewrite target. The frontend must actually run in a network that can reach this private domain; an externally hosted public preview cannot use this value.
+On the frontend service, the candidate is `API_ORIGIN=http://${{niwadu-api.RAILWAY_PRIVATE_DOMAIN}}:8080`. It is a server-only variable, with no `NEXT_PUBLIC_` prefix. Rebuild/redeploy the frontend when changing its rewrite target. The frontend must actually run in a network that can reach this private domain; an externally hosted public preview cannot use this value.
 
 Log mail is deliberately limited to disposable staging accounts. The log transport writes reset/setup links, including usable tokens, at debug severity; `LOG_LEVEL=info` would silently hide those messages. With the above configuration, access to Railway logs must be restricted to approved operators and retention kept bounded. Never paste mail payloads into tasks or artifacts. No SMTP credentials, live invitations or production identities are part of this preparation. Once real users are proposed, revisit delivery and token-bearing log handling before enabling them. The present notification flow is synchronous, so this slice needs no queue worker or scheduler.
 
-## Minimal changes for coordinator integration
+## Implemented deployment files for coordinator integration
 
-These are proposed changes, **not implemented deployment files**:
+All files below are under `apps/api`. They remain local candidates and have not been deployed:
 
-1. Align `apps/api/composer.json`'s PHP requirement with the verified PHP 8.4 runtime (currently `^8.3`), refresh lock metadata without dependency upgrades, and verify the resulting Railpack image is PHP 8.4 with `pdo_pgsql` and `gd`. Do not invent a runtime version environment variable: Railpack derives PHP selection from Composer requirements.
-2. Add a small `apps/api/start-container.sh` override. Fail startup if the persistent key, PostgreSQL connection or expected volume is absent; check the photo directory is writable. Clear only the configuration cache, then build configuration/route/event/view caches at runtime. Finish with `exec docker-php-entrypoint --config /Caddyfile --adapter caddyfile`. Do not run migrations, seeding, `key:generate`, `storage:link` or `optimize:clear` there. The latter clears application cache and can reset shared rate-limit state.
-3. Add an API `php.ini` with `upload_max_filesize=5M` and `post_max_size=8M`, matching the existing one-photo request and 5120 KiB application limit. Verify an allowed photo near the limit passes the complete proxy chain. Keep application file-type, dimension and authorization checks intact.
-4. Configure trusted proxies in `apps/api/bootstrap/app.php` after observing the actual ingress chain. Laravel currently has no proxy configuration. The private HTTP hop must preserve the external HTTPS scheme for secure request/CSRF behavior. Restrict trusted sources to the verified immediate proxy network; if dynamic addresses require trusting all immediate peers, first establish that API ingress is private and that only trusted peers can reach it. Trust only headers whose handling is verified. Do not blindly enable forwarded-host/client-IP trust.
+- `composer.json` now requires PHP `^8.4`, `ext-gd` and `ext-pdo_pgsql`; Composer regenerated lock metadata with no package changes.
+- `railpack.json` selects the PHP provider, omits development dependencies, and prepares directories/autoloading without booting Laravel or caching build-time secrets. This API has no Node package/build step.
+- `start-container.sh` requires an application key, PostgreSQL configuration and Railway's expected volume mount metadata plus a writable private photo directory. It clears only configuration cache, discovers production packages, rebuilds configuration/event/route caches, and starts FrankenPHP. It never migrates, seeds, generates keys, creates public storage links or clears shared application cache. Volume metadata/directory checks do not independently prove physical persistence; restart verification remains required.
+- `pre-deploy.sh` rejects missing PostgreSQL settings rather than falling back to SQLite, then clears configuration cache and runs forced noninteractive migrations. It requires no photo volume, which Railway does not attach to pre-deploy containers.
+- `railway.json` sets Railpack, `sh pre-deploy.sh`, `/start-container.sh` and `/up` healthchecking. Set service root `/apps/api` **and explicitly set Railway Config File `/apps/api/railway.json`**; config-file selection does not inherit the service root. Attaching this configuration to a deployment authorizes that deployment's migration step; no migration has run in this task. [Railway build configuration](https://docs.railway.com/builds/build-configuration) and [configuration reference](https://docs.railway.com/config-as-code/reference).
+- `php.ini` sets 5M upload/8M POST limits, disables displayed errors and exception argument disclosure, and bounds memory to 256M. Application photo limits and authorization remain intact. Verify near-limit uploads through the proxy chain.
+
+No proxy trust change is included: observed trusted source addresses and header sanitization are still missing. Keep the existing rejection of untrusted forwarding headers. Private HTTP upstream scheme handling and accurate client-IP throttling require a separately verified proxy configuration before admitting users. Do not set a global wildcard trust as a workaround.
+
+A clean production install found that `view:cache` fails because this API has no application views directory, so startup deliberately omits it. Runtime framework mail rendering remains available. Railpack/Docker are not installed locally; generated image execution remains a platform verification step, not a completed local check.
 
 Railpack supports custom startup and PHP configuration files. Its documentation describes migration/seeding behavior, but the inspected startup source currently calls only `migrate --force`, then `storage:link`, `optimize:clear` and `optimize`. Disable startup migration behavior explicitly and use the override to avoid the other unwanted effects. Recheck generated image behavior when implementing; upstream `main` can change. [Railpack PHP](https://railpack.com/languages/php/), [startup source](https://raw.githubusercontent.com/railwayapp/railpack/main/core/providers/php/start-container.sh), [provider source](https://raw.githubusercontent.com/railwayapp/railpack/main/core/providers/php/php.go).
 
@@ -69,7 +75,7 @@ Confirm the runtime user can write the mounted directory and reject startup when
 1. Integrate the approved code and the small deployment changes above. Validate the locked production Composer install and generated image without database access or cached build-time credentials. Do not use `composer setup`; it generates a key and runs migrations. This API directory has no frontend package build.
 2. Verify the reported PostgreSQL service/version and the private connection from the intended API environment, without printing connection URLs. First run the migration and feature suite against an isolated disposable PostgreSQL database; current accepted API test evidence is SQLite only.
 3. Configure the stable secrets, frontend origin, private rewrite, volume and proxy policy. Arrange database and volume backups before introducing valuable data.
-4. Set a pre-deploy command candidate of `php artisan config:clear && php artisan migrate --force --no-interaction`. This is a proposal, not a command executed during this task. Run no seeders. Railway pre-deploy runs after build in a separate container with environment/private networking but no mounted volume; nonzero exit must block deployment. Serialize deployments/migration execution. [Pre-deploy behavior](https://docs.railway.com/deployments/pre-deploy-command).
+4. The committed Railway configuration selects `sh pre-deploy.sh`, which checks required configuration before `config:clear` and `migrate --force --no-interaction`. This has not been executed against a real database during this task. Run no seeders. Railway pre-deploy runs after build in a separate container with environment/private networking but no mounted volume; nonzero exit must block deployment. Serialize deployments/migration execution. [Pre-deploy behavior](https://docs.railway.com/deployments/pre-deploy-command).
 5. Start the API with the explicit override after successful migrations. Set `/up` as the boot healthcheck, then run the database/session/photo checks below: `/up` alone proves neither database nor storage readiness.
 6. Only after verification, use the existing hidden-password operator provisioning command for an explicitly approved staging account. No default user or automatic administrator creation.
 
@@ -79,4 +85,4 @@ Rollback means redeploying a previously verified compatible application commit. 
 
 ## Handoff status
 
-Required from product owner/platform owner: actual API/database service identities, frontend hosting/network location, selected PostgreSQL version, stable frontend HTTPS origin, and approval of the proposed integration slice. No secret values should be supplied in task messages. Hosted connectivity, forwarding-header behavior, volume ownership and PostgreSQL compatibility remain unverified. This document changes no API contract or infrastructure.
+Service identities and frontend origin are confirmed above. Still required: selected PostgreSQL version, actual private connectivity/forwarding observations, volume setup and approval to integrate/deploy the implementation candidate. No secret values should be supplied in task messages. Hosted connectivity, forwarding-header behavior, volume ownership and PostgreSQL compatibility remain unverified. The candidate changes no API contract, proxy trust policy or hosted infrastructure.

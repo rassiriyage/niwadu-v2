@@ -1,6 +1,6 @@
 # Administration component — operator provisioning and recovery fixes
 
-Status: combined candidate verified locally and independently accepted by QA; D-01/D-02 design accepted from source/screenshots. Railway staging preparation is documented only. Nothing pushed, merged or deployed.
+Status: combined candidate verified locally and independently accepted by QA; D-01/D-02 design accepted from source/screenshots. Railway deployment files are implemented locally and verified; hosted runtime remains unverified. Nothing pushed, merged or deployed.
 Branch: `team/admin`, based on `bad09b5`.
 
 | Slice | Exact commit |
@@ -69,3 +69,13 @@ Payment/PMS configuration endpoints do not exist yet: coverage proves current pr
 - Added `docs/railway-api-staging.md`: concrete variable candidate, private frontend-to-API topology, stable key and session settings, PostgreSQL `DB_URL` reference, private photo volume, safe bounded log-mail use, proposed minimal runtime/proxy changes, migration ordering and verification gates. Public preview `e65d817` is not the approved private-backend baseline.
 - Reviewed official Railway/Railpack documentation and current application configuration. PostgreSQL creation is user-reported; service/version/connectivity and API-service existence remain unverified. No hosted reads/writes, migrations, secrets or deployment actions were performed.
 - Graft freshness check passed (329 nodes, wiring synchronized; deep layer intentionally absent). Documentation-only change: `git diff --check` passed; application/browser tests were not rerun. The prior 41 API tests / 277 assertions and 16 Chromium tests establish the approved local baseline, not Railway/PostgreSQL readiness.
+
+## Railway deployment implementation candidate
+
+- User confirmed empty service `niwadu-api`, database `Postgres`, frontend `https://niwadu-v2-production.up.railway.app`, and saved PostgreSQL variables. Source attachment/deployment remains outside this task.
+- Added API-local Railpack/Railway configuration, guarded startup and pre-deploy scripts, production PHP/upload settings, and PHP 8.4/GD/PostgreSQL extension requirements. Lock metadata changed without package updates. Keep the private photo volume at `/app/storage/app/private`; configure service root `/apps/api` and Railway Config File `/apps/api/railway.json` separately.
+- Startup refuses missing key/database/volume configuration, prepares caches, and starts FrankenPHP without migrations or shared-cache clearing. Pre-deploy checks PostgreSQL settings before migrations and does not require the runtime volume. No proxy trust changes or application contract changes.
+- Red/green startup regression: missing script prevented valid startup; implemented guards and startup passed. Five subprocess tests / 37 assertions cover missing configuration, volume mismatch/absence, preservation of existing photos, forbidden restart actions, cache failure preventing server launch, and pre-deploy without a volume. External Artisan/server commands are test doubles in these script tests.
+- Full API suite: **46 tests / 314 assertions passed**. Clean isolated locked `--no-dev --no-scripts` installation and platform checks passed; actual configuration/package/event/route cache preparation passed with an unreachable fixture database and synthetic key. No fixture database connection/migration ran. `view:cache` initially failed because no application views directory exists; removed that unnecessary step and reran successfully. PHP upload/error settings loaded correctly; shell syntax, Composer strict validation, Pint and diff checks passed. No frontend code changed or browser rerun required.
+- Scoped Graft graph rebuilt after the new test and freshness rechecked. No deep/model/global graph work.
+- Railway/Railpack official source/config docs reviewed. Neither Railpack nor Docker is installed locally, so no generated container execution is claimed. Actual image PHP/extensions/startup, PostgreSQL migrations/tests, private reachability/HTTPS/client-IP policy, writable volume ownership and photo persistence across restart remain runtime acceptance gates. No hosted changes, user secrets, live invitations, pushes, merges or deployments.

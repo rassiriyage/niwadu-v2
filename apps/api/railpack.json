@@ -1,0 +1,16 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "provider": "php",
+  "steps": {
+    "install:composer": {
+      "variables": { "COMPOSER_NO_DEV": "1" }
+    },
+    "build": {
+      "secrets": [],
+      "commands": [
+        "mkdir -p storage/framework/sessions storage/framework/views storage/framework/cache storage/logs bootstrap/cache",
+        "composer dump-autoload --optimize --no-dev --no-scripts --no-interaction"
+      ]
+    }
+  }
+}

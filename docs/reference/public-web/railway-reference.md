@@ -1,0 +1,20 @@
+# Corrected public reference and required follow-ons
+
+2026-09-24 user correction supersedes the niwadu.com visual baseline. Governing reference: https://web-production-eac31.up.railway.app/ and uploaded niwadu-main.zip (archive comment3418108b3637d7ab7484c0c1aedd9ab10243858e). Design acceptance lives in the design checkout at docs/design/railway-reference-baseline.md and docs/design/required-public-flows.md; these supersede earlier visual-authority statements in this folder.
+
+Implementation uses the inspected archive's homepage composition, category SVG paths, Logo.tsx, SriLankaMap.tsx and district data. Source layout tokens and CARD breakpoint formulas are reproduced in scoped public.css; no Tailwind/global reset is applied to private admin. Self-hosted Inter is the reference site's preloaded font. railway-assets.json records52 public reference image URLs and local hashes; runtime cards contain local image paths and descriptive reference content only. The archive's Prisma scripts, backend/auth, migration/seeding and enquiry/email handlers were never executed or imported.
+
+Homepage:80px white header, category strip,3destination hotel rows, fourth discovery row, planner/coverage panels,9experience cards,7destinations and footer. Source row title claiming a current price threshold becomes More stays to explore. Source prices become Rates unavailable in preview; review scores and gallery dots omitted, featured badge denotes reference editorial selection only. Package inclusions/counts are not asserted. Planner copy does not promise current quotes. These are bounded semantic exceptions preserving visual slots, not a new catalog contract.
+
+All navigation is local. Home/wordmark use /. Unimplemented catalog/category/filter/search/menu/wishlist/profile/public authentication/policy/planner/coverage/social/contact-help actions open a contextual preview dialog, with native Close/Escape/focus return and single-control Tab containment. Public authentication is not private employee login. tel:+94760730139 and mailto:bookings@niwadu.com remain intentional contact actions. Canonical https://niwadu.com/ is metadata, not navigation. Noindex remains. No http(s) anchor leaves the preview. Historical source URLs remain provenance only.
+
+## Required functional delivery, not completed by this presentation slice
+
+| Required capability | Archive implementation | Accepted integration gap and dependencies |
+| --- | --- | --- |
+| Property classification | CATEGORIES destination-theme mapping in lib/site.ts, CategoryBar; Prisma hotel property fields | Catalog must define true property types vs destination themes, normalized/public classification projection and source mapping. Do not silently relabel themes as hotel amenities. |
+| Filters and sorting | FiltersModal,SortGroup,app/hotels,lib/data.ts search query with price/star/guest/destination filters and pagination | Public catalog/search API, stable URL/pagination/sort semantics; archived prices/stars/room capacities are not current availability. Restore local browse interactions against approved projection, then verify empty/error states. |
+| Plan the trip | TripPlanner,lib/geo/route.ts, local route estimates and enquiry submit | Accepted route/stop/night contract; inventory/quotes needed for price claims; no imported live enquiry sends. Source UI is implementation reference, estimates must retain clear meaning. |
+| Personal travel map | CoverSriLanka uses browser-local progress | Consumer account/session ownership and private per-user district persistence are required; browser-local storage is insufficient. Coordinate admin/security for a separate public account boundary. Verify isolation and account lifecycle before claiming account-backed map. |
+
+Suggested improvements (quote-first planner, browser-history import, sharing/privacy defaults) require PO/user disposition. Their mention is not authorization. Staging these features does not remove them from required scope. The current homepage slice is not full product completion.

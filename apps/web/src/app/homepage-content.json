@@ -1,277 +1,350 @@
 [
   {
-    "title": "Nuwara Eliya",
-    "href": "https://niwadu.com/destinations/nuwara-eliya",
-    "kind": "hotel",
     "cards": [
       {
+        "href": "/hotels/sulanga-83c3e2d1-0670-431f-98cc-e5e38bb57b5e",
         "title": "Sulanga Luxury Chalets",
-        "href": "https://niwadu.com/hotels/sulanga-83c3e2d1-0670-431f-98cc-e5e38bb57b5e",
-        "image": "/reference/a1e6831f0f052e15.jpg",
-        "detail": null
+        "image": "/reference/railway/47641e789a633fe1.jpg",
+        "detail": "Nuwara Eliya"
       },
       {
-        "title": "Clifton Manor",
-        "href": "https://niwadu.com/hotels/clifton-manor",
-        "image": "/reference/42ba251d4a3da8df.jpg",
-        "detail": null
-      },
-      {
+        "href": "/hotels/the-burrow",
         "title": "The Burrow",
-        "href": "https://niwadu.com/hotels/the-burrow",
-        "image": "/reference/650120d30b913390.jpg",
-        "detail": null
+        "image": "/reference/railway/796b251a2c941d76.jpg",
+        "detail": "Nuwara Eliya"
       },
       {
+        "href": "/hotels/dels-haven",
         "title": "Del’s Haven",
-        "href": "https://niwadu.com/hotels/dels-haven",
-        "image": "/reference/10f9f3e120852e56.jpg",
-        "detail": null
+        "image": "/reference/railway/693f50cd19336724.jpg",
+        "detail": "Nuwara Eliya"
       },
       {
+        "href": "/hotels/ferncliff-bungalow-2b9fe2aa-cbd3-4075-a216-e7999de04cea",
         "title": "Ferncliff Bungalow",
-        "href": "https://niwadu.com/hotels/ferncliff-bungalow-2b9fe2aa-cbd3-4075-a216-e7999de04cea",
-        "image": "/reference/99d4f1bb0ee79c5c.png",
-        "detail": null
+        "image": "/reference/railway/de35891cb32f71aa.png",
+        "detail": "Nuwara Eliya"
       },
       {
+        "href": "/hotels/the-edgware-cabana-59c09f82-bc55-4807-a19d-68fc87506ce9",
         "title": "The Edgware Cabana",
-        "href": "https://niwadu.com/hotels/the-edgware-cabana-59c09f82-bc55-4807-a19d-68fc87506ce9",
-        "image": "/reference/e889ac13ce78c3b3.png",
-        "detail": null
+        "image": "/reference/railway/54295fb9893f54fe.png",
+        "detail": "Nuwara Eliya"
       },
       {
+        "href": "/hotels/araliya-green-city-c9224794-ed08-4357-8881-82318d0d14ec",
         "title": "Araliya Green City",
-        "href": "https://niwadu.com/hotels/araliya-green-city-c9224794-ed08-4357-8881-82318d0d14ec",
-        "image": "/reference/f7ccf3b75714953f.jpg",
-        "detail": null
+        "image": "/reference/railway/df976e75e5b066da.jpg",
+        "detail": "Nuwara Eliya"
       },
       {
+        "href": "/hotels/black-pool-villa-68381f05-5e76-48e6-bbee-7547ead67ed0",
         "title": "Black Pool Villa",
-        "href": "https://niwadu.com/hotels/black-pool-villa-68381f05-5e76-48e6-bbee-7547ead67ed0",
-        "image": "/reference/c96b79cc0c449177.jpg",
-        "detail": null
+        "image": "/reference/railway/82201cbab95dbd5b.jpg",
+        "detail": "Nuwara Eliya"
+      },
+      {
+        "href": "/hotels/villa-mount-royal",
+        "title": "Villa Mount Royal",
+        "image": "/reference/railway/63c5da475b1822f8.jpg",
+        "detail": "Nuwara Eliya"
       }
-    ]
+    ],
+    "title": "Popular stays in Nuwara Eliya",
+    "kind": "hotel"
   },
   {
-    "title": "Mirissa",
-    "href": "https://niwadu.com/destinations/mirissa",
-    "kind": "hotel",
     "cards": [
       {
+        "href": "/hotels/sri-sharavi-beach-villas-spa",
         "title": "Sri Sharavi Beach Villas & Spa",
-        "href": "https://niwadu.com/hotels/sri-sharavi-beach-villas-spa",
-        "image": "/reference/80de07a54611e923.png",
-        "detail": null
+        "image": "/reference/railway/69df894393e23093.png",
+        "detail": "Mirissa"
       },
       {
+        "href": "/hotels/firemoon-garden-c8071cbe-1730-4d28-9699-13bff0e9d0c3",
         "title": "FireMoon Garden",
-        "href": "https://niwadu.com/hotels/firemoon-garden-c8071cbe-1730-4d28-9699-13bff0e9d0c3",
-        "image": "/reference/91e4b65c2db99946.jpg",
-        "detail": null
+        "image": "/reference/railway/1b6347a0327426d4.jpg",
+        "detail": "Mirissa"
       },
       {
+        "href": "/hotels/lavendra-villa-mirissa",
         "title": "Lavendra Villa Mirissa",
-        "href": "https://niwadu.com/hotels/lavendra-villa-mirissa",
-        "image": "/reference/381cdf83711da99e.jpg",
-        "detail": null
+        "image": "/reference/railway/0133b86c23e9cfee.jpg",
+        "detail": "Mirissa"
       },
       {
+        "href": "/hotels/handagedara-resort-a0af9078-ab9f-4e5a-94bb-c9a9b3ab3548",
         "title": "Handagedara Resort",
-        "href": "https://niwadu.com/hotels/handagedara-resort-a0af9078-ab9f-4e5a-94bb-c9a9b3ab3548",
-        "image": "/reference/3e0a0b21d43e6338.png",
-        "detail": null
+        "image": "/reference/railway/b8fcaba21d954b5c.png",
+        "detail": "Mirissa"
       },
       {
+        "href": "/hotels/esprit-dici-hotel-6a782f49-94dd-48f2-a242-5a22b434cd3e",
         "title": "Esprit d'ici Hotel",
-        "href": "https://niwadu.com/hotels/esprit-dici-hotel-6a782f49-94dd-48f2-a242-5a22b434cd3e",
-        "image": "/reference/8ccd40744ec21f24.png",
-        "detail": null
+        "image": "/reference/railway/cfeee934b1fe36db.png",
+        "detail": "Mirissa"
       },
       {
+        "href": "/hotels/green-hill-13101d8c-88c3-4dad-afa8-ef31a58e44cc",
         "title": "Green Hills Mirissa",
-        "href": "https://niwadu.com/hotels/green-hill-13101d8c-88c3-4dad-afa8-ef31a58e44cc",
-        "image": "/reference/0360e1e4ac9e3d32.jpg",
-        "detail": null
+        "image": "/reference/railway/4b1747e2e0a7b42c.jpg",
+        "detail": "Mirissa"
       },
       {
+        "href": "/hotels/one-world-mirissa-a5e2bf1d-1e44-45b6-bd31-681aefe37d5c",
         "title": "One World Mirissa",
-        "href": "https://niwadu.com/hotels/one-world-mirissa-a5e2bf1d-1e44-45b6-bd31-681aefe37d5c",
-        "image": "/reference/22e3ca5cda2478d8.jpg",
-        "detail": null
+        "image": "/reference/railway/f73564bb28f9c653.jpg",
+        "detail": "Mirissa"
       },
       {
+        "href": "/hotels/randiya-sea-view-33c2e0e9-b8e1-49e5-b49f-fbfe18c7e838",
         "title": "Randiya Sea View",
-        "href": "https://niwadu.com/hotels/randiya-sea-view-33c2e0e9-b8e1-49e5-b49f-fbfe18c7e838",
-        "image": "/reference/b448be5fed7384e0.jpg",
-        "detail": null
+        "image": "/reference/railway/08762f7798e30711.jpg",
+        "detail": "Mirissa"
       }
-    ]
+    ],
+    "title": "Popular stays in Mirissa",
+    "kind": "hotel"
   },
   {
-    "title": "Kandy",
-    "href": "https://niwadu.com/destinations/kandy",
-    "kind": "hotel",
     "cards": [
       {
+        "href": "/hotels/the-kandy-house-c0e1194d-cc21-446c-a1cb-ec98a3b7e14f",
         "title": "The Kandy House",
-        "href": "https://niwadu.com/hotels/the-kandy-house-c0e1194d-cc21-446c-a1cb-ec98a3b7e14f",
-        "image": "/reference/1b60f8f46514949a.jpg",
-        "detail": null
+        "image": "/reference/railway/cca9a7bfa1852feb.jpg",
+        "detail": "Kandy"
       },
       {
+        "href": "/hotels/the-elephant-stables-716f66df-3b94-4c6e-8f62-1ea83be105ba",
         "title": "The Elephant Stables",
-        "href": "https://niwadu.com/hotels/the-elephant-stables-716f66df-3b94-4c6e-8f62-1ea83be105ba",
-        "image": "/reference/87cadf9763e26d56.jpg",
-        "detail": null
+        "image": "/reference/railway/be219c3211241809.jpg",
+        "detail": "Kandy"
       },
       {
+        "href": "/hotels/hotel-travellers-nest-kandy",
         "title": "Hotel Travellers Nest Kandy",
-        "href": "https://niwadu.com/hotels/hotel-travellers-nest-kandy",
-        "image": "/reference/db70f95b2dc8ac31.jpg",
-        "detail": null
+        "image": "/reference/railway/9df0aca5473fa747.jpg",
+        "detail": "Kandy"
       },
       {
+        "href": "/hotels/h20-holiday-bungalow",
         "title": "H2O Holiday Bungalow",
-        "href": "https://niwadu.com/hotels/h20-holiday-bungalow",
-        "image": "/reference/6cc570aff9426643.jpg",
-        "detail": null
+        "image": "/reference/railway/0c0887638f39388b.jpg",
+        "detail": "Kandy"
       },
       {
+        "href": "/hotels/hanthana-nature-cottage",
         "title": "Hanthana Nature Cottage",
-        "href": "https://niwadu.com/hotels/hanthana-nature-cottage",
-        "image": "/reference/f0d290c029716b81.jpg",
-        "detail": null
+        "image": "/reference/railway/c8476258ccb3f11e.jpg",
+        "detail": "Kandy"
       },
       {
+        "href": "/hotels/simpsons-forest-hotel",
         "title": "Simpson's Forest Hotel",
-        "href": "https://niwadu.com/hotels/simpsons-forest-hotel",
-        "image": "/reference/6447af44ded14415.jpg",
-        "detail": null
+        "image": "/reference/railway/18c33484143b8a68.jpg",
+        "detail": "Kandy"
       },
       {
+        "href": "/hotels/the-weir-house",
         "title": "Back of Beyond - The Weir House",
-        "href": "https://niwadu.com/hotels/the-weir-house",
-        "image": "/reference/45a95cea004ff442.jpg",
-        "detail": null
+        "image": "/reference/railway/8884e093381b075c.jpg",
+        "detail": "Kandy"
       },
       {
+        "href": "/hotels/lavender-holiday-resort",
         "title": "Lavender Holiday Resort",
-        "href": "https://niwadu.com/hotels/lavender-holiday-resort",
-        "image": "/reference/969f75b2b2d5e9a1.jpg",
-        "detail": null
+        "image": "/reference/railway/128f1a24e960a313.jpg",
+        "detail": "Kandy"
       }
-    ]
+    ],
+    "title": "Popular stays in Kandy",
+    "kind": "hotel"
   },
   {
-    "title": "Travel Experiences",
-    "href": "https://niwadu.com/packages",
-    "kind": "experience",
     "cards": [
       {
+        "href": "/hotels/sriyantha-rest",
+        "title": "Sriyantha Villa",
+        "image": "/reference/railway/67f5d3da6a4cb363.jpg",
+        "detail": "Kataragama"
+      },
+      {
+        "href": "/hotels/lakmini-luxury-lodge",
+        "title": "Lakmini Luxury Lodge",
+        "image": "/reference/railway/c8f7bba4d2a54d3a.jpg",
+        "detail": "Kalawana"
+      },
+      {
+        "href": "/hotels/ivory-inn",
+        "title": "Ivory Inn",
+        "image": "/reference/railway/5343019cfe008d05.jpg",
+        "detail": "Kandy"
+      },
+      {
+        "href": "/hotels/black-pool-red-rose",
+        "title": "Black Pool Red Rose",
+        "image": "/reference/railway/ee3097a0800e6b7d.jpg",
+        "detail": "Nuwara Eliya"
+      },
+      {
+        "href": "/hotels/cave-n-falls-nature-resort-waterpark",
+        "title": "Cave N Falls Nature Resort & Waterpark",
+        "image": "/reference/railway/b132f413e65f3b70.jpg",
+        "detail": "Kithulgala"
+      },
+      {
+        "href": "/hotels/kandy-spice-villa",
+        "title": "Spice Villa",
+        "image": "/reference/railway/8acfebd5f7237453.jpg",
+        "detail": "Kandy"
+      },
+      {
+        "href": "/hotels/golden-king-residencies",
+        "title": "Golden King Kandy",
+        "image": "/reference/railway/557b21bf4deda129.png",
+        "detail": "Kandy"
+      },
+      {
+        "href": "/hotels/bel-view-guest-house",
+        "title": "Bel View Guest House",
+        "image": "/reference/railway/e5abdfdf9c638423.jpg",
+        "detail": "Haputale"
+      },
+      {
+        "href": "/hotels/volunteer-ceylon",
+        "title": "Volunteer Ceylon",
+        "image": "/reference/railway/5c3e890e4c164369.jpg",
+        "detail": "Ratnapura"
+      },
+      {
+        "href": "/hotels/hotel-holiday-inn",
+        "title": "Hotel Holiday Inn",
+        "image": "/reference/railway/44a36bf0eaf0c03a.jpg",
+        "detail": "Galle"
+      },
+      {
+        "href": "/hotels/hotel-janara-52940cd0-6d24-4cd5-a6a0-0c6ee34633b7",
+        "title": "Hotel Janara",
+        "image": "/reference/railway/09d53bc467b858a2.jpg",
+        "detail": "Kurunagala"
+      },
+      {
+        "href": "/hotels/belmand-lake",
+        "title": "Delmand Lake",
+        "image": "/reference/railway/f6ce9e6577c5e778.jpg",
+        "detail": "Anuradhapura"
+      }
+    ],
+    "title": "More stays to explore",
+    "kind": "hotel"
+  },
+  {
+    "cards": [
+      {
+        "href": "/packages/hikkaduwa-and-unawatuna-delights",
         "title": "Coastal Escapes Sri Lanka",
-        "href": "https://niwadu.com/packages/hikkaduwa-and-unawatuna-delights",
-        "image": "/reference/afd4d5cccb4fe47d.jpg",
-        "detail": "3 Nights 4 Days"
+        "image": "/reference/railway/afd4d5cccb4fe47d.jpg",
+        "detail": "Sri Lanka"
       },
       {
+        "href": "/packages/mirissa-and-tangalle-getaway",
         "title": "Visit Sri Lanka 5 Days 4 Nights Tour Package",
-        "href": "https://niwadu.com/packages/mirissa-and-tangalle-getaway",
-        "image": "/reference/1344beba0682a7a8.jpg",
-        "detail": "4 Nights 5 Days"
+        "image": "/reference/railway/1344beba0682a7a8.jpg",
+        "detail": "Sri Lanka"
       },
       {
+        "href": "/packages/cultural-triangle-immersion",
         "title": "Sri Lanka Tourism 4 Days 3 Nights Tour Package",
-        "href": "https://niwadu.com/packages/cultural-triangle-immersion",
-        "image": "/reference/b98aec9aff1104e2.jpg",
-        "detail": "3 Nights 4 Days"
+        "image": "/reference/railway/b98aec9aff1104e2.jpg",
+        "detail": "Sri Lanka"
       },
       {
+        "href": "/packages/majestic-cultural-triangle-9c903ea5-48c7-46e5-b65e-5049d1b0f4e4",
         "title": "Majestic Cultural Triangle",
-        "href": "https://niwadu.com/packages/majestic-cultural-triangle-9c903ea5-48c7-46e5-b65e-5049d1b0f4e4",
-        "image": "/reference/978a93f6bcd14a9e.jpg",
-        "detail": "3 Nights 4 Days"
+        "image": "/reference/railway/978a93f6bcd14a9e.jpg",
+        "detail": "Sri Lanka"
       },
       {
+        "href": "/packages/ancient-treasures-expedition-985d3ff8-3cae-4269-b309-46eeb5102ff3",
         "title": "Ancient Treasures Expedition",
-        "href": "https://niwadu.com/packages/ancient-treasures-expedition-985d3ff8-3cae-4269-b309-46eeb5102ff3",
-        "image": "/reference/e9b491e810d4c912.jpg",
-        "detail": "3 Nights 4 Days"
+        "image": "/reference/railway/e9b491e810d4c912.jpg",
+        "detail": "Sri Lanka"
       },
       {
+        "href": "/packages/cultural-heritage-trail-f7c671ce-e917-4a22-a7ae-3aa2a65fcf6e",
         "title": "Cultural Heritage Trail",
-        "href": "https://niwadu.com/packages/cultural-heritage-trail-f7c671ce-e917-4a22-a7ae-3aa2a65fcf6e",
-        "image": "/reference/1f4b9d64183269f9.jpg",
-        "detail": "3 Nights 4 Days"
+        "image": "/reference/railway/1f4b9d64183269f9.jpg",
+        "detail": "Sri Lanka"
       },
       {
+        "href": "/packages/sacred-sites-discovery-fc757c52-6cb2-4e4d-8a9d-76398992f278",
         "title": "Sacred Sites Discovery",
-        "href": "https://niwadu.com/packages/sacred-sites-discovery-fc757c52-6cb2-4e4d-8a9d-76398992f278",
-        "image": "/reference/a588f41c7645af02.jpg",
-        "detail": "3 Nights 4 Days"
+        "image": "/reference/railway/a588f41c7645af02.jpg",
+        "detail": "Sri Lanka"
       },
       {
+        "href": "/packages/unawatuna-and-galle-exploration",
         "title": "Travel Galle Sri Lanka 3 Days 2 Nights Tour Package",
-        "href": "https://niwadu.com/packages/unawatuna-and-galle-exploration",
-        "image": "/reference/fcbcbc5a1e4a6dd9.jpg",
-        "detail": "2 Nights 3 Days"
+        "image": "/reference/railway/fcbcbc5a1e4a6dd9.jpg",
+        "detail": "Sri Lanka"
       },
       {
+        "href": "/packages/arugam-bay-surfing-adventure",
         "title": "Explore Arugam Bay Surfing Adventure Tour Package",
-        "href": "https://niwadu.com/packages/arugam-bay-surfing-adventure",
-        "image": "/reference/dc18012c33727565.jpg",
-        "detail": "3 Nights 4 Days"
+        "image": "/reference/railway/dc18012c33727565.jpg",
+        "detail": "Sri Lanka"
       }
-    ]
+    ],
+    "title": "Experiences with the stays built in",
+    "kind": "experience"
   },
   {
-    "title": "Top Destinations",
-    "href": "https://niwadu.com/destinations",
-    "kind": "destination",
     "cards": [
       {
-        "title": "Negombo",
-        "href": "https://niwadu.com/destinations/Negombo",
-        "image": "/reference/80cb8ae74d0e74a6.jpg",
-        "detail": "Negombo is a major city in Sri Lanka, situated on the west coast and at the mouth of the Negombo Lagoon, in Western Province."
-      },
-      {
-        "title": "Nuwara Eliya",
-        "href": "https://niwadu.com/destinations/nuwara-eliya",
-        "image": "/reference/42c41c3a5c86c5a1.jpg",
-        "detail": "Nuwara Eliya is a city in the hilly region of the central province of Sri Lanka. The city is known for its picturesque landscape."
-      },
-      {
-        "title": "Mirissa",
-        "href": "https://niwadu.com/destinations/mirissa",
-        "image": "/reference/247251805a109853.jpg",
-        "detail": "Crack open a coconut, slip into a hammock, and rock gently in the breeze, allowing the hours, days and even weeks to slip calmly by."
-      },
-      {
-        "title": "Meemure",
-        "href": "https://niwadu.com/destinations/meemure",
-        "image": "/reference/9bfd6180b0acce06.jpg",
-        "detail": "Meemure is a traditional village is located in the eastern slopes of dumbaravanapetē (Knuckles)mountain range. the village is difficult"
-      },
-      {
-        "title": "Kataragama",
-        "href": "https://niwadu.com/destinations/kataragama",
-        "image": "/reference/f53a538dbb91c829.jpg",
-        "detail": "Kataragama is the most important pilgrimage site in Sri Lanka; a holy place for Buddhists, Muslims, Hindus and Veddah people."
-      },
-      {
-        "title": "Unawatuna",
-        "href": "https://niwadu.com/destinations/unawatuna",
-        "image": "/reference/91b0c4a92975f94d.jpg",
-        "detail": "Unawatuna is a coastal city in the Galle district of Sri Lanka, and its a major tourist attraction in Sri Lanka and known for its beach and corals."
-      },
-      {
+        "href": "/destinations/galle",
         "title": "Galle",
-        "href": "https://niwadu.com/destinations/galle",
-        "image": "/reference/a0d79987ad6af28f.jpg",
-        "detail": "\"Galle is a prime city in Sri Lanka, located at the southwestern tip. Galle is the provincial capital and largest city in Southern Province\""
+        "image": "/reference/railway/42e42804adeddc63.jpg",
+        "detail": "Sri Lanka"
+      },
+      {
+        "href": "/destinations/kataragama",
+        "title": "Kataragama",
+        "image": "/reference/railway/6ab958d8be5a3101.jpg",
+        "detail": "Sri Lanka"
+      },
+      {
+        "href": "/destinations/meemure",
+        "title": "Meemure",
+        "image": "/reference/railway/26f664d545db86d7.jpg",
+        "detail": "Sri Lanka"
+      },
+      {
+        "href": "/destinations/mirissa",
+        "title": "Mirissa",
+        "image": "/reference/railway/ed6defe059fd3e97.jpg",
+        "detail": "Sri Lanka"
+      },
+      {
+        "href": "/destinations/negombo",
+        "title": "Negombo",
+        "image": "/reference/railway/b3aaad9d094d8fff.jpg",
+        "detail": "Sri Lanka"
+      },
+      {
+        "href": "/destinations/nuwara-eliya",
+        "title": "Nuwara Eliya",
+        "image": "/reference/railway/3a590a2fbfbe402f.jpg",
+        "detail": "Sri Lanka"
+      },
+      {
+        "href": "/destinations/unawatuna",
+        "title": "Unawatuna",
+        "image": "/reference/railway/4eafcc7aae4e29d5.jpg",
+        "detail": "Sri Lanka"
       }
-    ]
+    ],
+    "title": "Explore by destination",
+    "kind": "destination"
   }
 ]

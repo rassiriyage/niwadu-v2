@@ -1,28 +1,34 @@
 import { expect, test } from "@playwright/test";
 
-test("homepage stays honest while its carousel and mobile dialog work", async ({ page }) => {
+test("reference homepage stays local and honest", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://niwadu.com/");
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, nofollow");
-  await expect(page.getByText("View current rates", { exact: true })).toHaveCount(24);
+  await expect(page.getByText("Rates unavailable", { exact: true })).toHaveCount(36);
   await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(0);
-  await expect(page.getByRole("button", { name: "Search unavailable", exact: true })).toBeDisabled();
-  const track = page.getByRole("list", { name: "Nuwara Eliya listings", exact: true });
-  await expect(page.getByRole("button", { name: "Previous Nuwara Eliya", exact: true })).toBeDisabled();
-  await page.getByRole("button", { name: "Next Nuwara Eliya", exact: true }).click();
+  const hrefs = await page.locator("a[href]").evaluateAll(links => links.map(link => link.getAttribute("href")!));
+  expect(hrefs.every(href => href === "/" || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:"))).toBe(true);
+  await expect(page.getByRole("link", { name: "Niwadu home", exact: true })).toHaveAttribute("href", "/");
+  const track = page.getByRole("list", { name: "Popular stays in Nuwara Eliya listings", exact: true });
+  await page.getByRole("button", { name: "Next Popular stays in Nuwara Eliya", exact: true }).click();
   await expect.poll(() => track.evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
-  await expect(page.getByRole("button", { name: "Previous Nuwara Eliya", exact: true })).toBeEnabled();
-  await page.setViewportSize({ width: 390, height: 844 });
-  const trigger = page.getByRole("button", { name: "Start your search", exact: true });
-  await trigger.click();
-  await expect(page.getByRole("dialog", { name: "Search unavailable" })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Close", exact: true })).toBeFocused();
-  await page.keyboard.press("Tab");
-  await expect(page.getByRole("link", { name: "Browse hotels", exact: true })).toBeFocused();
-  await page.keyboard.press("Tab");
-  await expect(page.getByRole("button", { name: "Close", exact: true })).toBeFocused();
-  await page.keyboard.press("Escape");
-  await expect(page.getByRole("dialog")).not.toBeVisible();
-  await expect(trigger).toBeFocused();
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+  for (const trigger of [page.getByRole("button", { name: "Search stays", exact: true }), page.locator(".listing-card").first(), page.locator(".footer-columns button").first(), page.locator(".promo").first()]) {
+    const label = await trigger.getAttribute("aria-label");
+    await trigger.click();
+    const dialog = page.getByRole("dialog", { name: `${label} — preview only` });
+    await expect(dialog).toBeVisible();
+    await expect(dialog.getByRole("button", { name: "Close" })).toBeFocused();
+    await page.keyboard.press("Tab");
+    await expect(dialog.getByRole("button", { name: "Close" })).toBeFocused();
+    await page.keyboard.press("Escape");
+    await expect(trigger).toBeFocused();
+  }
+  for (const width of [1440, 1024, 768, 390, 320]) {
+    await page.setViewportSize({ width, height: 900 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+  }
+  await page.locator("summary").click();
+  await page.getByRole("button", { name: "Profile", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "Profile — preview only" })).toBeVisible();
+  await page.getByRole("button", { name: "Close", exact: true }).click();
 });

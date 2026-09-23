@@ -1,0 +1,32 @@
+[
+  {
+    "cardWidth": 187.890625,
+    "overflow": false,
+    "rowY": 190,
+    "width": 1440
+  },
+  {
+    "cardWidth": 156.796875,
+    "overflow": false,
+    "rowY": 190,
+    "width": 1024
+  },
+  {
+    "cardWidth": 146,
+    "overflow": false,
+    "rowY": 190,
+    "width": 768
+  },
+  {
+    "cardWidth": 159,
+    "overflow": false,
+    "rowY": 190,
+    "width": 390
+  },
+  {
+    "cardWidth": 124,
+    "overflow": false,
+    "rowY": 190,
+    "width": 320
+  }
+]

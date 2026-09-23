@@ -22,10 +22,12 @@ export function SearchPreview() {
         (event.shiftKey ? last : first).focus();
       }
     }}>
+      <div className="search-preview-content">
       <button className="close-search" onClick={() => dialog.current?.close()}>Close</button>
       <h2 id="search-unavailable-title">Search unavailable</h2>
       <p>You can browse hotels on Niwadu.</p>
       <a href="https://niwadu.com/hotels">Browse hotels</a>
+      </div>
     </dialog>
   </>;
 }

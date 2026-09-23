@@ -42,6 +42,8 @@ Expose versioned endpoints for session login/logout, hotels and hotel staff. All
 
 Validation: 20 API tests (105 assertions), five Chromium browser scenarios, frontend lint/type checking and production build. Browser fixtures use a separate SQLite database. Next slice: guided autosaved hotel onboarding and publication readiness; no live integrations are enabled.
 
-## Current slice: guided onboarding drafts
+## Completed slice: guided onboarding drafts
 
 Keep the original seven steps: basics, listing, rooms, rates/availability, policies, staff and review. Collect draft room types and indicative rates without creating sellable inventory. Save progress and partial input automatically; a version check rejects stale edits instead of overwriting another employee's work. Niwadu administrators and an employee's own drafts can use onboarding; hotel staff cannot change it. Review shows missing content and explicitly blocks publication until rooms/rates are promoted to verified inventory and booking/payment setup exists. Inventory selection is a setup request, never a PMS connection configuration or ownership switch. Verify persistence, conflict handling, field allowlists, cross-hotel denial and a browser walkthrough including refresh/resume.
+
+Onboarding verification: 26 API tests, including photo access/type restrictions and conflicts across both editors; seven Chromium scenarios including employee save/resume, photos, rooms, staff, review and mobile conflict recovery. Room photos are captioned draft assets, not yet mapped to catalog room IDs. Public listing preview and publication remain blocked until the next catalog/inventory and booking work.

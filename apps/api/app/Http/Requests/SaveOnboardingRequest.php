@@ -15,6 +15,11 @@ class SaveOnboardingRequest extends FormRequest
         return Gate::allows('onboard', $this->route('hotel'));
     }
 
+    public function attributes(): array
+    {
+        return ['fields.name' => 'hotel name', 'fields.city' => 'city', 'fields.country' => 'country', 'fields.contact_email' => 'hotel contact email', 'fields.phone' => 'phone number', 'fields.description' => 'hotel description', 'fields.check_in' => 'check-in time', 'fields.check_out' => 'check-out time', 'fields.rooms.*.name' => 'room type name', 'fields.rooms.*.occupancy' => 'maximum guests', 'fields.rooms.*.quantity' => 'number of rooms', 'fields.rooms.*.rate' => 'nightly rate'];
+    }
+
     public function rules(): array
     {
         $rules = [

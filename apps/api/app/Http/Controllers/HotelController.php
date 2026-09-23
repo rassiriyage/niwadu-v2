@@ -44,7 +44,8 @@ class HotelController extends Controller
             $hotel = Hotel::whereKey($hotel->id)->lockForUpdate()->firstOrFail();
             Gate::authorize('view', $hotel);
             Gate::authorize('update', $hotel);
-            $hotel->fill($request->validated());
+            abort_if($hotel->onboarding_version !== (int) $request->validated('version'), 409, 'This hotel changed in another window. Copy unsaved text, then reload before saving.');
+            $hotel->fill($request->safe()->except('version'));
             $hotel->onboarding_version++;
             $hotel->save();
             $hotel->recordAccessEvent($request->user(), 'hotel.updated');

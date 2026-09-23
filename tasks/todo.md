@@ -15,7 +15,12 @@
   - Acceptance: hotel A cannot read/write hotel B profiles or staff rosters; profile writes reject payment/PMS settings. Export and inventory permissions must be tested when those endpoints exist.
   - Verification: API authorization tests using separate hotel users and forged record IDs.
   - Depends on: framework foundation.
-- [ ] Specify guided onboarding and publication checks.
+- [x] Implement guided onboarding drafts and explicit publication blockers.
   - Acceptance: employee can save/resume a draft and identify all required steps; no publication with missing inventory readiness.
-  - Verification: persistence tests and first-time-user walkthrough.
+  - Verification: API persistence/conflict/access tests and a browser walkthrough using an onboarding employee. A human first-time usability session remains before launch.
   - Depends on: memberships and authorization.
+
+## Next slice
+
+- [ ] Turn room drafts into a catalog with stable room IDs and structured photo assignments.
+- [ ] Implement dated manual inventory and rate plans against a dedicated transactional database, with oversell/concurrency tests.

@@ -56,7 +56,11 @@ Administrators can create private hotel drafts, edit profiles, and grant/revoke 
 
 New accounts receive a single-use password link; administrators can resend it from the staff roster. Local mail uses `MAIL_MAILER=log`, so development links appear in `apps/api/storage/logs/laravel.log`. Configure a real mail provider and `FRONTEND_URL` before inviting real staff. A failed delivery does not revoke the saved membership: refresh the roster and use **Send password link** to retry.
 
-The public homepage, full onboarding wizard, inventory, PMS adapters and PAYable integration remain upcoming work. Payment/PMS configuration is excluded from hotel profile writes.
+The seven-step onboarding wizard is available after creating a hotel, or through **Continue hotel setup** on its profile. It autosaves partial drafts, remembers the current step, accepts private hotel/room photographs, and records room types, indicative LKR rates, policies and staff access. Concurrent edits return a conflict instead of overwriting newer work. Profile PATCH requests must include the `version` returned by the hotel API.
+
+Rooms and rates in this wizard are draft inputs, not sellable inventory. The final review lists missing information and launch requirements; there is no publication endpoint. Room photos currently use captions to identify the room; structured room/media mapping and the public listing preview belong to the catalog work. Photos use private local storage in development (JPG/PNG/WebP, up to 5 MB and 50 photos per hotel). Configure PHP/web-server upload limits to support 5 MB files and private object storage before staging.
+
+The public homepage, live inventory, PMS adapters and PAYable integration remain upcoming work. Payment/PMS configuration is excluded from hotel profile writes.
 
 ## Verification
 

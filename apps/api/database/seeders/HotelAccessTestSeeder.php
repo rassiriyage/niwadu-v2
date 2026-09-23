@@ -21,6 +21,11 @@ class HotelAccessTestSeeder extends Seeder
         $admin->password = 'browser-test-password';
         $admin->platform_role = 'administrator';
         $admin->save();
+        $employee = User::firstOrNew(['email' => 'employee@example.test']);
+        $employee->name = 'Test Onboarding Employee';
+        $employee->password = 'browser-test-password';
+        $employee->platform_role = 'onboarding';
+        $employee->save();
         $manager = User::firstOrNew(['email' => 'manager@example.test']);
         $manager->name = 'Test Manager';
         $manager->password = 'browser-test-password';

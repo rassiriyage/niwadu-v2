@@ -30,6 +30,9 @@ class SaveHotelRequest extends FormRequest
             'contact_email' => ['sometimes', 'nullable', 'email', 'max:255'],
             'phone' => ['sometimes', 'nullable', 'string', 'max:40'],
         ];
+        if ($this->isMethod('PATCH')) {
+            $rules['version'] = ['required', 'integer', 'min:0'];
+        }
         foreach (array_diff(array_keys($this->all()), array_keys($rules), ['_token']) as $field) {
             $rules[$field] = ['prohibited'];
         }

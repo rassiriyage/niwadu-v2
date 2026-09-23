@@ -32,8 +32,9 @@ class HotelOnboardingTest extends TestCase
         $this->actingAs($admin)->patchJson($url, ['version' => 0, 'fields' => ['city' => 'Ella']])->assertOk();
         $this->patchJson($url, ['version' => 0, 'fields' => ['city' => 'Kandy']])->assertConflict();
         $this->assertSame('Ella', $hotel->fresh()->city);
-        $this->patchJson('/api/v1/hotels/'.$hotel->id, ['city' => 'Galle'])->assertOk();
+        $this->patchJson('/api/v1/hotels/'.$hotel->id, ['city' => 'Galle', 'version' => 1])->assertOk();
         $this->patchJson($url, ['version' => 1, 'fields' => ['city' => 'Kandy']])->assertConflict();
+        $this->patchJson('/api/v1/hotels/'.$hotel->id, ['city' => 'Kandy', 'version' => 1])->assertConflict();
         $this->assertSame('Galle', $hotel->fresh()->city);
     }
 

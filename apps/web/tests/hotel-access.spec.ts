@@ -21,6 +21,8 @@ test("administrator creates a hotel draft and its profile persists after reload"
   await page.getByRole("button", { name: "Create draft" }).click();
   await expect(page.getByRole("heading", { name, exact: true })).toBeVisible();
   await expect(page.getByText("Private draft · This hotel is not published and cannot receive bookings.")).toBeVisible();
+  await page.getByRole("button", { name: "Save and exit", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Hotel profile", exact: true })).toBeVisible();
   await page.getByLabel("Phone number").fill("0771234567");
   await page.getByRole("button", { name: "Save details" }).click();
   await expect(page.getByRole("status")).toHaveText("Hotel details saved.");

@@ -1,0 +1,15 @@
+# Public image delivery — measured follow-up
+
+Baseline f626912 used Next's native optimizer at quality90/WebP but rendered all52 images eagerly with approximate sizes. Source images total27,478,434bytes. Local browser DPR1 selected256px candidates although cards render187.89px desktop and159px mobile. A native-lazy experiment alone still requested52desktop/51mobile images before scroll in independent fresh Chromium QA, including rows below1900px. Attributes alone were insufficient evidence of deferral.
+
+The bounded correction retains quality90 and native Next processing. Exact CSS card breakpoints now drive sizes; added160/192/224/320/480 width candidates avoid unnecessary oversampling. WebP content negotiation is explicit; unsupported clients retain native format fallback. Optimized responses advertise public,max-age=86400,must-revalidate and show Next cache MISS then HIT locally. Asset filenames now hash source content, so changed source bytes require a new URL. No new dependencies or external optimizer service.
+
+Only the first image is SSR eager/high priority. A small per-card IntersectionObserver mounts the remaining images within300px vertically/100px horizontally of the viewport, respecting carousel clipping. Stable20:19 slots retain layout; all card names/text/buttons remain server-rendered. Once mounted, images remain mounted and use native lazy loading. A noscript image fallback supports JS-disabled browsers. Native scrolling, keyboard focus and carousel movement trigger observation; offscreen placeholders are intentional. Private admin images remain on their existing authenticated unoptimized path and are NOT sent through the public optimizer.
+
+## Evidence and limits
+
+CUA1440×900/DPR1:52→18 mounted images initially, all visible loaded.390×900/DPR1:52→8; visible destination photos loaded after navigating down. DOM-selected source widths reduce256→192 desktop; the same browser reused cached192mobile (a fresh context selects160). Matched first-fold before/after PNGs are images-before/after-1440/390.png. Crops/layout/quality stay the same; size selection changes encoded resolution.
+
+Actual local HTTP WebP response-body totals for the initial DOM-selected requests:773,674→166,208bytes desktop (78.5% less),773,674→68,440mobile (91.2% less, conservatively reusing192px assets). See image-delivery-summary.json and image-http-bytes.json. These are observed response-body sizes on a warm local optimizer, not network timing/Core Web Vitals or a hosted cold-cache guarantee. Wider-DPR variants remain available. image-dimension-audit.json additionally records original dimensions and illustrative640/384px WebP byte sizes, not the baseline browser choices.
+
+Independent QA must verify clean-context actual request/response counts/bytes, first-fold images and fast vertical/horizontal traversal at desktop/mobile/DPR2, no layout regressions, optimizer format/cache headers and unchanged private authorization. Design must compare perceived quality at matching crop/viewport/DPR. No lossless-compression claim or full performance certification. Original uploads/publication derivatives remain separate admin/catalog work.

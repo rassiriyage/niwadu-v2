@@ -47,3 +47,5 @@ body:has(.public-site){margin:0}
 .mobile-search-copy{min-width:0}
 .mobile-search-copy>*{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 @media(max-width:767px){.public-site .search-pill{width:100%}}
+
+.photo-slot{display:block;position:absolute;inset:0}

@@ -1,0 +1,30 @@
+[
+  {
+    "viewport": 1440,
+    "dpr": 1,
+    "beforeImages": 52,
+    "afterMountedImages": 18,
+    "beforeSelectedWidth": 256,
+    "afterSelectedWidths": [
+      192
+    ],
+    "baselineResponseBodyBytes": 773674,
+    "optimizedResponseBodyBytes": 166208,
+    "bodyReductionPercent": 78.5,
+    "method": "Sum of actual local HTTP WebP response body lengths for DOM-selected sources; not browser transfer timings. Warm server cache; mobile may reuse cached larger desktop candidate."
+  },
+  {
+    "viewport": 390,
+    "dpr": 1,
+    "beforeImages": 52,
+    "afterMountedImages": 8,
+    "beforeSelectedWidth": 256,
+    "afterSelectedWidths": [
+      192
+    ],
+    "baselineResponseBodyBytes": 773674,
+    "optimizedResponseBodyBytes": 68440,
+    "bodyReductionPercent": 91.2,
+    "method": "Sum of actual local HTTP WebP response body lengths for DOM-selected sources; not browser transfer timings. Warm server cache; mobile may reuse cached larger desktop candidate."
+  }
+]

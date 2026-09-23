@@ -1,0 +1,1458 @@
+[
+  {
+    "title": "Sulanga Luxury Chalets",
+    "image": "/reference/railway/82c2afd39b1b16f1ae2a.jpg",
+    "160": {
+      "bytes": 5872,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 7856,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 12694,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 26834,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "The Burrow",
+    "image": "/reference/railway/c12cb372b224ffaee44b.jpg",
+    "160": {
+      "bytes": 5588,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 7444,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 11344,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 22462,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Del\u2019s Haven",
+    "image": "/reference/railway/0f8d33241a1f2f9e4886.jpg",
+    "160": {
+      "bytes": 6602,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 8590,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 14358,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 29540,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Ferncliff Bungalow",
+    "image": "/reference/railway/c36022cd822c5ca6c602.png",
+    "160": {
+      "bytes": 7376,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 10242,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 17996,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 37704,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "The Edgware Cabana",
+    "image": "/reference/railway/f9a1abb11ecc0515c5da.png",
+    "160": {
+      "bytes": 4550,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 6272,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 10372,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 22264,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Araliya Green City",
+    "image": "/reference/railway/43436c74165568f50459.jpg",
+    "160": {
+      "bytes": 5900,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 8044,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 13538,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 27590,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Black Pool Villa",
+    "image": "/reference/railway/80414b381687fd931d4a.jpg",
+    "160": {
+      "bytes": 6908,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 9410,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 17154,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 38982,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Villa Mount Royal",
+    "image": "/reference/railway/6de46225bda79c687fe4.jpg",
+    "160": {
+      "bytes": 5986,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 7868,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 12546,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 24826,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Sri Sharavi Beach Villas & Spa",
+    "image": "/reference/railway/e0fc2f06c3f6515f2638.png",
+    "160": {
+      "bytes": 5746,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 7812,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 12768,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 27544,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "FireMoon Garden",
+    "image": "/reference/railway/4d7e3230dd6dd6157338.jpg",
+    "160": {
+      "bytes": 6776,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 9244,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 15396,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 32576,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Lavendra Villa Mirissa",
+    "image": "/reference/railway/f5163f0d4dee6bb56576.jpg",
+    "160": {
+      "bytes": 8900,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 11940,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 20594,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 45250,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Handagedara Resort",
+    "image": "/reference/railway/eabc9df5488e35ae8cd5.png",
+    "160": {
+      "bytes": 7324,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 9752,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 15832,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 32872,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Esprit d'ici Hotel",
+    "image": "/reference/railway/c639911fb0a49e486c37.png",
+    "160": {
+      "bytes": 7588,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 10730,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 18140,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 39786,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Green Hills Mirissa",
+    "image": "/reference/railway/45622e92772d4225d941.jpg",
+    "160": {
+      "bytes": 7506,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 10670,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 18024,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 40150,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "One World Mirissa",
+    "image": "/reference/railway/59e9091ea62c2845658a.jpg",
+    "160": {
+      "bytes": 3306,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 4442,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 7860,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 17016,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Randiya Sea View",
+    "image": "/reference/railway/953bae3a8dae43bbb53a.jpg",
+    "160": {
+      "bytes": 8046,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 10696,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 17452,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 35638,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "The Kandy House",
+    "image": "/reference/railway/8f230ee1f7a1ac5cc01a.jpg",
+    "160": {
+      "bytes": 7598,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 10550,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 18932,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 42976,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "The Elephant Stables",
+    "image": "/reference/railway/80724a18574daa79d0a2.jpg",
+    "160": {
+      "bytes": 6896,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 8930,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 14662,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 29034,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Hotel Travellers Nest Kandy",
+    "image": "/reference/railway/f2278af63a347b1696ff.jpg",
+    "160": {
+      "bytes": 6250,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 8532,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 14120,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 29544,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "H2O Holiday Bungalow",
+    "image": "/reference/railway/239b31cfc290b6dd3b84.jpg",
+    "160": {
+      "bytes": 7620,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 10616,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 17442,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 37816,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Hanthana Nature Cottage",
+    "image": "/reference/railway/1f1f478b9f0384e345e2.jpg",
+    "160": {
+      "bytes": 7006,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 9416,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 16034,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 34100,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Simpson's Forest Hotel",
+    "image": "/reference/railway/42f2a52383326b6a8413.jpg",
+    "160": {
+      "bytes": 7176,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 9568,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 16678,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 36684,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Back of Beyond - The Weir House",
+    "image": "/reference/railway/9726cb7cdaf10cdc5ce9.jpg",
+    "160": {
+      "bytes": 7310,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 10010,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 17934,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 39532,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Lavender Holiday Resort",
+    "image": "/reference/railway/a1f542de6e5805e65e71.jpg",
+    "160": {
+      "bytes": 5796,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 7688,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 12730,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 25850,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Sriyantha Villa",
+    "image": "/reference/railway/ac26df9dd7ad4904b851.jpg",
+    "160": {
+      "bytes": 4410,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 5870,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 9780,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 19200,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Lakmini Luxury Lodge",
+    "image": "/reference/railway/1498f73706d9fc576086.jpg",
+    "160": {
+      "bytes": 8048,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 10734,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 17820,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 36506,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Ivory Inn",
+    "image": "/reference/railway/4e081717922a28d0c16b.jpg",
+    "160": {
+      "bytes": 6210,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 8256,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 12980,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 26950,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Black Pool Red Rose",
+    "image": "/reference/railway/bf7000f73feec8c9fe7d.jpg",
+    "160": {
+      "bytes": 4886,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 6486,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 10416,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 20888,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Cave N Falls Nature Resort & Waterpark",
+    "image": "/reference/railway/f0b6ea7ae7518edf4f93.jpg",
+    "160": {
+      "bytes": 8264,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 11074,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 18596,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 39072,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Spice Villa",
+    "image": "/reference/railway/df5822d53fc6189f0b0e.jpg",
+    "160": {
+      "bytes": 6080,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 8248,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 13598,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 28892,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Golden King Kandy",
+    "image": "/reference/railway/bc6378a941d3fe61beec.png",
+    "160": {
+      "bytes": 6200,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 8146,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 12754,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 24808,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Bel View Guest House",
+    "image": "/reference/railway/1e165db8a4bc6efb97c4.jpg",
+    "160": {
+      "bytes": 5490,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 7160,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 11544,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 23232,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Volunteer Ceylon",
+    "image": "/reference/railway/1ef6d491199bf2a0768c.jpg",
+    "160": {
+      "bytes": 5522,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 7286,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 11296,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 21746,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Hotel Holiday Inn",
+    "image": "/reference/railway/202274e46282d083aab6.jpg",
+    "160": {
+      "bytes": 7600,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 10534,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 17704,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 39056,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Hotel Janara",
+    "image": "/reference/railway/6b2f66727570a938f650.jpg",
+    "160": {
+      "bytes": 3204,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 3944,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 6492,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 12510,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Delmand Lake",
+    "image": "/reference/railway/cce21c5549f1b6a687f9.jpg",
+    "160": {
+      "bytes": 7418,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 9726,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 15456,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 31840,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Coastal Escapes Sri Lanka",
+    "image": "/reference/railway/8f3e0017c8651c06b10a.jpg",
+    "160": {
+      "bytes": 7480,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 10174,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 17386,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 35760,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Visit Sri Lanka 5 Days 4 Nights Tour Package",
+    "image": "/reference/railway/82f4748532564ee4843d.jpg",
+    "160": {
+      "bytes": 5048,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 6546,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 11526,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 23848,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Sri Lanka Tourism 4 Days 3 Nights Tour Package",
+    "image": "/reference/railway/38dbcbe6ecb762c148a7.jpg",
+    "160": {
+      "bytes": 7880,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 10960,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 18596,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 39306,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Majestic Cultural Triangle",
+    "image": "/reference/railway/2186e3d419348198f07c.jpg",
+    "160": {
+      "bytes": 9412,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 12820,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 21814,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 44660,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Ancient Treasures Expedition",
+    "image": "/reference/railway/0332640cc2b42919d184.jpg",
+    "160": {
+      "bytes": 5624,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 7558,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 11690,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 23794,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Cultural Heritage Trail",
+    "image": "/reference/railway/be223b1d658496ecf79c.jpg",
+    "160": {
+      "bytes": 5698,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 7452,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 11942,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 22430,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Sacred Sites Discovery",
+    "image": "/reference/railway/6a7667f1aebf45cb94d1.jpg",
+    "160": {
+      "bytes": 8136,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 10990,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 19262,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 39598,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Travel Galle Sri Lanka 3 Days 2 Nights Tour Package",
+    "image": "/reference/railway/9b0ab5bdd528fc7f554f.jpg",
+    "160": {
+      "bytes": 6750,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 8892,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 14386,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 29106,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Explore Arugam Bay Surfing Adventure Tour Package",
+    "image": "/reference/railway/a5ced2c577cb584eecc2.jpg",
+    "160": {
+      "bytes": 4522,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 6046,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 9652,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 19142,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Galle",
+    "image": "/reference/railway/27a6b7abf51cb306f06f.jpg",
+    "160": {
+      "bytes": 5558,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 7706,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 12634,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 26780,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Kataragama",
+    "image": "/reference/railway/20d370621df2ddc445e2.jpg",
+    "160": {
+      "bytes": 8742,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 11708,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 19502,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 39464,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Meemure",
+    "image": "/reference/railway/28c4070a558fe6c6d3e9.jpg",
+    "160": {
+      "bytes": 7456,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 10766,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 19602,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 43646,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Mirissa",
+    "image": "/reference/railway/4b525ade03a81041b108.jpg",
+    "160": {
+      "bytes": 8668,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 11558,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 19600,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 42142,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Negombo",
+    "image": "/reference/railway/17408d382d1ff67d8d98.jpg",
+    "160": {
+      "bytes": 5276,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 7098,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 11508,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 25084,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Nuwara Eliya",
+    "image": "/reference/railway/788efbb5f33d78776431.jpg",
+    "160": {
+      "bytes": 6702,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 9146,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 15562,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 34620,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  },
+  {
+    "title": "Unawatuna",
+    "image": "/reference/railway/93127e1fee26ff9d4fe4.jpg",
+    "160": {
+      "bytes": 6974,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "192": {
+      "bytes": 9636,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "HIT"
+    },
+    "256": {
+      "bytes": 15976,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    },
+    "384": {
+      "bytes": 33892,
+      "format": "image/webp",
+      "cache": "public, max-age=86400, must-revalidate",
+      "nextCache": "MISS"
+    }
+  }
+]

@@ -31,3 +31,25 @@ test("reference homepage stays local and honest", async ({ page }) => {
   await expect(page.getByRole("dialog", { name: "Profile — preview only" })).toBeVisible();
   await page.getByRole("button", { name: "Close", exact: true }).click();
 });
+
+test("public photos use responsive optimized delivery with one priority image", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await expect(page.locator('img[loading="eager"]')).toHaveCount(1);
+  await expect(page.locator('img[fetchpriority="high"]')).toHaveCount(1);
+  await expect(page.locator(".photo-slot")).toHaveCount(52);
+  expect(await page.locator(".photo-slot > img").count()).toBeLessThan(52);
+  const lastPhoto = page.locator(".card-track").last().locator(".photo-slot").first();
+  await lastPhoto.scrollIntoViewIfNeeded();
+  await expect.poll(() => lastPhoto.locator("img").evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+  const photo = page.locator(".card-image img").first();
+  await expect.poll(() => photo.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+  const source = await photo.evaluate((img: HTMLImageElement) => img.currentSrc);
+  expect(new URL(source).pathname).toBe("/_next/image");
+  expect(new URL(source).searchParams.get("q")).toBe("90");
+  const response = await page.request.get(source, { headers: { Accept: "image/webp" } });
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toBe("image/webp");
+  expect(response.headers()["cache-control"]).toContain("max-age=86400");
+  expect((await response.body()).length).toBeGreaterThan(0);
+});

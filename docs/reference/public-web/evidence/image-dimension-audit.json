@@ -1,0 +1,418 @@
+[
+  {
+    "title": "Sulanga Luxury Chalets",
+    "sourceBytes": 185756,
+    "sourceWidth": 1024,
+    "sourceHeight": 576,
+    "webp640q90": 58766,
+    "webp384q90": 26834
+  },
+  {
+    "title": "The Burrow",
+    "sourceBytes": 55161,
+    "sourceWidth": 573,
+    "sourceHeight": 322,
+    "webp640q90": 41078,
+    "webp384q90": 22462
+  },
+  {
+    "title": "Del’s Haven",
+    "sourceBytes": 234272,
+    "sourceWidth": 1024,
+    "sourceHeight": 576,
+    "webp640q90": 72994,
+    "webp384q90": 29540
+  },
+  {
+    "title": "Ferncliff Bungalow",
+    "sourceBytes": 947080,
+    "sourceWidth": 832,
+    "sourceHeight": 468,
+    "webp640q90": 96324,
+    "webp384q90": 37704
+  },
+  {
+    "title": "The Edgware Cabana",
+    "sourceBytes": 574555,
+    "sourceWidth": 747,
+    "sourceHeight": 420,
+    "webp640q90": 55544,
+    "webp384q90": 22264
+  },
+  {
+    "title": "Araliya Green City",
+    "sourceBytes": 208238,
+    "sourceWidth": 1024,
+    "sourceHeight": 576,
+    "webp640q90": 66528,
+    "webp384q90": 27590
+  },
+  {
+    "title": "Black Pool Villa",
+    "sourceBytes": 301122,
+    "sourceWidth": 1042,
+    "sourceHeight": 586,
+    "webp640q90": 105454,
+    "webp384q90": 38982
+  },
+  {
+    "title": "Villa Mount Royal",
+    "sourceBytes": 167057,
+    "sourceWidth": 1025,
+    "sourceHeight": 577,
+    "webp640q90": 56846,
+    "webp384q90": 24826
+  },
+  {
+    "title": "Sri Sharavi Beach Villas & Spa",
+    "sourceBytes": 1664627,
+    "sourceWidth": 1248,
+    "sourceHeight": 702,
+    "webp640q90": 70468,
+    "webp384q90": 27544
+  },
+  {
+    "title": "FireMoon Garden",
+    "sourceBytes": 254777,
+    "sourceWidth": 1113,
+    "sourceHeight": 626,
+    "webp640q90": 76868,
+    "webp384q90": 32576
+  },
+  {
+    "title": "Lavendra Villa Mirissa",
+    "sourceBytes": 298244,
+    "sourceWidth": 1024,
+    "sourceHeight": 576,
+    "webp640q90": 113256,
+    "webp384q90": 45250
+  },
+  {
+    "title": "Handagedara Resort",
+    "sourceBytes": 1769346,
+    "sourceWidth": 1248,
+    "sourceHeight": 702,
+    "webp640q90": 77600,
+    "webp384q90": 32872
+  },
+  {
+    "title": "Esprit d'ici Hotel",
+    "sourceBytes": 1392042,
+    "sourceWidth": 1024,
+    "sourceHeight": 576,
+    "webp640q90": 102260,
+    "webp384q90": 39786
+  },
+  {
+    "title": "Green Hills Mirissa",
+    "sourceBytes": 109185,
+    "sourceWidth": 573,
+    "sourceHeight": 322,
+    "webp640q90": 91624,
+    "webp384q90": 40150
+  },
+  {
+    "title": "One World Mirissa",
+    "sourceBytes": 137581,
+    "sourceWidth": 1024,
+    "sourceHeight": 576,
+    "webp640q90": 42760,
+    "webp384q90": 17016
+  },
+  {
+    "title": "Randiya Sea View",
+    "sourceBytes": 912350,
+    "sourceWidth": 2555,
+    "sourceHeight": 1437,
+    "webp640q90": 81870,
+    "webp384q90": 35638
+  },
+  {
+    "title": "The Kandy House",
+    "sourceBytes": 344995,
+    "sourceWidth": 1025,
+    "sourceHeight": 577,
+    "webp640q90": 112998,
+    "webp384q90": 42976
+  },
+  {
+    "title": "The Elephant Stables",
+    "sourceBytes": 204673,
+    "sourceWidth": 1022,
+    "sourceHeight": 574,
+    "webp640q90": 65814,
+    "webp384q90": 29034
+  },
+  {
+    "title": "Hotel Travellers Nest Kandy",
+    "sourceBytes": 217505,
+    "sourceWidth": 1023,
+    "sourceHeight": 575,
+    "webp640q90": 72864,
+    "webp384q90": 29544
+  },
+  {
+    "title": "H2O Holiday Bungalow",
+    "sourceBytes": 428278,
+    "sourceWidth": 1277,
+    "sourceHeight": 718,
+    "webp640q90": 97880,
+    "webp384q90": 37816
+  },
+  {
+    "title": "Hanthana Nature Cottage",
+    "sourceBytes": 247823,
+    "sourceWidth": 1024,
+    "sourceHeight": 576,
+    "webp640q90": 85922,
+    "webp384q90": 34100
+  },
+  {
+    "title": "Simpson's Forest Hotel",
+    "sourceBytes": 250063,
+    "sourceWidth": 1024,
+    "sourceHeight": 576,
+    "webp640q90": 91956,
+    "webp384q90": 36684
+  },
+  {
+    "title": "Back of Beyond - The Weir House",
+    "sourceBytes": 294877,
+    "sourceWidth": 1024,
+    "sourceHeight": 576,
+    "webp640q90": 102910,
+    "webp384q90": 39532
+  },
+  {
+    "title": "Lavender Holiday Resort",
+    "sourceBytes": 88112,
+    "sourceWidth": 720,
+    "sourceHeight": 405,
+    "webp640q90": 57186,
+    "webp384q90": 25850
+  },
+  {
+    "title": "Sriyantha Villa",
+    "sourceBytes": 32769,
+    "sourceWidth": 720,
+    "sourceHeight": 333,
+    "webp640q90": 41512,
+    "webp384q90": 19200
+  },
+  {
+    "title": "Lakmini Luxury Lodge",
+    "sourceBytes": 379636,
+    "sourceWidth": 1270,
+    "sourceHeight": 714,
+    "webp640q90": 90356,
+    "webp384q90": 36506
+  },
+  {
+    "title": "Ivory Inn",
+    "sourceBytes": 271242,
+    "sourceWidth": 1280,
+    "sourceHeight": 720,
+    "webp640q90": 67594,
+    "webp384q90": 26950
+  },
+  {
+    "title": "Black Pool Red Rose",
+    "sourceBytes": 73899,
+    "sourceWidth": 713,
+    "sourceHeight": 401,
+    "webp640q90": 46040,
+    "webp384q90": 20888
+  },
+  {
+    "title": "Cave N Falls Nature Resort & Waterpark",
+    "sourceBytes": 227665,
+    "sourceWidth": 999,
+    "sourceHeight": 562,
+    "webp640q90": 90764,
+    "webp384q90": 39072
+  },
+  {
+    "title": "Spice Villa",
+    "sourceBytes": 674317,
+    "sourceWidth": 1957,
+    "sourceHeight": 1101,
+    "webp640q90": 74920,
+    "webp384q90": 28892
+  },
+  {
+    "title": "Golden King Kandy",
+    "sourceBytes": 1413383,
+    "sourceWidth": 1223,
+    "sourceHeight": 688,
+    "webp640q90": 54208,
+    "webp384q90": 24808
+  },
+  {
+    "title": "Bel View Guest House",
+    "sourceBytes": 168249,
+    "sourceWidth": 1024,
+    "sourceHeight": 576,
+    "webp640q90": 54538,
+    "webp384q90": 23232
+  },
+  {
+    "title": "Volunteer Ceylon",
+    "sourceBytes": 343802,
+    "sourceWidth": 1800,
+    "sourceHeight": 1012,
+    "webp640q90": 48290,
+    "webp384q90": 21746
+  },
+  {
+    "title": "Hotel Holiday Inn",
+    "sourceBytes": 693002,
+    "sourceWidth": 1600,
+    "sourceHeight": 900,
+    "webp640q90": 105478,
+    "webp384q90": 39056
+  },
+  {
+    "title": "Hotel Janara",
+    "sourceBytes": 56178,
+    "sourceWidth": 1024,
+    "sourceHeight": 683,
+    "webp640q90": 29994,
+    "webp384q90": 12510
+  },
+  {
+    "title": "Delmand Lake",
+    "sourceBytes": 306836,
+    "sourceWidth": 1246,
+    "sourceHeight": 701,
+    "webp640q90": 79468,
+    "webp384q90": 31840
+  },
+  {
+    "title": "Coastal Escapes Sri Lanka",
+    "sourceBytes": 1046060,
+    "sourceWidth": 4256,
+    "sourceHeight": 2832,
+    "webp640q90": 94336,
+    "webp384q90": 35760
+  },
+  {
+    "title": "Visit Sri Lanka 5 Days 4 Nights Tour Package",
+    "sourceBytes": 437266,
+    "sourceWidth": 3000,
+    "sourceHeight": 2000,
+    "webp640q90": 63558,
+    "webp384q90": 23848
+  },
+  {
+    "title": "Sri Lanka Tourism 4 Days 3 Nights Tour Package",
+    "sourceBytes": 1959188,
+    "sourceWidth": 4578,
+    "sourceHeight": 3491,
+    "webp640q90": 107092,
+    "webp384q90": 39306
+  },
+  {
+    "title": "Majestic Cultural Triangle",
+    "sourceBytes": 1604315,
+    "sourceWidth": 4566,
+    "sourceHeight": 3502,
+    "webp640q90": 112020,
+    "webp384q90": 44660
+  },
+  {
+    "title": "Ancient Treasures Expedition",
+    "sourceBytes": 634589,
+    "sourceWidth": 4260,
+    "sourceHeight": 2652,
+    "webp640q90": 60754,
+    "webp384q90": 23794
+  },
+  {
+    "title": "Cultural Heritage Trail",
+    "sourceBytes": 647788,
+    "sourceWidth": 5616,
+    "sourceHeight": 3744,
+    "webp640q90": 49758,
+    "webp384q90": 22430
+  },
+  {
+    "title": "Sacred Sites Discovery",
+    "sourceBytes": 890664,
+    "sourceWidth": 3481,
+    "sourceHeight": 2321,
+    "webp640q90": 106904,
+    "webp384q90": 39598
+  },
+  {
+    "title": "Travel Galle Sri Lanka 3 Days 2 Nights Tour Package",
+    "sourceBytes": 519738,
+    "sourceWidth": 3000,
+    "sourceHeight": 2000,
+    "webp640q90": 74262,
+    "webp384q90": 29106
+  },
+  {
+    "title": "Explore Arugam Bay Surfing Adventure Tour Package",
+    "sourceBytes": 409604,
+    "sourceWidth": 4950,
+    "sourceHeight": 3300,
+    "webp640q90": 48606,
+    "webp384q90": 19142
+  },
+  {
+    "title": "Galle",
+    "sourceBytes": 70872,
+    "sourceWidth": 551,
+    "sourceHeight": 310,
+    "webp640q90": 53454,
+    "webp384q90": 26780
+  },
+  {
+    "title": "Kataragama",
+    "sourceBytes": 137650,
+    "sourceWidth": 651,
+    "sourceHeight": 366,
+    "webp640q90": 92730,
+    "webp384q90": 39464
+  },
+  {
+    "title": "Meemure",
+    "sourceBytes": 100004,
+    "sourceWidth": 501,
+    "sourceHeight": 281,
+    "webp640q90": 73600,
+    "webp384q90": 43646
+  },
+  {
+    "title": "Mirissa",
+    "sourceBytes": 361321,
+    "sourceWidth": 1002,
+    "sourceHeight": 564,
+    "webp640q90": 109192,
+    "webp384q90": 42142
+  },
+  {
+    "title": "Negombo",
+    "sourceBytes": 134497,
+    "sourceWidth": 800,
+    "sourceHeight": 450,
+    "webp640q90": 60018,
+    "webp384q90": 25084
+  },
+  {
+    "title": "Nuwara Eliya",
+    "sourceBytes": 131456,
+    "sourceWidth": 635,
+    "sourceHeight": 357,
+    "webp640q90": 93762,
+    "webp384q90": 34620
+  },
+  {
+    "title": "Unawatuna",
+    "sourceBytes": 2464725,
+    "sourceWidth": 3464,
+    "sourceHeight": 1948,
+    "webp640q90": 90656,
+    "webp384q90": 33892
+  }
+]

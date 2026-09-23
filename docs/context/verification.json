@@ -1,0 +1,89 @@
+{
+  "date": "2026-09-23",
+  "graft_version": "0.19.0",
+  "mode": "local structural; no deep model tier",
+  "checkouts": [
+    {
+      "checkout": "niwadu-v2",
+      "head": "a7c451b3aca00c95cdeaff388a4a0bda721dd05f",
+      "files": 68,
+      "nodes": 289,
+      "edges": 534,
+      "freshness": "pass",
+      "scope": "pass"
+    },
+    {
+      "checkout": "admin",
+      "head": "07309ccb9e665522c6c24b18c5d89ad753a14547",
+      "files": 73,
+      "nodes": 329,
+      "edges": 622,
+      "freshness": "pass",
+      "scope": "pass"
+    },
+    {
+      "checkout": "bookings",
+      "head": "e0ab96efafdfdedf77504f3fad7aa5e4264a0a99",
+      "files": 70,
+      "nodes": 312,
+      "edges": 588,
+      "freshness": "pass",
+      "scope": "pass"
+    },
+    {
+      "checkout": "catalog",
+      "head": "69766d1d70623fc1ca072c8d946d45033a995c63",
+      "files": 78,
+      "nodes": 335,
+      "edges": 618,
+      "freshness": "pass",
+      "scope": "pass"
+    },
+    {
+      "checkout": "design",
+      "head": "d84994f52122a653259aa39193a229edeafa975c",
+      "files": 68,
+      "nodes": 289,
+      "edges": 534,
+      "freshness": "pass",
+      "scope": "pass"
+    },
+    {
+      "checkout": "payments",
+      "head": "86f899230130f7f31deb8d0cb106cdd60ed9b452",
+      "files": 68,
+      "nodes": 289,
+      "edges": 534,
+      "freshness": "pass",
+      "scope": "pass"
+    },
+    {
+      "checkout": "pms",
+      "head": "edbeb75dd564fcaf3ae3b2920035c8d8e7aef00b",
+      "files": 68,
+      "nodes": 289,
+      "edges": 534,
+      "freshness": "pass",
+      "scope": "pass"
+    },
+    {
+      "checkout": "public-web",
+      "head": "e65d8177e1d63c28eb2b148ccc721f460ec03f06",
+      "files": 70,
+      "nodes": 295,
+      "edges": 545,
+      "freshness": "pass",
+      "scope": "pass"
+    },
+    {
+      "checkout": "qa",
+      "head": "d83353f91cdb569b552d4679eeb46eeead265d05",
+      "files": 69,
+      "nodes": 294,
+      "edges": 547,
+      "freshness": "pass",
+      "scope": "pass"
+    }
+  ],
+  "independent_review": "QA verified nine graph counts/scope, helper syntax and coordinator freshness; no blocker. Worker ignore-write documentation correction applied."
+}

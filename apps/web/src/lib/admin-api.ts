@@ -7,8 +7,10 @@ export type Hotel = {
 export type Session = { user: StaffUser | null; csrf_token: string };
 export type Member = { id: number; name: string; email: string; role: string };
 
+export type FieldErrors = Record<string, string[]>;
+
 export class ApiError extends Error {
-  constructor(message: string, public status: number) { super(message); }
+  constructor(message: string, public status: number, public fieldErrors: FieldErrors = {}, public code?: string) { super(message); }
 }
 
 export async function api<T>(path: string, method = "GET", data?: unknown): Promise<T> {
@@ -26,7 +28,7 @@ export async function api<T>(path: string, method = "GET", data?: unknown): Prom
   const result = await response.json().catch(() => ({}));
   if (!response.ok) {
     const messages = result.errors ? Object.values(result.errors).flat().join(" ") : result.message;
-    throw new ApiError(response.status === 401 ? "Your session has ended. Please sign in again." : messages || "We could not save your changes. Please try again.", response.status);
+    throw new ApiError(response.status === 401 ? "Your session has ended. Please sign in again." : messages || "We could not save your changes. Please try again.", response.status, result.errors || {}, typeof result.code === "string" ? result.code : undefined);
   }
   return result;
 }

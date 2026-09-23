@@ -1,0 +1,357 @@
+[
+  {
+    "title": "Nuwara Eliya",
+    "href": "https://niwadu.com/destinations/nuwara-eliya",
+    "kind": "hotel",
+    "cards": [
+      {
+        "title": "Sulanga Luxury Chalets",
+        "href": "https://niwadu.com/hotels/sulanga-83c3e2d1-0670-431f-98cc-e5e38bb57b5e",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/995281f950a5067082d40fe52b14b72f.jpg",
+        "image": "/reference/a1e6831f0f052e15.jpg",
+        "detail": null,
+        "captured_price": "LKR 150,000"
+      },
+      {
+        "title": "Clifton Manor",
+        "href": "https://niwadu.com/hotels/clifton-manor",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/d468a334e1d15758939eb4e39a2a5c90.jpg",
+        "image": "/reference/42ba251d4a3da8df.jpg",
+        "detail": null,
+        "captured_price": "LKR 80,000"
+      },
+      {
+        "title": "The Burrow",
+        "href": "https://niwadu.com/hotels/the-burrow",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/ce236b72f08145a2604602543e62b37a.jpg",
+        "image": "/reference/650120d30b913390.jpg",
+        "detail": null,
+        "captured_price": "LKR 56,000"
+      },
+      {
+        "title": "Del’s Haven",
+        "href": "https://niwadu.com/hotels/dels-haven",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e024699293c3d342729f745ad3bcce46.jpg",
+        "image": "/reference/10f9f3e120852e56.jpg",
+        "detail": null,
+        "captured_price": "LKR 50,000"
+      },
+      {
+        "title": "Ferncliff Bungalow",
+        "href": "https://niwadu.com/hotels/ferncliff-bungalow-2b9fe2aa-cbd3-4075-a216-e7999de04cea",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/8819539e05e9a35f577d03a6857ad447.png",
+        "image": "/reference/99d4f1bb0ee79c5c.png",
+        "detail": null,
+        "captured_price": "LKR 40,000"
+      },
+      {
+        "title": "The Edgware Cabana",
+        "href": "https://niwadu.com/hotels/the-edgware-cabana-59c09f82-bc55-4807-a19d-68fc87506ce9",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/d9d2740a774609602943889c3e021a1e.png",
+        "image": "/reference/e889ac13ce78c3b3.png",
+        "detail": null,
+        "captured_price": "LKR 39,500"
+      },
+      {
+        "title": "Araliya Green City",
+        "href": "https://niwadu.com/hotels/araliya-green-city-c9224794-ed08-4357-8881-82318d0d14ec",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/a2d24e3953c337672180fd2433c10294.jpg",
+        "image": "/reference/f7ccf3b75714953f.jpg",
+        "detail": null,
+        "captured_price": "LKR 37,500"
+      },
+      {
+        "title": "Black Pool Villa",
+        "href": "https://niwadu.com/hotels/black-pool-villa-68381f05-5e76-48e6-bbee-7547ead67ed0",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/991a074fd3ca4ccda26826161beab927.jpg",
+        "image": "/reference/c96b79cc0c449177.jpg",
+        "detail": null,
+        "captured_price": "LKR 35,000"
+      }
+    ]
+  },
+  {
+    "title": "Mirissa",
+    "href": "https://niwadu.com/destinations/mirissa",
+    "kind": "hotel",
+    "cards": [
+      {
+        "title": "Sri Sharavi Beach Villas & Spa",
+        "href": "https://niwadu.com/hotels/sri-sharavi-beach-villas-spa",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/289659a67995b6c0080efcb5cce1bf16.png",
+        "image": "/reference/80de07a54611e923.png",
+        "detail": null,
+        "captured_price": "LKR 105,682"
+      },
+      {
+        "title": "FireMoon Garden",
+        "href": "https://niwadu.com/hotels/firemoon-garden-c8071cbe-1730-4d28-9699-13bff0e9d0c3",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/9e2867f8df86c8742ceca71cfa057727.jpg",
+        "image": "/reference/91e4b65c2db99946.jpg",
+        "detail": null,
+        "captured_price": "LKR 50,000"
+      },
+      {
+        "title": "Lavendra Villa Mirissa",
+        "href": "https://niwadu.com/hotels/lavendra-villa-mirissa",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/368dd6b17273b75e96676221cd0ddf56.jpg",
+        "image": "/reference/381cdf83711da99e.jpg",
+        "detail": null,
+        "captured_price": "LKR 24,500"
+      },
+      {
+        "title": "Handagedara Resort",
+        "href": "https://niwadu.com/hotels/handagedara-resort-a0af9078-ab9f-4e5a-94bb-c9a9b3ab3548",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/6eac93751c49da604eae3e505f369638.png",
+        "image": "/reference/3e0a0b21d43e6338.png",
+        "detail": null,
+        "captured_price": "LKR 22,800"
+      },
+      {
+        "title": "Esprit d'ici Hotel",
+        "href": "https://niwadu.com/hotels/esprit-dici-hotel-6a782f49-94dd-48f2-a242-5a22b434cd3e",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e1e44cfffa7f8c4c996f6148577ef0e4.png",
+        "image": "/reference/8ccd40744ec21f24.png",
+        "detail": null,
+        "captured_price": "LKR 16,000"
+      },
+      {
+        "title": "Green Hills Mirissa",
+        "href": "https://niwadu.com/hotels/green-hill-13101d8c-88c3-4dad-afa8-ef31a58e44cc",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/0ef9b177c286c95373b0919522e15099.jpg",
+        "image": "/reference/0360e1e4ac9e3d32.jpg",
+        "detail": null,
+        "captured_price": "LKR 15,500"
+      },
+      {
+        "title": "One World Mirissa",
+        "href": "https://niwadu.com/hotels/one-world-mirissa-a5e2bf1d-1e44-45b6-bd31-681aefe37d5c",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/865d53547dcefb78ecaf96db966e6823.jpg",
+        "image": "/reference/22e3ca5cda2478d8.jpg",
+        "detail": null,
+        "captured_price": "LKR 13,500"
+      },
+      {
+        "title": "Randiya Sea View",
+        "href": "https://niwadu.com/hotels/randiya-sea-view-33c2e0e9-b8e1-49e5-b49f-fbfe18c7e838",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/3f9659a0f4a6e393d058e9ef7cb7e272.jpg",
+        "image": "/reference/b448be5fed7384e0.jpg",
+        "detail": null,
+        "captured_price": "LKR 13,500"
+      }
+    ]
+  },
+  {
+    "title": "Kandy",
+    "href": "https://niwadu.com/destinations/kandy",
+    "kind": "hotel",
+    "cards": [
+      {
+        "title": "The Kandy House",
+        "href": "https://niwadu.com/hotels/the-kandy-house-c0e1194d-cc21-446c-a1cb-ec98a3b7e14f",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f7d02634a311d388a50aa2e7a53bfe6d.jpg",
+        "image": "/reference/1b60f8f46514949a.jpg",
+        "detail": null,
+        "captured_price": "LKR 148,000"
+      },
+      {
+        "title": "The Elephant Stables",
+        "href": "https://niwadu.com/hotels/the-elephant-stables-716f66df-3b94-4c6e-8f62-1ea83be105ba",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/a4a426c3f6d9d2183c908ff38e53ec96.jpg",
+        "image": "/reference/87cadf9763e26d56.jpg",
+        "detail": null,
+        "captured_price": "LKR 107,500"
+      },
+      {
+        "title": "Hotel Travellers Nest Kandy",
+        "href": "https://niwadu.com/hotels/hotel-travellers-nest-kandy",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f925cb8aa2df2a7f8b61937a3d4b6345.jpg",
+        "image": "/reference/db70f95b2dc8ac31.jpg",
+        "detail": null,
+        "captured_price": "LKR 95,494"
+      },
+      {
+        "title": "H2O Holiday Bungalow",
+        "href": "https://niwadu.com/hotels/h20-holiday-bungalow",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/8731aaa0f2201801514711487d0f1ac7.jpg",
+        "image": "/reference/6cc570aff9426643.jpg",
+        "detail": null,
+        "captured_price": "LKR 50,000"
+      },
+      {
+        "title": "Hanthana Nature Cottage",
+        "href": "https://niwadu.com/hotels/hanthana-nature-cottage",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/50e6f23948e2a50597062d80c82ac1a8.jpg",
+        "image": "/reference/f0d290c029716b81.jpg",
+        "detail": null,
+        "captured_price": "LKR 45,000"
+      },
+      {
+        "title": "Simpson's Forest Hotel",
+        "href": "https://niwadu.com/hotels/simpsons-forest-hotel",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/8fc637227cac48f78c3cd1e21ff57db7.jpg",
+        "image": "/reference/6447af44ded14415.jpg",
+        "detail": null,
+        "captured_price": "LKR 38,000"
+      },
+      {
+        "title": "Back of Beyond - The Weir House",
+        "href": "https://niwadu.com/hotels/the-weir-house",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/9822d7ff344720f2cb64fa6c7bf65059.jpg",
+        "image": "/reference/45a95cea004ff442.jpg",
+        "detail": null,
+        "captured_price": "LKR 36,000"
+      },
+      {
+        "title": "Lavender Holiday Resort",
+        "href": "https://niwadu.com/hotels/lavender-holiday-resort",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f83dc69ea49d4929ab3e20bce6e788a1.jpg",
+        "image": "/reference/969f75b2b2d5e9a1.jpg",
+        "detail": null,
+        "captured_price": "LKR 35,000"
+      }
+    ]
+  },
+  {
+    "title": "Travel Experiences",
+    "href": "https://niwadu.com/packages",
+    "kind": "experience",
+    "cards": [
+      {
+        "title": "Coastal Escapes Sri Lanka",
+        "href": "https://niwadu.com/packages/hikkaduwa-and-unawatuna-delights",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/7a82ba1a8e6d35323f04c074579dc018.jpg",
+        "image": "/reference/afd4d5cccb4fe47d.jpg",
+        "detail": "3 Nights 4 Days",
+        "captured_price": null
+      },
+      {
+        "title": "Visit Sri Lanka 5 Days 4 Nights Tour Package",
+        "href": "https://niwadu.com/packages/mirissa-and-tangalle-getaway",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/e210e5896906990c14ed84a9f447b7e5.jpg",
+        "image": "/reference/1344beba0682a7a8.jpg",
+        "detail": "4 Nights 5 Days",
+        "captured_price": null
+      },
+      {
+        "title": "Sri Lanka Tourism 4 Days 3 Nights Tour Package",
+        "href": "https://niwadu.com/packages/cultural-triangle-immersion",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/add5b4bbd176df8acf0fda7e74335147.jpg",
+        "image": "/reference/b98aec9aff1104e2.jpg",
+        "detail": "3 Nights 4 Days",
+        "captured_price": null
+      },
+      {
+        "title": "Majestic Cultural Triangle",
+        "href": "https://niwadu.com/packages/majestic-cultural-triangle-9c903ea5-48c7-46e5-b65e-5049d1b0f4e4",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/a63e9e2e20601b14e8fa838fbec34883.jpg",
+        "image": "/reference/978a93f6bcd14a9e.jpg",
+        "detail": "3 Nights 4 Days",
+        "captured_price": null
+      },
+      {
+        "title": "Ancient Treasures Expedition",
+        "href": "https://niwadu.com/packages/ancient-treasures-expedition-985d3ff8-3cae-4269-b309-46eeb5102ff3",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/a183c6586aac52c725a5574166245d99.jpg",
+        "image": "/reference/e9b491e810d4c912.jpg",
+        "detail": "3 Nights 4 Days",
+        "captured_price": null
+      },
+      {
+        "title": "Cultural Heritage Trail",
+        "href": "https://niwadu.com/packages/cultural-heritage-trail-f7c671ce-e917-4a22-a7ae-3aa2a65fcf6e",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/3ee4ff2d7673d1c09a6b97ffb63d41aa.jpg",
+        "image": "/reference/1f4b9d64183269f9.jpg",
+        "detail": "3 Nights 4 Days",
+        "captured_price": null
+      },
+      {
+        "title": "Sacred Sites Discovery",
+        "href": "https://niwadu.com/packages/sacred-sites-discovery-fc757c52-6cb2-4e4d-8a9d-76398992f278",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/78ae185f051d67a6927f31519c415e33.jpg",
+        "image": "/reference/a588f41c7645af02.jpg",
+        "detail": "3 Nights 4 Days",
+        "captured_price": null
+      },
+      {
+        "title": "Travel Galle Sri Lanka 3 Days 2 Nights Tour Package",
+        "href": "https://niwadu.com/packages/unawatuna-and-galle-exploration",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/8f1de78e08a0466ddf2e33e77057bacf.jpg",
+        "image": "/reference/fcbcbc5a1e4a6dd9.jpg",
+        "detail": "2 Nights 3 Days",
+        "captured_price": null
+      },
+      {
+        "title": "Explore Arugam Bay Surfing Adventure Tour Package",
+        "href": "https://niwadu.com/packages/arugam-bay-surfing-adventure",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/de1b9e122963fc962c824459248027f1.jpg",
+        "image": "/reference/dc18012c33727565.jpg",
+        "detail": "3 Nights 4 Days",
+        "captured_price": null
+      }
+    ]
+  },
+  {
+    "title": "Top Destinations",
+    "href": "https://niwadu.com/destinations",
+    "kind": "destination",
+    "cards": [
+      {
+        "title": "Negombo",
+        "href": "https://niwadu.com/destinations/Negombo",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/9792848a3841a2ba1f453698af8c7ef9.jpg",
+        "image": "/reference/80cb8ae74d0e74a6.jpg",
+        "detail": "Negombo is a major city in Sri Lanka, situated on the west coast and at the mouth of the Negombo Lagoon, in Western Province.",
+        "captured_price": null
+      },
+      {
+        "title": "Nuwara Eliya",
+        "href": "https://niwadu.com/destinations/nuwara-eliya",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/2e18c48d89f5e7c7851f2c8638bfbfa2.jpg",
+        "image": "/reference/42c41c3a5c86c5a1.jpg",
+        "detail": "Nuwara Eliya is a city in the hilly region of the central province of Sri Lanka. The city is known for its picturesque landscape.",
+        "captured_price": null
+      },
+      {
+        "title": "Mirissa",
+        "href": "https://niwadu.com/destinations/mirissa",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/307c0ddcf8cac004fbc9ba7a39307889.jpg",
+        "image": "/reference/247251805a109853.jpg",
+        "detail": "Crack open a coconut, slip into a hammock, and rock gently in the breeze, allowing the hours, days and even weeks to slip calmly by.",
+        "captured_price": null
+      },
+      {
+        "title": "Meemure",
+        "href": "https://niwadu.com/destinations/meemure",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/4d80a287fdfa527c476029a5723fdd93.jpg",
+        "image": "/reference/9bfd6180b0acce06.jpg",
+        "detail": "Meemure is a traditional village is located in the eastern slopes of dumbaravanapetē (Knuckles)mountain range. the village is difficult",
+        "captured_price": null
+      },
+      {
+        "title": "Kataragama",
+        "href": "https://niwadu.com/destinations/kataragama",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/aeac377535287a518ae88333640ae583.jpg",
+        "image": "/reference/f53a538dbb91c829.jpg",
+        "detail": "Kataragama is the most important pilgrimage site in Sri Lanka; a holy place for Buddhists, Muslims, Hindus and Veddah people.",
+        "captured_price": null
+      },
+      {
+        "title": "Unawatuna",
+        "href": "https://niwadu.com/destinations/unawatuna",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/2ca01fa5364dd188411420e86ce330d1.jpg",
+        "image": "/reference/91b0c4a92975f94d.jpg",
+        "detail": "Unawatuna is a coastal city in the Galle district of Sri Lanka, and its a major tourist attraction in Sri Lanka and known for its beach and corals.",
+        "captured_price": null
+      },
+      {
+        "title": "Galle",
+        "href": "https://niwadu.com/destinations/galle",
+        "image_source": "https://sysadmin.niwadu.com/storage/uploads/images/3ec377d361a60829b17a57b3f10011d8.jpg",
+        "image": "/reference/a0d79987ad6af28f.jpg",
+        "detail": "\"Galle is a prime city in Sri Lanka, located at the southwestern tip. Galle is the provincial capital and largest city in Southern Province\"",
+        "captured_price": null
+      }
+    ]
+  }
+]

@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: { qualities: [90] },
   async rewrites() {
     return [{
       source: "/api/v1/:path*",

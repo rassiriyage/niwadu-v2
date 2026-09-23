@@ -1,0 +1,366 @@
+[
+  {
+    "capturedAt": "2026-09-23T15:40:40.530Z",
+    "client": 1425,
+    "firstCard": {
+      "bottom": 568.625,
+      "height": 210.828125,
+      "left": 40,
+      "right": 250.828125,
+      "top": 357.796875,
+      "width": 210.828125,
+      "x": 40,
+      "y": 357.796875
+    },
+    "fonts": "loaded",
+    "header": {
+      "bottom": 245,
+      "height": 245,
+      "left": 0,
+      "right": 1425,
+      "top": 0,
+      "width": 1425,
+      "x": 0,
+      "y": 0
+    },
+    "height": 1000,
+    "loadedImages": 42,
+    "scroll": 1425,
+    "search": [
+      {
+        "class": "mobile-search",
+        "rect": {
+          "bottom": 0,
+          "height": 0,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "width": 0,
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "class": "desktop-search",
+        "rect": {
+          "bottom": 183,
+          "height": 68,
+          "left": 280,
+          "right": 1160,
+          "top": 115,
+          "width": 880,
+          "x": 280,
+          "y": 115
+        }
+      }
+    ],
+    "sections": [
+      {
+        "font": "500 32px / 44.8px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Nuwara Eliya",
+        "height": 338.40625,
+        "top": 293
+      },
+      {
+        "font": "500 32px / 44.8px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Mirissa",
+        "height": 338.40625,
+        "top": 671.40625
+      },
+      {
+        "font": "500 32px / 44.8px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Kandy",
+        "height": 338.40625,
+        "top": 1049.8125
+      },
+      {
+        "font": "500 32px / 44.8px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Travel Experiences",
+        "height": 459.96875,
+        "top": 1428.21875
+      },
+      {
+        "font": "500 32px / 44.8px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Top Destinations",
+        "height": 458.921875,
+        "top": 1928.1875
+      }
+    ],
+    "totalImages": 46,
+    "unloadedVisible": 0,
+    "width": 1440
+  },
+  {
+    "capturedAt": "2026-09-23T15:40:44.519Z",
+    "client": 1009,
+    "firstCard": {
+      "bottom": 653.578125,
+      "height": 298.984375,
+      "left": 40,
+      "right": 338.984375,
+      "top": 354.59375,
+      "width": 298.984375,
+      "x": 40,
+      "y": 354.59375
+    },
+    "fonts": "loaded",
+    "header": {
+      "bottom": 245,
+      "height": 245,
+      "left": 0,
+      "right": 1009,
+      "top": 0,
+      "width": 1009,
+      "x": 0,
+      "y": 0
+    },
+    "height": 768,
+    "loadedImages": 46,
+    "scroll": 1009,
+    "search": [
+      {
+        "class": "mobile-search",
+        "rect": {
+          "bottom": 0,
+          "height": 0,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "width": 0,
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "class": "desktop-search",
+        "rect": {
+          "bottom": 183,
+          "height": 68,
+          "left": 72,
+          "right": 952,
+          "top": 115,
+          "width": 880,
+          "x": 72,
+          "y": 115
+        }
+      }
+    ],
+    "sections": [
+      {
+        "font": "500 29.7147px / 41.6006px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Nuwara Eliya",
+        "height": 423.359375,
+        "top": 293
+      },
+      {
+        "font": "500 29.7147px / 41.6006px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Mirissa",
+        "height": 423.359375,
+        "top": 756.359375
+      },
+      {
+        "font": "500 29.7147px / 41.6006px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Kandy",
+        "height": 423.359375,
+        "top": 1219.71875
+      },
+      {
+        "font": "500 29.7147px / 41.6006px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Travel Experiences",
+        "height": 331.546875,
+        "top": 1683.078125
+      },
+      {
+        "font": "500 29.7147px / 41.6006px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Top Destinations",
+        "height": 521.5625,
+        "top": 2054.625
+      }
+    ],
+    "totalImages": 46,
+    "unloadedVisible": 0,
+    "width": 1024
+  },
+  {
+    "capturedAt": "2026-09-23T15:40:44.915Z",
+    "client": 753,
+    "firstCard": {
+      "bottom": 531.6875,
+      "height": 344.5,
+      "left": 24,
+      "right": 368.5,
+      "top": 187.1875,
+      "width": 344.5,
+      "x": 24,
+      "y": 187.1875
+    },
+    "fonts": "loaded",
+    "header": {
+      "bottom": 80,
+      "height": 80,
+      "left": 0,
+      "right": 753,
+      "top": 0,
+      "width": 753,
+      "x": 0,
+      "y": 0
+    },
+    "height": 1024,
+    "loadedImages": 46,
+    "scroll": 753,
+    "search": [
+      {
+        "class": "mobile-search",
+        "rect": {
+          "bottom": 64,
+          "height": 48,
+          "left": 489,
+          "right": 689,
+          "top": 16,
+          "width": 200,
+          "x": 489,
+          "y": 16
+        }
+      },
+      {
+        "class": "desktop-search",
+        "rect": {
+          "bottom": 0,
+          "height": 0,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "width": 0,
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sections": [
+      {
+        "font": "500 28px / 39.2px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Nuwara Eliya",
+        "height": 466.46875,
+        "top": 128
+      },
+      {
+        "font": "500 28px / 39.2px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Mirissa",
+        "height": 466.46875,
+        "top": 634.46875
+      },
+      {
+        "font": "500 28px / 39.2px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Kandy",
+        "height": 466.46875,
+        "top": 1140.9375
+      },
+      {
+        "font": "500 28px / 39.2px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Travel Experiences",
+        "height": 370.234375,
+        "top": 1647.40625
+      },
+      {
+        "font": "500 28px / 39.2px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Top Destinations",
+        "height": 589.1875,
+        "top": 2057.640625
+      }
+    ],
+    "totalImages": 46,
+    "unloadedVisible": 0,
+    "width": 768
+  },
+  {
+    "capturedAt": "2026-09-23T15:40:45.500Z",
+    "client": 375,
+    "firstCard": {
+      "bottom": 505.1875,
+      "height": 318,
+      "left": 16,
+      "right": 334,
+      "top": 187.1875,
+      "width": 318,
+      "x": 16,
+      "y": 187.1875
+    },
+    "fonts": "loaded",
+    "header": {
+      "bottom": 80,
+      "height": 80,
+      "left": 0,
+      "right": 375,
+      "top": 0,
+      "width": 375,
+      "x": 0,
+      "y": 0
+    },
+    "height": 844,
+    "loadedImages": 46,
+    "scroll": 375,
+    "search": [
+      {
+        "class": "mobile-search",
+        "rect": {
+          "bottom": 64,
+          "height": 48,
+          "left": 123,
+          "right": 323,
+          "top": 16,
+          "width": 200,
+          "x": 123,
+          "y": 16
+        }
+      },
+      {
+        "class": "desktop-search",
+        "rect": {
+          "bottom": 0,
+          "height": 0,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "width": 0,
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sections": [
+      {
+        "font": "500 28px / 39.2px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Nuwara Eliya",
+        "height": 439.96875,
+        "top": 128
+      },
+      {
+        "font": "500 28px / 39.2px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Mirissa",
+        "height": 439.96875,
+        "top": 607.96875
+      },
+      {
+        "font": "500 28px / 39.2px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Kandy",
+        "height": 439.96875,
+        "top": 1087.9375
+      },
+      {
+        "font": "500 28px / 39.2px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Travel Experiences",
+        "height": 346.3125,
+        "top": 1567.90625
+      },
+      {
+        "font": "500 28px / 39.2px \"Niwadu Inter Tight\", sans-serif",
+        "heading": "Top Destinations",
+        "height": 548.40625,
+        "top": 1954.21875
+      }
+    ],
+    "totalImages": 46,
+    "unloadedVisible": 0,
+    "width": 390
+  }
+]

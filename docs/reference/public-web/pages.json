@@ -1,0 +1,2994 @@
+[
+  {
+    "url": "https://niwadu.com/",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "23c8f4052691253689418db466f0e7e77628939254638c5e86ff4c6553a78a3a",
+    "title": [
+      "Discover Sri Lanka with Niwadu.com \u2014 Hotels, Destinations, Travel Experiences & Activities"
+    ],
+    "headings": [
+      {
+        "level": "2",
+        "text": "Select Currency"
+      },
+      {
+        "level": "2",
+        "text": "Nuwara Eliya"
+      },
+      {
+        "level": "3",
+        "text": "Sulanga Luxury Chalets"
+      },
+      {
+        "level": "3",
+        "text": "Clifton Manor"
+      },
+      {
+        "level": "3",
+        "text": "The Burrow"
+      },
+      {
+        "level": "3",
+        "text": "Del\u2019s Haven"
+      },
+      {
+        "level": "3",
+        "text": "Ferncliff Bungalow"
+      },
+      {
+        "level": "3",
+        "text": "The Edgware Cabana"
+      },
+      {
+        "level": "3",
+        "text": "Araliya Green City"
+      },
+      {
+        "level": "3",
+        "text": "Black Pool Villa"
+      },
+      {
+        "level": "2",
+        "text": "Mirissa"
+      },
+      {
+        "level": "3",
+        "text": "Sri Sharavi Beach Villas & Spa"
+      },
+      {
+        "level": "3",
+        "text": "FireMoon Garden"
+      },
+      {
+        "level": "3",
+        "text": "Lavendra Villa Mirissa"
+      },
+      {
+        "level": "3",
+        "text": "Handagedara Resort"
+      },
+      {
+        "level": "3",
+        "text": "Esprit d'ici Hotel"
+      },
+      {
+        "level": "3",
+        "text": "Green Hills Mirissa"
+      },
+      {
+        "level": "3",
+        "text": "One World Mirissa"
+      },
+      {
+        "level": "3",
+        "text": "Randiya Sea View"
+      },
+      {
+        "level": "2",
+        "text": "Kandy"
+      },
+      {
+        "level": "3",
+        "text": "The Kandy House"
+      },
+      {
+        "level": "3",
+        "text": "The Elephant Stables"
+      },
+      {
+        "level": "3",
+        "text": "Hotel Travellers Nest Kandy"
+      },
+      {
+        "level": "3",
+        "text": "H2O Holiday Bungalow"
+      },
+      {
+        "level": "3",
+        "text": "Hanthana Nature Cottage"
+      },
+      {
+        "level": "3",
+        "text": "Simpson's Forest Hotel"
+      },
+      {
+        "level": "3",
+        "text": "Back of Beyond - The Weir House"
+      },
+      {
+        "level": "3",
+        "text": "Lavender Holiday Resort"
+      },
+      {
+        "level": "2",
+        "text": "Travel Experiences"
+      },
+      {
+        "level": "3",
+        "text": "Coastal Escapes Sri Lanka"
+      },
+      {
+        "level": "3",
+        "text": "Visit Sri Lanka 5 Days 4 Nights Tour Package"
+      },
+      {
+        "level": "3",
+        "text": "Sri Lanka Tourism 4 Days 3 Nights Tour Package"
+      },
+      {
+        "level": "3",
+        "text": "Majestic Cultural Triangle"
+      },
+      {
+        "level": "3",
+        "text": "Ancient Treasures Expedition"
+      },
+      {
+        "level": "3",
+        "text": "Cultural Heritage Trail"
+      },
+      {
+        "level": "3",
+        "text": "Sacred Sites Discovery"
+      },
+      {
+        "level": "3",
+        "text": "Travel Galle Sri Lanka 3 Days 2 Nights Tour Package"
+      },
+      {
+        "level": "3",
+        "text": "Explore Arugam Bay Surfing Adventure Tour Package"
+      },
+      {
+        "level": "2",
+        "text": "Top Destinations"
+      },
+      {
+        "level": "3",
+        "text": "Negombo"
+      },
+      {
+        "level": "3",
+        "text": "Nuwara Eliya"
+      },
+      {
+        "level": "3",
+        "text": "Mirissa"
+      },
+      {
+        "level": "3",
+        "text": "Meemure"
+      },
+      {
+        "level": "3",
+        "text": "Kataragama"
+      },
+      {
+        "level": "3",
+        "text": "Unawatuna"
+      },
+      {
+        "level": "3",
+        "text": "Galle"
+      },
+      {
+        "level": "3",
+        "text": "Phi Phi Islands Day Tour from Phuket"
+      }
+    ],
+    "metadata": [
+      {
+        "name": "description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:title",
+        "content": "Discover Sri Lanka with Niwadu.com \u2014 Hotels, Destinations, Travel Experiences & Activities"
+      },
+      {
+        "property": "og:description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:image",
+        "content": "https://niwadu.com/images/niwadu-banner.jpeg"
+      }
+    ],
+    "canonical": [],
+    "forms": [
+      {
+        "action": "https://niwadu.com/hotels",
+        "method": "get",
+        "id": "searchForm"
+      }
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap",
+      "https://niwadu.com/css/app.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/main.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/vendors.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/assets/css/sptoast.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/vendor/glidejs/glide.core.min.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/build/assets/styles.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+      "https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css",
+      "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+      "https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css"
+    ],
+    "images": [
+      {
+        "src": "https://www.facebook.com/tr?id=239039793801320&ev=PageView&noscript=1"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/Logo.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/995281f950a5067082d40fe52b14b72f.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/d468a334e1d15758939eb4e39a2a5c90.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/ce236b72f08145a2604602543e62b37a.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e024699293c3d342729f745ad3bcce46.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/8819539e05e9a35f577d03a6857ad447.png",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/d9d2740a774609602943889c3e021a1e.png",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/a2d24e3953c337672180fd2433c10294.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/991a074fd3ca4ccda26826161beab927.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/289659a67995b6c0080efcb5cce1bf16.png",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/9e2867f8df86c8742ceca71cfa057727.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/368dd6b17273b75e96676221cd0ddf56.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/6eac93751c49da604eae3e505f369638.png",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e1e44cfffa7f8c4c996f6148577ef0e4.png",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/0ef9b177c286c95373b0919522e15099.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/865d53547dcefb78ecaf96db966e6823.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/3f9659a0f4a6e393d058e9ef7cb7e272.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f7d02634a311d388a50aa2e7a53bfe6d.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/a4a426c3f6d9d2183c908ff38e53ec96.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f925cb8aa2df2a7f8b61937a3d4b6345.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/8731aaa0f2201801514711487d0f1ac7.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/50e6f23948e2a50597062d80c82ac1a8.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/8fc637227cac48f78c3cd1e21ff57db7.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/9822d7ff344720f2cb64fa6c7bf65059.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f83dc69ea49d4929ab3e20bce6e788a1.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/7a82ba1a8e6d35323f04c074579dc018.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/e210e5896906990c14ed84a9f447b7e5.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/add5b4bbd176df8acf0fda7e74335147.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/a63e9e2e20601b14e8fa838fbec34883.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/a183c6586aac52c725a5574166245d99.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/3ee4ff2d7673d1c09a6b97ffb63d41aa.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/78ae185f051d67a6927f31519c415e33.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/8f1de78e08a0466ddf2e33e77057bacf.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/de1b9e122963fc962c824459248027f1.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/9792848a3841a2ba1f453698af8c7ef9.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/2e18c48d89f5e7c7851f2c8638bfbfa2.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/307c0ddcf8cac004fbc9ba7a39307889.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/4d80a287fdfa527c476029a5723fdd93.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/aeac377535287a518ae88333640ae583.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/2ca01fa5364dd188411420e86ce330d1.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/3ec377d361a60829b17a57b3f10011d8.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://niwadu.com/images/logo-black.svg",
+        "alt": "Niwadu"
+      }
+    ],
+    "structured_data_blocks": 0
+  },
+  {
+    "url": "https://niwadu.com/destinations",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "2b5565de59bf311313be3adc58bd13c35dcc6d44f525770279322528e74c85b8",
+    "title": [
+      "Niwadu Deals | Destinations"
+    ],
+    "headings": [
+      {
+        "level": "2",
+        "text": "Select Currency"
+      },
+      {
+        "level": "1",
+        "text": "Top Destinations in Sri Lanka"
+      },
+      {
+        "level": "3",
+        "text": "Negombo"
+      },
+      {
+        "level": "3",
+        "text": "Nuwara Eliya"
+      },
+      {
+        "level": "3",
+        "text": "Mirissa"
+      },
+      {
+        "level": "3",
+        "text": "Meemure"
+      },
+      {
+        "level": "3",
+        "text": "Kataragama"
+      },
+      {
+        "level": "3",
+        "text": "Unawatuna"
+      },
+      {
+        "level": "3",
+        "text": "Galle"
+      },
+      {
+        "level": "3",
+        "text": "Sigiriya"
+      },
+      {
+        "level": "3",
+        "text": "Dambulla"
+      },
+      {
+        "level": "3",
+        "text": "Beruwala"
+      },
+      {
+        "level": "3",
+        "text": "Yala"
+      },
+      {
+        "level": "3",
+        "text": "Ahangama"
+      },
+      {
+        "level": "3",
+        "text": "Kalutara"
+      },
+      {
+        "level": "3",
+        "text": "Wadduwa"
+      },
+      {
+        "level": "3",
+        "text": "Pasikuda"
+      },
+      {
+        "level": "3",
+        "text": "Kosgoda"
+      },
+      {
+        "level": "3",
+        "text": "Kandy"
+      },
+      {
+        "level": "3",
+        "text": "Matara"
+      },
+      {
+        "level": "3",
+        "text": "Waskaduwa"
+      },
+      {
+        "level": "3",
+        "text": "Hikkaduwa"
+      },
+      {
+        "level": "3",
+        "text": "Balapitiya"
+      },
+      {
+        "level": "3",
+        "text": "Haputale"
+      },
+      {
+        "level": "3",
+        "text": "Chilaw"
+      },
+      {
+        "level": "3",
+        "text": "Anuradhapura"
+      },
+      {
+        "level": "3",
+        "text": "Weligama"
+      },
+      {
+        "level": "3",
+        "text": "Phi Phi Islands Day Tour from Phuket"
+      }
+    ],
+    "metadata": [
+      {
+        "name": "description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:title",
+        "content": "Sri Lanka Destinations | Niwadu"
+      },
+      {
+        "property": "og:description",
+        "content": "Discover the best places to visit in Sri Lanka \u2014 beaches, cities, and scenic hills. Find tips, activities, and plan your unforgettable trip."
+      },
+      {
+        "property": "og:image",
+        "content": "https://niwadu.com/images/destination-banner.jpeg"
+      }
+    ],
+    "canonical": [],
+    "forms": [
+      {
+        "action": "https://niwadu.com/hotels",
+        "method": "get",
+        "id": "searchForm"
+      }
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap",
+      "https://niwadu.com/css/app.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/main.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/vendors.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/assets/css/sptoast.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/vendor/glidejs/glide.core.min.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/build/assets/styles.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+      "https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css",
+      "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+      "https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css"
+    ],
+    "images": [
+      {
+        "src": "https://www.facebook.com/tr?id=239039793801320&ev=PageView&noscript=1"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/Logo.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/assets/images/bg-remove-loader.gif",
+        "alt": "Loading..."
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/9792848a3841a2ba1f453698af8c7ef9.jpg",
+        "alt": "Negombo",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/2e18c48d89f5e7c7851f2c8638bfbfa2.jpg",
+        "alt": "Nuwara Eliya",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/307c0ddcf8cac004fbc9ba7a39307889.jpg",
+        "alt": "Mirissa",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/4d80a287fdfa527c476029a5723fdd93.jpg",
+        "alt": "Meemure",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/aeac377535287a518ae88333640ae583.jpg",
+        "alt": "Kataragama",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/2ca01fa5364dd188411420e86ce330d1.jpg",
+        "alt": "Unawatuna",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/3ec377d361a60829b17a57b3f10011d8.jpg",
+        "alt": "Galle",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/407a0c86f19220a5b06041209a4a393b.jpg",
+        "alt": "Sigiriya",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/886aca91d5bba562aaea733a4e78c7ee.jpg",
+        "alt": "Dambulla",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/73ed7d40ff01ee511e559c91e6339f92.jpg",
+        "alt": "Beruwala",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/903060ac1b28a0e144b453b8ba72ec59.jpg",
+        "alt": "Yala",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/ac2c344c867d31d3428bfc6b284dc084.jpg",
+        "alt": "Ahangama",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/d602838567a55140aa90e70721398f4a.jpg",
+        "alt": "Kalutara",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/4abf29edca11b11501ea41516bc3a194.jpg",
+        "alt": "Wadduwa",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/7e89eb731b496cb0858253d8317082a6.jpg",
+        "alt": "Pasikuda",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/c2f796743829313da70e42684d7f8748.jpg",
+        "alt": "Kosgoda",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/b83af22fa3702a6e02e8823809d3048d.jpg",
+        "alt": "Kandy",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/1b25d9dd4cae81d689e3dbb65829752b.jpg",
+        "alt": "Matara",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/4bef57caf5985761997b64763efc0d58.jpg",
+        "alt": "Waskaduwa",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e7ddc366b77049e2874cb8c5e7618082.jpg",
+        "alt": "Hikkaduwa",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/9db89e386ef543d5cd8e3cb1ffa5aebb.jpg",
+        "alt": "Balapitiya",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f0e760381d165e92f62f3721dca4d1f0.jpg",
+        "alt": "Haputale",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e94a2a30196d099da2cd5fb9c092d70c.jpg",
+        "alt": "Chilaw",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/6d3292a33624ae663b954d134097e88f.jpg",
+        "alt": "Anuradhapura",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/ce9be764411635829fb31190729269f8.jpg",
+        "alt": "Weligama",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://niwadu.com/images/logo-black.svg",
+        "alt": "Niwadu"
+      }
+    ],
+    "structured_data_blocks": 0
+  },
+  {
+    "url": "https://niwadu.com/destinations/Negombo",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "1a0991082ee40522788d0afa005bf5830f7f0d3487e547c08b79ef84af0454a5",
+    "title": [
+      "Negombo"
+    ],
+    "headings": [
+      {
+        "level": "2",
+        "text": "Select Currency"
+      },
+      {
+        "level": "1",
+        "text": "Negombo"
+      },
+      {
+        "level": "1",
+        "text": "Hotels"
+      },
+      {
+        "level": "3",
+        "text": "Belmont Boutique Hotel"
+      },
+      {
+        "level": "3",
+        "text": "Amaluna Resort"
+      },
+      {
+        "level": "3",
+        "text": "Sea Horse Hotel and Spa"
+      },
+      {
+        "level": "3",
+        "text": "Negombo The Nature Villa and Cabanas"
+      },
+      {
+        "level": "3",
+        "text": "Lake View Resort"
+      },
+      {
+        "level": "3",
+        "text": "Club Hotel Dolphin"
+      },
+      {
+        "level": "3",
+        "text": "J Leaf By Blue Bird"
+      },
+      {
+        "level": "3",
+        "text": "Maple Village"
+      },
+      {
+        "level": "3",
+        "text": "Amora Lagoon Hotel"
+      },
+      {
+        "level": "3",
+        "text": "Green Ayurvedic Beach Resort"
+      },
+      {
+        "level": "3",
+        "text": "Golden Star Beach Hotel"
+      },
+      {
+        "level": "3",
+        "text": "Lioni Holidays Villa"
+      },
+      {
+        "level": "3",
+        "text": "Ocean View Tourist Negombo"
+      },
+      {
+        "level": "3",
+        "text": "Steps Garden Resort"
+      },
+      {
+        "level": "3",
+        "text": "8 Plus Motels"
+      },
+      {
+        "level": "3",
+        "text": "Blue Elephant Boutique Hotel"
+      },
+      {
+        "level": "3",
+        "text": "Negombo New Queen's Palace"
+      },
+      {
+        "level": "3",
+        "text": "The Barns & Villas"
+      },
+      {
+        "level": "3",
+        "text": "Hotel Magdalina Lagoon"
+      },
+      {
+        "level": "3",
+        "text": "Sea Beach Resort"
+      },
+      {
+        "level": "3",
+        "text": "Olu Villa Private Cabana"
+      },
+      {
+        "level": "3",
+        "text": "Phi Phi Islands Day Tour from Phuket"
+      }
+    ],
+    "metadata": [
+      {
+        "name": "description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:title",
+        "content": "Best Hotels in Negombo"
+      },
+      {
+        "property": "og:description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:image",
+        "content": "https://niwadu.com/images/niwadu-banner.jpeg"
+      }
+    ],
+    "canonical": [],
+    "forms": [
+      {
+        "action": "https://niwadu.com/hotels",
+        "method": "get",
+        "id": "searchForm"
+      }
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap",
+      "https://niwadu.com/css/app.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/main.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/vendors.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/assets/css/sptoast.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/vendor/glidejs/glide.core.min.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/build/assets/styles.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+      "https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css",
+      "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+      "https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css"
+    ],
+    "images": [
+      {
+        "src": "https://www.facebook.com/tr?id=239039793801320&ev=PageView&noscript=1"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/Logo.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/9792848a3841a2ba1f453698af8c7ef9.jpg",
+        "alt": "Negombo"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/ba32938fcb8658536d13b01feada7aa1.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/618ab3b6edeef96b05e8be7f4fb12b21.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/027816bafe1b3b08a10c1116eb087c8a.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/d65e01cb8aaf51822be842f8c68c7027.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/bfd0996647e3228ccf15f142ef477b75.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e5a8cfd4028d802f92208d58bcd68649.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/ce9fe2aeb600be3e0d394a9b607dd6ce.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/00006bc03f9b1901c99030872cdd1887.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/0cbaeb24eb871617461785853361aff6.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/b491112d4ddc0eaddf74bd1340271197.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/9a41cbd2a938615015a12b4a7096b858.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/3423f5f63fe7ce7d7039f8a1884960c4.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/45db180d56afef5a8ea96eaa60eece14.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/3591c945fea391cf59c78969efdfb6e8.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/c925873bf2168109ed18231012415ba5.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/ca2d4a44a5e384b5f9dd84377510b1d4.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/5fe37427b655b03000ad5969f5d684a6.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/fbe9f8c48031559c0524ff0eaeaa3743.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/83411712f8e83c26aa0df46ee91c6daa.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e4f2dc0a6891a4892245d3041b8e4dca.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/887c7a72e52be16ba92170e66864c139.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://niwadu.com/images/logo-black.svg",
+        "alt": "Niwadu"
+      }
+    ],
+    "structured_data_blocks": 0
+  },
+  {
+    "url": "https://niwadu.com/destinations/nuwara-eliya",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "72da03dca111d79976a6797e0df7c53eeb318fcdca6072b6e602df80bf3fcf6f",
+    "title": [
+      "Nuwara Eliya"
+    ],
+    "headings": [
+      {
+        "level": "2",
+        "text": "Select Currency"
+      },
+      {
+        "level": "1",
+        "text": "Nuwara Eliya"
+      },
+      {
+        "level": "1",
+        "text": "Hotels"
+      },
+      {
+        "level": "3",
+        "text": "Glory Blush Boutique Villa"
+      },
+      {
+        "level": "3",
+        "text": "Cottage 42"
+      },
+      {
+        "level": "3",
+        "text": "Araliya Red"
+      },
+      {
+        "level": "3",
+        "text": "Araliya Green City"
+      },
+      {
+        "level": "3",
+        "text": "Araliya Green Hills"
+      },
+      {
+        "level": "3",
+        "text": "The Ramp"
+      },
+      {
+        "level": "3",
+        "text": "Del\u2019s Haven"
+      },
+      {
+        "level": "3",
+        "text": "La Cottage Boutique Hotel & Restaurant"
+      },
+      {
+        "level": "3",
+        "text": "Andora Villa"
+      },
+      {
+        "level": "3",
+        "text": "The Grand Pavilion"
+      },
+      {
+        "level": "3",
+        "text": "The Montfort"
+      },
+      {
+        "level": "3",
+        "text": "The Golf Green City Bungalow"
+      },
+      {
+        "level": "3",
+        "text": "Skye Cottages"
+      },
+      {
+        "level": "3",
+        "text": "The Edgware Cabana"
+      },
+      {
+        "level": "3",
+        "text": "THE EDGEWARE VILLA"
+      },
+      {
+        "level": "3",
+        "text": "Paul Wood Cabana"
+      },
+      {
+        "level": "3",
+        "text": "Paul Wood Bungalow"
+      },
+      {
+        "level": "3",
+        "text": "Maha Royal Hotel"
+      },
+      {
+        "level": "3",
+        "text": "Cottage San Francesco"
+      },
+      {
+        "level": "3",
+        "text": "Glenloch Tea Factory"
+      },
+      {
+        "level": "3",
+        "text": "Carnation Rest"
+      },
+      {
+        "level": "3",
+        "text": "Clifton Inn Nuwaraeliya"
+      },
+      {
+        "level": "3",
+        "text": "Moon Plains Resort"
+      },
+      {
+        "level": "3",
+        "text": "Tea Mount Forest"
+      },
+      {
+        "level": "3",
+        "text": "Phi Phi Islands Day Tour from Phuket"
+      }
+    ],
+    "metadata": [
+      {
+        "name": "description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:title",
+        "content": "Best Hotels in Nuwara Eliya"
+      },
+      {
+        "property": "og:description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:image",
+        "content": "https://niwadu.com/images/niwadu-banner.jpeg"
+      }
+    ],
+    "canonical": [],
+    "forms": [
+      {
+        "action": "https://niwadu.com/hotels",
+        "method": "get",
+        "id": "searchForm"
+      }
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap",
+      "https://niwadu.com/css/app.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/main.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/vendors.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/assets/css/sptoast.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/vendor/glidejs/glide.core.min.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/build/assets/styles.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+      "https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css",
+      "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+      "https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css"
+    ],
+    "images": [
+      {
+        "src": "https://www.facebook.com/tr?id=239039793801320&ev=PageView&noscript=1"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/Logo.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/2e18c48d89f5e7c7851f2c8638bfbfa2.jpg",
+        "alt": "Nuwara Eliya"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/28550965a38e787b37c7b1e8218a42b1.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/4343ef2a8a8cb76ae24d0fb1cd84f8d3.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/af5f9c40b1c8ae0a17263aa6a990860a.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/a2d24e3953c337672180fd2433c10294.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/05f4ecc734cbc79f49037830b520264c.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/842d8bd857e1008c90907480cd95859e.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e024699293c3d342729f745ad3bcce46.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/4095de42d26a9b95b7ba8654073edb6f.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/8c38acf18d5fe0e3f69753c3c5580329.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/9cfb51536e0c38c262db7d2420760d67.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/4f41c705f07942c9aa4839c494acab83.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/a77bb230a036db7aa55569dd437f8ed3.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/262d767f9e0e84d0919efeae280f6c98.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/d9d2740a774609602943889c3e021a1e.png",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/885ef7347c58046c4754754243ae037f.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/ba8115bb633691a18e751726a179966c.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/633d0715d5066184c565605562f62218.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/b1969509bcf75b01b1dc6cb4d587ae12.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/08134974853a286fdde0efba8da48961.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/77bbb667d4cc283ce7d8ec7c9f8b990c.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/2a137f554078d6cd4e3ddb47c3345159.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/51a1333ecae677ed75b161535a73a8cb.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/1a5846fe5520dab1c9b9f0eae6385517.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/eb9b5f9365d3da9781634069661aab04.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://niwadu.com/images/logo-black.svg",
+        "alt": "Niwadu"
+      }
+    ],
+    "structured_data_blocks": 0
+  },
+  {
+    "url": "https://niwadu.com/hotels",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "543935dd210efa14f7298bbe1d4ccb08a76da96730ae3cedfcb35de8372f8a51",
+    "title": [
+      "Niwadu.com | Hotels"
+    ],
+    "headings": [
+      {
+        "level": "2",
+        "text": "Select Currency"
+      },
+      {
+        "level": "1",
+        "text": "Hotels picked just for you"
+      },
+      {
+        "level": "3",
+        "text": "Villa 46"
+      },
+      {
+        "level": "3",
+        "text": "Sangria Sun Villa"
+      },
+      {
+        "level": "3",
+        "text": "Garden House Nelum"
+      },
+      {
+        "level": "3",
+        "text": "Sulanga Luxury Chalets"
+      },
+      {
+        "level": "3",
+        "text": "The Kandy House"
+      },
+      {
+        "level": "3",
+        "text": "The Last House"
+      },
+      {
+        "level": "3",
+        "text": "Bellini Blue Villa"
+      },
+      {
+        "level": "3",
+        "text": "Etamba House"
+      },
+      {
+        "level": "3",
+        "text": "The Elephant Stables"
+      },
+      {
+        "level": "3",
+        "text": "Maya Tangalle"
+      },
+      {
+        "level": "3",
+        "text": "Sri Sharavi Beach Villas & Spa"
+      },
+      {
+        "level": "3",
+        "text": "Muhudu Bella Beach Hut"
+      },
+      {
+        "level": "3",
+        "text": "Sisikirana Villa"
+      },
+      {
+        "level": "3",
+        "text": "Hotel Travellers Nest Kandy"
+      },
+      {
+        "level": "3",
+        "text": "Dehiwala Holiday Villa"
+      },
+      {
+        "level": "3",
+        "text": "Lanka Princess Ayurveda Hotel"
+      },
+      {
+        "level": "3",
+        "text": "Sathmin Villa"
+      },
+      {
+        "level": "3",
+        "text": "Villa 198"
+      },
+      {
+        "level": "3",
+        "text": "Clifton Manor"
+      },
+      {
+        "level": "3",
+        "text": "Villa Amandhira"
+      },
+      {
+        "level": "3",
+        "text": "Ahangama Eco Villa"
+      },
+      {
+        "level": "3",
+        "text": "Back of Beyond Dune Camp Yala"
+      },
+      {
+        "level": "3",
+        "text": "Yala Villa"
+      },
+      {
+        "level": "3",
+        "text": "Sri Lanka Avatara Ocean Retreat"
+      },
+      {
+        "level": "3",
+        "text": "Villa Bawana"
+      },
+      {
+        "level": "3",
+        "text": "Liyana Holiday Resort"
+      },
+      {
+        "level": "3",
+        "text": "Villa Zeenath"
+      },
+      {
+        "level": "3",
+        "text": "Turtle Pond"
+      },
+      {
+        "level": "3",
+        "text": "Villa Walauwa"
+      },
+      {
+        "level": "3",
+        "text": "Plantation Villa"
+      },
+      {
+        "level": "3",
+        "text": "OwinRich Resort"
+      },
+      {
+        "level": "3",
+        "text": "The Villa by Contemporary Ceylon"
+      },
+      {
+        "level": "3",
+        "text": "The Burrow"
+      },
+      {
+        "level": "3",
+        "text": "Eco Horaela Villa"
+      },
+      {
+        "level": "3",
+        "text": "Lake Villa by Carlsen"
+      },
+      {
+        "level": "3",
+        "text": "Villa Kaiydee"
+      },
+      {
+        "level": "5",
+        "text": "Hotels picked just for you"
+      },
+      {
+        "level": "3",
+        "text": "Phi Phi Islands Day Tour from Phuket"
+      }
+    ],
+    "metadata": [
+      {
+        "name": "description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:title",
+        "content": "Hotels in Sri Lanka \u2014 Lowest Rates & Best Deals | Niwadu"
+      },
+      {
+        "property": "og:description",
+        "content": "Find the perfect hotel in Sri Lanka \u2014 compare prices, read reviews, view photos, and book your ideal stay hassle-free."
+      },
+      {
+        "property": "og:image",
+        "content": "https://niwadu.com/images/hotel-banner.jpeg"
+      }
+    ],
+    "canonical": [],
+    "forms": [
+      {
+        "action": "https://niwadu.com/hotels",
+        "method": "get",
+        "id": "searchForm"
+      }
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap",
+      "https://niwadu.com/css/app.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/main.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/vendors.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/assets/css/sptoast.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/vendor/glidejs/glide.core.min.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/build/assets/styles.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+      "https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css",
+      "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+      "https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css"
+    ],
+    "images": [
+      {
+        "src": "https://www.facebook.com/tr?id=239039793801320&ev=PageView&noscript=1"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/Logo.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e1084b90b93e1ef25eb60e4396cf1e1b.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/ab65fbe7c86a335c492de8f1fc05c33a.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/71bac3a5ecdf5062ffab74a3781ae792.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/995281f950a5067082d40fe52b14b72f.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f7d02634a311d388a50aa2e7a53bfe6d.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/d1e7b1bfd961c35457d3095144a1559a.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/182b5c183dd479d21ba6907b158219f2.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/373423f9dc9109c65115e793f65942a2.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/a4a426c3f6d9d2183c908ff38e53ec96.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/cb43a272a8472210ce4e9d5367458e80.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/289659a67995b6c0080efcb5cce1bf16.png",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/8f1b83a55356ae994e4027fa24136c19.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/5c8b1fe0b9236983912541b3eacb97cc.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f925cb8aa2df2a7f8b61937a3d4b6345.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/c38b39b4b284f1fe607dffc20d03985d.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/a3b2ecdcefd0a5c5de58f644ad044fff.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f4bddc49423482650cf75a4093dba7cc.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e88db95b2e0940ee337f764ad2633058.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/d468a334e1d15758939eb4e39a2a5c90.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/46629903b2ce3785c006b4d20ec75b70.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/ddc36a3236cd57cfbf23e88bd5c5530f.png",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/a26dd7d99eaed88a557bba8082f363e9.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/02c3417e2aa8a76e6f6bbb73b6f786ce.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/2fc0ae3fb3b83269697da0598d0b160d.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/50d8cbe61b3d9ee49233240981bd0d75.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/fd8f454c4abdcb7e8ad5053f62f2865c.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/bbe5cb1b22e8bcf181560cd6798100a2.png",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/43118d237df0c7706ccc9e2a1bf66d0c.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f8526266aec54041de30d3ac30ecc2a0.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/1a6f97a230cfd4ef713116ce0fb75ea9.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/ed22406697e0d50a07eca3ed6ca83690.png",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/85965bc0415eb912594f8e032fb27736.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/ce236b72f08145a2604602543e62b37a.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/0d006b560904bbed0af13af0dccccc0d.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/3bb3d33fc003eb4a1a8107a95b8359d0.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/df67a280ddc0c6737d9d18011e5a3272.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://niwadu.com/images/logo-black.svg",
+        "alt": "Niwadu"
+      }
+    ],
+    "structured_data_blocks": 0
+  },
+  {
+    "url": "https://niwadu.com/hotels/sulanga-83c3e2d1-0670-431f-98cc-e5e38bb57b5e",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "5ec0c8bde7cffc0ff8001a0ee3b51aa09bcbf08350f8b66a0d1d0d102de0c8da",
+    "title": [
+      "Sulanga"
+    ],
+    "headings": [
+      {
+        "level": "2",
+        "text": "Select Currency"
+      },
+      {
+        "level": "1",
+        "text": "Sulanga Luxury Chalets"
+      },
+      {
+        "level": "2",
+        "text": "Amenities"
+      },
+      {
+        "level": "2",
+        "text": "LKR 150,000"
+      },
+      {
+        "level": "2",
+        "text": "Room Types"
+      },
+      {
+        "level": "2",
+        "text": "What you should know"
+      },
+      {
+        "level": "3",
+        "text": "Room Information"
+      },
+      {
+        "level": "4",
+        "text": ""
+      },
+      {
+        "level": "5",
+        "text": "Amenities"
+      },
+      {
+        "level": "5",
+        "text": "Gallery"
+      },
+      {
+        "level": "5",
+        "text": "Room Policies"
+      },
+      {
+        "level": "3",
+        "text": "Phi Phi Islands Day Tour from Phuket"
+      }
+    ],
+    "metadata": [
+      {
+        "name": "description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:title",
+        "content": "Sulanga"
+      },
+      {
+        "property": "og:description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:image",
+        "content": "https://sysadmin.niwadu.com/storage/uploads/images/e0d8ced864bc42505cb42b7e67b8202c.jpg"
+      }
+    ],
+    "canonical": [],
+    "forms": [
+      {
+        "action": "https://niwadu.com/hotels",
+        "method": "get",
+        "id": "searchForm"
+      },
+      {
+        "action": "https://niwadu.com/booking",
+        "method": "post",
+        "id": "hotel_booking_form_web"
+      }
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap",
+      "https://niwadu.com/css/app.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/main.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/vendors.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/assets/css/sptoast.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/vendor/glidejs/glide.core.min.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/build/assets/styles.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+      "https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css",
+      "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+      "https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css",
+      "https://unpkg.com/lucide-static@latest/font/lucide.css"
+    ],
+    "images": [
+      {
+        "src": "https://www.facebook.com/tr?id=239039793801320&ev=PageView&noscript=1"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/Logo.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/lQUgP8jgQqT8kf0CXmr5NVJ3chOLDCerTeybYylJ.jpg",
+        "alt": "image"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/TfnqRsjqT0fwHXkOiKISei2KrYXg4gZxBnxbMCFB.jpg",
+        "alt": "image"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/Zah6Vt0bkMN1Z0dk5GTE8oORnzNu8sRM2Us900vt.jpg",
+        "alt": "image"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/8JF6fEnAyVrCMYoioEeXDPPJARtppNlxKUj4MGCs.jpg",
+        "alt": "image"
+      },
+      {
+        "src": "https://niwadu.com/assets/images/loader.gif",
+        "alt": "Loading..."
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/QHDizPdHCtoEYiEGpWcpRgqhl6Eue77bZbFJWKET.jpg",
+        "alt": "Entire Villa"
+      },
+      {
+        "src": "https://niwadu.com/images/logo-black.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "",
+        "alt": ""
+      }
+    ],
+    "structured_data_blocks": 0
+  },
+  {
+    "url": "https://niwadu.com/packages",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "04cc0ace4d98aee3a932a5d741c881ed80b35855132197bcf52b36e172d19ccd",
+    "title": [
+      "Niwadu Deals | Travel Experiences"
+    ],
+    "headings": [
+      {
+        "level": "2",
+        "text": "Select Currency"
+      },
+      {
+        "level": "1",
+        "text": "Travel Experiences"
+      },
+      {
+        "level": "3",
+        "text": "Coastal Escapes Sri Lanka"
+      },
+      {
+        "level": "3",
+        "text": "Visit Sri Lanka 5 Days 4 Nights Tour Package"
+      },
+      {
+        "level": "3",
+        "text": "Sri Lanka Tourism 4 Days 3 Nights Tour Package"
+      },
+      {
+        "level": "3",
+        "text": "Majestic Cultural Triangle"
+      },
+      {
+        "level": "3",
+        "text": "Ancient Treasures Expedition"
+      },
+      {
+        "level": "3",
+        "text": "Cultural Heritage Trail"
+      },
+      {
+        "level": "3",
+        "text": "Sacred Sites Discovery"
+      },
+      {
+        "level": "3",
+        "text": "Travel Galle Sri Lanka 3 Days 2 Nights Tour Package"
+      },
+      {
+        "level": "3",
+        "text": "Explore Arugam Bay Surfing Adventure Tour Package"
+      },
+      {
+        "level": "5",
+        "text": "Travel experiences picked just for you"
+      },
+      {
+        "level": "5",
+        "text": "Travel experience price type"
+      },
+      {
+        "level": "5",
+        "text": "Destination"
+      },
+      {
+        "level": "3",
+        "text": "Phi Phi Islands Day Tour from Phuket"
+      }
+    ],
+    "metadata": [
+      {
+        "name": "description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:title",
+        "content": "Sri Lanka Travel Experiences | Niwadu"
+      },
+      {
+        "property": "og:description",
+        "content": "Explore custom travel experiences across Sri Lanka \u2014 from cultural experiences and nature escapes to beach holidays and adventure trips. View itineraries, compare options, and book your perfect tour today"
+      },
+      {
+        "property": "og:image",
+        "content": "https://niwadu.com/images/hotel-banner.jpeg"
+      }
+    ],
+    "canonical": [],
+    "forms": [
+      {
+        "action": "https://niwadu.com/hotels",
+        "method": "get",
+        "id": "searchForm"
+      }
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap",
+      "https://niwadu.com/css/app.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/main.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/vendors.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/assets/css/sptoast.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/vendor/glidejs/glide.core.min.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/build/assets/styles.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+      "https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css",
+      "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+      "https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css"
+    ],
+    "images": [
+      {
+        "src": "https://www.facebook.com/tr?id=239039793801320&ev=PageView&noscript=1"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/Logo.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/7a82ba1a8e6d35323f04c074579dc018.jpg",
+        "alt": "Coastal Escapes Sri Lanka",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e210e5896906990c14ed84a9f447b7e5.jpg",
+        "alt": "Visit Sri Lanka 5 Days 4 Nights Tour Package",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/add5b4bbd176df8acf0fda7e74335147.jpg",
+        "alt": "Sri Lanka Tourism 4 Days 3 Nights Tour Package",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/a63e9e2e20601b14e8fa838fbec34883.jpg",
+        "alt": "Majestic Cultural Triangle",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/a183c6586aac52c725a5574166245d99.jpg",
+        "alt": "Ancient Treasures Expedition",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/3ee4ff2d7673d1c09a6b97ffb63d41aa.jpg",
+        "alt": "Cultural Heritage Trail",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/78ae185f051d67a6927f31519c415e33.jpg",
+        "alt": "Sacred Sites Discovery",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/8f1de78e08a0466ddf2e33e77057bacf.jpg",
+        "alt": "Travel Galle Sri Lanka 3 Days 2 Nights Tour Package",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/de1b9e122963fc962c824459248027f1.jpg",
+        "alt": "Explore Arugam Bay Surfing Adventure Tour Package",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://niwadu.com/images/logo-black.svg",
+        "alt": "Niwadu"
+      }
+    ],
+    "structured_data_blocks": 0
+  },
+  {
+    "url": "https://niwadu.com/packages/hikkaduwa-and-unawatuna-delights",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "63afa91383c19cbdbe1f78af9f30673c6da1fe756cd1fc8aff05959373b722cf",
+    "title": [
+      "Coastal Escapes Sri Lanka"
+    ],
+    "headings": [
+      {
+        "level": "2",
+        "text": "Select Currency"
+      },
+      {
+        "level": "1",
+        "text": "Coastal Escapes Sri Lanka"
+      },
+      {
+        "level": "2",
+        "text": "Itinerary"
+      },
+      {
+        "level": "5",
+        "text": "Day 1"
+      },
+      {
+        "level": "3",
+        "text": "Day 01: Arrival and City Exploration"
+      },
+      {
+        "level": "3",
+        "text": "Hotels"
+      },
+      {
+        "level": "3",
+        "text": "Marino Beach Colombo"
+      },
+      {
+        "level": "3",
+        "text": "Grand Oriental Hotel"
+      },
+      {
+        "level": "3",
+        "text": "Activities"
+      },
+      {
+        "level": "3",
+        "text": "SpeedBay"
+      },
+      {
+        "level": "5",
+        "text": "Day 2"
+      },
+      {
+        "level": "2",
+        "text": "Day 02: Bentota"
+      },
+      {
+        "level": "3",
+        "text": "Hotels"
+      },
+      {
+        "level": "3",
+        "text": "Amarya Resort Bentota"
+      },
+      {
+        "level": "3",
+        "text": "Temple Tree Resort & Spa"
+      },
+      {
+        "level": "3",
+        "text": "Bentota No 1"
+      },
+      {
+        "level": "3",
+        "text": "Lagoon Bentota"
+      },
+      {
+        "level": "5",
+        "text": "Day 3"
+      },
+      {
+        "level": "3",
+        "text": "Day 03 Galle"
+      },
+      {
+        "level": "3",
+        "text": "Hotels"
+      },
+      {
+        "level": "3",
+        "text": "Tamarind Hill by Asia Leisure"
+      },
+      {
+        "level": "3",
+        "text": "The Country House"
+      },
+      {
+        "level": "3",
+        "text": "Le Grand Galle"
+      },
+      {
+        "level": "3",
+        "text": "Moi Galle Fort"
+      },
+      {
+        "level": "5",
+        "text": "Day 4"
+      },
+      {
+        "level": "3",
+        "text": "Return to Colombo"
+      },
+      {
+        "level": "2",
+        "text": "LKR 96,000.00"
+      },
+      {
+        "level": "2",
+        "text": "LKR 60,000.00"
+      },
+      {
+        "level": "3",
+        "text": "Phi Phi Islands Day Tour from Phuket"
+      },
+      {
+        "level": "5",
+        "text": "Day ' + '1' + '"
+      },
+      {
+        "level": "5",
+        "text": "' + 'Colombo' + '"
+      },
+      {
+        "level": "5",
+        "text": "Day ' + '2' + '"
+      },
+      {
+        "level": "5",
+        "text": "' + 'Bentota' + '"
+      },
+      {
+        "level": "5",
+        "text": "Day ' + '3' + '"
+      },
+      {
+        "level": "5",
+        "text": "' + 'Galle' + '"
+      },
+      {
+        "level": "5",
+        "text": "Day ' + '4' + '"
+      },
+      {
+        "level": "5",
+        "text": "' + 'Colombo' + '"
+      }
+    ],
+    "metadata": [
+      {
+        "name": "description",
+        "content": "Discover the captivating coastal beauty of Hikkaduwa and Unawatuna in Sri Lanka. Immerse yourself in vibrant beach scenes, water activities, and serene relaxation. Explore lively Hikkaduwa with surfing and snorkeling, while tranquil Unawatuna offers a serene escape by golden sands and azure waters. Experience the best of Sri Lanka's shores in these sought-after destinations"
+      },
+      {
+        "property": "og:title",
+        "content": "Coastal Escapes- Sri Lanka tour packages"
+      },
+      {
+        "property": "og:description",
+        "content": "Discover the captivating coastal beauty of Hikkaduwa and Unawatuna in Sri Lanka. Immerse yourself in vibrant beach scenes, water activities, and serene relaxation. Explore lively Hikkaduwa with surfing and snorkeling, while tranquil Unawatuna offers a serene escape by golden sands and azure waters. Experience the best of Sri Lanka's shores in these sought-after destinations"
+      },
+      {
+        "property": "og:image",
+        "content": "https://niwadu.com/images/niwadu-banner.jpeg"
+      }
+    ],
+    "canonical": [],
+    "forms": [
+      {
+        "action": "https://niwadu.com/hotels",
+        "method": "get",
+        "id": "searchForm"
+      },
+      {
+        "action": "https://niwadu.com/booking",
+        "method": "post",
+        "id": "package_booking_form"
+      }
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap",
+      "https://niwadu.com/css/app.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/main.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/vendors.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/assets/css/sptoast.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/vendor/glidejs/glide.core.min.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/build/assets/styles.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+      "https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css",
+      "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+      "https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css"
+    ],
+    "images": [
+      {
+        "src": "https://www.facebook.com/tr?id=239039793801320&ev=PageView&noscript=1"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/Logo.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/WeE3NbzSPsFLZBc7jgWWGshKs6ZsUtTEiPaUB7sp.jpg",
+        "alt": "image"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/ZN0aqb6BVPT1sbiQZ7B99opdQn8kXhCohbh0xBMA.jpg",
+        "alt": "image"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/CpqJFBmZVo5KbMnsHXccbvskbonbtm6Q4WhGMfUl.jpg",
+        "alt": "image"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/crop/ad4013a04bac23a248ada205a15bc05b.jpg",
+        "alt": "Card image cap"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/0290a406b60f87697726932d5a1216f9.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/75759cb6efda95a9fb32345dd7e65d72.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/crop/55043cde10b56a11f124f4660cbba90e.jpg",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/crop/f164b2d74aa4b544ffa91093ae08099c.jpg",
+        "alt": "Card image cap"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/5fd7c43ed30dff921dab9cab33b2d85e.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/cc1cab425691d46c2e0a5dbab4a00688.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/03743622f66f9759e55e4b8409aaa4da.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/af94c7d5c14ea5d0cd42116cc39460aa.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/crop/4b77c14939104ed7a59c76539e183784.jpg",
+        "alt": "Card image cap"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/b73293c0148dc8dea31132932c5ed38b.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/4f53e6a64cd9a41d6aed759546761feb.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/7b04b4b006d20c32d798b8fc844158bc.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images//crop/0f3c39bc2f112673af1e262e87b3ab4f.jpg",
+        "alt": "",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://sysadmin.niwadu.com/storage/uploads/images/crop/5534b2a1fefb49630145d0a88739a84c.jpg",
+        "alt": "Card image cap"
+      },
+      {
+        "src": "https://niwadu.com/images/logo-black.svg",
+        "alt": "Niwadu"
+      }
+    ],
+    "structured_data_blocks": 0
+  },
+  {
+    "url": "https://niwadu.com/support/about",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "978d3ed68b4098654312c85764912f3fac45dbd592fc18f1e7098577d5ad9990",
+    "title": [
+      "Discover Sri Lanka with Niwadu.com \u2014 Hotels, Destinations, Travel Experiences & Activities"
+    ],
+    "headings": [
+      {
+        "level": "2",
+        "text": "Select Currency"
+      },
+      {
+        "level": "1",
+        "text": "About"
+      },
+      {
+        "level": "3",
+        "text": "Phi Phi Islands Day Tour from Phuket"
+      }
+    ],
+    "metadata": [
+      {
+        "name": "description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:title",
+        "content": "Discover Sri Lanka with Niwadu.com \u2014 Hotels, Destinations, Travel Experiences & Activities"
+      },
+      {
+        "property": "og:description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:image",
+        "content": "https://niwadu.com/images/niwadu-banner.jpeg"
+      }
+    ],
+    "canonical": [],
+    "forms": [
+      {
+        "action": "https://niwadu.com/hotels",
+        "method": "get",
+        "id": "searchForm"
+      }
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap",
+      "https://niwadu.com/css/app.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/main.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/vendors.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/assets/css/sptoast.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/vendor/glidejs/glide.core.min.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/build/assets/styles.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+      "https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css",
+      "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+      "https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css"
+    ],
+    "images": [
+      {
+        "src": "https://www.facebook.com/tr?id=239039793801320&ev=PageView&noscript=1"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/Logo.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/logo-black.svg",
+        "alt": "Niwadu"
+      }
+    ],
+    "structured_data_blocks": 0
+  },
+  {
+    "url": "https://niwadu.com/support/faq",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "1ba8247cec047254930fa87217c0bf8ab1211c5effaff2c5197fbbf22498af05",
+    "title": [
+      "Discover Sri Lanka with Niwadu.com \u2014 Hotels, Destinations, Travel Experiences & Activities"
+    ],
+    "headings": [
+      {
+        "level": "2",
+        "text": "Select Currency"
+      },
+      {
+        "level": "1",
+        "text": "FAQ"
+      },
+      {
+        "level": "2",
+        "text": "What is the purpose of this site?"
+      },
+      {
+        "level": "2",
+        "text": "How can I make a booking?"
+      },
+      {
+        "level": "2",
+        "text": "Where do you update current offers?"
+      },
+      {
+        "level": "2",
+        "text": "What are the payment methods available?"
+      },
+      {
+        "level": "2",
+        "text": "How often are the offers updated on your platforms?"
+      },
+      {
+        "level": "3",
+        "text": "Phi Phi Islands Day Tour from Phuket"
+      }
+    ],
+    "metadata": [
+      {
+        "name": "description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:title",
+        "content": "Discover Sri Lanka with Niwadu.com \u2014 Hotels, Destinations, Travel Experiences & Activities"
+      },
+      {
+        "property": "og:description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:image",
+        "content": "https://niwadu.com/images/niwadu-banner.jpeg"
+      }
+    ],
+    "canonical": [],
+    "forms": [
+      {
+        "action": "https://niwadu.com/hotels",
+        "method": "get",
+        "id": "searchForm"
+      }
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap",
+      "https://niwadu.com/css/app.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/main.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/vendors.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/assets/css/sptoast.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/vendor/glidejs/glide.core.min.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/build/assets/styles.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+      "https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css",
+      "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+      "https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css"
+    ],
+    "images": [
+      {
+        "src": "https://www.facebook.com/tr?id=239039793801320&ev=PageView&noscript=1"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/Logo.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/logo-black.svg",
+        "alt": "Niwadu"
+      }
+    ],
+    "structured_data_blocks": 0
+  },
+  {
+    "url": "https://niwadu.com/support/privacy",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "79622c9e026578fbc4f171ab8401576472bcab73e79bc667b23e6b341e960004",
+    "title": [
+      "Discover Sri Lanka with Niwadu.com \u2014 Hotels, Destinations, Travel Experiences & Activities"
+    ],
+    "headings": [
+      {
+        "level": "2",
+        "text": "Select Currency"
+      },
+      {
+        "level": "1",
+        "text": "We respect your privacy."
+      },
+      {
+        "level": "3",
+        "text": "Phi Phi Islands Day Tour from Phuket"
+      }
+    ],
+    "metadata": [
+      {
+        "name": "description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:title",
+        "content": "Discover Sri Lanka with Niwadu.com \u2014 Hotels, Destinations, Travel Experiences & Activities"
+      },
+      {
+        "property": "og:description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:image",
+        "content": "https://niwadu.com/images/niwadu-banner.jpeg"
+      }
+    ],
+    "canonical": [],
+    "forms": [
+      {
+        "action": "https://niwadu.com/hotels",
+        "method": "get",
+        "id": "searchForm"
+      }
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap",
+      "https://niwadu.com/css/app.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/main.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/vendors.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/assets/css/sptoast.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/vendor/glidejs/glide.core.min.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/build/assets/styles.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+      "https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css",
+      "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+      "https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css"
+    ],
+    "images": [
+      {
+        "src": "https://www.facebook.com/tr?id=239039793801320&ev=PageView&noscript=1"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/Logo.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/logo-black.svg",
+        "alt": "Niwadu"
+      }
+    ],
+    "structured_data_blocks": 0
+  },
+  {
+    "url": "https://niwadu.com/support/refund-policy",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "f5ccb2218b41f5836ca18382ccf60f2eb0ef7e639db1373a210cd3cf439c7300",
+    "title": [
+      "Discover Sri Lanka with Niwadu.com \u2014 Hotels, Destinations, Travel Experiences & Activities"
+    ],
+    "headings": [
+      {
+        "level": "2",
+        "text": "Select Currency"
+      },
+      {
+        "level": "1",
+        "text": "Refund Policy"
+      },
+      {
+        "level": "3",
+        "text": "Phi Phi Islands Day Tour from Phuket"
+      }
+    ],
+    "metadata": [
+      {
+        "name": "description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:title",
+        "content": "Discover Sri Lanka with Niwadu.com \u2014 Hotels, Destinations, Travel Experiences & Activities"
+      },
+      {
+        "property": "og:description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:image",
+        "content": "https://niwadu.com/images/niwadu-banner.jpeg"
+      }
+    ],
+    "canonical": [],
+    "forms": [
+      {
+        "action": "https://niwadu.com/hotels",
+        "method": "get",
+        "id": "searchForm"
+      }
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap",
+      "https://niwadu.com/css/app.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/main.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/vendors.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/assets/css/sptoast.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/vendor/glidejs/glide.core.min.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/build/assets/styles.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+      "https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css",
+      "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+      "https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css"
+    ],
+    "images": [
+      {
+        "src": "https://www.facebook.com/tr?id=239039793801320&ev=PageView&noscript=1"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/Logo.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/logo-black.svg",
+        "alt": "Niwadu"
+      }
+    ],
+    "structured_data_blocks": 0
+  },
+  {
+    "url": "https://niwadu.com/support/terms-condition",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "96a90a08582be629917a437f394f28e007ffda009d47ba4f1a11d268d7b32e44",
+    "title": [
+      "Discover Sri Lanka with Niwadu.com \u2014 Hotels, Destinations, Travel Experiences & Activities"
+    ],
+    "headings": [
+      {
+        "level": "2",
+        "text": "Select Currency"
+      },
+      {
+        "level": "1",
+        "text": "Terms of Service"
+      },
+      {
+        "level": "2",
+        "text": "Accommodation Reservation Facilitation"
+      },
+      {
+        "level": "2",
+        "text": "Usage of Our Website"
+      },
+      {
+        "level": "2",
+        "text": "Prices, Niwadu Price Guarantee and Additional Charges"
+      },
+      {
+        "level": "2",
+        "text": "Advance Payment"
+      },
+      {
+        "level": "3",
+        "text": "Phi Phi Islands Day Tour from Phuket"
+      }
+    ],
+    "metadata": [
+      {
+        "name": "description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:title",
+        "content": "Discover Sri Lanka with Niwadu.com \u2014 Hotels, Destinations, Travel Experiences & Activities"
+      },
+      {
+        "property": "og:description",
+        "content": "Explore Sri Lanka with Niwadu \u2014 find the best hotels, top destinations, and curated travel experiences. Discover affordable stays, exciting experiences, and plan your perfect holiday in Sri Lanka."
+      },
+      {
+        "property": "og:image",
+        "content": "https://niwadu.com/images/niwadu-banner.jpeg"
+      }
+    ],
+    "canonical": [],
+    "forms": [
+      {
+        "action": "https://niwadu.com/hotels",
+        "method": "get",
+        "id": "searchForm"
+      }
+    ],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap",
+      "https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap",
+      "https://niwadu.com/css/app.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/main.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/css/vendors.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/assets/css/sptoast.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/vendor/glidejs/glide.core.min.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://niwadu.com/build/assets/styles.css?v=67c8e50b-acfb-4c6c-908e-46e57ab10354",
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+      "https://pro.fontawesome.com/releases/v5.10.0/css/all.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css",
+      "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+      "https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css",
+      "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css"
+    ],
+    "images": [
+      {
+        "src": "https://www.facebook.com/tr?id=239039793801320&ev=PageView&noscript=1"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/niwadu-logo-primary.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/Logo.svg",
+        "alt": "Niwadu"
+      },
+      {
+        "src": "https://niwadu.com/images/logo-black.svg",
+        "alt": "Niwadu"
+      }
+    ],
+    "structured_data_blocks": 0
+  },
+  {
+    "url": "https://niwadu.com/robots.txt",
+    "captured_at": "2026-09-23",
+    "http_status": 200,
+    "sha256_raw": "e5c4b84484ee4216e9373be99380320c25dd94805f99f0a805846f087636553f",
+    "title": [],
+    "headings": [],
+    "metadata": [],
+    "canonical": [],
+    "forms": [],
+    "stylesheets": [],
+    "images": [],
+    "structured_data_blocks": 0,
+    "text": "User-agent: *\nDisallow:\n"
+  },
+  {
+    "url": "https://niwadu.com/sitemap.xml",
+    "captured_at": "2026-09-23",
+    "http_status": 404,
+    "sha256_raw": "8437bd0ef46a19c9a7c294c53e0429b40e76ebbd5fe9fd73a9025752495ddb1c",
+    "title": [
+      "Not Found"
+    ],
+    "headings": [],
+    "metadata": [],
+    "canonical": [],
+    "forms": [],
+    "stylesheets": [
+      "https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+    ],
+    "images": [],
+    "structured_data_blocks": 0
+  }
+]

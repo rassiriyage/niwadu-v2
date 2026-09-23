@@ -1,0 +1,30 @@
+{
+  "at": "2026-09-23T10:53:56.373Z",
+  "checks": [
+    "canonical, noindex, 24 nonnumeric rate links, no JSON-LD claims, initial previous disabled",
+    "carousel advances and enables previous",
+    "mobile modal focus enters, Tab/Shift+Tab remain contained, Escape restores trigger",
+    "live resize1440→390→320 without page overflow"
+  ],
+  "resize": [
+    {
+      "card": 210.828125,
+      "client": 1425,
+      "scroll": 1425,
+      "width": 1440
+    },
+    {
+      "card": 318,
+      "client": 375,
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "card": 248,
+      "client": 305,
+      "scroll": 305,
+      "width": 320
+    }
+  ],
+  "console": []
+}

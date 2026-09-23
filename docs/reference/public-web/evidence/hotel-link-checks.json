@@ -1,0 +1,102 @@
+{
+  "date": "2026-09-23",
+  "method": "GET, follow redirects, response body discarded",
+  "links": [
+    {
+      "url": "https://niwadu.com/hotels/araliya-green-city-c9224794-ed08-4357-8881-82318d0d14ec",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/black-pool-villa-68381f05-5e76-48e6-bbee-7547ead67ed0",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/clifton-manor",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/dels-haven",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/esprit-dici-hotel-6a782f49-94dd-48f2-a242-5a22b434cd3e",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/ferncliff-bungalow-2b9fe2aa-cbd3-4075-a216-e7999de04cea",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/firemoon-garden-c8071cbe-1730-4d28-9699-13bff0e9d0c3",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/green-hill-13101d8c-88c3-4dad-afa8-ef31a58e44cc",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/h20-holiday-bungalow",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/handagedara-resort-a0af9078-ab9f-4e5a-94bb-c9a9b3ab3548",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/hanthana-nature-cottage",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/hotel-travellers-nest-kandy",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/lavender-holiday-resort",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/lavendra-villa-mirissa",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/one-world-mirissa-a5e2bf1d-1e44-45b6-bd31-681aefe37d5c",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/randiya-sea-view-33c2e0e9-b8e1-49e5-b49f-fbfe18c7e838",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/simpsons-forest-hotel",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/sri-sharavi-beach-villas-spa",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/sulanga-83c3e2d1-0670-431f-98cc-e5e38bb57b5e",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/the-burrow",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/the-edgware-cabana-59c09f82-bc55-4807-a19d-68fc87506ce9",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/the-elephant-stables-716f66df-3b94-4c6e-8f62-1ea83be105ba",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/the-kandy-house-c0e1194d-cc21-446c-a1cb-ec98a3b7e14f",
+      "http_status": 200
+    },
+    {
+      "url": "https://niwadu.com/hotels/the-weir-house",
+      "http_status": 200
+    }
+  ]
+}

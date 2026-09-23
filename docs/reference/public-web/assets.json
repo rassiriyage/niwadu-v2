@@ -1,0 +1,432 @@
+[
+  {
+    "url": "https://niwadu.com/images/Logo.svg",
+    "file": "images/d7ecd7236c7a091a.svg",
+    "bytes": 6281,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/d7ecd7236c7a091a.svg",
+    "exists": true,
+    "actual_bytes": 6281,
+    "sha256": "15e90ba46047924e41803eb59a2bf1a053b6172148084f84be1f09069af80d25"
+  },
+  {
+    "url": "https://niwadu.com/images/logo-black.svg",
+    "file": "images/e7490febebfd4774.svg",
+    "bytes": 6281,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/e7490febebfd4774.svg",
+    "exists": true,
+    "actual_bytes": 6281,
+    "sha256": "169ed6f516a937540a6913a5666a9ebe79daddce4f2b29c5d39f9d694034e2b0"
+  },
+  {
+    "url": "https://niwadu.com/images/niwadu-logo-primary.svg",
+    "file": "images/4452ae59841dc701.svg",
+    "bytes": 3599,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/4452ae59841dc701.svg",
+    "exists": true,
+    "actual_bytes": 3599,
+    "sha256": "5841db68a04ed42dbf1e0a7b9d9dd731473bbf1a5cb7071bb1e85370dfe20f12"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/0ef9b177c286c95373b0919522e15099.jpg",
+    "file": "images/0360e1e4ac9e3d32.jpg",
+    "bytes": 109185,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/0360e1e4ac9e3d32.jpg",
+    "exists": true,
+    "actual_bytes": 109185,
+    "sha256": "45622e92772d4225d941db6a52497302571acf510ed76f43f02130462555a132"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/289659a67995b6c0080efcb5cce1bf16.png",
+    "file": "images/80de07a54611e923.png",
+    "bytes": 1664627,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/80de07a54611e923.png",
+    "exists": true,
+    "actual_bytes": 1664627,
+    "sha256": "e0fc2f06c3f6515f2638f01fd61a80d27f2304b3993fe50bfd148038e95929b5"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/368dd6b17273b75e96676221cd0ddf56.jpg",
+    "file": "images/381cdf83711da99e.jpg",
+    "bytes": 298244,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/381cdf83711da99e.jpg",
+    "exists": true,
+    "actual_bytes": 298244,
+    "sha256": "f5163f0d4dee6bb5657606965096b8c2ee9d034075ec1ef2b101cfe77f202e5f"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/3f9659a0f4a6e393d058e9ef7cb7e272.jpg",
+    "file": "images/b448be5fed7384e0.jpg",
+    "bytes": 912350,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/b448be5fed7384e0.jpg",
+    "exists": true,
+    "actual_bytes": 912350,
+    "sha256": "953bae3a8dae43bbb53a94780be0cbd619ad831b86ae914d8b21b22ade4ffe52"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/50e6f23948e2a50597062d80c82ac1a8.jpg",
+    "file": "images/f0d290c029716b81.jpg",
+    "bytes": 247823,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/f0d290c029716b81.jpg",
+    "exists": true,
+    "actual_bytes": 247823,
+    "sha256": "1f1f478b9f0384e345e2e045120cac1ca14d4ca0cf354b90c438baa959865f89"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/6eac93751c49da604eae3e505f369638.png",
+    "file": "images/3e0a0b21d43e6338.png",
+    "bytes": 1769346,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/3e0a0b21d43e6338.png",
+    "exists": true,
+    "actual_bytes": 1769346,
+    "sha256": "eabc9df5488e35ae8cd5cb1ee4b9120b8c15d102d5349b47d070652ea049d7bd"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/865d53547dcefb78ecaf96db966e6823.jpg",
+    "file": "images/22e3ca5cda2478d8.jpg",
+    "bytes": 137581,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/22e3ca5cda2478d8.jpg",
+    "exists": true,
+    "actual_bytes": 137581,
+    "sha256": "59e9091ea62c2845658ab633197664183c9c80025191c4be889d1f3ef88787f9"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/8731aaa0f2201801514711487d0f1ac7.jpg",
+    "file": "images/6cc570aff9426643.jpg",
+    "bytes": 428278,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/6cc570aff9426643.jpg",
+    "exists": true,
+    "actual_bytes": 428278,
+    "sha256": "239b31cfc290b6dd3b84d7700019bff1466a6b71f6a32672fb34ee665f314827"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/8819539e05e9a35f577d03a6857ad447.png",
+    "file": "images/99d4f1bb0ee79c5c.png",
+    "bytes": 947080,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/99d4f1bb0ee79c5c.png",
+    "exists": true,
+    "actual_bytes": 947080,
+    "sha256": "c36022cd822c5ca6c602827c72f3d469d3c71980a1a2b52f05ea22cf859d9478"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/8fc637227cac48f78c3cd1e21ff57db7.jpg",
+    "file": "images/6447af44ded14415.jpg",
+    "bytes": 250063,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/6447af44ded14415.jpg",
+    "exists": true,
+    "actual_bytes": 250063,
+    "sha256": "42f2a52383326b6a84136229701d4a2391f47a75612e4a63ce7d3172d1747cf6"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/9822d7ff344720f2cb64fa6c7bf65059.jpg",
+    "file": "images/45a95cea004ff442.jpg",
+    "bytes": 294877,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/45a95cea004ff442.jpg",
+    "exists": true,
+    "actual_bytes": 294877,
+    "sha256": "9726cb7cdaf10cdc5ce936b0f87e3a63be6b0ac22fd5a30d5862991c72567d0f"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/991a074fd3ca4ccda26826161beab927.jpg",
+    "file": "images/c96b79cc0c449177.jpg",
+    "bytes": 301122,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/c96b79cc0c449177.jpg",
+    "exists": true,
+    "actual_bytes": 301122,
+    "sha256": "80414b381687fd931d4a497b2c39df3fd13ca549730bdfc711cf8165a272f66f"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/995281f950a5067082d40fe52b14b72f.jpg",
+    "file": "images/a1e6831f0f052e15.jpg",
+    "bytes": 185756,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/a1e6831f0f052e15.jpg",
+    "exists": true,
+    "actual_bytes": 185756,
+    "sha256": "82c2afd39b1b16f1ae2ad1e0fd3efc05f4bb20b972abd2b9554343c8e79e5d18"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/9e2867f8df86c8742ceca71cfa057727.jpg",
+    "file": "images/91e4b65c2db99946.jpg",
+    "bytes": 254777,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/91e4b65c2db99946.jpg",
+    "exists": true,
+    "actual_bytes": 254777,
+    "sha256": "4d7e3230dd6dd6157338993839306808997fec65ffc74912b6e4bd052f7865d8"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/a2d24e3953c337672180fd2433c10294.jpg",
+    "file": "images/f7ccf3b75714953f.jpg",
+    "bytes": 208238,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/f7ccf3b75714953f.jpg",
+    "exists": true,
+    "actual_bytes": 208238,
+    "sha256": "43436c74165568f504593fa73b2e3c18ac082ce37f68c9d8e3d47ac0a94aa56e"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/a4a426c3f6d9d2183c908ff38e53ec96.jpg",
+    "file": "images/87cadf9763e26d56.jpg",
+    "bytes": 204673,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/87cadf9763e26d56.jpg",
+    "exists": true,
+    "actual_bytes": 204673,
+    "sha256": "80724a18574daa79d0a2ad4c136ada4367b9f8dac18da21aab8ce48351d5d92d"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/ce236b72f08145a2604602543e62b37a.jpg",
+    "file": "images/650120d30b913390.jpg",
+    "bytes": 55161,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/650120d30b913390.jpg",
+    "exists": true,
+    "actual_bytes": 55161,
+    "sha256": "c12cb372b224ffaee44b91b507a37d76b9c4931d6421c77e9de14f233b499619"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/d468a334e1d15758939eb4e39a2a5c90.jpg",
+    "file": "images/42ba251d4a3da8df.jpg",
+    "bytes": 190506,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/42ba251d4a3da8df.jpg",
+    "exists": true,
+    "actual_bytes": 190506,
+    "sha256": "c34cc82c4aaae0d0aa4034b344cfe2d911248872fa3ac1e999dabff8d1766909"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/d9d2740a774609602943889c3e021a1e.png",
+    "file": "images/e889ac13ce78c3b3.png",
+    "bytes": 574555,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/e889ac13ce78c3b3.png",
+    "exists": true,
+    "actual_bytes": 574555,
+    "sha256": "f9a1abb11ecc0515c5da2a3170493721e50e123897ac2238c72b737df87ec22a"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e024699293c3d342729f745ad3bcce46.jpg",
+    "file": "images/10f9f3e120852e56.jpg",
+    "bytes": 234272,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/10f9f3e120852e56.jpg",
+    "exists": true,
+    "actual_bytes": 234272,
+    "sha256": "0f8d33241a1f2f9e48868bb6a9e6de98d07061f42af230afecfe1eba2a38c3af"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/e1e44cfffa7f8c4c996f6148577ef0e4.png",
+    "file": "images/8ccd40744ec21f24.png",
+    "bytes": 1392042,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/8ccd40744ec21f24.png",
+    "exists": true,
+    "actual_bytes": 1392042,
+    "sha256": "c639911fb0a49e486c375d29542892c5e0430e61bc467d7891a602a919411a8e"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f7d02634a311d388a50aa2e7a53bfe6d.jpg",
+    "file": "images/1b60f8f46514949a.jpg",
+    "bytes": 344995,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/1b60f8f46514949a.jpg",
+    "exists": true,
+    "actual_bytes": 344995,
+    "sha256": "8f230ee1f7a1ac5cc01a9cd18b17797cd17798e0104dec01eee68806933d6450"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f83dc69ea49d4929ab3e20bce6e788a1.jpg",
+    "file": "images/969f75b2b2d5e9a1.jpg",
+    "bytes": 88112,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/969f75b2b2d5e9a1.jpg",
+    "exists": true,
+    "actual_bytes": 88112,
+    "sha256": "a1f542de6e5805e65e71f993b8239444f44e9232fe996d4ded7dc3fbae4b97c6"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images//crop/f925cb8aa2df2a7f8b61937a3d4b6345.jpg",
+    "file": "images/db70f95b2dc8ac31.jpg",
+    "bytes": 217505,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/db70f95b2dc8ac31.jpg",
+    "exists": true,
+    "actual_bytes": 217505,
+    "sha256": "f2278af63a347b1696ff369c4c32ac7a89640873939e5f12d2c8cf5ecb772ba2"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/2ca01fa5364dd188411420e86ce330d1.jpg",
+    "file": "images/91b0c4a92975f94d.jpg",
+    "bytes": 1643580,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/91b0c4a92975f94d.jpg",
+    "exists": true,
+    "actual_bytes": 1643580,
+    "sha256": "b8a0e5f12ede0e930dff4a7c0b9f43b75866f5bfd18fee05d7fbfd34bb7396f7"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/2e18c48d89f5e7c7851f2c8638bfbfa2.jpg",
+    "file": "images/42c41c3a5c86c5a1.jpg",
+    "bytes": 132077,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/42c41c3a5c86c5a1.jpg",
+    "exists": true,
+    "actual_bytes": 132077,
+    "sha256": "2a3e71c31992c7be3e5bbb7b899c210c5396a5153b5ba47c285d2b79b33d6f79"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/307c0ddcf8cac004fbc9ba7a39307889.jpg",
+    "file": "images/247251805a109853.jpg",
+    "bytes": 923580,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/247251805a109853.jpg",
+    "exists": true,
+    "actual_bytes": 923580,
+    "sha256": "9bbcf83ec4acec0c61705d999c1b2794fa65fb2adbe596e4b8cccf860c27e88b"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/3ec377d361a60829b17a57b3f10011d8.jpg",
+    "file": "images/a0d79987ad6af28f.jpg",
+    "bytes": 55152,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/a0d79987ad6af28f.jpg",
+    "exists": true,
+    "actual_bytes": 55152,
+    "sha256": "b659aadbcf239d977a42c637a2f2bce48a3a5afcdbad24b5b97e26f4de8328f8"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/3ee4ff2d7673d1c09a6b97ffb63d41aa.jpg",
+    "file": "images/1f4b9d64183269f9.jpg",
+    "bytes": 647788,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/1f4b9d64183269f9.jpg",
+    "exists": true,
+    "actual_bytes": 647788,
+    "sha256": "be223b1d658496ecf79cfa3437a2aa2a5ca1e0e8213132967ea16e6467e85f94"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/4d80a287fdfa527c476029a5723fdd93.jpg",
+    "file": "images/9bfd6180b0acce06.jpg",
+    "bytes": 490770,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/9bfd6180b0acce06.jpg",
+    "exists": true,
+    "actual_bytes": 490770,
+    "sha256": "791a2cc4612085f46877fba5eacaa4221c95d665da87bb8e977d366aa40ea9e8"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/78ae185f051d67a6927f31519c415e33.jpg",
+    "file": "images/a588f41c7645af02.jpg",
+    "bytes": 890664,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/a588f41c7645af02.jpg",
+    "exists": true,
+    "actual_bytes": 890664,
+    "sha256": "6a7667f1aebf45cb94d1cc85fefe9cc113d89c2215d1cdd9ac0862e9e96bef65"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/7a82ba1a8e6d35323f04c074579dc018.jpg",
+    "file": "images/afd4d5cccb4fe47d.jpg",
+    "bytes": 1046060,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/afd4d5cccb4fe47d.jpg",
+    "exists": true,
+    "actual_bytes": 1046060,
+    "sha256": "8f3e0017c8651c06b10a48ca75dec3dd90e196949058c10b79dc9f7635046767"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/8f1de78e08a0466ddf2e33e77057bacf.jpg",
+    "file": "images/fcbcbc5a1e4a6dd9.jpg",
+    "bytes": 519738,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/fcbcbc5a1e4a6dd9.jpg",
+    "exists": true,
+    "actual_bytes": 519738,
+    "sha256": "9b0ab5bdd528fc7f554febdcaa47d82dd54db32a48149f103ba7ba1ddd57aacf"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/9792848a3841a2ba1f453698af8c7ef9.jpg",
+    "file": "images/80cb8ae74d0e74a6.jpg",
+    "bytes": 156802,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/80cb8ae74d0e74a6.jpg",
+    "exists": true,
+    "actual_bytes": 156802,
+    "sha256": "d11aed94b1536378381785afce72a920cc4bb3f05e1776271c7c250e7177b9dd"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/a183c6586aac52c725a5574166245d99.jpg",
+    "file": "images/e9b491e810d4c912.jpg",
+    "bytes": 634589,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/e9b491e810d4c912.jpg",
+    "exists": true,
+    "actual_bytes": 634589,
+    "sha256": "0332640cc2b42919d184117e3b9dab37e04848db21e43af3f898842d11fd6fd0"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/a63e9e2e20601b14e8fa838fbec34883.jpg",
+    "file": "images/978a93f6bcd14a9e.jpg",
+    "bytes": 1604315,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/978a93f6bcd14a9e.jpg",
+    "exists": true,
+    "actual_bytes": 1604315,
+    "sha256": "2186e3d419348198f07c244b8875b160d11c4ab61c61fe4ed854d7ef25914423"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/add5b4bbd176df8acf0fda7e74335147.jpg",
+    "file": "images/b98aec9aff1104e2.jpg",
+    "bytes": 1959188,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/b98aec9aff1104e2.jpg",
+    "exists": true,
+    "actual_bytes": 1959188,
+    "sha256": "38dbcbe6ecb762c148a78a471fd63c08c5d1e8150abd129f35b5ae6ae7160e91"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/aeac377535287a518ae88333640ae583.jpg",
+    "file": "images/f53a538dbb91c829.jpg",
+    "bytes": 93583,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/f53a538dbb91c829.jpg",
+    "exists": true,
+    "actual_bytes": 93583,
+    "sha256": "af1551dabd2512d01aad488289980b934380a1a997eaae4e2b84669a26a0c17c"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/de1b9e122963fc962c824459248027f1.jpg",
+    "file": "images/dc18012c33727565.jpg",
+    "bytes": 409604,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/dc18012c33727565.jpg",
+    "exists": true,
+    "actual_bytes": 409604,
+    "sha256": "a5ced2c577cb584eecc2f7b72e9208939af63842e70410e3c4e5bc9989e6011a"
+  },
+  {
+    "url": "https://sysadmin.niwadu.com/storage/uploads/images/e210e5896906990c14ed84a9f447b7e5.jpg",
+    "file": "images/1344beba0682a7a8.jpg",
+    "bytes": 437266,
+    "status": "verified-local",
+    "source_file": "/Users/rashmiassiriyage/niwadu-rebuild/source-snapshot/images/1344beba0682a7a8.jpg",
+    "exists": true,
+    "actual_bytes": 437266,
+    "sha256": "82f4748532564ee4843dd4bfc0131c630168256bf9ee61de13f9b7e7ca35f0fc"
+  }
+]

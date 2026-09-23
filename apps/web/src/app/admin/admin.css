@@ -80,3 +80,7 @@ body:has(.admin-app) { margin:0; }
 @media(max-width:760px) { .setup-steps { display:grid; grid-template-columns:1fr 1fr; } .amenities { grid-template-columns:1fr; } .wizard-controls>span { display:none; } .wizard-panel .panel { padding:0; border:0; } }
 
 @media(max-width:760px) { .setup-heading { flex-direction:column; } .setup-heading>button { align-self:flex-end; white-space:nowrap; } .setup-heading h1 { overflow-wrap:anywhere; } }
+
+.admin-app .field-error { color:#86241e; font-weight:400; }
+.admin-app [aria-invalid="true"] { border-color:#a62a23; }
+.admin-app .error p { color:inherit; }

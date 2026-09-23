@@ -8,6 +8,7 @@ async function createDraft(page: Page, email = "admin@example.test") {
   await page.getByRole("button", { name: "Add hotel" }).click();
   await page.getByLabel("Hotel name").fill(`Wizard Test Hotel ${Date.now()}`);
   await page.getByRole("button", { name: "Create draft" }).click();
+  await page.waitForURL(/\/onboarding$/);
   await expect(page.getByRole("heading", { name: "Hotel basics", exact: true })).toBeVisible();
 }
 
@@ -79,4 +80,92 @@ test("stale browser edits are preserved on screen and cannot overwrite newer ser
   expect(persisted.data.city).toBe("Galle");
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.screenshot({ path: "test-results/onboarding-mobile.png", fullPage: true });
+});
+
+
+test("conflict recovery copies local input, explicitly reloads latest, and resumes saving", async ({ page, context }) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await createDraft(page);
+  const second = await context.newPage();
+  await second.goto(page.url());
+  await expect(second.getByLabel("City or destination")).toBeVisible();
+  await second.getByLabel("City or destination").fill("Galle");
+  await expect(second.getByText("All changes saved", { exact: true })).toBeVisible();
+  await page.getByLabel("City or destination").fill("Kandy");
+  await expect(page.getByRole("alert").filter({ hasText: "changed in another window" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Retry save" })).toHaveCount(0);
+  await page.getByLabel("Phone number").fill("0771234567");
+  await page.getByRole("button", { name: "Copy unsaved changes", exact: true }).click();
+  expect(JSON.parse(await page.evaluate(() => navigator.clipboard.readText()))).toEqual({ city: "Kandy", phone: "0771234567" });
+  await expect(page.getByLabel("City or destination")).toHaveValue("Kandy");
+  await expect(page.getByText("Reloading will discard your unsaved changes in this window.", { exact: true })).toBeVisible();
+  await page.screenshot({ path: "test-results/onboarding-conflict-recovery.png", fullPage: true });
+  await page.route("**/onboarding", route => route.request().method() === "GET" ? route.fulfill({ status: 503, json: { message: "Unavailable" } }) : route.continue());
+  await page.getByRole("button", { name: "Discard unsaved changes and reload latest", exact: true }).click();
+  await expect(page.getByText("Could not load the latest draft.", { exact: false })).toBeVisible();
+  await expect(page.getByLabel("City or destination")).toHaveValue("Kandy");
+  await page.unroute("**/onboarding");
+  await page.getByRole("button", { name: "Discard unsaved changes and reload latest", exact: true }).click();
+  await expect(page.getByLabel("City or destination")).toHaveValue("Galle");
+  await page.getByLabel("City or destination").fill("Ella");
+  await expect(page.getByText("All changes saved", { exact: true })).toBeVisible();
+  await page.reload();
+  await expect(page.getByLabel("City or destination")).toHaveValue("Ella");
+  await second.close();
+});
+
+test("validation stays at the field during autosave and keyboard Continue focuses linked errors", async ({ page }) => {
+  await createDraft(page);
+  const email = page.getByLabel("Hotel contact email", { exact: true });
+  await email.fill("invalid-email");
+  await expect(email).toHaveAttribute("aria-invalid", "true");
+  await expect(email).toBeFocused();
+  await expect(page.getByRole("button", { name: "Retry save" })).toHaveCount(0);
+  await page.getByRole("button", { name: "Save and continue", exact: true }).focus();
+  await page.keyboard.press("Enter");
+  const summary = page.getByRole("region", { name: "Check these fields" });
+  await expect(summary).toBeFocused();
+  await page.keyboard.press("Tab");
+  await page.keyboard.press("Enter");
+  await expect(email).toBeFocused();
+  const errorId = await email.getAttribute("aria-describedby");
+  await expect(page.locator(`[id="${errorId}"]`)).toContainText("valid email");
+  await email.fill("hello@example.test");
+  await next(page, "Listing & photos");
+  await next(page, "Room types");
+  await page.getByRole("button", { name: "Add room type", exact: true }).click();
+  await page.getByRole("button", { name: "Add room type", exact: true }).click();
+  await page.getByLabel("Maximum guests", { exact: true }).nth(0).fill("0");
+  await page.getByLabel("Number of rooms", { exact: true }).nth(1).fill("0");
+  await page.getByRole("button", { name: "Save and continue", exact: true }).focus();
+  await page.keyboard.press("Enter");
+  await expect(summary).toBeFocused();
+  await expect(summary.getByRole("link")).toHaveCount(2);
+  await page.screenshot({ path: "test-results/onboarding-field-errors.png", fullPage: true });
+  await page.keyboard.press("Tab");
+  await page.keyboard.press("Enter");
+  await expect(page.getByLabel("Maximum guests", { exact: true }).nth(0)).toBeFocused();
+  await page.keyboard.type("2");
+  await summary.getByRole("link").filter({ hasText: "Room type 2" }).focus();
+  await page.keyboard.press("Enter");
+  await expect(page.getByLabel("Number of rooms", { exact: true }).nth(1)).toBeFocused();
+  await page.keyboard.press("ControlOrMeta+A");
+  await page.keyboard.type("3");
+  await next(page, "Rates & availability");
+});
+
+
+test("retry recovers server failures but is not offered for forbidden writes", async ({ page }) => {
+  await createDraft(page);
+  await page.route("**/onboarding", route => route.request().method() === "PATCH" ? route.fulfill({ status: 503, json: { message: "Temporarily unavailable" } }) : route.continue());
+  await page.getByRole("button", { name: "Save and continue", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Retry save" })).toBeVisible();
+  await page.unroute("**/onboarding");
+  await page.getByRole("button", { name: "Retry save" }).click();
+  await expect(page.getByRole("heading", { name: "Listing & photos", exact: true })).toBeVisible();
+  await page.route("**/onboarding", route => route.request().method() === "PATCH" ? route.fulfill({ status: 403, json: { message: "Access denied" } }) : route.continue());
+  await page.getByLabel("About the hotel").fill("Local description");
+  await expect(page.getByRole("region", { name: "Save problem" }).getByRole("alert")).toHaveText("Access denied");
+  await expect(page.getByRole("button", { name: "Retry save" })).toHaveCount(0);
+  await expect(page.getByLabel("About the hotel")).toHaveValue("Local description");
 });

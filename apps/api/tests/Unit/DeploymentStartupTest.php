@@ -93,7 +93,18 @@ SH);
         $this->assertFileDoesNotExist($this->directory.'/commands');
         $process = $this->start(['RAILWAY_VOLUME_MOUNT_PATH' => ''], 'pre-deploy.sh');
         $this->assertTrue($process->isSuccessful(), $process->getErrorOutput());
-        $this->assertSame("artisan config:clear --no-interaction\nartisan migrate --force --no-interaction\n", file_get_contents($this->directory.'/commands'));
+        $this->assertSame("artisan config:clear --no-interaction\nartisan niwadu:check-deployment-database --no-interaction\nartisan migrate --force --no-interaction\n", file_get_contents($this->directory.'/commands'));
+    }
+
+    public function test_effective_driver_rejection_prevents_migrations_and_server_start(): void
+    {
+        foreach (['start-container.sh', 'pre-deploy.sh'] as $script) {
+            $process = $this->start(['FAIL_COMMAND' => 'niwadu:check-deployment-database'], $script);
+            $this->assertFalse($process->isSuccessful());
+            $commands = file_get_contents($this->directory.'/commands');
+            $this->assertStringNotContainsString('artisan migrate', $commands);
+            $this->assertStringNotContainsString('server ', $commands);
+        }
     }
 
     private function start(array $overrides = [], string $script = 'start-container.sh'): Process

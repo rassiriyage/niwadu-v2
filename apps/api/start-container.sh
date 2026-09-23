@@ -14,6 +14,7 @@ fi
 
 # Migrations run in Railway pre-deploy, never on restarts. Preserve shared cache.
 php artisan config:clear --no-interaction
+php artisan niwadu:check-deployment-database --no-interaction
 php artisan package:discover --no-interaction
 php artisan config:cache --no-interaction
 php artisan event:cache --no-interaction

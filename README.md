@@ -82,3 +82,11 @@ Browser tests require Chromium (`cd apps/web && npx playwright install chromium`
 - `tasks/`: implementation plan and current progress.
 
 Each application owns its dependency lockfile. Never commit credentials, customer exports, database files or build outputs. See AGENTS.md for project boundaries.
+
+## Railway service roots
+
+This repository contains two isolated applications. The frontend Railway service root must be `/apps/web`, with build `npm run build`, start `npm run start -- --hostname 0.0.0.0 --port $PORT`, and healthcheck `/api/health`. Building the repository root fails because its package only contains development/delegation scripts. See [Railway's monorepo guide](https://docs.railway.com/deployments/monorepo).
+
+The API is a separate service rooted at `/apps/api`; its database, app key, runtime, durable photo storage and trusted proxy/session configuration must be set up before staff sign-in works. Set frontend `API_ORIGIN` to the reachable API origin before building, because the Next.js rewrite is generated at build time. Do not use localhost for a separate Railway service. The homepage is still unimplemented and returns 404; use the process-health path above for deployment checks.
+
+Component ownership and independent QA/design responsibilities are recorded in [tasks/team.md](tasks/team.md).

@@ -25,7 +25,7 @@ class PmsConnectionResource extends JsonResource
             'freshness' => $this->freshness,
             'last_verified_at' => $this->last_verified_at?->toISOString(),
             'last_sync_at' => $this->last_sync_at?->toISOString(),
-            'last_error' => $this->last_error,
+            'has_error' => filled($this->last_error),
         ];
     }
 }

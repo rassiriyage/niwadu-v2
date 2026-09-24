@@ -72,6 +72,8 @@ class PmsConnectionTest extends TestCase
         foreach ([
             'http://pms.example.test',
             'https://localhost',
+            'https://metadata.google.internal',
+            'https://pms.internal',
             'https://pms.example.test/api/v1',
             'https://user:pass@pms.example.test',
         ] as $endpoint) {
@@ -111,6 +113,30 @@ class PmsConnectionTest extends TestCase
         ])->assertOk()->assertJsonMissingPath('data.credentials');
 
         $this->assertSame(['api_key' => 'rotated-secret'], $connection->fresh()->credentials);
+    }
+
+    public function test_provider_error_details_are_not_returned_to_the_browser(): void
+    {
+        $admin = User::factory()->create(['platform_role' => 'administrator']);
+        $hotel = Hotel::factory()->create();
+        $connection = PmsConnection::create([
+            ...$this->payload(),
+            'hotel_id' => $hotel->id,
+            'created_by' => $admin->id,
+            'capabilities' => ['hold_confirm' => false],
+            'last_error' => 'Authorization: Bearer leaked-token',
+        ]);
+        $connection->last_error = 'Authorization: Bearer leaked-token';
+        $connection->save();
+
+        $response = $this->actingAs($admin)->getJson('/api/v1/hotels/'.$hotel->id.'/pms-connections');
+        $response
+            ->assertOk()
+            ->assertJsonPath('data.0.has_error', true)
+            ->assertJsonMissingPath('data.0.last_error')
+            ->assertSee('has_error');
+        $this->assertStringNotContainsString('leaked-token', $response->getContent());
+        $this->assertSame('Authorization: Bearer leaked-token', $connection->fresh()->last_error);
     }
 
     /** @return array<string, mixed> */

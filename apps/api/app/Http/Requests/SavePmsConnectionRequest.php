@@ -31,7 +31,12 @@ class SavePmsConnectionRequest extends FormRequest
                     $fail('The endpoint must be an origin; provider paths are fixed by the adapter.');
                 }
                 $host = strtolower((string) ($parts['host'] ?? ''));
-                if ($host === '' || $host === 'localhost' || str_ends_with($host, '.localhost') || filter_var($host, FILTER_VALIDATE_IP)) {
+                $blockedSuffixes = ['.internal', '.local', '.localhost', '.lan', '.localdomain'];
+                $isBlockedHostname = $host === 'localhost' || $host === 'metadata.google.internal';
+                foreach ($blockedSuffixes as $suffix) {
+                    $isBlockedHostname = $isBlockedHostname || str_ends_with($host, $suffix);
+                }
+                if ($host === '' || $isBlockedHostname || filter_var($host, FILTER_VALIDATE_IP)) {
                     $fail('The endpoint host is not allowed.');
                 }
             }],

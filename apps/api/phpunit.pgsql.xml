@@ -8,6 +8,7 @@
         <testsuite name="PostgreSQL catalog">
             <directory>tests/Postgres</directory>
             <file>tests/Feature/TravellerAccountTest.php</file>
+            <file>tests/Feature/ItineraryTest.php</file>
             <file>tests/Feature/PasswordByteLimitTest.php</file>
             <file>tests/Feature/PasswordSessionTest.php</file>
             <file>tests/Feature/RoomCatalogTest.php</file>

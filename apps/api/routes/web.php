@@ -7,6 +7,7 @@ use App\Http\Controllers\HotelDiscoveryController;
 use App\Http\Controllers\HotelOnboardingController;
 use App\Http\Controllers\HotelPhotoController;
 use App\Http\Controllers\HotelStaffController;
+use App\Http\Controllers\ItineraryController;
 use App\Http\Controllers\ManualCatalogController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PmsConnectionController;
@@ -32,6 +33,11 @@ Route::prefix('api/v1')->middleware([PrivateApiResponse::class, 'auth.session'])
     Route::post('login', [SessionController::class, 'store'])->middleware('throttle:login');
     Route::post('password/setup', [PasswordController::class, 'store'])->middleware('throttle:10,1');
     Route::middleware('auth')->group(function () {
+        Route::get('me/itineraries', [ItineraryController::class, 'index']);
+        Route::get('me/itineraries/{itinerary}', [ItineraryController::class, 'show'])->whereNumber('itinerary');
+        Route::post('me/itineraries', [ItineraryController::class, 'store'])->middleware('throttle:30,1');
+        Route::put('me/itineraries/{itinerary}', [ItineraryController::class, 'update'])->whereNumber('itinerary')->middleware('throttle:30,1');
+        Route::delete('me/itineraries/{itinerary}', [ItineraryController::class, 'destroy'])->whereNumber('itinerary')->middleware('throttle:30,1');
         Route::get('me/coverage', [CoverageController::class, 'show']);
         Route::put('me/coverage', [CoverageController::class, 'update'])->middleware('throttle:60,1');
         Route::match(['get', 'post'], 'catalog/destinations', [HotelClassificationController::class, 'destinations']);

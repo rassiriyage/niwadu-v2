@@ -188,3 +188,38 @@ Required sibling input `nightly_conditions` is a list of `{stay_date, available,
 Restored the sold-out, stop-sell and restriction negative cases; added both-night coverage, noninteger/unknown values, missing list/rows/fields, duplicate/misaligned/reordered dates. Red run reproduced missing entire conditions being accepted and the new valid shape being rejected. After correction: **63 focused tests / 72 assertions; 89 full backend tests / 221 assertions**. Full suite used isolated in-memory SQLite, ephemeral APP_KEY and MAIL_MAILER=log. Pint and whitespace checks passed.
 
 These remain synthetic preconditions: a caller supplying incorrect/stale positive facts can still produce a result. There is no real catalog binding, atomic stock check or reservation. Catalog resolution and later inventory concurrency evidence remain required. Earlier notes describing removal of checks are historical and superseded by this correction.
+
+## Persisted internal traveller quote/intent slice — 2026-09-24
+
+Accepted authentication baseline: booking branch rebased onto `61ac6afd0885f830f071e9d4d78621ae879525f7`. Prior calculator correction `e0ab96e` is now `e6bc9e1` with the same calculator behavior. No branch merge, push or deployment. This increment owns booking tables only; catalog confirmed that real rate-plan/stock/hold schema and quote source are not yet implemented in its metadata candidate.
+
+### Concrete implemented interface
+
+`App\BookingWorkflow` is an internal service with three methods, no HTTP routes:
+
+- `requestQuote(User $owner, array $selection)` accepts only `{hotel_id,rate_plan_id,arrival,departure,adults}`. Returns `{state:'unavailable',reason:'quote_unavailable',quote:null}` without persistence when no eligible source exists. Available fixture result is `{state:'available',reason:null,quote:{id,source:'fixture',snapshot,expires_at}}`. The snapshot is calculated from complete nightly prices plus required nightly conditions; no caller-supplied price, source, payment or provider configuration is accepted.
+- `createIntent(User $owner, {quote_id}, string $idempotencyKey)` persists one intent and returns `{id,quote_id,hotel_id,state:'awaiting_hold',payment:{state:'unavailable',reason:'payment_setup_incomplete'}}`. There is no held/paid/confirmed result or checkout URL. The state is deliberately derived as awaiting_hold while no progression operation exists; no speculative state-machine/schema is introduced.
+- `getIntent(User $owner, string $id)` returns that safe projection only for its owning traveller. Hotel manager/reservations membership is not traveller ownership and grants no access to this service. Staff booking operations remain separate future policies. Existing saved User is used only as the internal owner; public traveller session/registration is not implemented here.
+
+`BookingQuoteSource::resolve(selection, now)` supplies `{source,expires_at:DateTimeImmutable,input}` or null. Container defaults to `UnavailableBookingQuoteSource`; the only positive source is an anonymous fixture in tests, and positive results are additionally refused outside the testing environment. No production fake configuration/seed/adapter exists. Sources must match the complete requested selection; invalid calculated facts fail closed. Fixture quotes require a published synthetic hotel, but this check alone is not the eventual public eligibility/ownership/freshness proof. A real source must resolve those gates before integration.
+
+### Persistence and idempotency
+
+Two tables: `booking_quotes` stores owner/hotel FKs, source, immutable calculated snapshot and quote expiry; `booking_intents` stores quote/owner/hotel, idempotency key and payload fingerprint. UUID identities and composite quote-owner-hotel FK prevent cross-principal/cross-hotel links. Unique quote ID prevents two intents per quote, and `(user_id,idempotency_key)` is unique. User/hotel deletion is restricted while records reference them; retention/deletion policy is a future gate before personal data collection/public launch.
+
+No invented rate-plan or room table/FK: synthetic IDs live only inside the explicitly fixture snapshot. Real catalog binding and corresponding relational constraints must be reviewed when catalog publishes them. No onboarding draft is converted into a sellable quote.
+
+Intent creation locks the existing owner row, then checks key replay and quote ownership/expiry inside one transaction. Same key/body returns the same intent even after quote expiry; different payload conflicts. A second key for a previously used quote conflicts. New intent at or after expiry rejects; unpublishing or non-test fixture use rejects. Every read/replay is owner-scoped. No inventory is acquired and no provider is called inside or outside that transaction. PostgreSQL independent-connection verification of serialization remains outstanding; SQLite tests and unique constraints are not concurrency evidence.
+
+### Coordination and next real gates
+
+- Public owner reports planner56a215 is destination-only browser-local state, no selectable hotel/rate-plan/date contract. This slice must not be wired through staff-only endpoints. Public traveller principal/session and publicly eligible catalog selection are required before exposing quote routes; admin owner was contacted. Preserve itinerary on unavailable, show no cost as null/unknown rather than zero, and never label awaiting_hold as reserved.
+- Catalog owner confirmed no conflicting quote/hold implementation. Next source must resolve published/released hotel+room+rate relationships, ownership/freshness, policy and complete nightly prices/conditions; then catalog's atomic hold acquire/consume/release can drive intent progression. This internal slice is not that binding.
+- Payments owner accepted exact payment unavailable projection in the intent; it is readiness, not failed payment. No financial records are created. Provider is PAYable Direct API; Payments.lk documentation remains comparison-only. Direct API timing/signature/status/refund evidence gates provider execution, not planner/nonpayment progress.
+- No confirmation dispatch exists in this slice. Future unknown confirmation must persist and reconcile the original operation/ref/key; never treat timeout/hold expiry as failed acceptance or automatically refund/rebook. No fake source can enable paid/confirmed status here.
+
+### Evidence
+
+Test-first run failed on absent service methods/tables. Focused workflow suite: 17 tests (full run includes them); regression suite **129 tests / 463 assertions** on isolated SQLite with ephemeral APP_KEY, MAIL_MAILER=log, blank DB_URL. Tests cover unavailable/no-row behavior, membership-free traveller ownership, persisted immutable pricing, expiry boundary, stable replay, mismatched key payload, duplicate quote intent, foreign owner/staff denial, forged fields, fixture isolation, source-selection mismatch and database owner/hotel/quote uniqueness constraints. Migration up/one-step rollback/up passed against a newly created disposable SQLite file. Pint and whitespace checks passed. No browser/UI changed, no full Playwright run, no live calls or money actions.
+
+Graft was rebuilt after rebase and new source: 87 indexed first-party files, 436 nodes, 854 edges on this checkout. Current source/tests were checked directly; graph cache remains ignored and is not QA evidence. Source handoff commit follows in the task response. Independent QA and future PostgreSQL concurrency/real catalog validation remain required.

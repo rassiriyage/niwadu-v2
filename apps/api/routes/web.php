@@ -11,6 +11,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PublicHotelController;
 use App\Http\Controllers\PublicRatePlanController;
 use App\Http\Controllers\RoomTypeController;
+use App\Http\Controllers\PmsConnectionController;
 use App\Http\Controllers\SessionController;
 use App\Http\Middleware\PrivateApiResponse;
 use Illuminate\Http\JsonResponse;
@@ -62,5 +63,9 @@ Route::prefix('api/v1')->middleware([PrivateApiResponse::class, 'auth.session'])
         Route::post('hotels/{hotel}/staff', [HotelStaffController::class, 'store'])->middleware('throttle:30,1');
         Route::post('hotels/{hotel}/staff/{user}/password-link', [HotelStaffController::class, 'passwordLink'])->middleware('throttle:10,1');
         Route::delete('hotels/{hotel}/staff/{user}', [HotelStaffController::class, 'destroy']);
+        Route::get('pms/providers', [PmsConnectionController::class, 'providers']);
+        Route::get('hotels/{hotel}/pms-connections', [PmsConnectionController::class, 'index']);
+        Route::post('hotels/{hotel}/pms-connections', [PmsConnectionController::class, 'store'])->middleware('throttle:30,1');
+        Route::patch('pms-connections/{pmsConnection}', [PmsConnectionController::class, 'update']);
     });
 });

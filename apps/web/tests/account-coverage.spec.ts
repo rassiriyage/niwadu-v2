@@ -150,3 +150,31 @@ test("registration validation stays on form without claiming an account", async 
   await expect(page.locator(".account-field-error")).toHaveText("Passwords must match.");
   await expect(page).toHaveURL(/account\?mode=register$/);
 });
+
+
+test("registration counts UTF-8 bytes without truncating and keeps login compatible", async ({ page }) => {
+  const state = await mockAccount(page, false);
+  await page.goto("/account?mode=register");
+  await page.getByLabel("Your name", { exact: true }).fill("QA Traveller");
+  await page.getByLabel("Email address", { exact: true }).fill("traveller@example.test");
+  const tooLong = "é".repeat(37);
+  await page.locator('input[name="password"]').fill(tooLong);
+  await page.getByLabel("Confirm password", { exact: true }).fill(tooLong);
+  await page.getByRole("button", { name: "Create account", exact: true }).click();
+  await expect(page.locator(".account-field-error")).toContainText("exceeds 72 UTF-8 bytes");
+  await expect(page.locator('input[name="password"]')).toHaveValue(tooLong);
+  expect(state.writes).toHaveLength(0);
+  const boundary = "é".repeat(36);
+  await page.locator('input[name="password"]').fill(boundary);
+  await page.getByLabel("Confirm password", { exact: true }).fill(boundary);
+  await page.getByRole("button", { name: "Create account", exact: true }).click();
+  await expect(page).toHaveURL(/\/cover$/);
+  expect(state.writes[0].body.password).toBe(boundary);
+  state.user = null;
+  await page.goto("/account");
+  await page.getByLabel("Email address", { exact: true }).fill("traveller@example.test");
+  await page.getByLabel("Password", { exact: true }).fill(tooLong);
+  await page.getByRole("button", { name: "Sign in", exact: true }).click();
+  await expect(page).toHaveURL(/\/cover$/);
+  expect(state.writes[1].body.password).toBe(tooLong);
+});

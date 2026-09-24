@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Rules\PasswordBytes;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -47,7 +48,7 @@ class SessionController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'string', 'min:12', 'max:1024', 'not_regex:/\x00/', 'confirmed'],
+            'password' => ['required', 'string', 'min:12', new PasswordBytes, 'confirmed'],
         ]);
         try {
             $user = new User($data);

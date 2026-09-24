@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Rules\PasswordBytes;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class PasswordController extends Controller
     {
         $data = $request->validate([
             'email' => ['required', 'email'], 'token' => ['required', 'string'],
-            'password' => ['required', 'confirmed', PasswordRule::min(12), 'max:1024'],
+            'password' => ['required', 'confirmed', PasswordRule::min(12), new PasswordBytes],
         ]);
         $data['email'] = Str::lower($data['email']);
         $status = Password::reset($data, function (User $user, string $password) {

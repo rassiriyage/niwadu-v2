@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use App\Rules\PasswordBytes;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -21,10 +22,10 @@ class CreateOnboardingEmployee extends Command
 
             return self::FAILURE;
         }
-        $data = ['email' => $email, 'name' => $this->option('name') ?: $this->ask('Name'), 'password' => $this->secret('Password (at least 12 characters)')];
-        $validator = Validator::make($data, ['email' => ['required', 'email', 'max:255'], 'name' => ['required', 'string', 'max:255'], 'password' => ['required', 'string', 'min:12', 'max:1024']]);
+        $data = ['email' => $email, 'name' => $this->option('name') ?: $this->ask('Name'), 'password' => $this->secret('Password (at least 12 characters, at most 72 UTF-8 bytes)')];
+        $validator = Validator::make($data, ['email' => ['required', 'email', 'max:255'], 'name' => ['required', 'string', 'max:255'], 'password' => ['required', 'string', 'min:12', new PasswordBytes]]);
         if ($validator->fails()) {
-            $this->error('Provide a valid name, email and password of at least 12 characters.');
+            $this->error('Provide a valid name, email and password of at least 12 characters and at most 72 UTF-8 bytes, without null characters.');
 
             return self::FAILURE;
         }

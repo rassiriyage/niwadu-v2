@@ -14,7 +14,7 @@ class PlatformAdministratorTest extends TestCase
     public function test_command_creates_an_admin_without_a_default_password(): void
     {
         $this->artisan('niwadu:create-administrator admin@example.test --name=Administrator')
-            ->expectsQuestion('Password (at least 12 characters)', 'local-test-password')
+            ->expectsQuestion('Password (at least 12 characters, at most 72 UTF-8 bytes)', 'local-test-password')
             ->assertSuccessful();
         $user = User::where('email', 'admin@example.test')->firstOrFail();
         $this->assertSame('administrator', $user->platform_role);

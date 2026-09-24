@@ -21,7 +21,7 @@ class OnboardingEmployeeTest extends TestCase
         Notification::fake();
         $this->artisan('niwadu:create-onboarding-employee EMPLOYEE@example.test')
             ->expectsQuestion('Name', 'Onboarding Employee')
-            ->expectsQuestion('Password (at least 12 characters)', 'local-test-password')
+            ->expectsQuestion('Password (at least 12 characters, at most 72 UTF-8 bytes)', 'local-test-password')
             ->assertSuccessful();
 
         $user = User::where('email', 'employee@example.test')->firstOrFail();
@@ -50,7 +50,7 @@ class OnboardingEmployeeTest extends TestCase
     public function test_command_rejects_invalid_input(string $email, string $name, string $password): void
     {
         $this->artisan('niwadu:create-onboarding-employee', ['email' => $email, '--name' => $name])
-            ->expectsQuestion('Password (at least 12 characters)', $password)
+            ->expectsQuestion('Password (at least 12 characters, at most 72 UTF-8 bytes)', $password)
             ->assertFailed();
         $this->assertDatabaseCount('users', 0);
     }
@@ -110,7 +110,7 @@ class OnboardingEmployeeTest extends TestCase
     private function provisionEmployee(): User
     {
         $this->artisan('niwadu:create-onboarding-employee employee@example.test --name=Employee')
-            ->expectsQuestion('Password (at least 12 characters)', 'local-test-password')
+            ->expectsQuestion('Password (at least 12 characters, at most 72 UTF-8 bytes)', 'local-test-password')
             ->assertSuccessful();
 
         return User::where('email', 'employee@example.test')->firstOrFail();

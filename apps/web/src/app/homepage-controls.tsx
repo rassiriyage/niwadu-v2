@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { AnimatedWordmark } from "./Logo";
-import { createContext, useContext, useRef, useState, type ReactNode } from "react";
+import { createContext, useContext, useRef, useState, type ReactNode, type PointerEvent } from "react";
 
 const PreviewContext = createContext<(label: string) => void>(() => {});
 
@@ -29,6 +29,32 @@ export function PreviewAction({ label, accessibleName, className, children }: { 
 export function Carousel({ id, title, kind, children }: { id: string; title: string; kind: string; children: ReactNode }) {
   const track = useRef<HTMLUListElement>(null);
   const [edges, setEdges] = useState({ start: true, end: false });
+  const gesture = useRef<{ id: number; x: number; y: number; left: number; dragging: boolean } | null>(null);
+  const suppressClick = useRef(false);
+  const [dragging, setDragging] = useState(false);
+  function finishDrag(event: PointerEvent<HTMLUListElement>) {
+    if (gesture.current?.id !== event.pointerId) return;
+    gesture.current = null;
+    setDragging(false);
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+  }
+  function drag(event: PointerEvent<HTMLUListElement>) {
+    const current = gesture.current;
+    if (!current || current.id !== event.pointerId) return;
+    if (!(event.buttons & 1)) { finishDrag(event); return; }
+    const dx = event.clientX - current.x;
+    const dy = event.clientY - current.y;
+    if (!current.dragging) {
+      if (Math.abs(dx) < 6) return;
+      if (Math.abs(dy) > Math.abs(dx)) { finishDrag(event); return; }
+      current.dragging = true;
+      suppressClick.current = true;
+      setDragging(true);
+      event.currentTarget.setPointerCapture(event.pointerId);
+    }
+    event.preventDefault();
+    event.currentTarget.scrollLeft = current.left - dx;
+  }
   function updateEdges() {
     const el = track.current;
     if (el) setEdges({ start: el.scrollLeft < 2, end: el.scrollLeft + el.clientWidth >= el.scrollWidth - 2 });
@@ -45,7 +71,20 @@ export function Carousel({ id, title, kind, children }: { id: string; title: str
       <button aria-label={`Previous ${title}`} aria-controls={id} disabled={edges.start} onClick={() => move(-1)}><span className="chevron left" aria-hidden="true" /></button>
       <button aria-label={`Next ${title}`} aria-controls={id} disabled={edges.end} onClick={() => move(1)}><span className="chevron" aria-hidden="true" /></button>
     </div>
-    <ul id={id} className="card-track" ref={track} onScroll={updateEdges} tabIndex={0} aria-label={`${title} listings`}>{children}</ul>
+    <ul id={id} className="card-track" data-dragging={dragging || undefined} ref={track} onScroll={updateEdges} tabIndex={0} aria-label={`${title} listings`}
+      onPointerDown={event => {
+        suppressClick.current = false;
+        // Touch keeps native horizontal swiping and vertical page scrolling.
+        if (event.pointerType === "touch" || event.button !== 0 || !event.isPrimary) return;
+        gesture.current = { id: event.pointerId, x: event.clientX, y: event.clientY, left: event.currentTarget.scrollLeft, dragging: false };
+      }}
+      onPointerMove={drag} onPointerUp={finishDrag} onPointerCancel={finishDrag} onLostPointerCapture={finishDrag}
+      onPointerLeave={event => { if (!gesture.current?.dragging) finishDrag(event); }}
+      onDragStart={event => event.preventDefault()}
+      onClickCapture={event => {
+        if (suppressClick.current && event.detail > 0) { event.preventDefault(); event.stopPropagation(); }
+      }}
+    >{children}</ul>
   </section>;
 }
 

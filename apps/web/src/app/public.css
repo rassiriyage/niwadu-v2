@@ -49,3 +49,5 @@ body:has(.public-site){margin:0}
 @media(max-width:767px){.public-site .search-pill{width:100%}}
 
 .photo-slot{display:block;position:absolute;inset:0}
+
+.card-track{cursor:grab;user-select:none}.card-track[data-dragging],.card-track[data-dragging] *{cursor:grabbing}

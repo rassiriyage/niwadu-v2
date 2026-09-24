@@ -87,3 +87,17 @@ body:has(.admin-app) { margin:0; }
 
 .admin-app dialog { max-width:min(32rem, calc(100vw - 2rem)); padding:1.5rem; border:1px solid var(--line); border-radius:8px; color:var(--ink); }
 .admin-app dialog::backdrop { background:rgb(24 60 80 / 40%); }
+
+.admin-app .ops-form { margin:1.25rem 0; }
+.admin-app .ops-form fieldset { border:0; padding:0; min-width:0; margin:0 0 1rem; }
+.admin-app .ops-check { flex-direction:row; align-items:center; gap:.75rem; }
+.admin-app .ops-check input { width:20px; min-height:20px; flex:none; }
+.admin-app .ops-table-scroll { overflow-x:auto; margin:1.25rem 0; }
+.admin-app .ops-table-scroll table { width:100%; border-collapse:collapse; font-size:.875rem; }
+.admin-app .ops-table-scroll th,.admin-app .ops-table-scroll td { padding:.75rem; text-align:left; border-bottom:1px solid var(--line); }
+.admin-app .ops-form textarea { width:100%; }
+.admin-app .setup-steps [aria-current="step"],.admin-app button[aria-pressed="true"] { outline:2px solid var(--ink); outline-offset:2px; }
+
+.admin-app .panel,.admin-app main,.admin-app .room-draft { min-width:0; }
+.admin-app .page-heading h1 { overflow-wrap:anywhere; }
+@media(max-width:480px) { .admin-app .room-draft .setup-steps { grid-template-columns:1fr; } }

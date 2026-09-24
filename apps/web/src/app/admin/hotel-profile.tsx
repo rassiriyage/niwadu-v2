@@ -26,6 +26,7 @@ export default function HotelProfile({ id }: { id: number }) {
     <div className="page-heading"><div><p className="eyebrow">PROPERTY DETAILS</p><h1>{hotel.name}</h1><p>{hotel.city || "Add the hotel's location"}</p></div><span className="badge">{hotel.status}</span></div>
     {hotel.status === "draft" && <p className="notice">Private draft · This hotel is not published and cannot receive bookings.</p>}
     {hotel.status === "draft" && hotel.permissions.manage_staff && <p><Link className="button-link" href={`/admin/hotels/${id}/onboarding`}>Continue hotel setup</Link></p>}
+    <p><a className="button-link" href={`/admin/hotels/${id}/inventory`}>Rooms, rates and inventory</a></p>
     <section className="panel"><h2>Hotel profile</h2><p>Keep the details your team needs in one place.</p>
       <form onSubmit={save} className="form-grid"><fieldset disabled={!hotel.permissions.edit_profile || busy} className="form-grid full">
         <label>Hotel name<input name="name" defaultValue={hotel.name} required maxLength={255} /></label>

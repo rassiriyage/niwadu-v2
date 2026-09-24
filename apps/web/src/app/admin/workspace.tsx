@@ -6,9 +6,10 @@ import { useRouter } from "next/navigation";
 import { api, ApiError, type Hotel, type Session, type StaffUser } from "@/lib/admin-api";
 import HotelProfile from "./hotel-profile";
 import Onboarding from "./onboarding";
+import Operations from "./operations";
 import { clearDraftRecovery } from "./onboarding-recovery";
 
-export default function Workspace({ hotelId, onboarding = false }: { hotelId?: number; onboarding?: boolean }) {
+export default function Workspace({ hotelId, onboarding = false, inventory = false }: { hotelId?: number; onboarding?: boolean; inventory?: boolean }) {
   const signOutDialog = useRef<HTMLDialogElement>(null);
   const [discardPrompt, setDiscardPrompt] = useState(false);
   const beforeLeaveRef = useRef<(() => Promise<void>) | null>(null);
@@ -71,7 +72,7 @@ export default function Workspace({ hotelId, onboarding = false }: { hotelId?: n
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="admin-header"><Link className="wordmark" href="/admin">niwadu<span>hotel management</span></Link><div className="account"><span>{user.name}</span><button className="secondary" onClick={() => signOut()} disabled={busy}>Sign out</button></div></header>
     <div className="admin-body"><aside><nav aria-label="Management"><Link className="nav-active" href="/admin">Hotels</Link></nav><p>{user.platform_role ? "Niwadu workspace" : "Your hotel workspace"}</p></aside>
-    <main id="main">{error && <p role="alert" className="error">{error}</p>}{hotelId && onboarding ? <Onboarding key={`${user.id}:${hotelId}`} userId={user.id} id={hotelId} beforeLeaveRef={beforeLeaveRef} /> : hotelId ? <HotelProfile key={hotelId} id={hotelId} /> : <HotelList user={user} />}</main></div>
+    <main id="main">{error && <p role="alert" className="error">{error}</p>}{hotelId && inventory ? <Operations key={`${user.id}:${hotelId}`} id={hotelId} userId={user.id} beforeLeaveRef={beforeLeaveRef} /> : hotelId && onboarding ? <Onboarding key={`${user.id}:${hotelId}`} userId={user.id} id={hotelId} beforeLeaveRef={beforeLeaveRef} /> : hotelId ? <HotelProfile key={hotelId} id={hotelId} /> : <HotelList user={user} />}</main></div>
   </>;
 }
 

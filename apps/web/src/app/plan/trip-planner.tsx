@@ -4,7 +4,7 @@ import { useRef, useState, useSyncExternalStore } from "react";
 import { SriLankaMap } from "../SriLankaMap";
 import destinations from "./destinations.json";
 
-type Stop = { slug: string; nights: number };
+export type Stop = { slug: string; nights: number };
 const KEY = "niwadu.trip-draft.v1";
 const LIMIT = 20;
 const bySlug = new Map(destinations.map(destination => [destination.slug, destination]));
@@ -36,8 +36,8 @@ export function TripPlanner() {
   return ready ? <PlannerEditor /> : <p role="status">Opening your trip planner…</p>;
 }
 
-function PlannerEditor() {
-  const [draft, setDraft] = useState(restore);
+export function PlannerEditor({ account }: { account?: { stops: Stop[]; onChange: (stops: Stop[]) => void } }) {
+  const [draft, setDraft] = useState(() => account ? { stops: account.stops, error: "" } : restore());
   const [step, setStep] = useState(0);
   const [query, setQuery] = useState("");
   const [message, setMessage] = useState("");
@@ -55,7 +55,7 @@ function PlannerEditor() {
 
   function update(next: Stop[], announcement: string) {
     let error = "";
-    try { localStorage.setItem(KEY, JSON.stringify({ version: 1, stops: next })); setSaved(true); }
+    try { if (account) account.onChange(next); else localStorage.setItem(KEY, JSON.stringify({ version: 1, stops: next })); setSaved(true); }
     catch { error = "This itinerary could not be saved in this browser. You can keep editing and download it before leaving."; setSaved(false); }
     setDraft({ stops: next, error });
     setMessage(announcement);
@@ -97,7 +97,7 @@ function PlannerEditor() {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
   return <>
-    <div className="planner-storage"><p>Draft saved only in this browser, on this device. It is not linked to an account or sent to Niwadu.</p><p role="status">{draft.error ? "Not saved in this browser" : saved ? "Saved in this browser" : "Your changes will save here automatically"}</p></div>
+    {account ? <p className="planner-storage">Changes stay on this page until you choose Save itinerary.</p> : <div className="planner-storage"><p>Draft saved only in this browser, on this device. It is not linked to an account or sent to Niwadu.</p><p role="status">{draft.error ? "Not saved in this browser" : saved ? "Saved in this browser" : "Your changes will save here automatically"}</p></div>}
     {draft.error && <p className="planner-error" role="alert">{draft.error}</p>}
     <div className="visually-hidden" role="status">{message}</div>
     <div className="planner-grid">
@@ -132,7 +132,7 @@ function PlannerEditor() {
         <div className="planner-summary-card"><h2>Your trip so far</h2><dl><div><dt>Stops</dt><dd>{stops.length}</dd></div><div><dt>Nights</dt><dd>{total}</dd></div></dl>
           {stops.length ? <ol>{stops.map(stop => <li key={stop.slug}>{bySlug.get(stop.slug)!.name}<span>{stop.nights}n</span></li>)}</ol> : <p>Add your first destination to start planning.</p>}
           <p className="planner-help">Map lines show stop order, not road directions or travel times.</p>
-          {stops.length > 0 && (confirmClear ? <div className="planner-clear"><p>Clear this browser’s saved itinerary?</p><button className="planner-secondary" onClick={() => setConfirmClear(false)}>Keep itinerary</button><button className="planner-secondary" onClick={() => { update([], "Itinerary cleared."); setConfirmClear(false); go(0); }}>Clear itinerary</button></div> : <button className="planner-secondary" onClick={() => setConfirmClear(true)}>Start over</button>)}
+          {stops.length > 0 && (confirmClear ? <div className="planner-clear"><p>{account ? "Clear the stops in this draft? Save to update your account." : "Clear this browser’s saved itinerary?"}</p><button className="planner-secondary" onClick={() => setConfirmClear(false)}>Keep itinerary</button><button className="planner-secondary" onClick={() => { update([], "Itinerary cleared."); setConfirmClear(false); go(0); }}>Clear itinerary</button></div> : <button className="planner-secondary" onClick={() => setConfirmClear(true)}>Start over</button>)}
         </div>
       </aside>
     </div>

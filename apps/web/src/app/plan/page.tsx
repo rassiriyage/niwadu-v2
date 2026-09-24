@@ -19,6 +19,7 @@ export default function PlanPage() {
       <Link className="planner-home" href="/">← Back to explore</Link>
       <h1>Plan your trip around the island</h1>
       <p className="planner-lede">Pick your destinations, set the nights and put your itinerary together.</p>
+      <p className="planner-help"><Link href="/plan/saved">Open account-saved trips</Link> to explicitly copy a browser draft or manage private itineraries.</p>
       <TripPlanner />
       <noscript><p>Enable JavaScript to edit and save a trip in this browser. <Link href="/">Return to explore</Link>.</p></noscript>
     </main>

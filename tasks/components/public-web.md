@@ -77,3 +77,7 @@ Independent QA PASS exact 6b899f9a582244d0df05b596778db79e50ca38ba: same 260px i
 ## Working /plan journey
 
 User/PO shifted to completing functional public journeys before full UI/UX review. Added archive-verified /plan with destination selection, order/nights, review, per-browser validated draft persistence and text download. Header/menu/promo/footer now open the real planner. Mobile reorder/remove and focus recovery included; no account/booking/payment/route-estimate claims. Details and source provenance: docs/reference/public-web/trip-planner.md. Discovery and account-map integration coordinated with Catalog and Admin; those remain separate unfinished journeys.
+
+## Metadata discovery frontend candidate
+
+Implemented /hotels and /hotels/[slug] against Catalog metadata-only approved-snapshot API, with q search, capability-sourced property type filters, explicit PO-approved Name A–Z, local canonical pagination, Apply/Cancel/chips, details and truthful missing-photo/nonbookable states. Fresh origin reads and persisted-history reload preserve withdrawal behavior. Isolated synthetic HTTP fixture tests prove frontend behavior only; no fixture enters production and no real source is promoted. Details: docs/reference/public-web/discovery.md. Integrated exact API/QA remains required before publication.

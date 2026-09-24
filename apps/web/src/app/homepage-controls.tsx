@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { FreshLink } from "./fresh-link";
 import { AnimatedWordmark } from "./Logo";
 import { createContext, useContext, useRef, useState, type ReactNode, type PointerEvent } from "react";
 
@@ -23,6 +24,7 @@ export function PreviewNavigation({ children }: { children: ReactNode }) {
 
 export function PreviewAction({ label, accessibleName, className, children }: { label: string; accessibleName?: string; className?: string; children: ReactNode }) {
   const showPreview = useContext(PreviewContext);
+  if (label === "All stays" || label === "Search stays") return <FreshLink href="/hotels?sort=name" className={className} aria-label={accessibleName}>{children}</FreshLink>;
   if (label === "Plan a trip" || label === "Trip planner") return <Link href="/plan" className={className} aria-label={accessibleName}>{children}</Link>;
   return <button type="button" className={className} aria-label={accessibleName} onClick={() => showPreview(label)}>{children}</button>;
 }

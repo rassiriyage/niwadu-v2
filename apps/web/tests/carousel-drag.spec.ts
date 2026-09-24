@@ -24,8 +24,8 @@ test('QA release outside the row stops dragging and keeps fresh clicks working',
  const stopped=await track.evaluate(e=>e.scrollLeft);await page.mouse.move(900,300,{steps:8});expect(await track.evaluate(e=>e.scrollLeft)).toBe(stopped);
  await track.locator('.listing-card').nth(3).click();await expect(page.getByRole('dialog')).toBeVisible();
 });
-test('QA native mobile touch swipe and vertical page scrolling remain available',async({browser})=>{
- const ctx=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});const page=await ctx.newPage();await page.goto('http://127.0.0.1:3101/');const track=page.locator('.card-track').first();const cdp=await ctx.newCDPSession(page);
+test('QA native mobile touch swipe and vertical page scrolling remain available',async({browser, baseURL})=>{
+ const ctx=await browser.newContext({baseURL,viewport:{width:390,height:844},isMobile:true,hasTouch:true});const page=await ctx.newPage();await page.goto('/');const track=page.locator('.card-track').first();const cdp=await ctx.newCDPSession(page);
  async function swipe(x:number,y:number,endX:number,endY:number){await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});for(let i=1;i<=12;i++)await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x+(endX-x)*i/12,y:y+(endY-y)*i/12}]});await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});}
  await swipe(320,320,65,320);await expect.poll(()=>track.evaluate(e=>e.scrollLeft)).toBeGreaterThan(100);await expect(page.getByRole('dialog')).not.toBeVisible();
  await swipe(180,550,180,220);await expect.poll(()=>page.evaluate(()=>scrollY)).toBeGreaterThan(100);await ctx.close();

@@ -8,12 +8,12 @@ test("reference homepage stays local and honest", async ({ page }) => {
   await expect(page.getByText("Rates unavailable", { exact: true })).toHaveCount(36);
   await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(0);
   const hrefs = await page.locator("a[href]").evaluateAll(links => links.map(link => link.getAttribute("href")!));
-  expect(hrefs.every(href => href === "/" || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:"))).toBe(true);
+  expect(hrefs.every(href => href === "/" || href === "/plan" || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:"))).toBe(true);
   await expect(page.getByRole("link", { name: "Niwadu home", exact: true })).toHaveAttribute("href", "/");
   const track = page.getByRole("list", { name: "Popular stays in Nuwara Eliya listings", exact: true });
   await page.getByRole("button", { name: "Next Popular stays in Nuwara Eliya", exact: true }).click();
   await expect.poll(() => track.evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
-  for (const trigger of [page.locator(".search-pill"), page.locator(".listing-card").first(), page.locator(".footer-columns button").first(), page.locator(".promo").first()]) {
+  for (const trigger of [page.locator(".search-pill"), page.locator(".listing-card").first(), page.locator(".footer-columns button").first(), page.locator(".promo").nth(1)]) {
     await trigger.click();
     const dialog = page.getByRole("dialog", { name: /preview only$/ });
     await expect(dialog).toBeVisible();

@@ -40,7 +40,7 @@ export default function Home() {
       <section className="promos" aria-label="Explore Sri Lanka">
         <PreviewAction className="promo" label="Plan a trip">
           <span className="promo-map"><SriLankaMap route={[{ lat: 6.93, lng: 79.85 }, { lat: 7.96, lng: 80.76 }, { lat: 7.29, lng: 80.64 }, { lat: 6.87, lng: 81.05 }, { lat: 5.95, lng: 80.46 }, { lat: 6.93, lng: 79.85 }]} pins={[{ lat: 7.96, lng: 80.76, pill: "Sigiriya" }, { lat: 6.87, lng: 81.05, pill: "Ella" }, { lat: 5.95, lng: 80.46, pill: "Mirissa" }]} /></span>
-          <span className="eyebrow">Trip planner</span><span className="promo-title">Plan a route around the island</span><span className="promo-description">Explore the trip planner preview. Route planning and stay enquiries are coming next.</span><span className="primary">Start planning</span>
+          <span className="eyebrow">Trip planner</span><span className="promo-title">Plan a route around the island</span><span className="promo-description">Choose your destinations, arrange stops and nights, and save your itinerary in this browser.</span><span className="primary">Start planning</span>
         </PreviewAction>
         <PreviewAction className="promo" label="Cover Sri Lanka">
           <span className="promo-map"><SriLankaMap visited={["galle", "matara", "kandy", "badulla", "colombo", "nuwaraeliya", "hambantota", "trincomalee"]} /></span>

@@ -23,6 +23,7 @@ export function PreviewNavigation({ children }: { children: ReactNode }) {
 
 export function PreviewAction({ label, accessibleName, className, children }: { label: string; accessibleName?: string; className?: string; children: ReactNode }) {
   const showPreview = useContext(PreviewContext);
+  if (label === "Plan a trip" || label === "Trip planner") return <Link href="/plan" className={className} aria-label={accessibleName}>{children}</Link>;
   return <button type="button" className={className} aria-label={accessibleName} onClick={() => showPreview(label)}>{children}</button>;
 }
 
@@ -98,7 +99,7 @@ const categories = [
   ["North & East", "M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0M12 3v6m-3-3 3-3 3 3"],
   ["City breaks", "M3 21h18M5 21V7l5-3v17M10 21V4l9 4v13M7 10h1m-1 4h1m5-4h1m-1 4h1m2-4h1m-1 4h1"],
 ];
-export function ReferenceHeader() {
+export function ReferenceHeader({ showCategories = true }: { showCategories?: boolean }) {
   const menu = useRef<HTMLDetailsElement>(null);
   return <><header className="site-header"><div className="public-container header-nav">
     <Link href="/" className="site-logo" aria-label="Niwadu home"><AnimatedWordmark /></Link>
@@ -106,5 +107,5 @@ export function ReferenceHeader() {
     <div className="header-actions"><PreviewAction className="plan-nav" label="Plan a trip">Plan a trip</PreviewAction><PreviewAction className="currency" label="Currency">LKR⌄</PreviewAction>
       <details ref={menu} className="menu" onKeyDown={event => { if(event.key === "Escape" && menu.current?.open) { menu.current.open=false; menu.current.querySelector("summary")?.focus(); } }}><summary aria-label="Menu"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 8h28M2 16h28M2 24h28" /></svg><span className="profile-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .7C7.56.7.7 7.56.7 16S7.56 31.3 16 31.3 31.3 24.44 31.3 16 24.44.7 16 .7zm0 28c-4.02 0-7.6-1.88-9.93-4.81a12.43 12.43 0 0 1 6.45-4.4A6.5 6.5 0 0 1 9.5 14a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-3.02 5.49 12.42 12.42 0 0 1 6.45 4.4A12.67 12.67 0 0 1 16 28.7z"/></svg></span></summary><nav aria-label="Main navigation">{["Wishlists", "Plan a trip", "Cover Sri Lanka", "All stays", "Destinations", "Experiences", "About Niwadu", "Help Centre", "Contact", "Profile", "Log In", "Sign Up"].map(label => <PreviewAction key={label} label={label}>{label}</PreviewAction>)}</nav></details>
     </div>
-  </div></header><nav className="categories" aria-label="Stay categories"><div className="public-container">{categories.map(([label,path]) => <PreviewAction key={label} label={label}><svg viewBox="0 0 24 24" aria-hidden="true"><path d={path}/></svg><span>{label}</span></PreviewAction>)}</div></nav></>;
+  </div></header>{showCategories && <nav className="categories" aria-label="Stay categories"><div className="public-container">{categories.map(([label,path]) => <PreviewAction key={label} label={label}><svg viewBox="0 0 24 24" aria-hidden="true"><path d={path}/></svg><span>{label}</span></PreviewAction>)}</div></nav>}</>;
 }

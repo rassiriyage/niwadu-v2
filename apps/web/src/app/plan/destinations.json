@@ -1,0 +1,536 @@
+[
+  {
+    "name": "Agarapathana",
+    "slug": "agarapathana",
+    "lat": 6.86413,
+    "lng": 80.70555
+  },
+  {
+    "name": "Ahangama",
+    "slug": "ahangama",
+    "lat": 5.97352,
+    "lng": 80.3623
+  },
+  {
+    "name": "Ambalangoda",
+    "slug": "ambalangoda",
+    "lat": 6.23891,
+    "lng": 80.05415
+  },
+  {
+    "name": "Ampara",
+    "slug": "ampara",
+    "lat": 7.2975,
+    "lng": 81.6747
+  },
+  {
+    "name": "Anuradhapura",
+    "slug": "anuradhapura",
+    "lat": 8.33498,
+    "lng": 80.41061
+  },
+  {
+    "name": "Arugumbay",
+    "slug": "arugumbay",
+    "lat": 6.84685,
+    "lng": 81.8307
+  },
+  {
+    "name": "Atabage",
+    "slug": "atabage",
+    "lat": 7.13502,
+    "lng": 80.59787
+  },
+  {
+    "name": "Badulla",
+    "slug": "badulla",
+    "lat": 6.99004,
+    "lng": 81.05703
+  },
+  {
+    "name": "Balapitiya",
+    "slug": "balapitiya",
+    "lat": 6.28058,
+    "lng": 80.04058
+  },
+  {
+    "name": "Bandaragama",
+    "slug": "bandaragama",
+    "lat": 6.71451,
+    "lng": 79.98897
+  },
+  {
+    "name": "Bandarawela",
+    "slug": "bandarawela",
+    "lat": 6.83048,
+    "lng": 80.98882
+  },
+  {
+    "name": "Belihuloya",
+    "slug": "belihuloya",
+    "lat": 6.7198,
+    "lng": 80.77195
+  },
+  {
+    "name": "Bentota",
+    "slug": "bentota",
+    "lat": 6.42153,
+    "lng": 79.99785
+  },
+  {
+    "name": "Beruwala",
+    "slug": "beruwala",
+    "lat": 6.47559,
+    "lng": 79.98341
+  },
+  {
+    "name": "Boossa",
+    "slug": "boossa",
+    "lat": 6.07174,
+    "lng": 80.16306
+  },
+  {
+    "name": "Bundala",
+    "slug": "bundala",
+    "lat": 6.20986,
+    "lng": 81.22518
+  },
+  {
+    "name": "Chilaw",
+    "slug": "chilaw",
+    "lat": 7.57626,
+    "lng": 79.79536
+  },
+  {
+    "name": "Colombo",
+    "slug": "colombo",
+    "lat": 6.93886,
+    "lng": 79.8542
+  },
+  {
+    "name": "Dambulla",
+    "slug": "dambulla",
+    "lat": 7.8742,
+    "lng": 80.65109
+  },
+  {
+    "name": "Deraniyagala",
+    "slug": "deraniyagala",
+    "lat": 6.92727,
+    "lng": 80.33851
+  },
+  {
+    "name": "Diyathalawa",
+    "slug": "diyathalawa",
+    "lat": 6.80696,
+    "lng": 80.95722
+  },
+  {
+    "name": "Ella",
+    "slug": "ella",
+    "lat": 6.87361,
+    "lng": 81.04899
+  },
+  {
+    "name": "Galle",
+    "slug": "galle",
+    "lat": 6.03281,
+    "lng": 80.21496
+  },
+  {
+    "name": "Gampaha",
+    "slug": "gampaha",
+    "lat": 7.0917,
+    "lng": 79.9999
+  },
+  {
+    "name": "Girithale",
+    "slug": "girithale",
+    "lat": 8.00026,
+    "lng": 80.92444
+  },
+  {
+    "name": "Habarana",
+    "slug": "habarana",
+    "lat": 8.0384,
+    "lng": 80.7514
+  },
+  {
+    "name": "Hambantota",
+    "slug": "hambantota",
+    "lat": 6.12491,
+    "lng": 81.12426
+  },
+  {
+    "name": "Haputale",
+    "slug": "haputale",
+    "lat": 6.76815,
+    "lng": 80.96023
+  },
+  {
+    "name": "Hatton",
+    "slug": "hatton",
+    "lat": 6.89163,
+    "lng": 80.59846
+  },
+  {
+    "name": "Hikkaduwa",
+    "slug": "hikkaduwa",
+    "lat": 6.14075,
+    "lng": 80.10282
+  },
+  {
+    "name": "Homagama",
+    "slug": "homagama",
+    "lat": 6.84124,
+    "lng": 80.00345
+  },
+  {
+    "name": "Induruwa",
+    "slug": "induruwa",
+    "lat": 6.37397,
+    "lng": 80.01056
+  },
+  {
+    "name": "Ingiriya",
+    "slug": "ingiriya",
+    "lat": 6.74376,
+    "lng": 80.17668
+  },
+  {
+    "name": "Jaffna",
+    "slug": "jaffna",
+    "lat": 9.66509,
+    "lng": 80.0093
+  },
+  {
+    "name": "Kalawana",
+    "slug": "kalawana",
+    "lat": 6.53109,
+    "lng": 80.39648
+  },
+  {
+    "name": "Kalmunai",
+    "slug": "kalmunai",
+    "lat": 7.41316,
+    "lng": 81.82693
+  },
+  {
+    "name": "Kalpitiya",
+    "slug": "kalpitiya",
+    "lat": 8.23681,
+    "lng": 79.76615
+  },
+  {
+    "name": "Kalutara",
+    "slug": "kalutara",
+    "lat": 6.5854,
+    "lng": 79.9607
+  },
+  {
+    "name": "Kandalama",
+    "slug": "kandalama",
+    "lat": 7.87495,
+    "lng": 80.69012
+  },
+  {
+    "name": "Kandy",
+    "slug": "kandy",
+    "lat": 7.29312,
+    "lng": 80.63504
+  },
+  {
+    "name": "Kataragama",
+    "slug": "kataragama",
+    "lat": 6.41356,
+    "lng": 81.33244
+  },
+  {
+    "name": "Katunayake",
+    "slug": "katunayake",
+    "lat": 7.15677,
+    "lng": 79.87167
+  },
+  {
+    "name": "Kithulgala",
+    "slug": "kithulgala",
+    "lat": 6.99229,
+    "lng": 80.41882
+  },
+  {
+    "name": "Knuckles",
+    "slug": "knuckles",
+    "lat": 7.45,
+    "lng": 80.78
+  },
+  {
+    "name": "Kosgoda",
+    "slug": "kosgoda",
+    "lat": 6.33859,
+    "lng": 80.0289
+  },
+  {
+    "name": "Kurunagala",
+    "slug": "kurunagala",
+    "lat": 7.48705,
+    "lng": 80.36491
+  },
+  {
+    "name": "Mahiyanganaya",
+    "slug": "mahiyanganaya",
+    "lat": 7.34017,
+    "lng": 80.99313
+  },
+  {
+    "name": "Mannar",
+    "slug": "mannar",
+    "lat": 8.98129,
+    "lng": 79.90439
+  },
+  {
+    "name": "Marawila",
+    "slug": "marawila",
+    "lat": 7.41303,
+    "lng": 79.83095
+  },
+  {
+    "name": "Maskeliya",
+    "slug": "maskeliya",
+    "lat": 6.83387,
+    "lng": 80.57203
+  },
+  {
+    "name": "Matale",
+    "slug": "matale",
+    "lat": 7.4675,
+    "lng": 80.6234
+  },
+  {
+    "name": "Matara",
+    "slug": "matara",
+    "lat": 5.94782,
+    "lng": 80.54829
+  },
+  {
+    "name": "Meemure",
+    "slug": "meemure",
+    "lat": 7.44152,
+    "lng": 80.84421
+  },
+  {
+    "name": "Minneriya",
+    "slug": "minneriya",
+    "lat": 8.01614,
+    "lng": 80.85014
+  },
+  {
+    "name": "Mirissa",
+    "slug": "mirissa",
+    "lat": 5.94936,
+    "lng": 80.45581
+  },
+  {
+    "name": "Monaragala",
+    "slug": "monaragala",
+    "lat": 6.9022,
+    "lng": 81.34784
+  },
+  {
+    "name": "Nallathanniya",
+    "slug": "nallathanniya",
+    "lat": 6.82551,
+    "lng": 80.5226
+  },
+  {
+    "name": "Naulla",
+    "slug": "naulla",
+    "lat": 7.70704,
+    "lng": 80.65308
+  },
+  {
+    "name": "Negombo",
+    "slug": "negombo",
+    "lat": 7.20943,
+    "lng": 79.83312
+  },
+  {
+    "name": "Nilaveli",
+    "slug": "nilaveli",
+    "lat": 8.68154,
+    "lng": 81.19161
+  },
+  {
+    "name": "Nuwara Eliya",
+    "slug": "nuwara-eliya",
+    "lat": 6.9497,
+    "lng": 80.7891
+  },
+  {
+    "name": "Pasikuda",
+    "slug": "pasikuda",
+    "lat": 7.92245,
+    "lng": 81.56508
+  },
+  {
+    "name": "Polgahawela",
+    "slug": "polgahawela",
+    "lat": 7.33526,
+    "lng": 80.30025
+  },
+  {
+    "name": "Polonnaruwa",
+    "slug": "polonnaruwa",
+    "lat": 7.9403,
+    "lng": 81.0188
+  },
+  {
+    "name": "Puttalama",
+    "slug": "puttalama",
+    "lat": 8.0362,
+    "lng": 79.8283
+  },
+  {
+    "name": "Ragama",
+    "slug": "ragama",
+    "lat": 7.02635,
+    "lng": 79.92365
+  },
+  {
+    "name": "Rakwana",
+    "slug": "rakwana",
+    "lat": 6.47501,
+    "lng": 80.61156
+  },
+  {
+    "name": "Rambukkana",
+    "slug": "rambukkana",
+    "lat": 7.32393,
+    "lng": 80.39575
+  },
+  {
+    "name": "Rathmalana",
+    "slug": "rathmalana",
+    "lat": 6.81975,
+    "lng": 79.86826
+  },
+  {
+    "name": "Raththota",
+    "slug": "raththota",
+    "lat": 7.52061,
+    "lng": 80.67757
+  },
+  {
+    "name": "Ratnapura",
+    "slug": "ratnapura",
+    "lat": 6.6828,
+    "lng": 80.3992
+  },
+  {
+    "name": "Ruwanwella",
+    "slug": "ruwanwella",
+    "lat": 7.04586,
+    "lng": 80.25378
+  },
+  {
+    "name": "Sigiriya",
+    "slug": "sigiriya",
+    "lat": 7.95666,
+    "lng": 80.75993
+  },
+  {
+    "name": "sinharaja",
+    "slug": "sinharaja",
+    "lat": 6.40105,
+    "lng": 80.50264
+  },
+  {
+    "name": "Sri Jayawardhanapura",
+    "slug": "sri-jayawardhanapura",
+    "lat": 6.8905,
+    "lng": 79.9018
+  },
+  {
+    "name": "Tangalle",
+    "slug": "tangalle",
+    "lat": 6.02508,
+    "lng": 80.79493
+  },
+  {
+    "name": "Thanamalwila",
+    "slug": "thanamalwila",
+    "lat": 6.43329,
+    "lng": 81.13104
+  },
+  {
+    "name": "Tissamaharama",
+    "slug": "tissamaharama",
+    "lat": 6.27707,
+    "lng": 81.28928
+  },
+  {
+    "name": "Trincomalee",
+    "slug": "trincomalee",
+    "lat": 8.57643,
+    "lng": 81.2345
+  },
+  {
+    "name": "Udawalawe",
+    "slug": "udawalawe",
+    "lat": 6.4387,
+    "lng": 80.8877
+  },
+  {
+    "name": "Unawatuna",
+    "slug": "unawatuna",
+    "lat": 6.02018,
+    "lng": 80.24748
+  },
+  {
+    "name": "Wadduwa",
+    "slug": "wadduwa",
+    "lat": 6.66397,
+    "lng": 79.93051
+  },
+  {
+    "name": "Wasgamuwa",
+    "slug": "wasgamuwa",
+    "lat": 7.74341,
+    "lng": 80.9157
+  },
+  {
+    "name": "Waskaduwa",
+    "slug": "waskaduwa",
+    "lat": 6.6355,
+    "lng": 79.9472
+  },
+  {
+    "name": "Weligama",
+    "slug": "weligama",
+    "lat": 5.97513,
+    "lng": 80.42914
+  },
+  {
+    "name": "Wewaldeniya",
+    "slug": "wewaldeniya",
+    "lat": 7.20225,
+    "lng": 80.15278
+  },
+  {
+    "name": "Wilpattu",
+    "slug": "wilpattu",
+    "lat": 8.3,
+    "lng": 80.03
+  },
+  {
+    "name": "Yala",
+    "slug": "yala",
+    "lat": 6.3728,
+    "lng": 81.4197
+  },
+  {
+    "name": "Yatiyanthota",
+    "slug": "yatiyanthota",
+    "lat": 7.02855,
+    "lng": 80.29495
+  }
+]

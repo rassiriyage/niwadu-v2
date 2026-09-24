@@ -51,3 +51,5 @@ body:has(.public-site){margin:0}
 .photo-slot{display:block;position:absolute;inset:0}
 
 .card-track{cursor:grab;user-select:none}.card-track[data-dragging],.card-track[data-dragging] *{cursor:grabbing}
+
+.menu nav a{display:block;text-align:left;min-height:44px;padding:10px 16px;width:100%}.menu nav a:hover{background:#f7f7f7}.footer-columns a{display:inline-flex;align-items:center;min-height:44px;color:#484848}.footer-columns a:hover{text-decoration:underline}.public-site a.plan-nav{align-content:center}

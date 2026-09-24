@@ -16,13 +16,16 @@ class CatalogMigrationTest extends TestCase
         $this->assertSame($_ENV['DB_DATABASE'], config('database.connections.pgsql.database'));
         $this->artisan('migrate:fresh', ['--force' => true])->assertExitCode(0);
         $photo = HotelPhoto::factory()->create();
+        $this->assertTrue(Schema::hasColumn('hotels', 'discovery_snapshot'));
         $this->assertTrue(Schema::hasTable('room_types'));
         $this->assertTrue(Schema::hasTable('room_type_photos'));
-        $this->artisan('migrate:rollback', ['--step' => 2, '--force' => true])->assertExitCode(0);
+        $this->artisan('migrate:rollback', ['--step' => 3, '--force' => true])->assertExitCode(0);
+        $this->assertFalse(Schema::hasColumn('hotels', 'discovery_snapshot'));
         $this->assertFalse(Schema::hasTable('room_types'));
         $this->assertFalse(Schema::hasTable('room_type_photos'));
         $this->assertDatabaseHas('hotel_photos', ['id' => $photo->id]);
         $this->artisan('migrate', ['--force' => true])->assertExitCode(0);
+        $this->assertTrue(Schema::hasColumn('hotels', 'discovery_snapshot'));
         $this->assertTrue(Schema::hasTable('room_types'));
         $this->assertTrue(Schema::hasTable('room_type_photos'));
         $this->assertDatabaseHas('hotel_photos', ['id' => $photo->id]);

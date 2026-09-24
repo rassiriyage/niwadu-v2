@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\CoverageController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\HotelDiscoveryController;
 use App\Http\Controllers\HotelOnboardingController;
 use App\Http\Controllers\HotelPhotoController;
 use App\Http\Controllers\HotelStaffController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\PublicHotelController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\SessionController;
 use App\Http\Middleware\PrivateApiResponse;
@@ -17,6 +19,9 @@ Route::get('/', function (): JsonResponse {
 });
 
 Route::prefix('api/v1')->middleware([PrivateApiResponse::class, 'auth.session'])->group(function () {
+    Route::get('public/hotels', [PublicHotelController::class, 'index']);
+    Route::get('public/hotels/{slug}', [PublicHotelController::class, 'show'])->where('slug', '[a-z0-9]+(?:-[a-z0-9]+)*');
+    Route::get('public/discovery-options', [PublicHotelController::class, 'options']);
     Route::get('session', [SessionController::class, 'show']);
     Route::post('register', [SessionController::class, 'register'])->middleware('throttle:5,1');
     Route::post('login', [SessionController::class, 'store'])->middleware('throttle:login');
@@ -27,6 +32,9 @@ Route::prefix('api/v1')->middleware([PrivateApiResponse::class, 'auth.session'])
         Route::post('logout', [SessionController::class, 'destroy']);
         Route::get('hotels', [HotelController::class, 'index']);
         Route::post('hotels', [HotelController::class, 'store']);
+        Route::get('hotels/{hotel}/discovery-review', [HotelDiscoveryController::class, 'review']);
+        Route::put('hotels/{hotel}/discovery', [HotelDiscoveryController::class, 'release']);
+        Route::delete('hotels/{hotel}/discovery', [HotelDiscoveryController::class, 'withdraw']);
         Route::get('hotels/{hotel}/photos', [HotelPhotoController::class, 'index']);
         Route::post('hotels/{hotel}/photos', [HotelPhotoController::class, 'store'])->middleware('throttle:30,1');
         Route::get('hotels/{hotel}/photos/{photo}', [HotelPhotoController::class, 'show'])->name('hotel-photos.show');

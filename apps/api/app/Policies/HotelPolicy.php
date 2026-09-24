@@ -8,6 +8,11 @@ use Illuminate\Auth\Access\Response;
 
 class HotelPolicy
 {
+    public function releaseDiscovery(User $user, Hotel $hotel): bool
+    {
+        return $user->platform_role === 'administrator';
+    }
+
     public function onboard(User $user, Hotel $hotel): bool
     {
         return $hotel->status === 'draft' && $this->manageStaff($user, $hotel);

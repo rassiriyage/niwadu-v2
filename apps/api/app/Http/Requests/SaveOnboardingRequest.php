@@ -32,7 +32,7 @@ class SaveOnboardingRequest extends FormRequest
             'fields.contact_email' => ['sometimes', 'nullable', 'email', 'max:255'],
             'fields.phone' => ['sometimes', 'nullable', 'string', 'max:40'],
             'fields.description' => ['sometimes', 'nullable', 'string', 'max:10000'],
-            'fields.property_type' => ['sometimes', 'nullable', Rule::in(['hotel', 'villa', 'guest_house', 'resort', 'apartment', 'hostel'])],
+            'fields.property_type' => ['sometimes', 'nullable', Rule::in(array_keys(config('catalog.property_types')))],
             'fields.amenities' => ['sometimes', 'array', 'max:12'],
             'fields.amenities.*' => ['string', 'distinct', Rule::in(['wifi', 'parking', 'pool', 'restaurant', 'air_conditioning', 'beach_access', 'airport_transfer', 'accessible_rooms'])],
             'fields.rooms' => ['sometimes', 'array', 'max:50'],

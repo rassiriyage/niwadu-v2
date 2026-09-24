@@ -16,7 +16,8 @@ class Hotel extends Model
 
     protected function casts(): array
     {
-        return ['onboarding_data' => 'array', 'onboarding_version' => 'integer', 'onboarding_step' => 'integer', 'created_by' => 'integer'];
+        return ['onboarding_data' => 'array', 'onboarding_version' => 'integer', 'onboarding_step' => 'integer', 'created_by' => 'integer',
+            'discovery_snapshot' => 'array', 'discovery_version' => 'integer', 'discovery_approved_at' => 'datetime'];
     }
 
     public function users(): BelongsToMany

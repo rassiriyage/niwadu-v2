@@ -14,8 +14,6 @@ export default async function HotelsPage({ searchParams }: { searchParams: Promi
   ]);
   const options = optionsReply.data?.data;
   const result = resultReply.data;
-  const unknownTypes = options ? query.types.filter(type => !options.property_types.some(option => option.key === type)) : [];
-  if (unknownTypes.length) problems.push(`These property types are not currently available: ${unknownTypes.join(", ")}.`);
   if (resultReply.status === 422 && !problems.length) problems.push("These filters are not available. Change or remove them to continue.");
   const ready = options && Array.isArray(options.property_types) && result && Array.isArray(result.data) && result.meta;
   return <>

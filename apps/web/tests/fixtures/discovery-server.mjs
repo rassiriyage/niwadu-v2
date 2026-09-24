@@ -17,7 +17,7 @@ createServer((req,res)=>{
  const data=rows.filter(r=>!(withdrawn&&r.id===1));
  if(url.pathname==='/api/v1/public/hotels'){
   const params=url.searchParams;const filters=params.getAll('property_types[]');
-  if(params.get('sort')!=='name'||filters.some(t=>!types.some(v=>v.key===t)))return send(422,{message:'Unsupported filters'});
+  if(params.get('sort')!=='name'||filters.some(t=>!['hotel','villa','guest_house','resort','apartment','hostel'].includes(t)))return send(422,{message:'Unsupported filters'});
   const filtered=data.filter(r=>(!params.get('q')||r.name.toLowerCase().includes(params.get('q').toLowerCase()))&&(!filters.length||filters.includes(r.property_type)));
   const page=Number(params.get('page')||1);
   return send(200,{data:filtered.slice((page-1)*24,page*24),meta:{current_page:page,last_page:Math.max(1,Math.ceil(filtered.length/24)),total:filtered.length,per_page:24,capabilities}});

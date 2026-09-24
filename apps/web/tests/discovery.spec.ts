@@ -61,3 +61,18 @@ test("withdrawal is reread on history return and small screens stay within viewp
   await expect(page.getByRole("heading", { name: "This stay is not available" })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
+
+
+test("valid type without current listings stays selected through Apply and Cancel", async ({ page }) => {
+  await page.goto("/hotels?sort=name&property_types%5B%5D=hostel");
+  await expect(page.getByRole("heading", { name: "No stays match your search" })).toBeVisible();
+  await page.getByRole("button", { name: "Filters (1)", exact: true }).click();
+  await expect(page.getByRole("checkbox", { name: "hostel (no current listings)", exact: true })).toBeChecked();
+  await page.getByRole("button", { name: "Apply filters" }).click();
+  await expect(page).toHaveURL(/property_types%5B%5D=hostel/);
+  await expect(page.getByRole("heading", { name: "No stays match your search" })).toBeVisible();
+  await page.getByRole("button", { name: "Filters (1)", exact: true }).click();
+  await page.getByRole("checkbox", { name: "hostel (no current listings)", exact: true }).uncheck();
+  await page.getByRole("button", { name: "Cancel", exact: true }).click();
+  await expect(page).toHaveURL(/property_types%5B%5D=hostel/);
+});

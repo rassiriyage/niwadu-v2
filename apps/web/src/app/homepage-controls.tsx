@@ -24,6 +24,8 @@ export function PreviewNavigation({ children }: { children: ReactNode }) {
 
 export function PreviewAction({ label, accessibleName, className, children }: { label: string; accessibleName?: string; className?: string; children: ReactNode }) {
   const showPreview = useContext(PreviewContext);
+  const theme = ({ Beach: "beach", "Hill country": "hills", Wildlife: "wild", "Cultural triangle": "culture", Adventure: "adventure", "City breaks": "city" } as Record<string, string>)[label];
+  if (theme || label === "North & East") return <FreshLink href={theme ? `/hotels?themes%5B%5D=${theme}&sort=name` : "/hotels?region=north-east&sort=name"} className={className} aria-label={accessibleName}>{children}</FreshLink>;
   if (label === "Cover Sri Lanka") return <FreshLink href="/cover" className={className} aria-label={accessibleName}>{children}</FreshLink>;
   if (["Profile", "Log In", "Sign Up"].includes(label)) return <FreshLink href={label === "Sign Up" ? "/account?mode=register" : "/account"} className={className} aria-label={accessibleName}>{children}</FreshLink>;
   if (label === "All stays" || label === "Search stays") return <FreshLink href="/hotels?sort=name" className={className} aria-label={accessibleName}>{children}</FreshLink>;

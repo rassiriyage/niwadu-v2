@@ -5,7 +5,7 @@ test.beforeEach(async ({ request }) => { await request.get("http://127.0.0.1:809
 
 test("query preserves invalid intent and serializes arrays deterministically", () => {
   expect(readQuery({ sort: ["name", "editorial"] }).problems.length).toBeGreaterThan(0);
-  expect(readQuery({ category: "north", adults: "2" }).problems.length).toBe(2);
+  expect(readQuery({ category: "north", adults: "2" }).problems.length).toBe(1);
   expect(readQuery({ page: "1e2" }).problems.length).toBeGreaterThan(0);
   const { query } = readQuery({ "property_types[]": ["villa", "hotel", "villa"], q: " QA " });
   expect(searchURL(query)).toBe("/hotels?q=QA&property_types%5B%5D=hotel&property_types%5B%5D=villa&sort=name");
@@ -114,4 +114,46 @@ test("room rate service failures retain choices and permit retry without claimin
   await request.get("http://127.0.0.1:8099/__reset");
   await page.getByRole("button", { name: "Check rates", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Garden room · Flexible" })).toBeVisible();
+});
+
+test("expanded choices preserve combined filters across search and sorting", async ({ page, request }) => {
+  await request.get("http://127.0.0.1:8099/__expanded");
+  await page.goto("/");
+  await page.getByRole("navigation", { name: "Stay categories" }).getByRole("link", { name: "Beach", exact: true }).click();
+  await expect(page).toHaveURL(/themes%5B%5D=beach/);
+  await expect(page.locator(".discovery-count")).toHaveText("13 stays");
+  await page.goto("/hotels?sort=name&page=2");
+  await page.getByRole("button", { name: "Filters", exact: true }).click();
+  await page.getByLabel("Destination", { exact: true }).selectOption("galle");
+  for (const name of ["Beach", "Wi-Fi", "Pool"]) await page.getByRole("checkbox", { name, exact: true }).check();
+  await page.getByRole("button", { name: "Apply filters" }).click();
+  await expect(page).not.toHaveURL(/page=2/);
+  await expect(page.locator(".discovery-count")).toHaveText("7 stays");
+  await page.getByRole("combobox", { name: "Sort", exact: true }).selectOption("editorial");
+  await page.getByRole("button", { name: "Apply sort", exact: true }).click();
+  await expect(page.locator(".discovery-card").first()).toContainText("QA fixture 13");
+  await page.getByRole("button", { name: "Filters (4)", exact: true }).click();
+  await page.getByRole("checkbox", { name: "Beach", exact: true }).uncheck();
+  await page.getByRole("button", { name: "Cancel", exact: true }).click();
+  await page.getByLabel("Search stays", { exact: true }).fill("QA fixture 01");
+  await page.getByRole("button", { name: "Search", exact: true }).click();
+  await expect(page.locator(".discovery-count")).toHaveText("1 stay");
+  await expect(page).toHaveURL(/destination=galle.*themes%5B%5D=beach.*sort=editorial/);
+  await page.goto("/hotels?dest=galle&category=beach&sort=popular");
+  await expect(page.locator(".discovery-count")).toHaveText("7 stays");
+  await page.goto("/hotels?category=north");
+  await expect(page.getByRole("heading", { name: "No stays match your search" })).toBeVisible();
+  await page.goto("/hotels?destination=unknown");
+  await expect(page.getByRole("heading", { name: "Some search choices are unavailable" })).toBeVisible();
+});
+
+test("editorial intent does not fall back when no reviewed order exists", async ({ page }) => {
+  await page.goto("/hotels?sort=popular");
+  await expect(page.getByRole("heading", { name: "Some search choices are unavailable" })).toBeVisible();
+  await page.getByRole("button", { name: "Apply sort", exact: true }).click();
+  await expect(page).toHaveURL(/sort=editorial/);
+  await expect(page.locator(".discovery-card")).toHaveCount(0);
+  await page.getByRole("combobox", { name: "Sort", exact: true }).selectOption("name");
+  await page.getByRole("button", { name: "Apply sort", exact: true }).click();
+  await expect(page.locator(".discovery-card")).toHaveCount(24);
 });

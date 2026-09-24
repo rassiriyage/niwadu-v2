@@ -2,3 +2,4 @@
 @media(min-width:768px){.discovery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.discovery-detail-grid{grid-template-columns:minmax(0,1fr) 340px}}
 @media(min-width:1440px){.discovery-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:390px){.discovery-grid{gap:24px 16px}.discovery-photo{font-size:12px;padding:12px}.discovery-search{flex-wrap:wrap}.discovery-search label{flex-basis:100%}.discovery-toolbar{flex-wrap:wrap}}
+.stay-dates{flex-wrap:wrap}.stay-dates label{min-width:0;flex:1 1 180px}.stay-dates button{min-height:48px}.stay-rate-list{list-style:none;padding:0;display:grid;gap:16px;margin-top:24px}.stay-rate-list li{border-top:1px solid #ddd;padding-top:20px;overflow-wrap:anywhere}.stay-policy{white-space:pre-wrap}.stay-rates{min-width:0}.stay-rates input{min-width:0}

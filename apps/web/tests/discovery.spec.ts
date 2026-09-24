@@ -76,3 +76,42 @@ test("valid type without current listings stays selected through Apply and Cance
   await page.getByRole("button", { name: "Cancel", exact: true }).click();
   await expect(page).toHaveURL(/property_types%5B%5D=hostel/);
 });
+
+
+test("dated rates preserve URL choices, show complete total and recover from empty or invalid searches", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 844 });
+  await page.goto("/hotels/qa-fixture-1");
+  await page.getByLabel("Arrival", { exact: true }).fill("2030-01-10");
+  await page.getByLabel("Departure", { exact: true }).fill("2030-01-12");
+  await page.getByRole("button", { name: "Check rates", exact: true }).click();
+  await expect(page).toHaveURL(/arrival=2030-01-10&departure=2030-01-12&adults=2/);
+  await expect(page.getByRole("heading", { name: "Garden room · Flexible" })).toBeVisible();
+  await expect(page.locator(".stay-rate-list")).toContainText("12,505.00");
+  await expect(page.locator(".stay-rates")).toContainText("Nothing is reserved");
+  await expect(page.locator(".stay-rate-list")).toContainText("Synthetic cancellation policy.");
+  await page.reload();
+  await expect(page.getByLabel("Arrival", { exact: true })).toHaveValue("2030-01-10");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.getByLabel("Adults", { exact: true }).fill("3");
+  await page.getByRole("button", { name: "Check rates", exact: true }).click();
+  await expect(page.locator(".stay-rates")).toContainText("No room rates are available");
+  await page.goto("/hotels/qa-fixture-1?arrival=2030-01-12&departure=2030-01-10&adults=2");
+  await expect(page.locator(".stay-rates").getByRole("alert")).toContainText("Check your dates and guests");
+  await page.goto("/hotels/qa-fixture-1?arrival=2030-01-10&arrival=2030-01-11&departure=2030-01-12&adults=2");
+  await expect(page.locator(".stay-rates").getByRole("alert")).toContainText("repeated search fields");
+  await expect(page.locator(".stay-rate-list")).toHaveCount(0);
+  await page.getByRole("link", { name: "Clear dates and guests" }).click();
+  await expect(page).toHaveURL(/qa-fixture-1$/);
+});
+
+
+test("room rate service failures retain choices and permit retry without claiming availability", async ({ page, request }) => {
+  await request.get("http://127.0.0.1:8099/__rates-unavailable");
+  await page.goto("/hotels/qa-fixture-1?arrival=2030-01-10&departure=2030-01-12&adults=2");
+  await expect(page.locator(".stay-rates").getByRole("alert")).toContainText("Room rates could not be loaded");
+  await expect(page.getByLabel("Arrival", { exact: true })).toHaveValue("2030-01-10");
+  await expect(page.locator(".stay-rate-list")).toHaveCount(0);
+  await request.get("http://127.0.0.1:8099/__reset");
+  await page.getByRole("button", { name: "Check rates", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Garden room · Flexible" })).toBeVisible();
+});

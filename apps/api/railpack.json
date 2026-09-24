@@ -3,13 +3,18 @@
   "provider": "php",
   "steps": {
     "install:composer": {
-      "variables": { "COMPOSER_NO_DEV": "1" }
+      "variables": {
+        "COMPOSER_NO_DEV": "1"
+      },
+      "deployOutputs": []
     },
     "build": {
       "secrets": [],
       "commands": [
         "mkdir -p storage/framework/sessions storage/framework/views storage/framework/cache storage/logs bootstrap/cache",
-        "composer dump-autoload --optimize --no-dev --no-scripts --no-interaction"
+        "composer dump-autoload --optimize --no-dev --no-scripts --no-interaction",
+        "sh verify-entrypoint.sh",
+        "php -l public/index.php"
       ]
     }
   }

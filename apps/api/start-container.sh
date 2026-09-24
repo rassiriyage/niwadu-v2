@@ -3,6 +3,7 @@ set -eu
 
 # Railpack starts the container in /app. Never create an ephemeral photo fallback.
 [ -f artisan ] || { echo 'Start from the API application directory.' >&2; exit 1; }
+sh verify-entrypoint.sh
 : "${APP_KEY:?APP_KEY must be configured and preserved across deployments.}"
 : "${DB_URL:?DB_URL must reference the staging PostgreSQL service.}"
 [ "${DB_CONNECTION:-}" = pgsql ] || { echo 'DB_CONNECTION must be pgsql.' >&2; exit 1; }

@@ -18,6 +18,9 @@ class DeploymentStartupTest extends TestCase
         $this->directory = realpath($this->directory);
         mkdir($this->directory.'/bin', 0700);
         touch($this->directory.'/artisan');
+        copy(dirname(__DIR__, 2).'/verify-entrypoint.sh', $this->directory.'/verify-entrypoint.sh');
+        mkdir($this->directory.'/public', 0700);
+        copy(dirname(__DIR__, 2).'/public/index.php', $this->directory.'/public/index.php');
         file_put_contents($this->directory.'/bin/php', <<<'SH'
 #!/bin/sh
 printf '%s\n' "$*" >> "$COMMAND_LOG"
@@ -105,6 +108,19 @@ SH);
             $this->assertStringNotContainsString('artisan migrate', $commands);
             $this->assertStringNotContainsString('server ', $commands);
         }
+    }
+
+    public function test_placeholder_or_missing_entrypoint_prevents_startup(): void
+    {
+        file_put_contents($this->directory.'/public/index.php', '<title>FrankenPHP | Welcome!</title>');
+        $process = $this->start();
+        $this->assertFalse($process->isSuccessful());
+        $this->assertStringContainsString('Laravel entrypoint', $process->getErrorOutput());
+        $this->assertFileDoesNotExist($this->directory.'/commands');
+        unlink($this->directory.'/public/index.php');
+        $process = $this->start();
+        $this->assertFalse($process->isSuccessful());
+        $this->assertFileDoesNotExist($this->directory.'/commands');
     }
 
     private function start(array $overrides = [], string $script = 'start-container.sh'): Process

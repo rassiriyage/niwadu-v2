@@ -32,6 +32,7 @@ class CatalogMigrationTest extends TestCase
             'database/migrations/2026_09_23_094644_create_room_types_table.php',
             'database/migrations/2026_09_23_094645_create_room_type_photos_table.php',
             'database/migrations/2026_09_24_074233_add_discovery_release_to_hotels_table.php',
+            'database/migrations/2026_09_24_153739_add_manual_source_to_booking_quotes.php',
             'database/migrations/2026_09_24_093640_create_manual_inventory_tables.php',
             'database/migrations/2026_09_24_154931_add_reviewed_classification_to_catalog.php',
             'database/migrations/2026_09_25_054229_add_meal_plan_currencies_and_photo_galleries.php',

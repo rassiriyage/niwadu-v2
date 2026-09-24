@@ -11,7 +11,7 @@ use DateTimeZone;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
-class ManualQuoteSource
+class ManualQuoteSource implements BookingQuoteSource
 {
     public function resolve(array $selection, DateTimeImmutable $now): ?array
     {

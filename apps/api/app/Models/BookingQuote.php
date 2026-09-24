@@ -15,7 +15,7 @@ class BookingQuote extends Model
 
     protected function casts(): array
     {
-        return ['snapshot' => 'array', 'expires_at' => 'immutable_datetime', 'user_id' => 'integer', 'hotel_id' => 'integer'];
+        return ['source_revision' => 'array', 'room_type_id' => 'integer', 'rate_plan_id' => 'integer', 'snapshot' => 'array', 'expires_at' => 'immutable_datetime', 'user_id' => 'integer', 'hotel_id' => 'integer'];
     }
 
     protected static function booted(): void

@@ -11,7 +11,7 @@ interface BookingQuoteSource
      * No source can infer these guarantees from onboarding drafts or a price alone.
      *
      * @param  array{hotel_id:int,rate_plan_id:int,arrival:string,departure:string,adults:int}  $selection
-     * @return array{source:string,expires_at:DateTimeImmutable,input:array<string,mixed>}|null
+     * @return array{source:string,expires_at:DateTimeImmutable,input:array<string,mixed>,source_revision?:array<string,mixed>}|null
      */
     public function resolve(array $selection, DateTimeImmutable $now): ?array;
 }

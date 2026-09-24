@@ -17,7 +17,7 @@ final class BookingWorkflow
     public function __construct(private BookingQuoteSource $source, private ManualQuoteCalculator $calculator) {}
 
     /**
-     * Internal traveller-owned workflow. No public route or real catalog binding exists yet.
+     * Internal traveller-owned workflow. Quotes reserve no inventory; no public booking route exists.
      *
      * @param  array<string,mixed>  $selection
      * @return array<string,mixed>
@@ -31,20 +31,21 @@ final class BookingWorkflow
         ]);
         $this->requireOwner($owner);
         $unavailable = ['state' => 'unavailable', 'reason' => 'quote_unavailable', 'quote' => null];
-        if (! Hotel::whereKey($selection['hotel_id'])->where('status', 'published')->exists()) {
-            return $unavailable;
-        }
         $resolved = $this->source->resolve($selection, now()->toDateTimeImmutable());
         if ($resolved === null) {
             return $unavailable;
         }
-        // Only test fixtures are supported until a real catalog binding is reviewed.
-        if (! app()->environment('testing') || ($resolved['source'] ?? null) !== 'fixture') {
+        $manual = ($resolved['source'] ?? null) === 'manual';
+        if (! $manual && (! app()->environment('testing') || ($resolved['source'] ?? null) !== 'fixture'
+            || ! Hotel::whereKey($selection['hotel_id'])->where('status', 'published')->exists())) {
             return $unavailable;
         }
         $input = $resolved['input'] ?? null;
         $expires = $resolved['expires_at'] ?? null;
         if (! is_array($input) || ! $expires instanceof DateTimeImmutable) {
+            return $unavailable;
+        }
+        if ($manual && ! is_array($resolved['source_revision'] ?? null)) {
             return $unavailable;
         }
         foreach ($selection as $field => $value) {
@@ -58,7 +59,10 @@ final class BookingWorkflow
             return $unavailable;
         }
         $quote = BookingQuote::create([
-            'user_id' => $owner->id, 'hotel_id' => $selection['hotel_id'], 'source' => 'fixture',
+            'user_id' => $owner->id, 'hotel_id' => $selection['hotel_id'], 'source' => $resolved['source'],
+            'room_type_id' => $manual ? $input['room_type_id'] : null,
+            'rate_plan_id' => $manual ? $input['rate_plan_id'] : null,
+            'source_revision' => $manual ? $resolved['source_revision'] : null,
             'snapshot' => $snapshot, 'expires_at' => $expires,
         ]);
 
@@ -93,8 +97,17 @@ final class BookingWorkflow
             abort_unless($quote, 404);
             abort_if(BookingIntent::where('booking_quote_id', $quote->id)->exists(), 409, 'quote_already_used');
             abort_if($quote->expires_at->lessThanOrEqualTo(now()), 409, 'quote_expired');
-            abort_unless(app()->environment('testing') && $quote->source === 'fixture', 409, 'quote_unavailable');
-            abort_unless(Hotel::whereKey($quote->hotel_id)->where('status', 'published')->exists(), 409, 'quote_unavailable');
+            if ($quote->source === 'manual') {
+                $selection = array_intersect_key($quote->snapshot, array_flip(['hotel_id', 'rate_plan_id', 'arrival', 'departure', 'adults']));
+                $current = $this->source->resolve($selection, now()->toDateTimeImmutable());
+                abort_unless(($current['source'] ?? null) === 'manual', 409, 'quote_unavailable');
+                abort_unless(is_string($quote->source_revision['fingerprint'] ?? null)
+                    && hash_equals($quote->source_revision['fingerprint'], $current['source_revision']['fingerprint'] ?? ''), 409, 'quote_changed');
+                abort_if($quote->expires_at->lessThanOrEqualTo(now()), 409, 'quote_expired');
+            } else {
+                abort_unless(app()->environment('testing') && $quote->source === 'fixture', 409, 'quote_unavailable');
+                abort_unless(Hotel::whereKey($quote->hotel_id)->where('status', 'published')->exists(), 409, 'quote_unavailable');
+            }
             $intent = BookingIntent::create([
                 'booking_quote_id' => $quote->id, 'user_id' => $owner->id, 'hotel_id' => $quote->hotel_id,
                 'idempotency_key' => $idempotencyKey, 'request_hash' => $hash,

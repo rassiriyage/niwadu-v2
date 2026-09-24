@@ -8,12 +8,12 @@ test("reference homepage stays local and honest", async ({ page }) => {
   await expect(page.getByText("Rates unavailable", { exact: true })).toHaveCount(36);
   await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(0);
   const hrefs = await page.locator("a[href]").evaluateAll(links => links.map(link => link.getAttribute("href")!));
-  expect(hrefs.every(href => href === "/" || href === "/plan" || href === "/hotels?sort=name" || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:"))).toBe(true);
+  expect(hrefs.every(href => href === "/" || href === "/plan" || href === "/cover" || href === "/account" || href === "/account?mode=register" || href === "/hotels?sort=name" || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:"))).toBe(true);
   await expect(page.getByRole("link", { name: "Niwadu home", exact: true })).toHaveAttribute("href", "/");
   const track = page.getByRole("list", { name: "Popular stays in Nuwara Eliya listings", exact: true });
   await page.getByRole("button", { name: "Next Popular stays in Nuwara Eliya", exact: true }).click();
   await expect.poll(() => track.evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
-  for (const trigger of [page.locator(".listing-card").first(), page.locator(".footer-columns button").first(), page.locator(".promo").nth(1)]) {
+  for (const trigger of [page.locator(".listing-card").first(), page.locator(".footer-columns button").first()]) {
     await trigger.click();
     const dialog = page.getByRole("dialog", { name: /preview only$/ });
     await expect(dialog).toBeVisible();
@@ -28,9 +28,7 @@ test("reference homepage stays local and honest", async ({ page }) => {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
   }
   await page.locator("summary").click();
-  await page.getByRole("button", { name: "Profile", exact: true }).click();
-  await expect(page.getByRole("dialog", { name: "Profile — preview only" })).toBeVisible();
-  await page.getByRole("button", { name: "Close", exact: true }).click();
+  await expect(page.getByRole("link", { name: "Profile", exact: true })).toHaveAttribute("href", "/account");
 });
 
 test("public photos use responsive optimized delivery with one priority image", async ({ page }) => {

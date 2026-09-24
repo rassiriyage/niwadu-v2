@@ -44,7 +44,7 @@ export default function Home() {
         </PreviewAction>
         <PreviewAction className="promo" label="Cover Sri Lanka">
           <span className="promo-map"><SriLankaMap visited={["galle", "matara", "kandy", "badulla", "colombo", "nuwaraeliya", "hambantota", "trincomalee"]} /></span>
-          <span className="eyebrow">Cover Sri Lanka</span><span className="promo-title">How much of Sri Lanka have you covered?</span><span className="promo-description">Explore the district map preview. Your personal travel record is coming next.</span><span className="primary">Check my coverage</span>
+          <span className="eyebrow">Cover Sri Lanka</span><span className="promo-title">How much of Sri Lanka have you covered?</span><span className="promo-description">Mark the districts you have visited and save your private travel map to your Niwadu account.</span><span className="primary">Check my coverage</span>
         </PreviewAction>
       </section>
       {content.slice(4).map((section, index) => <Row key={section.title} section={section} index={index + 4} />)}

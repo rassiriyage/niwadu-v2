@@ -81,3 +81,7 @@ User/PO shifted to completing functional public journeys before full UI/UX revie
 ## Metadata discovery frontend candidate
 
 Implemented /hotels and /hotels/[slug] against Catalog metadata-only approved-snapshot API, with q search, capability-sourced property type filters, explicit PO-approved Name A–Z, local canonical pagination, Apply/Cancel/chips, details and truthful missing-photo/nonbookable states. Fresh origin reads and persisted-history reload preserve withdrawal behavior. Isolated synthetic HTTP fixture tests prove frontend behavior only; no fixture enters production and no real source is promoted. Details: docs/reference/public-web/discovery.md. Integrated exact API/QA remains required before publication.
+
+## Public account and private /cover frontend candidate
+
+PO approved implementation of the agreed existing-session/register/own-coverage contract. Added /account and /cover with explicit account-backed Save, exact25 district selection, count summary, memory-only edits, cross-account/session clearing and version/ambiguous-write comparison before manual resolution. Registration never sends staff roles/memberships. Source scope/testing details: docs/reference/public-web/account-coverage.md. Backend contract implementation and exact integrated QA remain prerequisites; this frontend is not published and no hosted identity is created. Earlier discovery frontend/API pair independently passed; publication still awaits backend deployment/source readiness per PO.

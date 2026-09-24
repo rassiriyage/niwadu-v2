@@ -50,7 +50,7 @@ test("mobile planner keeps bounds, empty recovery and storage failure usable", a
 test("homepage planner links, damaged draft recovery and clear remain local", async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem("niwadu.trip-draft.v1", '{"version":1,"stops":[{"slug":"unknown","nights":2}]}'));
   await page.goto("/");
-  await page.locator("a.promo").click();
+  await page.locator('a.promo[href="/plan"]').click();
   await expect(page).toHaveURL(/\/plan$/);
   await expect(page.locator(".planner-error")).toContainText("could not be opened");
   await page.getByRole("searchbox", { name: "Search destinations" }).fill("Ella");

@@ -17,20 +17,27 @@ class CatalogMigrationTest extends TestCase
         $this->artisan('migrate:fresh', ['--force' => true])->assertExitCode(0);
         $photo = HotelPhoto::factory()->create();
         $this->assertTrue(Schema::hasColumn('hotels', 'discovery_snapshot'));
+        $this->assertTrue(Schema::hasTable('inventory_pools'));
+        $this->assertTrue(Schema::hasTable('rate_plans'));
         $this->assertTrue(Schema::hasTable('room_types'));
         $this->assertTrue(Schema::hasTable('room_type_photos'));
         $this->artisan('migrate:rollback', ['--path' => [
             'database/migrations/2026_09_23_094644_create_room_types_table.php',
             'database/migrations/2026_09_23_094645_create_room_type_photos_table.php',
             'database/migrations/2026_09_24_074233_add_discovery_release_to_hotels_table.php',
+            'database/migrations/2026_09_24_093640_create_manual_inventory_tables.php',
         ], '--force' => true])->assertExitCode(0);
         $this->assertTrue(Schema::hasTable('user_coverage'));
         $this->assertFalse(Schema::hasColumn('hotels', 'discovery_snapshot'));
+        $this->assertFalse(Schema::hasTable('inventory_pools'));
+        $this->assertFalse(Schema::hasTable('rate_plans'));
         $this->assertFalse(Schema::hasTable('room_types'));
         $this->assertFalse(Schema::hasTable('room_type_photos'));
         $this->assertDatabaseHas('hotel_photos', ['id' => $photo->id]);
         $this->artisan('migrate', ['--force' => true])->assertExitCode(0);
         $this->assertTrue(Schema::hasColumn('hotels', 'discovery_snapshot'));
+        $this->assertTrue(Schema::hasTable('inventory_pools'));
+        $this->assertTrue(Schema::hasTable('rate_plans'));
         $this->assertTrue(Schema::hasTable('room_types'));
         $this->assertTrue(Schema::hasTable('room_type_photos'));
         $this->assertDatabaseHas('hotel_photos', ['id' => $photo->id]);

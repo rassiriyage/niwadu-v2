@@ -12,6 +12,7 @@
             <file>tests/Feature/PasswordSessionTest.php</file>
             <file>tests/Feature/RoomCatalogTest.php</file>
             <file>tests/Feature/HotelDiscoveryTest.php</file>
+            <file>tests/Feature/ManualCatalogTest.php</file>
             <file>tests/Feature/HotelAccessTest.php</file>
             <file>tests/Feature/HotelPhotoTest.php</file>
             <file>tests/Feature/HotelOnboardingTest.php</file>

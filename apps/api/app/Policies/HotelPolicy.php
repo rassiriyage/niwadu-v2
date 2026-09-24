@@ -8,6 +8,12 @@ use Illuminate\Auth\Access\Response;
 
 class HotelPolicy
 {
+    public function manageInventory(User $user, Hotel $hotel): bool
+    {
+        return $user->platform_role === 'administrator'
+            || $hotel->users()->where('users.id', $user->id)->wherePivotIn('role', ['hotel_manager', 'inventory_manager'])->exists();
+    }
+
     public function releaseDiscovery(User $user, Hotel $hotel): bool
     {
         return $user->platform_role === 'administrator';

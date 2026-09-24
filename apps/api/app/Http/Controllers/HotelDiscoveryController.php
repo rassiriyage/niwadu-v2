@@ -33,7 +33,8 @@ class HotelDiscoveryController extends Controller
                 abort_if($hotel->onboarding_version !== (int) $input['onboarding_version']
                     || $hotel->discovery_version !== (int) $input['discovery_version'], 409, 'The reviewed draft or release changed. Reload and review before trying again.');
                 abort_if($hotel->discovery_slug !== null && $hotel->discovery_slug !== $input['slug'], 409, 'The public slug is reserved and cannot change.');
-                $public = Validator::make($this->proposed($hotel), $this->metadataRules())->validate();
+                $proposed = $this->proposed($hotel);
+                $public = Validator::make($proposed, $this->metadataRules($proposed))->validate();
                 $hotel->discovery_slug = $input['slug'];
                 $hotel->discovery_snapshot = ['source_onboarding_version' => $hotel->onboarding_version, 'public' => $public];
                 $hotel->discovery_version++;
@@ -70,20 +71,30 @@ class HotelDiscoveryController extends Controller
 
     private function proposed(Hotel $hotel): array
     {
+        $draft = $hotel->classification_draft ?? [];
+        $destination = isset($draft['destination_id']) ? DB::table('catalog_destinations')->find($draft['destination_id'], ['id', 'slug', 'name']) : null;
+
         return array_map(fn ($value) => is_string($value) ? trim($value) : $value, [
             'name' => $hotel->name, 'description' => $hotel->description,
             'property_type' => $hotel->onboarding_data['property_type'] ?? null,
             'city' => $hotel->city, 'country' => $hotel->country,
+            'destination' => $destination ? (array) $destination : null, 'district' => $draft['district'] ?? null,
+            'themes' => $draft['themes'] ?? [], 'amenities' => $draft['amenities'] ?? [], 'editorial_rank' => $draft['editorial_rank'] ?? null,
         ]);
     }
 
-    private function metadataRules(): array
+    private function metadataRules(array $public): array
     {
         return [
             'name' => ['required', 'string', 'max:255', 'not_regex:/<[^>]*>/'],
             'description' => ['required', 'string', 'max:10000', 'not_regex:/<[^>]*>/'],
             'property_type' => ['required', Rule::in(array_keys(config('catalog.property_types')))],
             'city' => ['required', 'string', 'max:255', 'not_regex:/<[^>]*>/'],
+            'destination' => ['nullable', 'array:id,slug,name'],
+            'district' => ['nullable', Rule::prohibitedIf(($public['country'] ?? null) !== 'LK'), Rule::in(array_keys(config('catalog.districts')))],
+            'themes' => ['array', 'max:6'], 'themes.*' => [Rule::in(array_keys(config('catalog.themes')))],
+            'amenities' => ['array', 'max:8'], 'amenities.*' => [Rule::in(array_keys(config('catalog.amenities')))],
+            'editorial_rank' => ['nullable', 'integer', 'between:0,1000000'],
             'country' => ['required', 'string', 'regex:/\A[A-Z]{2}\z/'],
         ];
     }
@@ -95,7 +106,7 @@ class HotelDiscoveryController extends Controller
         return response()->json(['data' => [
             'onboarding_version' => $hotel->onboarding_version, 'discovery_version' => $hotel->discovery_version,
             'slug' => $hotel->discovery_slug, 'proposed' => $proposed,
-            'errors' => Validator::make($proposed, $this->metadataRules())->errors(),
+            'errors' => Validator::make($proposed, $this->metadataRules($proposed))->errors(),
             'current' => $hotel->discovery_snapshot === null ? null : new PublicHotelResource($hotel),
         ]]);
     }

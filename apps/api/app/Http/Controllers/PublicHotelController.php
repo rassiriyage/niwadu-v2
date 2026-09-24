@@ -19,12 +19,45 @@ class PublicHotelController extends Controller
         $name = $query->getQuery()->getGrammar()->wrap('discovery_snapshot->public->name');
         if (isset($filters['q'])) {
             $literal = str_replace(['!', '%', '_'], ['!!', '!%', '!_'], $filters['q']);
-            $query->whereRaw("LOWER({$name}) LIKE LOWER(?) ESCAPE '!'", ['%'.$literal.'%']);
+            $destinationName = $query->getQuery()->getGrammar()->wrap('discovery_snapshot->public->destination->name');
+            $query->where(fn ($part) => $part->whereRaw("LOWER({$name}) LIKE LOWER(?) ESCAPE '!'", ['%'.$literal.'%'])
+                ->orWhereRaw("LOWER({$destinationName}) LIKE LOWER(?) ESCAPE '!'", ['%'.$literal.'%']));
         }
         if ($types !== []) {
             $query->whereIn('discovery_snapshot->public->property_type', $types);
         }
-        $applied = ['sort' => 'name', 'page' => (int) ($filters['page'] ?? 1), 'property_types' => $types];
+        foreach (['destination' => 'destination->slug', 'district' => 'district'] as $filter => $path) {
+            if (isset($filters[$filter])) {
+                $query->where('discovery_snapshot->public->'.$path, $filters[$filter]);
+            }
+        }
+        if (isset($filters['region'])) {
+            $query->whereIn('discovery_snapshot->public->district', config('catalog.north_east'));
+        }
+        if (! empty($filters['themes'])) {
+            $query->where(function ($part) use ($filters): void {
+                foreach (array_unique($filters['themes']) as $theme) {
+                    $part->orWhereJsonContains('discovery_snapshot->public->themes', $theme);
+                }
+            });
+        }
+        foreach (array_unique($filters['amenities'] ?? []) as $amenity) {
+            $query->whereJsonContains('discovery_snapshot->public->amenities', $amenity);
+        }
+        if ($filters['sort'] === 'editorial') {
+            $rank = $query->getQuery()->getGrammar()->wrap('discovery_snapshot->public->editorial_rank');
+            $query->orderByRaw("CASE WHEN {$rank} IS NULL THEN 1 ELSE 0 END")->orderByRaw("CAST({$rank} AS BIGINT)");
+        }
+        $applied = ['sort' => $filters['sort'], 'page' => (int) ($filters['page'] ?? 1), 'property_types' => $types];
+        foreach (['themes', 'amenities'] as $field) {
+            $applied[$field] = array_values(array_unique($filters[$field] ?? []));
+            sort($applied[$field]);
+        }
+        foreach (['destination', 'district', 'region'] as $field) {
+            if (isset($filters[$field])) {
+                $applied[$field] = $filters[$field];
+            }
+        }
         if (isset($filters['q'])) {
             $applied['q'] = $filters['q'];
         }
@@ -49,11 +82,43 @@ class PublicHotelController extends Controller
             }
         }
 
-        return response()->json(['data' => ['property_types' => $types, 'capabilities' => $this->capabilities()]]);
+        $facets = ['destinations' => [], 'districts' => [], 'themes' => [], 'amenities' => [], 'regions' => []];
+        $used = ['districts' => [], 'themes' => [], 'amenities' => []];
+        $destinations = [];
+        foreach (Hotel::whereNotNull('discovery_snapshot')->cursor(['discovery_snapshot']) as $hotel) {
+            $public = $hotel->discovery_snapshot['public'];
+            if (isset($public['destination'])) {
+                $destinations[$public['destination']['slug']] = $public['destination']['name'];
+            }
+            if (isset($public['district'])) {
+                $used['districts'][$public['district']] = true;
+            }
+            foreach (['themes', 'amenities'] as $field) {
+                foreach ($public[$field] ?? [] as $value) {
+                    $used[$field][$value] = true;
+                }
+            }
+        }
+        asort($destinations);
+        foreach ($destinations as $key => $label) {
+            $facets['destinations'][] = compact('key', 'label');
+        }
+        foreach ($used as $field => $values) {
+            foreach (config('catalog.'.$field) as $key => $label) {
+                if (isset($values[$key])) {
+                    $facets[$field][] = compact('key', 'label');
+                }
+            }
+        }
+        if (array_intersect(array_keys($used['districts']), config('catalog.north_east')) !== []) {
+            $facets['regions'][] = ['key' => 'north-east', 'label' => 'North & East'];
+        }
+
+        return response()->json(['data' => ['property_types' => $types, ...$facets, 'capabilities' => $this->capabilities()]]);
     }
 
     private function capabilities(): array
     {
-        return ['filters' => ['q', 'property_types'], 'sorts' => ['name'], 'availability_search' => false, 'price_sort' => false];
+        return ['filters' => ['q', 'property_types', 'destination', 'district', 'region', 'themes', 'amenities'], 'sorts' => Hotel::whereNotNull('discovery_snapshot->public->editorial_rank')->exists() ? ['name', 'editorial'] : ['name'], 'star_filter' => false, 'availability_search' => false, 'price_sort' => false];
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CoverageController;
+use App\Http\Controllers\HotelClassificationController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\HotelDiscoveryController;
 use App\Http\Controllers\HotelOnboardingController;
@@ -33,6 +34,9 @@ Route::prefix('api/v1')->middleware([PrivateApiResponse::class, 'auth.session'])
     Route::middleware('auth')->group(function () {
         Route::get('me/coverage', [CoverageController::class, 'show']);
         Route::put('me/coverage', [CoverageController::class, 'update'])->middleware('throttle:60,1');
+        Route::match(['get', 'post'], 'catalog/destinations', [HotelClassificationController::class, 'destinations']);
+        Route::get('hotels/{hotel}/classification', [HotelClassificationController::class, 'show']);
+        Route::put('hotels/{hotel}/classification', [HotelClassificationController::class, 'update']);
         Route::post('logout', [SessionController::class, 'destroy']);
         Route::get('hotels', [HotelController::class, 'index']);
         Route::post('hotels', [HotelController::class, 'store']);

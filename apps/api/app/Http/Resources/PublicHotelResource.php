@@ -16,6 +16,9 @@ class PublicHotelResource extends JsonResource
             'name' => $public['name'], 'description' => $public['description'],
             'property_type' => $public['property_type'], 'city' => $public['city'], 'country' => $public['country'],
             'photo' => null,
+            'destination' => isset($public['destination']) ? array_intersect_key($public['destination'], array_flip(['id', 'slug', 'name'])) : null,
+            'district' => isset($public['district']) ? ['key' => $public['district'], 'label' => config('catalog.districts.'.$public['district'])] : null,
+            'themes' => $public['themes'] ?? [], 'amenities' => $public['amenities'] ?? [], 'star_classification' => null,
         ];
     }
 }

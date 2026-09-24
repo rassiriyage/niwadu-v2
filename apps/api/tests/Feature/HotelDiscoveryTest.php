@@ -40,7 +40,7 @@ class HotelDiscoveryTest extends TestCase
         $this->release($hotel, 'fixture-villa')->assertOk()->assertJsonPath('data.discovery_version', 1);
         $card = $this->getJson('/api/v1/public/hotels/fixture-villa')->assertOk()
             ->assertHeader('Cache-Control', 'no-store, private')->json('data');
-        $this->assertSame(['id', 'slug', 'name', 'description', 'property_type', 'city', 'country', 'photo'], array_keys($card));
+        $this->assertSame(['id', 'slug', 'name', 'description', 'property_type', 'city', 'country', 'photo', 'destination', 'district', 'themes', 'amenities', 'star_classification'], array_keys($card));
         $this->assertNull($card['photo']);
         $this->assertSame('villa', $card['property_type']);
         $this->patchJson($url, ['version' => 0, 'name' => 'Changed private name'])->assertOk();

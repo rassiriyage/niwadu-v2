@@ -19,7 +19,12 @@ class CatalogMigrationTest extends TestCase
         $this->assertTrue(Schema::hasColumn('hotels', 'discovery_snapshot'));
         $this->assertTrue(Schema::hasTable('room_types'));
         $this->assertTrue(Schema::hasTable('room_type_photos'));
-        $this->artisan('migrate:rollback', ['--step' => 3, '--force' => true])->assertExitCode(0);
+        $this->artisan('migrate:rollback', ['--path' => [
+            'database/migrations/2026_09_23_094644_create_room_types_table.php',
+            'database/migrations/2026_09_23_094645_create_room_type_photos_table.php',
+            'database/migrations/2026_09_24_074233_add_discovery_release_to_hotels_table.php',
+        ], '--force' => true])->assertExitCode(0);
+        $this->assertTrue(Schema::hasTable('user_coverage'));
         $this->assertFalse(Schema::hasColumn('hotels', 'discovery_snapshot'));
         $this->assertFalse(Schema::hasTable('room_types'));
         $this->assertFalse(Schema::hasTable('room_type_photos'));

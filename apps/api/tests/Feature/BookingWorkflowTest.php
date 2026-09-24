@@ -12,6 +12,7 @@ use App\Models\User;
 use DateTimeImmutable;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Tests\TestCase;
@@ -25,15 +26,15 @@ class BookingWorkflowTest extends TestCase
         return ['hotel_id' => $hotel->id, 'rate_plan_id' => 7, 'arrival' => '2026-10-01', 'departure' => '2026-10-02', 'adults' => 2];
     }
 
-    private function workflow(int $base = 10000, bool $stopped = false): BookingWorkflow
+    private function workflow(int $base = 10000, bool $stopped = false, int $ttlMinutes = 5): BookingWorkflow
     {
-        $source = new class($base, $stopped) implements BookingQuoteSource
+        $source = new class($base, $stopped, $ttlMinutes) implements BookingQuoteSource
         {
-            public function __construct(private int $base, private bool $stopped) {}
+            public function __construct(private int $base, private bool $stopped, private int $ttlMinutes) {}
 
             public function resolve(array $selection, DateTimeImmutable $now): ?array
             {
-                return ['source' => 'fixture', 'expires_at' => $now->modify('+5 minutes'), 'input' => [
+                return ['source' => 'fixture', 'expires_at' => $now->modify("{$this->ttlMinutes} minutes"), 'input' => [
                     ...$selection, 'room_type_id' => 4, 'timezone' => 'Asia/Colombo', 'currency' => 'LKR', 'inventory_mode' => 'manual',
                     'quantity' => 1, 'max_adults' => 2, 'children_ages' => [],
                     'policy' => ['version' => 'fixture-v1', 'text' => 'Synthetic non-refundable policy.'],
@@ -266,6 +267,46 @@ class BookingWorkflowTest extends TestCase
         $hotel = Hotel::factory()->create(['status' => 'published']);
         $this->expectException(HttpException::class);
         $this->workflow()->requestQuote(User::factory()->make(), $this->selection($hotel));
+    }
+
+    public function test_real_login_identity_owns_intent_and_account_switch_cannot_read_it(): void
+    {
+        $first = User::factory()->create(['password' => 'traveller-test-password']);
+        $second = User::factory()->create(['password' => 'another-test-password', 'platform_role' => 'administrator']);
+        $hotel = Hotel::factory()->create(['status' => 'published']);
+        $workflow = $this->workflow();
+        $this->postJson('/api/v1/login', ['email' => $first->email, 'password' => 'traveller-test-password'])->assertOk();
+        $this->getJson('/api/v1/session')->assertJsonPath('user.id', $first->id);
+        $quote = $workflow->requestQuote(Auth::user(), $this->selection($hotel))['quote'];
+        $intent = $workflow->createIntent(Auth::user(), ['quote_id' => $quote['id']], 'session-owner-test');
+        $this->assertDatabaseHas('booking_intents', ['id' => $intent['id'], 'user_id' => $first->id]);
+        $this->postJson('/api/v1/logout')->assertNoContent();
+        $this->assertGuest();
+        $this->postJson('/api/v1/login', ['email' => $second->email, 'password' => 'another-test-password'])->assertOk();
+        $this->getJson('/api/v1/session')->assertJsonPath('user.id', $second->id);
+        try {
+            $workflow->getIntent(Auth::user(), $intent['id']);
+            $this->fail('Even platform staff cannot use traveller ownership to read another account.');
+        } catch (HttpException $error) {
+            $this->assertSame(404, $error->getStatusCode());
+        }
+        $ownQuote = $workflow->requestQuote(Auth::user(), $this->selection($hotel))['quote'];
+        $ownIntent = $workflow->createIntent(Auth::user(), ['quote_id' => $ownQuote['id']], 'session-owner-test');
+        $this->assertNotSame($intent['id'], $ownIntent['id']);
+        $this->assertDatabaseHas('booking_intents', ['id' => $ownIntent['id'], 'user_id' => $second->id]);
+        $this->assertDatabaseCount('hotel_user', 0);
+    }
+
+    public function test_source_expired_at_resolution_creates_no_quote_or_intent(): void
+    {
+        $user = User::factory()->create();
+        $hotel = Hotel::factory()->create(['status' => 'published']);
+        foreach ([0, -1] as $ttlMinutes) {
+            $result = $this->workflow(ttlMinutes: $ttlMinutes)->requestQuote($user, $this->selection($hotel));
+            $this->assertSame(['state' => 'unavailable', 'reason' => 'quote_unavailable', 'quote' => null], $result);
+        }
+        $this->assertDatabaseCount('booking_quotes', 0);
+        $this->assertDatabaseCount('booking_intents', 0);
     }
 
     public function test_stored_quote_cannot_be_repriced(): void

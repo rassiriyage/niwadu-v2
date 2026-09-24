@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CoverageController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\HotelOnboardingController;
 use App\Http\Controllers\HotelPhotoController;
@@ -16,9 +17,12 @@ Route::get('/', function (): JsonResponse {
 
 Route::prefix('api/v1')->middleware([PrivateApiResponse::class, 'auth.session'])->group(function () {
     Route::get('session', [SessionController::class, 'show']);
+    Route::post('register', [SessionController::class, 'register'])->middleware('throttle:5,1');
     Route::post('login', [SessionController::class, 'store'])->middleware('throttle:login');
     Route::post('password/setup', [PasswordController::class, 'store'])->middleware('throttle:10,1');
     Route::middleware('auth')->group(function () {
+        Route::get('me/coverage', [CoverageController::class, 'show']);
+        Route::put('me/coverage', [CoverageController::class, 'update'])->middleware('throttle:60,1');
         Route::post('logout', [SessionController::class, 'destroy']);
         Route::get('hotels', [HotelController::class, 'index']);
         Route::post('hotels', [HotelController::class, 'store']);

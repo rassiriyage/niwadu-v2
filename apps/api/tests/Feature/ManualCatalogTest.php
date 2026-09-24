@@ -55,6 +55,7 @@ class ManualCatalogTest extends TestCase
         $user = User::factory()->create();
         $hotel->users()->attach($user, ['role' => 'inventory_manager']);
         $this->actingAs($user);
+        $this->getJson("/api/v1/hotels/{$hotel->id}")->assertJsonPath('data.permissions.manage_inventory', true)->assertJsonPath('data.permissions.manage_pms', false)->assertJsonPath('data.permissions.edit_profile', false);
         $uri = "/api/v1/hotels/{$hotel->id}/room-types/{$room}";
         $this->putJson($uri.'/inventory-nights/2026-10-10', ['version' => 0, 'capacity' => 2])->assertOk();
         $this->putJson($uri.'/inventory-pool', ['version' => 1, 'owner' => 'manual', 'sales_state' => 'open', 'timezone' => 'Asia/Colombo'])->assertForbidden();

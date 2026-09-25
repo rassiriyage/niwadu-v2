@@ -53,6 +53,7 @@ Route::prefix('api/v1')->middleware([PrivateApiResponse::class, 'auth.session'])
         Route::delete('hotels/{hotel}/discovery', [HotelDiscoveryController::class, 'withdraw']);
         Route::get('hotels/{hotel}/photos', [HotelPhotoController::class, 'index']);
         Route::post('hotels/{hotel}/photos', [HotelPhotoController::class, 'store'])->middleware('throttle:30,1');
+        Route::put('hotels/{hotel}/photos', [HotelPhotoController::class, 'reorder']);
         Route::get('hotels/{hotel}/photos/{photo}', [HotelPhotoController::class, 'show'])->name('hotel-photos.show');
         Route::post('hotels/{hotel}/room-types', [ManualCatalogController::class, 'saveRoom']);
         Route::put('hotels/{hotel}/room-types/{room}', [ManualCatalogController::class, 'saveRoom'])->whereNumber('room');

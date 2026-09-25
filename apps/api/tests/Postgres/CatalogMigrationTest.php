@@ -18,6 +18,7 @@ class CatalogMigrationTest extends TestCase
         $this->assertSame('UTC', DB::selectOne('SHOW TIME ZONE')->TimeZone);
         $this->artisan('migrate:fresh', ['--force' => true])->assertExitCode(0);
         $photo = HotelPhoto::factory()->create();
+        $this->assertTrue(Schema::hasColumn('hotels', 'property_gallery_version'));
         $this->assertTrue(Schema::hasColumn('hotels', 'discovery_snapshot'));
         $this->assertTrue(Schema::hasTable('catalog_conversions'));
         $this->assertTrue(Schema::hasColumn('rate_plans', 'meal_plan'));
@@ -34,8 +35,10 @@ class CatalogMigrationTest extends TestCase
             'database/migrations/2026_09_24_093640_create_manual_inventory_tables.php',
             'database/migrations/2026_09_24_154931_add_reviewed_classification_to_catalog.php',
             'database/migrations/2026_09_25_054229_add_meal_plan_currencies_and_photo_galleries.php',
+            'database/migrations/2026_09_25_073136_add_property_gallery_order.php',
         ], '--force' => true])->assertExitCode(0);
         $this->assertTrue(Schema::hasTable('user_coverage'));
+        $this->assertFalse(Schema::hasColumn('hotels', 'property_gallery_version'));
         $this->assertFalse(Schema::hasColumn('hotels', 'discovery_snapshot'));
         $this->assertFalse(Schema::hasTable('catalog_conversions'));
         $this->assertFalse(Schema::hasTable('catalog_destinations'));
@@ -46,6 +49,7 @@ class CatalogMigrationTest extends TestCase
         $this->assertFalse(Schema::hasTable('room_type_photos'));
         $this->assertDatabaseHas('hotel_photos', ['id' => $photo->id]);
         $this->artisan('migrate', ['--force' => true])->assertExitCode(0);
+        $this->assertTrue(Schema::hasColumn('hotels', 'property_gallery_version'));
         $this->assertTrue(Schema::hasColumn('hotels', 'discovery_snapshot'));
         $this->assertTrue(Schema::hasTable('catalog_conversions'));
         $this->assertTrue(Schema::hasColumn('rate_plans', 'meal_plan'));
@@ -55,6 +59,6 @@ class CatalogMigrationTest extends TestCase
         $this->assertTrue(Schema::hasTable('rate_plans'));
         $this->assertTrue(Schema::hasTable('room_types'));
         $this->assertTrue(Schema::hasTable('room_type_photos'));
-        $this->assertDatabaseHas('hotel_photos', ['id' => $photo->id]);
+        $this->assertDatabaseHas('hotel_photos', ['id' => $photo->id, 'position' => 0]);
     }
 }

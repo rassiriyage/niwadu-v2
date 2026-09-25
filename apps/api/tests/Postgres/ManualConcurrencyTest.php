@@ -3,6 +3,7 @@
 namespace Tests\Postgres;
 
 use App\Models\Hotel;
+use App\Models\HotelPhoto;
 use App\Models\InventoryPool;
 use App\Models\RatePlan;
 use App\Models\RoomType;
@@ -97,6 +98,24 @@ class ManualConcurrencyTest extends TestCase
         $this->assertSame([201, 409], $statuses);
         $this->assertDatabaseCount('rate_plans', 1);
         $this->assertDatabaseCount('inventory_pools', 0);
+    }
+
+    public function test_property_reorder_race_commits_one_complete_order(): void
+    {
+        require dirname(__DIR__).'/postgres-bootstrap.php';
+        $this->artisan('migrate:fresh', ['--force' => true])->assertExitCode(0);
+        $admin = User::factory()->create(['platform_role' => 'administrator']);
+        $hotel = Hotel::factory()->create();
+        $first = HotelPhoto::factory()->create(['hotel_id' => $hotel->id, 'position' => 0]);
+        $second = HotelPhoto::factory()->create(['hotel_id' => $hotel->id, 'position' => 1]);
+        $uri = '/api/v1/hotels/'.$hotel->id.'/photos';
+        $orders = [[$first->id, $second->id], [$second->id, $first->id]];
+        $statuses = $this->whileHotelLocked($hotel, $admin, [[$uri, ['version' => 0, 'photo_ids' => $orders[0]]], [$uri, ['version' => 0, 'photo_ids' => $orders[1]]]]);
+        $winner = array_search(200, $statuses, true);
+        sort($statuses);
+        $this->assertSame([200, 409], $statuses);
+        $this->assertSame($orders[$winner], DB::table('hotel_photos')->where('hotel_id', $hotel->id)->orderBy('position')->pluck('id')->all());
+        $this->assertSame(1, (int) $hotel->fresh()->property_gallery_version);
     }
 
     private function whileHotelLocked(Hotel $hotel, User $admin, array $commands, ?\Closure $beforeCommit = null): array

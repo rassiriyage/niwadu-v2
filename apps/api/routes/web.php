@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\CoverageController;
 use App\Http\Controllers\CatalogConversionController;
+use App\Http\Controllers\CoverageController;
 use App\Http\Controllers\HotelClassificationController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\HotelDiscoveryController;

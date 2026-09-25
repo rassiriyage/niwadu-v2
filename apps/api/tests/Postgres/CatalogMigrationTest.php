@@ -3,6 +3,7 @@
 namespace Tests\Postgres;
 
 use App\Models\HotelPhoto;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Tests\TestCase;
 
@@ -14,6 +15,7 @@ class CatalogMigrationTest extends TestCase
 
         $this->assertSame('pgsql', config('database.default'));
         $this->assertSame($_ENV['DB_DATABASE'], config('database.connections.pgsql.database'));
+        $this->assertSame('UTC', DB::selectOne('SHOW TIME ZONE')->TimeZone);
         $this->artisan('migrate:fresh', ['--force' => true])->assertExitCode(0);
         $photo = HotelPhoto::factory()->create();
         $this->assertTrue(Schema::hasColumn('hotels', 'discovery_snapshot'));

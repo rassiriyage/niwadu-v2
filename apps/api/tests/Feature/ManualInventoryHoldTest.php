@@ -203,6 +203,52 @@ class ManualInventoryHoldTest extends TestCase
         $this->assertSame(2, (int) DB::table('inventory_nights')->sum('held'), 'Capacity stays conservatively occupied until durable cleanup.');
     }
 
+    public function test_independent_meal_currency_quotes_compete_for_the_same_room_stock(): void
+    {
+        [$owner, $selection, $plan] = $this->offering();
+        $plan->forceFill(['meal_plan' => 'BB'])->save();
+        DB::table('inventory_nights')->update(['capacity' => 1]);
+        $usd = RatePlan::factory()->create(['hotel_id' => $plan->hotel_id, 'room_type_id' => $plan->room_type_id, 'status' => 'active', 'meal_plan' => 'HB', 'currency' => 'USD']);
+        foreach (DB::table('rate_plan_nights')->where('rate_plan_id', $plan->id)->get() as $night) {
+            $row = (array) $night;
+            unset($row['id']);
+            DB::table('rate_plan_nights')->insert(array_replace($row, ['rate_plan_id' => $usd->id, 'base_minor' => 750, 'tax_minor' => 0, 'fee_minor' => 0]));
+        }
+        $workflow = app(BookingWorkflow::class);
+        $other = User::factory()->create();
+        $lkrQuote = $workflow->requestQuote($owner, $selection)['quote'];
+        $usdQuote = $workflow->requestQuote($other, array_replace($selection, ['rate_plan_id' => $usd->id]))['quote'];
+        $this->assertSame(['LKR', 'BB', 22000], [$lkrQuote['snapshot']['currency'], $lkrQuote['snapshot']['meal_plan'], $lkrQuote['snapshot']['total_minor']]);
+        $this->assertSame(['USD', 'HB', 1500], [$usdQuote['snapshot']['currency'], $usdQuote['snapshot']['meal_plan'], $usdQuote['snapshot']['total_minor']]);
+        $first = $workflow->createIntent($owner, ['quote_id' => $lkrQuote['id']], 'lkr-meal-intent');
+        $second = $workflow->createIntent($other, ['quote_id' => $usdQuote['id']], 'usd-meal-intent');
+        $service = app(ManualInventoryHoldService::class);
+        $hold = $service->acquire($owner, $first['id'], now()->addMinutes(5)->toDateTimeImmutable());
+        try {
+            $service->acquire($other, $second['id'], now()->addMinutes(5)->toDateTimeImmutable());
+            $this->fail('USD plan must not have a separate room allotment.');
+        } catch (HttpException $exception) {
+            $this->assertSame(409, $exception->getStatusCode());
+        }
+        $this->assertDatabaseCount('inventory_pools', 1);
+        $this->assertDatabaseCount('manual_inventory_holds', 1);
+        $service->release($owner, $hold['id']);
+        $fresh = $workflow->requestQuote($other, array_replace($selection, ['rate_plan_id' => $usd->id]))['quote'];
+        $intent = $workflow->createIntent($other, ['quote_id' => $fresh['id']], 'usd-fresh-intent');
+        $this->assertSame('active', $service->acquire($other, $intent['id'], now()->addMinutes(5)->toDateTimeImmutable())['state']);
+        $this->assertSame([1, 1], DB::table('inventory_nights')->orderBy('stay_date')->pluck('held')->all());
+    }
+
+    public function test_missing_usd_rates_never_fall_back_to_ready_lkr_offer(): void
+    {
+        [$owner, $selection, $plan] = $this->offering();
+        $usd = RatePlan::factory()->create(['hotel_id' => $plan->hotel_id, 'room_type_id' => $plan->room_type_id, 'status' => 'active', 'meal_plan' => 'BB', 'currency' => 'USD']);
+        $workflow = app(BookingWorkflow::class);
+        $this->assertSame('available', $workflow->requestQuote($owner, $selection)['state']);
+        $this->assertSame('unavailable', $workflow->requestQuote($owner, array_replace($selection, ['rate_plan_id' => $usd->id]))['state']);
+        $this->assertDatabaseCount('booking_quotes', 1);
+    }
+
     private function intent(User $owner, array $selection): array
     {
         $workflow = app(BookingWorkflow::class);

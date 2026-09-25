@@ -14,12 +14,12 @@ use Tests\TestCase;
 
 class ManualHoldConcurrencyTest extends TestCase
 {
-    public function test_two_rate_plans_compete_for_one_shared_pool_without_overselling_any_night(): void
+    public function test_two_meal_currency_offers_compete_for_one_shared_pool_without_overselling_any_night(): void
     {
         [$owner, $selection, $plan] = $this->offering();
         $first = $this->intent($owner, $selection);
         $other = User::factory()->create();
-        $secondPlan = RatePlan::factory()->create(['hotel_id' => $plan->hotel_id, 'room_type_id' => $plan->room_type_id, 'status' => 'active']);
+        $secondPlan = RatePlan::factory()->create(['hotel_id' => $plan->hotel_id, 'room_type_id' => $plan->room_type_id, 'status' => 'active', 'meal_plan' => 'HB', 'currency' => 'USD']);
         foreach (DB::table('rate_plan_nights')->where('rate_plan_id', $plan->id)->get() as $night) {
             $row = (array) $night;
             unset($row['id']);

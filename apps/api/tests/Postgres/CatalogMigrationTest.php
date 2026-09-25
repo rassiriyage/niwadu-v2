@@ -29,6 +29,7 @@ class CatalogMigrationTest extends TestCase
         $this->assertTrue(Schema::hasTable('room_types'));
         $this->assertTrue(Schema::hasTable('room_type_photos'));
         $this->artisan('migrate:rollback', ['--path' => [
+            'database/migrations/2026_09_25_052256_create_manual_inventory_holds_tables.php',
             'database/migrations/2026_09_23_094644_create_room_types_table.php',
             'database/migrations/2026_09_23_094645_create_room_type_photos_table.php',
             'database/migrations/2026_09_24_074233_add_discovery_release_to_hotels_table.php',

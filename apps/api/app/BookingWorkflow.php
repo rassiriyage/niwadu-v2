@@ -6,6 +6,7 @@ use App\Models\BookingIntent;
 use App\Models\BookingQuote;
 use App\Models\Hotel;
 use App\Models\User;
+use Carbon\CarbonImmutable;
 use DateTimeImmutable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -130,9 +131,17 @@ final class BookingWorkflow
     /** @return array<string,mixed> */
     private function intentData(BookingIntent $intent): array
     {
+        $hold = DB::table('manual_inventory_holds')->where('booking_intent_id', $intent->id)->first();
+        $state = match ($hold?->state) {
+            'active' => CarbonImmutable::parse($hold->expires_at)->greaterThan(now()) ? 'held' : 'hold_expired',
+            'released' => 'hold_released',
+            'expired' => 'hold_expired',
+            default => 'awaiting_hold',
+        };
+
         return [
             'id' => $intent->id, 'quote_id' => $intent->booking_quote_id, 'hotel_id' => $intent->hotel_id,
-            'state' => 'awaiting_hold',
+            'state' => $state,
             'payment' => ['state' => 'unavailable', 'reason' => 'payment_setup_incomplete'],
         ];
     }

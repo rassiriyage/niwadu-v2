@@ -86,6 +86,7 @@ class ManualHoldConcurrencyTest extends TestCase
     private function offering(): array
     {
         require dirname(__DIR__).'/postgres-bootstrap.php';
+        $this->assertSame('UTC', DB::selectOne('SHOW timezone')->TimeZone);
         $this->artisan('migrate:fresh', ['--force' => true])->assertExitCode(0);
         $this->travelTo(new \DateTimeImmutable('2026-10-01T00:00:00Z'));
         $hotel = Hotel::factory()->create(['discovery_snapshot' => ['public' => ['name' => 'Synthetic']]]);

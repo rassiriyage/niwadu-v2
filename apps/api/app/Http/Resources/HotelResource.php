@@ -17,6 +17,7 @@ class HotelResource extends JsonResource
             'permissions' => [
                 'manage_inventory' => Gate::allows('manageInventory', $this->resource),
                 'manage_pms' => $request->user()?->platform_role === 'administrator',
+                'author_rates' => Gate::allows('authorRates', $this->resource),
                 'edit_profile' => Gate::allows('update', $this->resource),
                 'view_staff' => Gate::allows('viewStaff', $this->resource),
                 'manage_staff' => Gate::allows('manageStaff', $this->resource),

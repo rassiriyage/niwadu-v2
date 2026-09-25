@@ -27,7 +27,7 @@ class ManualQuoteSource
         return DB::transaction(function () use ($selection, $now): ?array {
             $hotel = Hotel::whereKey($selection['hotel_id'])->lockForUpdate()->first();
             $plan = RatePlan::where('hotel_id', $selection['hotel_id'])->find($selection['rate_plan_id']);
-            if (! $hotel || $hotel->discovery_snapshot === null || ! $plan || $plan->status !== 'active' || $plan->currency !== 'LKR') {
+            if (! $hotel || $hotel->discovery_snapshot === null || ! $plan || $plan->status !== 'active' || ! in_array($plan->currency, ['LKR', 'USD'], true)) {
                 return null;
             }
             $room = RoomType::where('hotel_id', $hotel->id)->find($plan->room_type_id);
@@ -74,7 +74,7 @@ class ManualQuoteSource
                 $versions[] = ['stay_date' => $key, 'inventory_version' => (int) $inventory->version, 'rate_version' => (int) $rate->version];
             }
             $input = ['hotel_id' => $hotel->id, 'room_type_id' => $room->id, 'rate_plan_id' => $plan->id,
-                'timezone' => $pool->timezone, 'currency' => 'LKR', 'inventory_mode' => 'manual', 'quantity' => 1,
+                'timezone' => $pool->timezone, 'currency' => $plan->currency, 'meal_plan' => $plan->meal_plan, 'inventory_mode' => 'manual', 'quantity' => 1,
                 'adults' => (int) $selection['adults'], 'max_adults' => $room->max_occupancy, 'children_ages' => [],
                 'arrival' => $selection['arrival'], 'departure' => $selection['departure'],
                 'policy' => ['version' => (string) $plan->policy['version'], 'text' => $plan->policy['text']],

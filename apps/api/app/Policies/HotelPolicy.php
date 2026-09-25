@@ -8,6 +8,11 @@ use Illuminate\Auth\Access\Response;
 
 class HotelPolicy
 {
+    public function authorRates(User $user, Hotel $hotel): bool
+    {
+        return $this->manageInventory($user, $hotel) || $hotel->isOwnedDraft($user);
+    }
+
     public function manageInventory(User $user, Hotel $hotel): bool
     {
         return $user->platform_role === 'administrator'

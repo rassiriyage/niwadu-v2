@@ -15,7 +15,7 @@ class RoomTypeResource extends JsonResource
             'max_occupancy' => $this->max_occupancy, 'status' => $this->status, 'version' => $this->version,
             'photos' => $this->photos->map(fn (HotelPhoto $photo) => [
                 'id' => $photo->id, 'caption' => $photo->caption, 'position' => (int) $photo->pivot->position,
-                'url' => route('hotel-photos.show', ['hotel' => $this->hotel_id, 'photo' => $photo->id], false),
+                'url' => $photo->gallery === 'room' ? route('room-photos.show', ['hotel' => $this->hotel_id, 'room' => $this->id, 'photo' => $photo->id], false) : route('hotel-photos.show', ['hotel' => $this->hotel_id, 'photo' => $photo->id], false),
             ])->all(),
         ];
     }

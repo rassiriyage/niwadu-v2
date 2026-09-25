@@ -15,7 +15,7 @@ if ($argv[2] === 'resolve') {
     echo json_encode($app->make(ManualQuoteSource::class)->resolve(json_decode($argv[3], true), new DateTimeImmutable('2026-10-01T00:00:00Z')), JSON_THROW_ON_ERROR);
     exit(0);
 }
-$request = Request::create($argv[2], 'PUT', [], [], [], [
+$request = Request::create($argv[2], $argv[4] ?? 'PUT', [], [], [], [
     'CONTENT_TYPE' => 'application/json', 'HTTP_ACCEPT' => 'application/json',
 ], $argv[3]);
 $response = $app->make(Illuminate\Contracts\Http\Kernel::class)->handle($request);

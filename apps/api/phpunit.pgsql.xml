@@ -16,6 +16,7 @@
             <file>tests/Feature/HotelClassificationTest.php</file>
             <file>tests/Feature/ManualCatalogTest.php</file>
             <file>tests/Feature/PmsConnectionTest.php</file>
+            <file>tests/Feature/WizardRoomSetupTest.php</file>
             <file>tests/Feature/HotelAccessTest.php</file>
             <file>tests/Feature/HotelPhotoTest.php</file>
             <file>tests/Feature/HotelOnboardingTest.php</file>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CoverageController;
+use App\Http\Controllers\CatalogConversionController;
 use App\Http\Controllers\HotelClassificationController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\HotelDiscoveryController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PmsConnectionController;
 use App\Http\Controllers\PublicHotelController;
 use App\Http\Controllers\PublicRatePlanController;
+use App\Http\Controllers\RoomPhotoController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\SessionController;
 use App\Http\Middleware\PrivateApiResponse;
@@ -62,9 +64,15 @@ Route::prefix('api/v1')->middleware([PrivateApiResponse::class, 'auth.session'])
         Route::put('hotels/{hotel}/room-types/{room}/inventory-nights/{date}', [ManualCatalogController::class, 'saveStock'])->whereNumber(['room', 'plan']);
         Route::get('hotels/{hotel}/room-types/{room}/rate-plans/{plan}/nights', [ManualCatalogController::class, 'rateCalendar'])->whereNumber(['room', 'plan']);
         Route::put('hotels/{hotel}/room-types/{room}/rate-plans/{plan}/nights/{date}', [ManualCatalogController::class, 'saveRate'])->whereNumber(['room', 'plan']);
+        Route::get('hotels/{hotel}/room-types/{room}/photos', [RoomPhotoController::class, 'index'])->whereNumber('room');
+        Route::post('hotels/{hotel}/room-types/{room}/photos', [RoomPhotoController::class, 'store'])->whereNumber('room')->middleware('throttle:30,1');
+        Route::put('hotels/{hotel}/room-types/{room}/photos', [RoomPhotoController::class, 'reorder'])->whereNumber('room');
+        Route::get('hotels/{hotel}/room-types/{room}/photos/{photo}', [RoomPhotoController::class, 'show'])->whereNumber(['room', 'photo'])->name('room-photos.show');
+        Route::delete('hotels/{hotel}/room-types/{room}/photos/{photo}', [RoomPhotoController::class, 'destroy'])->whereNumber(['room', 'photo']);
         Route::get('hotels/{hotel}/room-types', [RoomTypeController::class, 'index']);
         Route::get('hotels/{hotel}/room-types/{room}', [RoomTypeController::class, 'show'])->whereNumber('room');
         Route::delete('hotels/{hotel}/photos/{photo}', [HotelPhotoController::class, 'destroy']);
+        Route::post('hotels/{hotel}/catalog-conversion', [CatalogConversionController::class, 'store']);
         Route::get('hotels/{hotel}/onboarding', [HotelOnboardingController::class, 'show']);
         Route::patch('hotels/{hotel}/onboarding', [HotelOnboardingController::class, 'update']);
         Route::get('hotels/{hotel}', [HotelController::class, 'show']);

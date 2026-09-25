@@ -129,7 +129,7 @@ class RoomCatalogTest extends TestCase
         $this->getJson($url.'/room-types')->assertOk()->assertJsonCount(0, 'data');
         $this->postJson($url.'/room-types', ['name' => 'Room'])->assertUnprocessable();
         $this->assertDatabaseCount('room_types', 0);
-        $this->postJson($url.'/catalog-conversion')->assertNotFound();
+        $this->postJson($url.'/catalog-conversion')->assertUnprocessable();
         $room = RoomType::factory()->create(['hotel_id' => $hotel->id]);
         $this->patchJson($url.'/room-types/'.$room->id, ['name' => 'Changed'])->assertMethodNotAllowed();
         $this->deleteJson($url.'/room-types/'.$room->id)->assertMethodNotAllowed();

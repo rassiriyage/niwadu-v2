@@ -19,7 +19,7 @@ class HotelPhotoController extends Controller
     {
         Gate::authorize('view', $hotel);
 
-        return response()->json(['data' => HotelPhoto::where('hotel_id', $hotel->id)->orderBy('id')->get(['id', 'caption'])]);
+        return response()->json(['data' => HotelPhoto::where('hotel_id', $hotel->id)->where('gallery', 'property')->orderBy('id')->get(['id', 'caption'])]);
     }
 
     public function store(Request $request, Hotel $hotel): JsonResponse
@@ -33,7 +33,7 @@ class HotelPhotoController extends Controller
             $photo = DB::transaction(function () use ($hotel, $request, $data, $path) {
                 $hotel = Hotel::whereKey($hotel->id)->lockForUpdate()->firstOrFail();
                 Gate::authorize('onboard', $hotel);
-                abort_if(HotelPhoto::where('hotel_id', $hotel->id)->count() >= 50, 422, 'A draft can hold up to 50 photos.');
+                abort_if(HotelPhoto::where('hotel_id', $hotel->id)->where('gallery', 'property')->count() >= 50, 422, 'A draft can hold up to 50 photos.');
                 $photo = HotelPhoto::create(['hotel_id' => $hotel->id, 'path' => $path, 'mime_type' => $data['photo']->getMimeType(), 'caption' => $data['caption']]);
                 $hotel->recordAccessEvent($request->user(), 'photo.added');
 
@@ -50,7 +50,7 @@ class HotelPhotoController extends Controller
     public function show(Hotel $hotel, int $photo): StreamedResponse
     {
         Gate::authorize('view', $hotel);
-        $record = HotelPhoto::where('hotel_id', $hotel->id)->findOrFail($photo);
+        $record = HotelPhoto::where('hotel_id', $hotel->id)->where('gallery', 'property')->findOrFail($photo);
 
         return Storage::disk('local')->response($record->path, null, ['Content-Type' => $record->mime_type, 'X-Content-Type-Options' => 'nosniff', 'Cache-Control' => 'no-store, private']);
     }
@@ -59,7 +59,7 @@ class HotelPhotoController extends Controller
     {
         Gate::authorize('view', $hotel);
         Gate::authorize('onboard', $hotel);
-        $record = HotelPhoto::where('hotel_id', $hotel->id)->findOrFail($photo);
+        $record = HotelPhoto::where('hotel_id', $hotel->id)->where('gallery', 'property')->findOrFail($photo);
         DB::transaction(function () use ($record, $hotel, $request) {
             $record->delete();
             $hotel->recordAccessEvent($request->user(), 'photo.removed');

@@ -19,6 +19,8 @@ class CatalogMigrationTest extends TestCase
         $this->artisan('migrate:fresh', ['--force' => true])->assertExitCode(0);
         $photo = HotelPhoto::factory()->create();
         $this->assertTrue(Schema::hasColumn('hotels', 'discovery_snapshot'));
+        $this->assertTrue(Schema::hasTable('catalog_conversions'));
+        $this->assertTrue(Schema::hasColumn('rate_plans', 'meal_plan'));
         $this->assertTrue(Schema::hasTable('catalog_destinations'));
         $this->assertTrue(Schema::hasColumn('hotels', 'classification_draft'));
         $this->assertTrue(Schema::hasTable('inventory_pools'));
@@ -31,9 +33,11 @@ class CatalogMigrationTest extends TestCase
             'database/migrations/2026_09_24_074233_add_discovery_release_to_hotels_table.php',
             'database/migrations/2026_09_24_093640_create_manual_inventory_tables.php',
             'database/migrations/2026_09_24_154931_add_reviewed_classification_to_catalog.php',
+            'database/migrations/2026_09_25_054229_add_meal_plan_currencies_and_photo_galleries.php',
         ], '--force' => true])->assertExitCode(0);
         $this->assertTrue(Schema::hasTable('user_coverage'));
         $this->assertFalse(Schema::hasColumn('hotels', 'discovery_snapshot'));
+        $this->assertFalse(Schema::hasTable('catalog_conversions'));
         $this->assertFalse(Schema::hasTable('catalog_destinations'));
         $this->assertFalse(Schema::hasColumn('hotels', 'classification_draft'));
         $this->assertFalse(Schema::hasTable('inventory_pools'));
@@ -43,6 +47,8 @@ class CatalogMigrationTest extends TestCase
         $this->assertDatabaseHas('hotel_photos', ['id' => $photo->id]);
         $this->artisan('migrate', ['--force' => true])->assertExitCode(0);
         $this->assertTrue(Schema::hasColumn('hotels', 'discovery_snapshot'));
+        $this->assertTrue(Schema::hasTable('catalog_conversions'));
+        $this->assertTrue(Schema::hasColumn('rate_plans', 'meal_plan'));
         $this->assertTrue(Schema::hasTable('catalog_destinations'));
         $this->assertTrue(Schema::hasColumn('hotels', 'classification_draft'));
         $this->assertTrue(Schema::hasTable('inventory_pools'));

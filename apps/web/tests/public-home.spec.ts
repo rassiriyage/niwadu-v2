@@ -8,7 +8,19 @@ test("reference homepage stays local and honest", async ({ page }) => {
   await expect(page.getByText("Rates unavailable", { exact: true })).toHaveCount(36);
   await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(0);
   const hrefs = await page.locator("a[href]").evaluateAll(links => links.map(link => link.getAttribute("href")!));
-  expect(hrefs.every(href => href === "/" || href === "/plan" || href === "/cover" || href === "/account" || href === "/account?mode=register" || href === "/hotels?sort=name" || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:"))).toBe(true);
+  const categoryRoutes = new Map([
+    ["Beach", "/hotels?themes%5B%5D=beach&sort=name"],
+    ["Hill country", "/hotels?themes%5B%5D=hills&sort=name"],
+    ["Wildlife", "/hotels?themes%5B%5D=wild&sort=name"],
+    ["Cultural triangle", "/hotels?themes%5B%5D=culture&sort=name"],
+    ["Adventure", "/hotels?themes%5B%5D=adventure&sort=name"],
+    ["City breaks", "/hotels?themes%5B%5D=city&sort=name"],
+    ["North & East", "/hotels?region=north-east&sort=name"],
+  ]);
+  const allowed = new Set(["/", "/plan", "/cover", "/account", "/account?mode=register", "/hotels?sort=name", ...categoryRoutes.values()]);
+  expect(hrefs.filter(href => !allowed.has(href) && !href.startsWith("#") && !href.startsWith("tel:") && !href.startsWith("mailto:")), "Unexpected homepage navigation targets").toEqual([]);
+  const categories = page.getByRole("navigation", { name: "Stay categories" });
+  for (const [label, href] of categoryRoutes) await expect(categories.getByRole("link", { name: label, exact: true })).toHaveAttribute("href", href);
   await expect(page.getByRole("link", { name: "Niwadu home", exact: true })).toHaveAttribute("href", "/");
   const track = page.getByRole("list", { name: "Popular stays in Nuwara Eliya listings", exact: true });
   await page.getByRole("button", { name: "Next Popular stays in Nuwara Eliya", exact: true }).click();

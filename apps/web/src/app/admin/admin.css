@@ -101,3 +101,11 @@ body:has(.admin-app) { margin:0; }
 .admin-app .panel,.admin-app main,.admin-app .room-draft { min-width:0; }
 .admin-app .page-heading h1 { overflow-wrap:anywhere; }
 @media(max-width:480px) { .admin-app .room-draft .setup-steps { grid-template-columns:1fr; } }
+.admin-app .wizard-catalog-form { margin:1.25rem 0; }
+.admin-app .wizard-catalog-form fieldset,.admin-app .photos fieldset { border:0; padding:0; min-width:0; }
+.admin-app .meal-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1.25rem 0; }
+.admin-app .meal-options section { border:1px solid var(--line); border-radius:6px; padding:1rem; min-width:0; }
+.admin-app .meal-options h4 { margin:0; }
+.admin-app .photo-grid { grid-template-columns:repeat(auto-fill,minmax(min(200px,100%),1fr)); }
+.admin-app .photo-grid button { margin:.25rem .25rem .25rem 0; }
+@media(max-width:760px) { .admin-app .meal-options { grid-template-columns:1fr; } }

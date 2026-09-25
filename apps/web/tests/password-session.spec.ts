@@ -25,7 +25,7 @@ test("resetting a staff password invalidates an already authenticated session", 
   expect(granted.status()).toBe(201);
   const memberId = (await granted.json()).data.id;
   const latestToken = () => {
-    const log = readFileSync(path.resolve(__dirname, "../../api/storage/logs/laravel.log"), "utf8");
+    const log = readFileSync(path.join(process.env.WIZARD_API_PATH || path.resolve(__dirname, "../../api"), "storage/logs/laravel.log"), "utf8");
     return [...log.matchAll(/\/admin\/password#token=([a-zA-Z0-9]+)&email=/g)].at(-1)![1];
   };
   const client = await browser.newContext({ baseURL });

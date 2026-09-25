@@ -2,7 +2,7 @@ export type StaffUser = { id: number; name: string; email: string; platform_role
 export type Hotel = {
   id: number; version: number; name: string; city: string | null; country: string;
   address: string | null; description: string | null; contact_email: string | null; phone: string | null; status: string;
-  permissions: { manage_inventory: boolean; manage_pms: boolean; edit_profile: boolean; view_staff: boolean; manage_staff: boolean };
+  permissions: { author_rates?: boolean; manage_inventory: boolean; manage_pms: boolean; edit_profile: boolean; view_staff: boolean; manage_staff: boolean };
 };
 export type Session = { user: StaffUser | null; csrf_token: string };
 export type Member = { id: number; name: string; email: string; role: string };

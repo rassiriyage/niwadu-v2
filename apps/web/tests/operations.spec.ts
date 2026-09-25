@@ -11,6 +11,23 @@ async function login(page: Page, email = "admin@example.test") {
 async function hotel(page: Page) { await login(page, `operations${["administrator configures", "real stale", "viewer cannot", "PMS credentials", "session expiry", "ambiguous write", "inventory manager", "unsaved form"].findIndex(prefix => test.info().title.startsWith(prefix))}@example.test`); return (await call(page, "hotels", "POST", { name: `Operations fixture ${Date.now()}`, city: "Galle" })).data.id as number; }
 async function room(page: Page, id: number) { return (await call(page, `hotels/${id}/room-types`, "POST", { name: "Double room", max_occupancy: 2, status: "active" })).data; }
 
+test("existing inventory editor retains USD identity and unknown charges from wizard offers", async ({ page }) => {
+  await login(page, "operations0@example.test");
+  const id = (await call(page, "hotels", "POST", { name: `USD compatibility ${Date.now()}`, city: "Galle" })).data.id;
+  const r = await room(page, id), root = `hotels/${id}/room-types/${r.id}`;
+  await call(page, `${root}/inventory-pool`, "PUT", { version: 0, owner: "manual", sales_state: "closed", timezone: "Asia/Colombo" });
+  const plan = (await call(page, `${root}/rate-plans`, "POST", { name: "Half Board USD", meal_plan: "HB", currency: "USD", status: "draft", policy: { version: null, text: null } })).data;
+  await page.goto(`/admin/hotels/${id}/inventory`); await page.getByRole("button", { name: "Double room", exact: true }).click(); await page.getByRole("button", { name: "3. Rate plans", exact: true }).click();
+  await page.getByRole("combobox", { name: "Rate plan", exact: true }).selectOption(String(plan.id)); await expect(page.getByText("Currency: USD · Meal plan: HB")).toBeVisible();
+  await page.getByLabel("Rate plan name", { exact: true }).fill("Reviewed USD offer"); await page.getByRole("button", { name: "Save rate plan", exact: true }).click(); await expect(page.locator(".ops-form[data-unsaved]")).toHaveCount(0);
+  await page.getByRole("button", { name: "4. Dated stock and prices" }).click(); await page.getByRole("button", { name: "Price and restrictions", exact: true }).click();
+  await page.getByLabel("Base price (USD)").fill("123.45"); await expect(page.getByLabel("Tax (USD)", { exact: true })).toHaveValue(""); await page.getByLabel("Mandatory fees (USD)").fill("0"); await page.getByLabel("Minimum stay (nights)").fill("1"); await page.getByLabel("Maximum stay (nights)").fill("30");
+  await page.getByRole("button", { name: "Save price and restrictions", exact: true }).click(); await expect(page.locator(".ops-form[data-unsaved]")).toHaveCount(0);
+  await page.reload(); await page.getByRole("button", { name: "Double room", exact: true }).click(); await page.getByRole("button", { name: "4. Dated stock and prices" }).click(); await page.getByRole("button", { name: "Price and restrictions", exact: true }).click();
+  await expect(page.getByLabel("Base price (USD)")).toHaveValue("123.45"); await expect(page.getByLabel("Tax (USD)", { exact: true })).toHaveValue(""); await expect(page.getByLabel("Mandatory fees (USD)")).toHaveValue("0.00");
+  expect((await call(page, `${root}/rate-plans`)).data[0].currency).toBe("USD");
+});
+
 test("administrator configures room, ownership, policy, stock and explicit money; persists on reload", async ({ page }) => {
   const errors: string[] = []; page.on("pageerror", e => errors.push(e.message));
   const id = await hotel(page); await page.goto(`/admin/hotels/${id}/inventory`);

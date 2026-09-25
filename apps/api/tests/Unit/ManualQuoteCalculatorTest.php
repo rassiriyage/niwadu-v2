@@ -49,6 +49,36 @@ class ManualQuoteCalculatorTest extends TestCase
         $this->assertSame($this->input(), $input);
     }
 
+    #[DataProvider('supportedOffers')]
+    public function test_preserves_selected_meal_plan_and_currency_without_conversion(string $currency, ?string $mealPlan): void
+    {
+        $input = array_replace($this->input(), ['currency' => $currency, 'meal_plan' => $mealPlan]);
+        $quote = $this->calculate($input);
+        $this->assertSame($currency, $quote['currency']);
+        $this->assertSame($mealPlan, $quote['meal_plan']);
+        $this->assertSame(35903, $quote['total_minor']);
+        $this->assertSame([10001, 20002], array_column($quote['nightly'], 'base_minor'));
+    }
+
+    public static function supportedOffers(): array
+    {
+        $offers = [];
+        foreach (['LKR', 'USD'] as $currency) {
+            foreach ([null, 'RO', 'BB', 'HB', 'FB'] as $mealPlan) {
+                $offers[$currency.'-'.($mealPlan ?? 'unspecified')] = [$currency, $mealPlan];
+            }
+        }
+
+        return $offers;
+    }
+
+    public function test_legacy_missing_meal_plan_stays_unspecified(): void
+    {
+        $quote = $this->calculate($this->input());
+        $this->assertArrayHasKey('meal_plan', $quote);
+        $this->assertNull($quote['meal_plan']);
+    }
+
     #[DataProvider('invalidInputs')]
     public function test_rejects_incomplete_or_unsupported_inputs(array $changes): void
     {
@@ -102,7 +132,12 @@ class ManualQuoteCalculatorTest extends TestCase
             'children' => [['children_ages' => [4]]],
             'too many adults' => [['adults' => 3]],
             'zero adults' => [['adults' => 0]],
-            'foreign currency' => [['currency' => 'USD']],
+            'unsupported currency' => [['currency' => 'EUR']],
+            'lowercase currency' => [['currency' => 'usd']],
+            'unknown meal plan' => [['meal_plan' => 'AI']],
+            'lowercase meal plan' => [['meal_plan' => 'bb']],
+            'empty meal plan' => [['meal_plan' => '']],
+            'numeric meal plan' => [['meal_plan' => 0]],
             'PMS ownership' => [['inventory_mode' => 'pms']],
             'no policy' => [['policy' => ['text' => '']]],
             'no policy version' => [['policy' => ['version' => '']]],

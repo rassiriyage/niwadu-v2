@@ -14,17 +14,19 @@ final class ManualQuoteCalculator
      * Catalog must resolve availability, restrictions, relationships and freshness before use.
      * Expiry is supplied by the caller, not a hold or a checkout timing policy.
      *
-     * @param  array{hotel_id:int,room_type_id:int,rate_plan_id:int,timezone:string,currency:string,inventory_mode:string,quantity:int,adults:int,max_adults:int,children_ages:array,arrival:string,departure:string,policy:array{version:string,text:string},nightly:list<array{stay_date:string,base_minor:int,tax_minor:int,fee_minor:int,mandatory_charges_complete:bool}>,nightly_conditions:list<array{stay_date:string,available:int,stop_sell:bool,restrictions_passed:bool}>}  $input
+     * @param  array{hotel_id:int,room_type_id:int,rate_plan_id:int,timezone:string,currency:string,meal_plan?:null|string,inventory_mode:string,quantity:int,adults:int,max_adults:int,children_ages:array,arrival:string,departure:string,policy:array{version:string,text:string},nightly:list<array{stay_date:string,base_minor:int,tax_minor:int,fee_minor:int,mandatory_charges_complete:bool}>,nightly_conditions:list<array{stay_date:string,available:int,stop_sell:bool,restrictions_passed:bool}>}  $input
      * @return array<string, mixed>
      */
     public function calculate(array $input, DateTimeImmutable $now, DateTimeImmutable $expiresAt): array
     {
-        $this->keys($input, ['hotel_id', 'room_type_id', 'rate_plan_id', 'timezone', 'currency', 'inventory_mode', 'quantity', 'adults', 'max_adults', 'children_ages', 'arrival', 'departure', 'policy', 'nightly', 'nightly_conditions']);
+        $input += ['meal_plan' => null];
+        $this->keys($input, ['hotel_id', 'room_type_id', 'rate_plan_id', 'timezone', 'currency', 'meal_plan', 'inventory_mode', 'quantity', 'adults', 'max_adults', 'children_ages', 'arrival', 'departure', 'policy', 'nightly', 'nightly_conditions']);
         foreach (['hotel_id', 'room_type_id', 'rate_plan_id', 'adults', 'max_adults'] as $field) {
             $this->require(is_int($input[$field]) && $input[$field] > 0, "Invalid $field.");
         }
         $this->require($input['quantity'] === 1 && $input['children_ages'] === [] && $input['adults'] <= $input['max_adults'], 'Only one room with supported adult occupancy is allowed.');
-        $this->require($input['currency'] === 'LKR' && $input['inventory_mode'] === 'manual', 'Only manual LKR inputs are supported.');
+        $this->require(in_array($input['currency'], ['LKR', 'USD'], true) && $input['inventory_mode'] === 'manual', 'Only manual LKR or USD inputs are supported.');
+        $this->require(in_array($input['meal_plan'], [null, 'RO', 'BB', 'HB', 'FB'], true), 'Invalid meal plan.');
         $this->require(is_string($input['timezone']) && in_array($input['timezone'], DateTimeZone::listIdentifiers(), true), 'Invalid hotel timezone.');
         $timezone = new DateTimeZone($input['timezone']);
         $arrival = $this->date($input['arrival'], $timezone);
@@ -70,7 +72,7 @@ final class ManualQuoteCalculator
         return [
             'hotel_id' => $input['hotel_id'], 'room_type_id' => $input['room_type_id'], 'rate_plan_id' => $input['rate_plan_id'],
             'arrival' => $input['arrival'], 'departure' => $input['departure'], 'timezone' => $input['timezone'],
-            'quantity' => 1, 'adults' => $input['adults'], 'currency' => 'LKR',
+            'quantity' => 1, 'adults' => $input['adults'], 'currency' => $input['currency'], 'meal_plan' => $input['meal_plan'],
             'nightly' => $lines, 'total_minor' => $total, 'policy' => $input['policy'],
             'quoted_at' => $now->setTimezone(new DateTimeZone('UTC'))->format(DATE_RFC3339),
             'expires_at' => $expiresAt->setTimezone(new DateTimeZone('UTC'))->format(DATE_RFC3339),

@@ -3,7 +3,7 @@ export type TravellerSession = { user: Traveller | null; csrf_token: string };
 export type Coverage = { districts: string[]; version: number };
 
 export class TravellerError extends Error {
-  constructor(message: string, public status: number, public fields: Record<string, string[]> = {}, public code?: string, public retryAfter?: number) { super(message); }
+  constructor(message: string, public status: number, public fields: Record<string, string[]> = {}, public code?: string, public retryAfter?: number, public requestPath?: string) { super(message); }
 }
 export async function travellerRead<T>(path: "session" | "me/coverage"): Promise<T> {
   return request<T>(path);
@@ -23,7 +23,7 @@ async function request<T>(path: string, method = "GET", data?: unknown, token?: 
     const fields = result?.errors && typeof result.errors === "object" ? result.errors : {};
     const message = response.status === 401 ? "Your session has ended. Sign in again to continue." : response.status === 429 ? "Too many attempts. Please wait before trying again." : typeof result?.message === "string" ? result.message : "We could not complete this request. Please try again.";
     const retryAfter = Number(response.headers.get("Retry-After"));
-    throw new TravellerError(message, response.status, fields, typeof result?.code === "string" ? result.code : undefined, Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : undefined);
+    throw new TravellerError(message, response.status, fields, typeof result?.code === "string" ? result.code : undefined, Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : undefined, path);
   }
   if (!result || typeof result !== "object") throw new TravellerError("Your account service is temporarily unavailable.", 503);
   return result as T;

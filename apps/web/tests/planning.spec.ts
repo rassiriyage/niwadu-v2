@@ -161,7 +161,7 @@ test("a late quote cannot reveal private data after the account changes", async 
   await expect(page.getByRole("button", { name: "Save stay plan", exact: true })).toHaveCount(0);
 });
 
-test("transient identity failure hides an uncertain save without losing its original retry pair", async ({ page }) => {
+for (const status of [503, 404]) test(`session ${status} hides an uncertain save without losing its original retry pair`, async ({ page }) => {
   await review(page);
   const attempts: { key: string | undefined; body: string | null }[] = [];
   let originalId = "";
@@ -174,7 +174,7 @@ test("transient identity failure hides an uncertain save without losing its orig
   });
   await page.getByRole("button", { name: "Save stay plan", exact: true }).click();
   await expect(page.getByRole("button", { name: "Retry original save" })).toBeVisible();
-  await page.route("**/api/v1/session", route => route.fulfill({ status: 503, json: { message: "Temporary identity outage" } }));
+  await page.route("**/api/v1/session", route => route.fulfill({ status, json: { message: "Temporary identity outage" } }));
   await page.evaluate(() => window.dispatchEvent(new Event("focus")));
   await expect(page.locator(".planning-panel").getByRole("alert")).toContainText("could not be verified");
   await expect(page.locator(".planning-quote")).toHaveCount(0);
@@ -186,4 +186,24 @@ test("transient identity failure hides an uncertain save without losing its orig
   await page.getByRole("button", { name: "Retry original save" }).click();
   await expect(page.getByRole("link", { name: "Open saved plan status" })).toHaveAttribute("href", `/plan/intents/${originalId}`);
   expect(attempts).toHaveLength(2); expect(attempts[1]).toEqual(attempts[0]);
+});
+
+for (const failedCheck of [2, 3]) test(`intent status session check ${failedCheck} returning 404 keeps private status hidden`, async ({ page }) => {
+  await review(page);
+  await page.getByRole("button", { name: "Save stay plan", exact: true }).click();
+  const statusLink = page.getByRole("link", { name: "Open saved plan status" });
+  await expect(statusLink).toBeVisible();
+  let checks = 0;
+  await page.route("**/api/v1/session", async route => {
+    checks++;
+    if (checks >= failedCheck) await route.fulfill({ status: 404, json: { message: "Identity route temporarily unavailable" } });
+    else await route.continue();
+  });
+  await statusLink.click();
+  await expect(page.locator(".planning-panel").getByRole("alert")).toContainText("could not be verified");
+  await expect(page.getByRole("region", { name: "Plan status" })).toHaveCount(0);
+  await expect(page.locator(".planning-panel")).not.toContainText("Signed in as");
+  await page.unroute("**/api/v1/session");
+  await page.getByRole("button", { name: "Retry account check" }).click();
+  await expect(page.getByRole("region", { name: "Plan status" })).toContainText("Stay plan saved. Nothing reserved.");
 });

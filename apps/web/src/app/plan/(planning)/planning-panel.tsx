@@ -66,7 +66,7 @@ export function PlanningPanel({ selection, intentId, hotelName }: { selection?: 
         if (isCurrent()) { setError(""); setChecking(false); }
       } catch (failure) {
         if (isCurrent()) {
-          if (failure instanceof TravellerError && failure.status === 404) { setIntent(null); setError("This stay plan is not available to this account."); setChecking(false); }
+          if (failure instanceof TravellerError && failure.status === 404 && intentId && failure.requestPath === `me/booking-intents/${intentId}`) { setIntent(null); setError("This stay plan is not available to this account."); setChecking(false); }
           else if (failure instanceof TravellerError && failure.status === 401) { clearPrivate(); setError("Your session ended. Private plan details were cleared."); }
           else { setError("Your account or plan could not be verified. Private details are hidden. Retry the account check to continue."); }
         }

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { CardImage } from "./card-image";
 import Link from "next/link";
+import { FreshLink } from "./fresh-link";
+import { discoveryRead, type DiscoveryResult } from "./hotels/discovery";
+import { RefreshDiscoveryOnReturn } from "./hotels/filters";
 import content from "./homepage-content.json";
 import { Carousel, PreviewNavigation, PreviewAction, ReferenceHeader } from "./homepage-controls";
 import { SriLankaMap } from "./SriLankaMap";
@@ -17,26 +20,40 @@ const footer = [
   { title: "Explore", links: ["All stays", "Destinations", "Experiences", "Wishlists"] },
   { title: "Niwadu", links: ["About", "Trip planner", "Cover Sri Lanka", "Facebook", "Instagram"] },
 ];
-function Row({ section, index }: { section: typeof content[number]; index: number }) {
-  return <Carousel id={`collection-${index}`} title={section.title} kind={section.kind}>
-    {section.cards.map((card, cardIndex) => <li key={card.href}>
-      <div className="card-wrap">
-        <PreviewAction label={card.title} className="listing-card">
-          <span className="card-image"><CardImage src={card.image} width={card.imageWidth} height={card.imageHeight} priority={index === 0 && cardIndex === 0} />{index < 3 && <span className="featured">Featured</span>}</span>
-          <span className="card-copy"><span className="card-name">{card.title}</span><span className="card-location">{card.detail}</span><span className="card-rate">{section.kind === "hotel" ? "Rates unavailable" : "Explore in preview"}</span></span>
-        </PreviewAction>
-        {section.kind === "hotel" && <PreviewAction className="wishlist" accessibleName={`Save ${card.title} to wishlist`} label={`Save ${card.title} to wishlist`}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28S2 20 2 10C2 2 12 1 16 8c4-7 14-6 14 2 0 10-14 18-14 18Z" /></svg></PreviewAction>}
-      </div>
+function DestinationInspiration() {
+  const section = content.find(section => section.kind === "destination")!;
+  return <Carousel id="destination-inspiration" title="Destination inspiration" kind="destination">
+    {section.cards.map((card, index) => <li key={card.href}>
+      <PreviewAction label={card.title} className="listing-card">
+        <span className="card-image"><CardImage src={card.image} width={card.imageWidth} height={card.imageHeight} priority={index === 0} /></span>
+        <span className="card-copy"><span className="card-name">{card.title}</span><span className="card-location">{card.detail}</span><span className="card-rate">Destination inspiration</span></span>
+      </PreviewAction>
     </li>)}
   </Carousel>;
 }
-export default function Home() {
+function PublishedStays({ result }: { result: DiscoveryResult | null }) {
+  if (!result || !Array.isArray(result.data)) return <section className="home-catalog-state" role="alert"><h2>Stays could not be loaded</h2><p>The stay catalog is temporarily unavailable. You can still plan your itinerary.</p><FreshLink className="primary" href="/">Try again</FreshLink><FreshLink href="/plan">Plan your itinerary</FreshLink></section>;
+  if (!result.data.length) return <section className="home-catalog-state"><h2>No stays are published yet</h2><p>Reviewed listings will appear here when published. Booking and online payment are not available yet.</p><FreshLink className="primary" href="/plan">Plan your itinerary</FreshLink><FreshLink href="/hotels?sort=name">Check for published stays</FreshLink></section>;
+  return <div className="published-stays"><p className="home-catalog-note">Reviewed property information. Booking and online payment are not available yet.</p><Carousel id="published-stays" title="Reviewed stays" kind="hotel" href="/hotels?sort=name">
+    {result.data.map(hotel => <li key={hotel.id}><div className="card-wrap">
+      <FreshLink className="listing-card" href={`/hotels/${encodeURIComponent(hotel.slug)}`}>
+        <span className="card-image home-photo-unavailable">Photo not available</span>
+        <span className="card-copy"><span className="card-name">{hotel.name}</span><span className="card-location">{hotel.destination?.name || hotel.city}, {hotel.country}</span><span className="card-rate">Check dated rates</span></span>
+      </FreshLink>
+      <PreviewAction className="wishlist" accessibleName={`Save ${hotel.name} to wishlist`} label={`Save ${hotel.name} to wishlist`}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28S2 20 2 10C2 2 12 1 16 8c4-7 14-6 14 2 0 10-14 18-14 18Z" /></svg></PreviewAction>
+    </div></li>)}
+  </Carousel></div>;
+}
+export default async function Home() {
+  const { data: stays } = await discoveryRead<DiscoveryResult>("hotels?sort=name");
   return <div className="public-site"><PreviewNavigation>
     <a className="skip-link" href="#public-content">Skip to content</a>
     <ReferenceHeader />
+    <RefreshDiscoveryOnReturn />
     <main id="public-content" className="public-container">
       <h1 className="visually-hidden">Explore Sri Lanka with Niwadu</h1>
-      {content.slice(0, 4).map((section, index) => <Row key={section.title} section={section} index={index} />)}
+      <PublishedStays result={stays} />
+      <DestinationInspiration />
       <section className="promos" aria-label="Explore Sri Lanka">
         <PreviewAction className="promo" label="Plan a trip">
           <span className="promo-map"><SriLankaMap route={[{ lat: 6.93, lng: 79.85 }, { lat: 7.96, lng: 80.76 }, { lat: 7.29, lng: 80.64 }, { lat: 6.87, lng: 81.05 }, { lat: 5.95, lng: 80.46 }, { lat: 6.93, lng: 79.85 }]} pins={[{ lat: 7.96, lng: 80.76, pill: "Sigiriya" }, { lat: 6.87, lng: 81.05, pill: "Ella" }, { lat: 5.95, lng: 80.46, pill: "Mirissa" }]} /></span>
@@ -47,7 +64,6 @@ export default function Home() {
           <span className="eyebrow">Cover Sri Lanka</span><span className="promo-title">How much of Sri Lanka have you covered?</span><span className="promo-description">Mark the districts you have visited and save your private travel map to your Niwadu account.</span><span className="primary">Check my coverage</span>
         </PreviewAction>
       </section>
-      {content.slice(4).map((section, index) => <Row key={section.title} section={section} index={index + 4} />)}
       <div className="show-all"><PreviewAction className="primary" label="All stays">Show all stays</PreviewAction></div>
     </main>
     <footer className="site-footer"><div className="public-container footer-columns">{footer.map(group => <div key={group.title}><h3>{group.title}</h3><ul>{group.links.map(label => <li key={label}><PreviewAction label={label}>{label}</PreviewAction></li>)}</ul></div>)}</div>

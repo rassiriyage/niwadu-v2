@@ -1,6 +1,7 @@
 // Synthetic, loopback-only HTTP contract fixture. Never imported by application code.
 import { createServer } from 'node:http';
 let withdrawn = false;
+let empty = false;
 let expanded = false;
 let unavailable = false;
 let ratesUnavailable = false;
@@ -11,14 +12,15 @@ createServer((req,res)=>{
  const url = new URL(req.url,'http://127.0.0.1');
  res.setHeader('Content-Type','application/json');res.setHeader('Cache-Control','no-store');
  const send=(status,body)=>{res.statusCode=status;res.end(JSON.stringify(body));};
- if(url.pathname==='/__reset'){withdrawn=false;unavailable=false;ratesUnavailable=false;expanded=false;return send(200,{});}
+ if(url.pathname==='/__reset'){withdrawn=false;empty=false;unavailable=false;ratesUnavailable=false;expanded=false;return send(200,{});}
+ if(url.pathname==='/__empty'){empty=true;return send(200,{});}
  if(url.pathname==='/__expanded'){expanded=true;return send(200,{});}
  if(url.pathname==='/__withdraw'){withdrawn=true;return send(200,{});}
  if(url.pathname==='/__unavailable'){unavailable=true;return send(200,{});}
  if(url.pathname==='/__rates-unavailable'){ratesUnavailable=true;return send(200,{});}
  if(unavailable)return send(503,{message:'Fixture unavailable'});
  if(url.pathname==='/api/v1/public/discovery-options')return send(200,{data:{property_types:types,capabilities:{...capabilities,sorts:expanded?['name','editorial']:['name']},...(expanded?{destinations:[{key:'galle',label:'Galle'}],districts:[{key:'galle',label:'Galle'}],regions:[{key:'north-east',label:'North & East'}],themes:[{key:'beach',label:'Beach'}],amenities:[{key:'wifi',label:'Wi-Fi'},{key:'pool',label:'Pool'}]}:{})}});
- const data=rows.filter(r=>!(withdrawn&&r.id===1));
+ const data=(empty?[]:rows).filter(r=>!(withdrawn&&r.id===1));
  if(url.pathname==='/api/v1/public/hotels'){
   const params=url.searchParams;const filters=params.getAll('property_types[]');
   if(!['name',...(expanded?['editorial']:[])].includes(params.get('sort'))||filters.some(t=>!['hotel','villa','guest_house','resort','apartment','hostel'].includes(t)))return send(422,{message:'Unsupported filters'});

@@ -34,7 +34,7 @@ export function PreviewAction({ label, accessibleName, className, children }: { 
   return <button type="button" className={className} aria-label={accessibleName} onClick={() => showPreview(label)}>{children}</button>;
 }
 
-export function Carousel({ id, title, kind, children }: { id: string; title: string; kind: string; children: ReactNode }) {
+export function Carousel({ id, title, kind, children, href }: { id: string; title: string; kind: string; children: ReactNode; href?: string }) {
   const track = useRef<HTMLUListElement>(null);
   const [edges, setEdges] = useState({ start: true, end: false });
   const gesture = useRef<{ id: number; x: number; y: number; left: number; dragging: boolean } | null>(null);
@@ -74,7 +74,7 @@ export function Carousel({ id, title, kind, children }: { id: string; title: str
     el.scrollBy({ left: direction * ((card?.getBoundingClientRect().width ?? el.clientWidth) + 24), behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   }
   return <section className={`collection ${kind}`} aria-labelledby={`${id}-title`}>
-    <h2 id={`${id}-title`}><PreviewAction label={title}>{title}<span className="chevron" aria-hidden="true" /></PreviewAction></h2>
+    <h2 id={`${id}-title`}>{href ? <FreshLink href={href}>{title}<span className="chevron" aria-hidden="true" /></FreshLink> : <PreviewAction label={title}>{title}<span className="chevron" aria-hidden="true" /></PreviewAction>}</h2>
     <div className="carousel-controls">
       <button aria-label={`Previous ${title}`} aria-controls={id} disabled={edges.start} onClick={() => move(-1)}><span className="chevron left" aria-hidden="true" /></button>
       <button aria-label={`Next ${title}`} aria-controls={id} disabled={edges.end} onClick={() => move(1)}><span className="chevron" aria-hidden="true" /></button>

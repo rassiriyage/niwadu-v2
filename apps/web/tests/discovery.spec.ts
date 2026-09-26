@@ -188,3 +188,28 @@ test("currency preference reaches exact dated rates and never substitutes missin
     await expect(page.locator(".stay-rate-list")).toHaveCount(0);
   }
 });
+
+
+test("homepage uses published identities and distinguishes empty catalog from filtered misses", async ({ page, request }) => {
+  await page.goto("/");
+  await expect(page.locator(".published-stays .listing-card")).toHaveCount(24);
+  await expect(page.getByText("Sulanga Luxury Chalets", { exact: true })).toHaveCount(0);
+  await page.locator(".published-stays .listing-card").first().click();
+  await expect(page).toHaveURL(/\/hotels\/qa-fixture-1$/);
+  await expect(page.getByRole("heading", { name: "QA fixture 01", exact: true })).toBeVisible();
+  await page.getByRole("link", { name: "All stays", exact: false }).first().click();
+  await request.get("http://127.0.0.1:8099/__empty");
+  await page.goto("/");
+  await expect(page.getByRole("heading", { name: "No stays are published yet" })).toBeVisible();
+  await expect(page.locator(".published-stays .listing-card")).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Destination inspiration" })).toBeVisible();
+  await page.goto("/hotels?sort=name");
+  await expect(page.getByRole("heading", { name: "No stays are published yet" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Plan your itinerary", exact: true })).toBeVisible();
+  await page.goto("/hotels?q=nomatch&sort=name");
+  await expect(page.getByRole("heading", { name: "No stays match your search" })).toBeVisible();
+  await request.get("http://127.0.0.1:8099/__unavailable");
+  await page.goto("/");
+  await expect(page.getByRole("heading", { name: "Stays could not be loaded" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "No stays are published yet" })).toHaveCount(0);
+});

@@ -143,7 +143,7 @@ test("review edits use keyboard navigation, save progress and return to the owni
 
 test("mobile conflict disclosure keeps the first field reachable and preserves keyboard recovery", async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await createDraft(page);
+  await createDraft(page, "recovery@example.test");
   const id = page.url().match(/hotels\/(\d+)/)![1];
   const session = await (await page.request.get("/api/v1/session")).json();
   expect((await page.request.patch(`/api/v1/hotels/${id}`, { headers: { "X-CSRF-TOKEN": session.csrf_token }, data: { city: "Galle", version: 0 } })).ok()).toBe(true);
@@ -187,7 +187,7 @@ test("mobile conflict disclosure keeps the first field reachable and preserves k
 });
 
 test("review edit navigation cannot bypass a changed draft", async ({ page }) => {
-  await createDraft(page);
+  await createDraft(page, "conflict@example.test");
   await page.getByRole("button", { name: "7 Review", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Review", exact: true })).toBeVisible();
   const id = page.url().match(/hotels\/(\d+)/)![1];
@@ -196,6 +196,10 @@ test("review edit navigation cannot bypass a changed draft", async ({ page }) =>
   expect((await page.request.patch(`/api/v1/hotels/${id}/onboarding`, { headers: { "X-CSRF-TOKEN": session.csrf_token }, data: { version: draft.version, fields: { city: "Galle" } } })).ok()).toBe(true);
   await page.getByRole("button", { name: "Property type — edit Hotel basics", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Review", exact: true })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Save problem" })).toBeFocused();
+  // The same stored conflict must refocus the summary on another navigation attempt.
+  await page.getByRole("button", { name: "Property type — edit Hotel basics", exact: true }).focus();
+  await page.keyboard.press("Enter");
   await expect(page.getByRole("region", { name: "Save problem" })).toBeFocused();
   await expect(page.getByRole("button", { name: "Publish unavailable" })).toBeDisabled();
   await page.getByText("Review and resolve unsaved changes", { exact: true }).click();

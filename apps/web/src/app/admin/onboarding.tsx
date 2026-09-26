@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type RefObject } from "react";
 import { useRouter } from "next/navigation";
 import { api as rawApi, ApiError, type Hotel, type Session } from "@/lib/admin-api";
 import { Staff } from "./hotel-profile";
@@ -62,6 +62,7 @@ function Wizard({ initial, hotel, beforeLeaveRef, recovered, storageKey }: { ini
   const [copyStatus, setCopyStatus] = useState("");
   const conflict = useRef<ApiError | null>(recoveredConflict);
   const summary = useRef<HTMLDivElement>(null);
+  const [focusRequest, setFocusRequest] = useState<{ target: "summary" | "heading" }>();
   const recoveryText = useRef<HTMLTextAreaElement>(null);
   const fieldErrors = error instanceof ApiError ? error.fieldErrors : {};
   const isConflict = error instanceof ApiError && error.status === 409;
@@ -80,6 +81,13 @@ function Wizard({ initial, hotel, beforeLeaveRef, recovered, storageKey }: { ini
   const heading = useRef<HTMLHeadingElement>(null);
   const router = useRouter();
   const path = `hotels/${hotel.id}/onboarding`;
+
+  useLayoutEffect(() => {
+    // Focus committed navigation content before another keyboard action can occur.
+    // Background autosave errors leave focus in the field being edited.
+    if (focusRequest?.target === "summary") summary.current?.focus();
+    if (focusRequest?.target === "heading") heading.current?.focus();
+  }, [focusRequest]);
 
   const persist = useCallback(() => {
     if (!active.current) return;
@@ -164,13 +172,13 @@ function Wizard({ initial, hotel, beforeLeaveRef, recovered, storageKey }: { ini
       if (next === undefined) { router.push(`/admin/hotels/${hotel.id}`); return; }
       const result = await api<Draft>(path, "PATCH", { version: version.current, step: next });
       version.current = result.version; setReview(result); setStep(next); currentStep.current = next; setError(null); setRetryStep(undefined); setStatus("All changes saved");
-      requestAnimationFrame(() => heading.current?.focus());
+      setFocusRequest({ target: "heading" });
     } catch (e) {
       if (e instanceof ApiError && e.status === 409) {
         conflict.current = e; setUnsaved({ ...pending.current });
       }
       setError(e as Error); setRetryStep(next ?? null); setStatus("Changes not saved"); setMoving(false);
-      requestAnimationFrame(() => summary.current?.focus());
+      setFocusRequest({ target: "summary" });
     }
     finally { if (next !== undefined) setMoving(false); }
   }
@@ -183,7 +191,7 @@ function Wizard({ initial, hotel, beforeLeaveRef, recovered, storageKey }: { ini
       currentFields.current = latest.fields; currentStep.current = latest.step; inFlight.current = {}; persist();
       setFields(latest.fields); setReview(latest); setStep(latest.step);
       setError(null); setRetryStep(undefined); setUnsaved({}); setCopyStatus(""); setStatus("All changes saved");
-      requestAnimationFrame(() => heading.current?.focus());
+      setFocusRequest({ target: "heading" });
     } catch {
       setCopyStatus("Could not load the latest draft. Your unsaved changes are still here. Try reloading latest again.");
     } finally { setMoving(false); }

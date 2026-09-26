@@ -115,7 +115,10 @@ test("unknown charges remain null and session expiry clears the private editor",
   const from = new Date().toISOString().slice(0, 10), end = new Date(); end.setUTCDate(end.getUTCDate() + 1);
   const night = (await api(page, `hotels/${id}/room-types/${room.id}/rate-plans/${plan.id}/nights?from=${from}&to=${end.toISOString().slice(0, 10)}`)).body.data[0];
   expect(night.base_minor).toBe(3129); expect(night.tax_minor).toBeNull(); expect(night.fee_minor).toBeNull(); expect(Boolean(night.mandatory_charges_complete)).toBe(false);
-  await step(page, "Room types"); await api(page, "logout", "POST"); await page.getByLabel("Room type name", { exact: true }).fill("Must not save");
+  await step(page, "Room types");
+  // The step heading renders before the room fetch completes. Expire an already loaded editor.
+  await expect(page.getByLabel("Room type name", { exact: true })).toBeVisible();
+  await api(page, "logout", "POST"); await page.getByLabel("Room type name", { exact: true }).fill("Must not save");
   await expect(page.getByText("Your session ended or changed. Sign in again to resume setup.")).toBeVisible(); await expect(page.getByLabel("Room type name", { exact: true })).toHaveCount(0);
   expect(await page.evaluate(() => Object.keys(sessionStorage).filter(k => k.startsWith("niwadu-onboarding:")))).toEqual([]);
 });

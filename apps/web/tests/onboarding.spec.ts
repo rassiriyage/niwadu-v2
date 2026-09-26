@@ -101,6 +101,7 @@ test("conflict recovery copies local input, explicitly reloads latest, and resum
   await expect(page.getByRole("alert").filter({ hasText: "changed in another window" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Retry save" })).toHaveCount(0);
   await page.getByLabel("Phone number").fill("0771234567");
+  await page.getByText("Review and resolve unsaved changes", { exact: true }).click();
   await page.getByRole("button", { name: "Copy unsaved changes", exact: true }).click();
   expect(JSON.parse(await page.evaluate(() => navigator.clipboard.readText()))).toEqual({ city: "Kandy", phone: "0771234567" });
   await expect(page.getByLabel("City or destination")).toHaveValue("Kandy");
@@ -118,6 +119,90 @@ test("conflict recovery copies local input, explicitly reloads latest, and resum
   await page.reload();
   await expect(page.getByLabel("City or destination")).toHaveValue("Ella");
   await second.close();
+});
+
+test("review edits use keyboard navigation, save progress and return to the owning step", async ({ page }) => {
+  await createDraft(page);
+  await page.getByRole("button", { name: "7 Review", exact: true }).click();
+  for (const [item, step] of [
+    ["Property type", "Hotel basics"], ["Hotel photographs", "Listing & photos"],
+    ["Room names, occupancy and quantities", "Room types"], ["Availability setup preference", "Rates & availability"],
+    ["Cancellation policy", "Policies"], ["A hotel manager", "Hotel staff"],
+  ]) {
+    const edit = page.getByRole("button", { name: `${item} — edit ${step}`, exact: true });
+    await edit.focus();
+    await page.keyboard.press("Enter");
+    await expect(page.getByRole("heading", { name: step, exact: true })).toBeFocused();
+    if (item === "Property type") await page.getByLabel("City or destination").fill("Matara");
+    await page.getByRole("button", { name: "7 Review", exact: true }).click();
+    await expect(page.getByRole("heading", { name: "Review", exact: true })).toBeVisible();
+  }
+  await page.reload();
+  await expect(page.getByText("Matara, LK", { exact: true })).toBeVisible();
+});
+
+test("mobile conflict disclosure keeps the first field reachable and preserves keyboard recovery", async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await createDraft(page);
+  const id = page.url().match(/hotels\/(\d+)/)![1];
+  const session = await (await page.request.get("/api/v1/session")).json();
+  expect((await page.request.patch(`/api/v1/hotels/${id}`, { headers: { "X-CSRF-TOKEN": session.csrf_token }, data: { city: "Galle", version: 0 } })).ok()).toBe(true);
+  await page.getByLabel("City or destination").fill("Kandy");
+  await expect(page.getByRole("alert").filter({ hasText: "changed in another window" })).toBeVisible();
+  const rail = page.getByRole("navigation", { name: "Hotel setup steps" });
+  await rail.focus();
+  await expect(rail).toBeFocused();
+  await page.keyboard.press("ArrowRight");
+  await expect.poll(() => rail.evaluate(element => element.scrollLeft)).toBeGreaterThan(0);
+  for (const button of await rail.getByRole("button").all()) {
+    expect((await button.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+  }
+  await page.evaluate(() => window.scrollTo(0, 0));
+  const firstField = await page.getByLabel("Hotel name", { exact: true }).boundingBox();
+  expect(firstField).not.toBeNull();
+  await testInfo.attach("mobile-first-field-position", { body: JSON.stringify(firstField), contentType: "application/json" });
+  expect(firstField!.y + firstField!.height).toBeLessThanOrEqual(844);
+  await page.screenshot({ path: testInfo.outputPath("mobile-conflict-collapsed.png"), fullPage: true });
+  const disclosure = page.getByText("Review and resolve unsaved changes", { exact: true });
+  await disclosure.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.getByLabel("Unsaved changes (JSON)")).toContainText('"city": "Kandy"');
+  await expect(page.getByText("Reloading will discard your unsaved changes in this window.", { exact: true })).toBeVisible();
+  await disclosure.focus();
+  await page.keyboard.press("Enter");
+  await expect(disclosure).toBeFocused();
+  await expect(page.getByLabel("Unsaved changes (JSON)")).not.toBeVisible();
+  await page.keyboard.press("Enter");
+  for (const width of [320, 768, 1024, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    await page.screenshot({ path: testInfo.outputPath(`conflict-${width}.png`), fullPage: true });
+  }
+  await page.getByRole("button", { name: "Discard unsaved changes and reload latest", exact: true }).click();
+  await expect(page.getByLabel("City or destination")).toHaveValue("Galle");
+  await page.getByLabel("City or destination").fill("Ella");
+  await expect(page.getByText("All changes saved", { exact: true })).toBeVisible();
+  await page.reload();
+  await expect(page.getByLabel("City or destination")).toHaveValue("Ella");
+});
+
+test("review edit navigation cannot bypass a changed draft", async ({ page }) => {
+  await createDraft(page);
+  await page.getByRole("button", { name: "7 Review", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Review", exact: true })).toBeVisible();
+  const id = page.url().match(/hotels\/(\d+)/)![1];
+  const session = await (await page.request.get("/api/v1/session")).json();
+  const draft = await (await page.request.get(`/api/v1/hotels/${id}/onboarding`)).json();
+  expect((await page.request.patch(`/api/v1/hotels/${id}/onboarding`, { headers: { "X-CSRF-TOKEN": session.csrf_token }, data: { version: draft.version, fields: { city: "Galle" } } })).ok()).toBe(true);
+  await page.getByRole("button", { name: "Property type — edit Hotel basics", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Review", exact: true })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Save problem" })).toBeFocused();
+  await expect(page.getByRole("button", { name: "Publish unavailable" })).toBeDisabled();
+  await page.getByText("Review and resolve unsaved changes", { exact: true }).click();
+  await page.getByRole("button", { name: "Discard unsaved changes and reload latest", exact: true }).click();
+  await expect(page.getByText("Galle, LK", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Property type — edit Hotel basics", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Hotel basics", exact: true })).toBeFocused();
 });
 
 test("validation stays at the field during autosave and keyboard Continue focuses linked errors", async ({ page }) => {
@@ -215,6 +300,7 @@ test("browser Back and Forward recover pending fields without silently overwriti
   await expect(page.getByLabel("City or destination")).toHaveValue("Unsaved city");
   await expect(page.getByRole("alert").filter({ hasText: "changed in another window" })).toBeVisible();
   expect((await (await page.request.get(`/api/v1/hotels/${id}`)).json()).data.city).toBe("Other editor");
+  await page.getByText("Review and resolve unsaved changes", { exact: true }).click();
   await page.getByRole("button", { name: "Discard unsaved changes and reload latest" }).click();
   await expect(page.getByLabel("City or destination")).toHaveValue("Other editor");
   await page.getByLabel("City or destination").fill("Reviewed city");

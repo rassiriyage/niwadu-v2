@@ -32,3 +32,15 @@ Validation: all 33 wizard/onboarding/staff/password/inventory browser tests pass
 Hosted status: accepted UI `499ee401` and API `f01dacc` deployed successfully and guest QA passed. A read-only Railway SSH recheck still reports no registered SSH keys; authenticated hosted wizard verification remains pending operator console/access and the previously authorized disposable account. No account creation was attempted and no keys were registered.
 
 Next bounded UI work: link Review missing-content items to their owning steps using the existing save-before-navigation path; compact mobile progress/conflict recovery without weakening preserved-input disclosure. Design withdrew the stale immediate room-removal finding in `8e203df`: that control is absent from the accepted expanded wizard.
+
+## Review navigation and mobile conflict recovery — 2026-09-26
+
+Review renders an edit control for every current API missing-content label, using the existing `navigate` function to flush pending input and persist the target step before focusing its heading. Unknown future labels stay visible as text. Publication blockers remain unchanged.
+
+The mobile progress rail keeps all seven labels and normal touch targets in a horizontally scrollable, keyboard-focusable region. Conflict warnings stay visible; native details disclosure contains the existing copy, explicit discard/reload, and unsaved JSON controls. No autosave, conflict version, room identity or photo mutation behavior changes.
+
+Validation: all 36 browser cases passed against API `f01dacc` in 2.0 minutes, including keyboard edit navigation through six owning steps, navigation blocked by a changed server draft, copy and failed reload recovery, browser Back/Forward recovery, and responsive disclosure checks. Lint, TypeScript, production build and diff checks passed. The initial missing-edit and mobile-position tests failed before implementation. Intermediate runs retained an over-height layout and an old recovery test that needed to open the new disclosure; both are resolved in the final run.
+
+At 390 × 844, the first ordinary input's bottom is asserted within 844 pixels (approximately 837 in the screenshot), compared with approximately 1,619 before. The mobile rail is focusable and scrolls with ArrowRight; all seven buttons remain at least 44 pixels tall. Disclosure expand/collapse retains keyboard focus and preserves unsaved JSON. No page overflow at 320, 768, 1024 or 1440 pixels; screenshots at those widths and 390 were visually inspected. Final artifacts: `/tmp/niwadu-review-conflict-final-20260926`. This is local browser evidence, not a hosted authenticated or comprehensive screen-reader/usability sign-off.
+
+The candidate follows staff-feedback `d4d1f73`, remains unpublished, and requires independent QA/coordinated frontend integration. The hosted SSH/account blocker is unchanged.

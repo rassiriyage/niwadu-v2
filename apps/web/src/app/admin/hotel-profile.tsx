@@ -61,10 +61,16 @@ export function Staff({ hotel, title = "Hotel staff" }: { hotel: Hotel; title?: 
     event.preventDefault(); const form = event.currentTarget;
     setBusy(true); setError(""); setMessage("");
     try {
-      await api(path, "POST", Object.fromEntries(new FormData(form)));
+      const result = await api<{ data: Member; password_setup_sent: boolean }>(path, "POST", Object.fromEntries(new FormData(form)));
       form.reset();
-      setMembers((await api<{ data: Member[] }>(path)).data);
-      setMessage("Hotel access saved. New accounts receive a password-setup link.");
+      setMessage(result.password_setup_sent
+        ? `Hotel access saved. Password-setup link sent to ${result.data.email}.`
+        : 'Hotel access saved. No password-setup link was sent. Use "Send password link" if one is needed.');
+      try {
+        setMembers((await api<{ data: Member[] }>(path)).data);
+      } catch {
+        setError("Access was saved, but the staff list could not be refreshed. Reload this page to see the latest list.");
+      }
     } catch (e) { setError((e as Error).message); }
     finally { setBusy(false); }
   }

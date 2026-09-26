@@ -4,7 +4,7 @@ const apiPath = process.env.WIZARD_API_PATH || path.resolve(__dirname, "../../..
 process.env.WIZARD_API_PATH = apiPath;
 const php = process.env.PHP_BIN || "/opt/homebrew/opt/php@8.4/bin/php";
 export default defineConfig({
-  testDir: "./tests", testMatch: ["wizard-rooms.spec.ts", "onboarding.spec.ts", "password-session.spec.ts", "password-policy.spec.ts", "operations.spec.ts"], workers: 1, retries: 0, timeout: 90000,
+  testDir: "./tests", testMatch: ["wizard-rooms.spec.ts", "onboarding.spec.ts", "password-session.spec.ts", "password-policy.spec.ts", "operations.spec.ts", "staff-feedback.spec.ts"], workers: 1, retries: 0, timeout: 90000,
   use: { baseURL: "http://127.0.0.1:3244", trace: "retain-on-failure" },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: [

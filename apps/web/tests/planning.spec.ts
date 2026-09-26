@@ -160,3 +160,30 @@ test("a late quote cannot reveal private data after the account changes", async 
   await expect(page.locator(".planning-quote")).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Save stay plan", exact: true })).toHaveCount(0);
 });
+
+test("transient identity failure hides an uncertain save without losing its original retry pair", async ({ page }) => {
+  await review(page);
+  const attempts: { key: string | undefined; body: string | null }[] = [];
+  let originalId = "";
+  await page.route("**/api/v1/me/booking-intents", async route => {
+    attempts.push({ key: route.request().headers()["idempotency-key"], body: route.request().postData() });
+    const response = await route.fetch();
+    const value = await response.json();
+    if (attempts.length === 1) { originalId = value.data.id; await route.abort("failed"); }
+    else { expect(value.data.id).toBe(originalId); await route.fulfill({ response }); }
+  });
+  await page.getByRole("button", { name: "Save stay plan", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Retry original save" })).toBeVisible();
+  await page.route("**/api/v1/session", route => route.fulfill({ status: 503, json: { message: "Temporary identity outage" } }));
+  await page.evaluate(() => window.dispatchEvent(new Event("focus")));
+  await expect(page.locator(".planning-panel").getByRole("alert")).toContainText("could not be verified");
+  await expect(page.locator(".planning-quote")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Request current quote" })).toHaveCount(0);
+  await page.unroute("**/api/v1/session");
+  await page.evaluate(() => window.dispatchEvent(new Event("focus")));
+  await expect(page.getByRole("button", { name: "Retry original save" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Request current quote" })).toBeDisabled();
+  await page.getByRole("button", { name: "Retry original save" }).click();
+  await expect(page.getByRole("link", { name: "Open saved plan status" })).toHaveAttribute("href", `/plan/intents/${originalId}`);
+  expect(attempts).toHaveLength(2); expect(attempts[1]).toEqual(attempts[0]);
+});

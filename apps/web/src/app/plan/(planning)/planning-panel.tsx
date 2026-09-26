@@ -35,9 +35,11 @@ export function PlanningPanel({ selection, intentId, hotelName }: { selection?: 
   const identity = useRef<number | null>(null);
   const epoch = useRef(0);
   const running = useRef(false);
+  const verification = useRef(0);
+  const retryVerification = useRef<() => void>(() => {});
   const pending = useRef<{ quote_id: string; key: string } | null>(null);
   const clearPrivate = useCallback(() => {
-    epoch.current++; identity.current = null; pending.current = null; running.current = false;
+    epoch.current++; verification.current++; setChecking(false); identity.current = null; pending.current = null; running.current = false;
     setUser(null); setQuote(null); setIntent(null); setRetrying(false); setBusy(false); setUnavailable(false);
   }, []);
   useEffect(() => {
@@ -45,10 +47,12 @@ export function PlanningPanel({ selection, intentId, hotelName }: { selection?: 
     const generation = epoch;
     const inspect = async () => {
       const current = epoch.current;
+      const ticket = ++verification.current;
+      const isCurrent = () => active && current === epoch.current && ticket === verification.current;
       setChecking(true);
       try {
         const session = await getTravellerSession();
-        if (!active || current !== epoch.current) return;
+        if (!isCurrent()) return;
         if (identity.current !== null && session.user?.id !== identity.current) {
           clearPrivate(); setError("The signed-in account changed. Private plan details were cleared. Reload to continue."); return;
         }
@@ -57,16 +61,19 @@ export function PlanningPanel({ selection, intentId, hotelName }: { selection?: 
           const reply = await planningRequest<Envelope<Intent>>(`booking-intents/${intentId}`, session.user.id);
           const value = readIntent(reply);
           if (value.id !== intentId) throw new TravellerError("This plan status could not be read.", 503);
-          if (active && current === epoch.current) setIntent(value);
+          if (isCurrent()) setIntent(value);
         }
+        if (isCurrent()) { setError(""); setChecking(false); }
       } catch (failure) {
-        if (active && current === epoch.current) {
-          if (failure instanceof TravellerError && failure.status === 404) { setIntent(null); setError("This stay plan is not available to this account."); }
-          else { clearPrivate(); setError("Your account or plan could not be verified. Reload to try again."); }
+        if (isCurrent()) {
+          if (failure instanceof TravellerError && failure.status === 404) { setIntent(null); setError("This stay plan is not available to this account."); setChecking(false); }
+          else if (failure instanceof TravellerError && failure.status === 401) { clearPrivate(); setError("Your session ended. Private plan details were cleared."); }
+          else { setError("Your account or plan could not be verified. Private details are hidden. Retry the account check to continue."); }
         }
-      } finally { if (active) setChecking(false); }
+      }
     };
-    const hide = () => { setChecking(true); };
+    retryVerification.current = () => { void inspect(); };
+    const hide = () => { verification.current++; setChecking(true); };
     const visible = () => { if (document.visibilityState === "visible") void inspect(); else hide(); };
     void inspect();
     const timer = window.setInterval(() => setNow(Date.now()), 1000);
@@ -120,7 +127,7 @@ export function PlanningPanel({ selection, intentId, hotelName }: { selection?: 
     <p>Planning only. No booking confirmation or online payment is available.</p>
     <FreshLink className="discovery-button" href="/hotels?sort=name">Browse stays</FreshLink>
     {error && <p role="alert">{error}</p>}
-    {checking ? <p role="status">Checking your account…</p> : !user ? <p><a className="discovery-button" href="/account" target="_blank" rel="noopener noreferrer">Sign in</a> (opens another tab), then return here or reload. Your selected dates stay in this page’s URL.</p> : <>
+    {checking ? <><p role="status">Checking your account…</p>{error && <button className="discovery-button" onClick={() => retryVerification.current()}>Retry account check</button>}</> : !user ? <p><a className="discovery-button" href="/account" target="_blank" rel="noopener noreferrer">Sign in</a> (opens another tab), then return here or reload. Your selected dates stay in this page’s URL.</p> : <>
       <p>Signed in as {user.name}</p>
       {selection && !intent && <button className="discovery-button" disabled={blocked || retrying} onClick={requestQuote}>Request current quote</button>}
       {unavailable && <p role="status">This selection is unavailable. Nothing reserved. Your dates and selection are unchanged.</p>}

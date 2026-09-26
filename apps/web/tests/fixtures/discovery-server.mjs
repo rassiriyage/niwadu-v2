@@ -37,9 +37,10 @@ createServer((req,res)=>{
  if(ratesHotel){
   if(ratesUnavailable)return send(503,{message:"Unavailable"});
   const arrival=url.searchParams.get('arrival'),departure=url.searchParams.get('departure'),adults=url.searchParams.get('adults');
+  const currency=url.searchParams.get('currency')||'LKR';
   const nights=(Date.parse(departure)-Date.parse(arrival))/86400000;
-  if(!arrival||!departure||!Number.isFinite(nights)||nights<1||nights>30||!/^([1-9]|[12][0-9]|30)$/.test(adults||''))return send(422,{message:'Invalid selection'});
-  return send(200,{data:adults==='3'?[]:[{rate_plan_id:1,name:'Flexible',room_type_id:1,room_name:'Garden room',max_adults:2,currency:'LKR',total_minor:1250500,policy:{version:'1',text:'Synthetic cancellation policy.'},expires_at:new Date(Date.now()+60000).toISOString()}],meta:{inventory_reserved:false,selection:{arrival,departure,adults}}});
+  if(!['LKR','USD'].includes(currency)||!arrival||!departure||!Number.isFinite(nights)||nights<1||nights>30||!/^([1-9]|[12][0-9]|30)$/.test(adults||''))return send(422,{message:'Invalid selection'});
+  return send(200,{data:adults==='3'||(currency==='USD'&&arrival==='2030-01-11')?[]:[{rate_plan_id:1,name:'Flexible',room_type_id:1,room_name:'Garden room',max_adults:2,currency,meal_plan:currency==='USD'?'BB':null,total_minor:currency==='USD'?8025:1250500,policy:{version:'1',text:'Synthetic cancellation policy.'},expires_at:new Date(Date.now()+60000).toISOString()}],meta:{inventory_reserved:false,selection:{arrival,departure,adults,currency}}});
  }
  const row=data.find(r=>url.pathname===`/api/v1/public/hotels/${r.slug}`);
  return row?send(200,{data:row}):send(404,{message:'Not found'});

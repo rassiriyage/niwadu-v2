@@ -157,3 +157,34 @@ test("editorial intent does not fall back when no reviewed order exists", async 
   await page.getByRole("button", { name: "Apply sort", exact: true }).click();
   await expect(page.locator(".discovery-card")).toHaveCount(24);
 });
+
+
+test("currency preference reaches exact dated rates and never substitutes missing USD", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("combobox", { name: "Currency", exact: true }).selectOption("USD");
+  await page.goto("/hotels/qa-fixture-1");
+  await expect(page.getByRole("combobox", { name: "Rate currency", exact: true })).toHaveValue("USD");
+  await expect(page.locator(".stay-rates").getByRole("alert")).toHaveCount(0);
+  await page.getByLabel("Arrival", { exact: true }).fill("2030-01-10");
+  await page.getByLabel("Departure", { exact: true }).fill("2030-01-12");
+  await page.getByRole("button", { name: "Check rates", exact: true }).click();
+  await expect(page).toHaveURL(/currency=USD/);
+  await expect(page.locator(".stay-rate-list")).toContainText("USD 80.25");
+  await expect(page.locator(".stay-rate-list")).toContainText("Bed and breakfast (BB)");
+  await page.getByRole("combobox", { name: "Currency", exact: true }).selectOption("LKR");
+  await expect(page.locator(".stay-rate-list")).toContainText("LKR 12,505.00");
+  await expect(page.locator(".stay-rate-list")).toContainText("Meal plan not specified");
+  await expect(page.getByLabel("Arrival", { exact: true })).toHaveValue("2030-01-10");
+  await page.getByRole("combobox", { name: "Rate currency", exact: true }).selectOption("USD");
+  await page.getByLabel("Arrival", { exact: true }).fill("2030-01-11");
+  await page.getByRole("button", { name: "Check rates", exact: true }).click();
+  await expect(page.locator(".stay-rates")).toContainText("No room rates are available in USD");
+  await expect(page.locator(".stay-rate-list")).toHaveCount(0);
+  await page.reload();
+  await expect(page.getByRole("combobox", { name: "Rate currency", exact: true })).toHaveValue("USD");
+  for (const choice of ["EUR", "USD&currency=LKR"]) {
+    await page.goto(`/hotels/qa-fixture-1?arrival=2030-01-10&departure=2030-01-12&adults=2&currency=${choice}`);
+    await expect(page.locator(".stay-rates").getByRole("alert")).toBeVisible();
+    await expect(page.locator(".stay-rate-list")).toHaveCount(0);
+  }
+});

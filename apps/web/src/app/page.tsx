@@ -51,7 +51,7 @@ export default function Home() {
       <div className="show-all"><PreviewAction className="primary" label="All stays">Show all stays</PreviewAction></div>
     </main>
     <footer className="site-footer"><div className="public-container footer-columns">{footer.map(group => <div key={group.title}><h3>{group.title}</h3><ul>{group.links.map(label => <li key={label}><PreviewAction label={label}>{label}</PreviewAction></li>)}</ul></div>)}</div>
-      <div className="footer-bottom"><div className="public-container"><p>© {new Date().getFullYear()} Niwadu.com · <PreviewAction label="Privacy">Privacy</PreviewAction> · <PreviewAction label="Terms">Terms</PreviewAction> · <a href="tel:+94760730139">+94 76 073 0139</a> · <a href="mailto:bookings@niwadu.com">Email</a> · <Link href="/">Home</Link></p><span>English (LK) · LKR</span></div></div>
+      <div className="footer-bottom"><div className="public-container"><p>© {new Date().getFullYear()} Niwadu.com · <PreviewAction label="Privacy">Privacy</PreviewAction> · <PreviewAction label="Terms">Terms</PreviewAction> · <a href="tel:+94760730139">+94 76 073 0139</a> · <a href="mailto:bookings@niwadu.com">Email</a> · <Link href="/">Home</Link></p><span>English (LK)</span></div></div>
     </footer>
     <PreviewAction className="contact-float" accessibleName="Contact Niwadu" label="Contact Niwadu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a9 9 0 0 1-13.5 7.8L3 21l1.7-4.5A9 9 0 1 1 21 11.5Z" /></svg></PreviewAction>
   </PreviewNavigation></div>;

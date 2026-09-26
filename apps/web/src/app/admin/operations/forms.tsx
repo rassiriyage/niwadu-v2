@@ -27,18 +27,18 @@ export function OperationForm({ children, label, save, reload, editable = true }
     try { await save(new FormData(event.currentTarget)); if (form.current) delete form.current.dataset.unsaved; setMessage("Saved."); }
     catch (e) {
       const failure = e as Error;
-      setError(failure.message); setBlocked(!(e instanceof ApiError) || e.status === 409 || e.status >= 500);
+      setError(failure.message); setBlocked(!(e instanceof ApiError) || e.status === 408 || e.status === 409 || e.status >= 500);
       requestAnimationFrame(() => summary.current?.focus());
     } finally { if (form.current) delete form.current.dataset.saving; setBusy(false); }
   }
   async function discard() {
     if (!window.confirm("Discard this screen’s unsaved changes and load the latest saved data?")) return;
-    setBusy(true);
+    setBusy(true); if (form.current) form.current.dataset.saving = "true";
     try { await reload(); setBlocked(false); setError(""); if (form.current) { form.current.reset(); delete form.current.dataset.unsaved; } }
     catch (e) { setError((e as Error).message); }
-    finally { setBusy(false); }
+    finally { if (form.current) delete form.current.dataset.saving; setBusy(false); }
   }
-  return <form ref={form} onSubmit={submit} onChange={() => { if (form.current) form.current.dataset.unsaved = "true"; setMessage(""); }} className="ops-form">
+  return <form ref={form} data-blocked={blocked || undefined} onSubmit={submit} onChange={() => { if (form.current) form.current.dataset.unsaved = "true"; setMessage(""); }} className="ops-form">
     <fieldset className="form-grid" disabled={!editable || busy}>{children}</fieldset>
     {editable ? <button disabled={busy || blocked}>{busy ? "Saving…" : label}</button> : <p className="hint">Your role has read-only access to these settings.</p>}
     {error && <p ref={summary} tabIndex={-1} className="error" role="alert">{error}</p>}

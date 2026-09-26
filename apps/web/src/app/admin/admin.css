@@ -87,6 +87,7 @@ body:has(.admin-app) { margin:0; }
 .review-missing { list-style:none; padding:0; }
 .admin-app .review-edit { background:transparent; color:var(--ink); padding:.5rem 0; text-align:left; text-decoration:underline; justify-content:space-between; gap:1rem; width:100%; }
 .review-edit>span[aria-hidden] { white-space:nowrap; }
+.calendar-select { min-height:44px; min-width:44px; justify-content:center; }
 @media(max-width:760px) {
   .setup-heading { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.5rem; margin:.5rem 0 1rem; }
   .setup-heading>button { align-self:start; padding:.5rem; }

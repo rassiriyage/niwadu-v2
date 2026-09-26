@@ -118,6 +118,27 @@ class ManualConcurrencyTest extends TestCase
         $this->assertSame(1, (int) $hotel->fresh()->property_gallery_version);
     }
 
+    public function test_overlapping_calendar_batches_commit_only_one_complete_change(): void
+    {
+        require dirname(__DIR__).'/postgres-bootstrap.php';
+        $this->artisan('migrate:fresh', ['--force' => true])->assertExitCode(0);
+        $admin = User::factory()->create(['platform_role' => 'administrator']);
+        $hotel = Hotel::factory()->create();
+        $room = RoomType::factory()->create(['hotel_id' => $hotel->id]);
+        $pool = InventoryPool::factory()->create(['hotel_id' => $hotel->id, 'room_type_id' => $room->id, 'owner' => 'manual']);
+        $uri = "/api/v1/hotels/{$hotel->id}/room-types/{$room->id}/inventory-nights";
+        $first = [['stay_date' => '2026-10-10', 'version' => 0, 'capacity' => 3], ['stay_date' => '2026-10-11', 'version' => 0, 'capacity' => 3]];
+        $second = [['stay_date' => '2026-10-11', 'version' => 0, 'capacity' => 7], ['stay_date' => '2026-10-10', 'version' => 0, 'capacity' => 7]];
+        $statuses = $this->whileHotelLocked($hotel, $admin, [[$uri, ['nights' => $first]], [$uri, ['nights' => $second]]]);
+        $winner = array_search(200, $statuses, true);
+        sort($statuses);
+        $this->assertSame([200, 409], $statuses);
+        $capacity = $winner === 0 ? 3 : 7;
+        $rows = DB::table('inventory_nights')->where('inventory_pool_id', $pool->id)->orderBy('stay_date')->get();
+        $this->assertSame([$capacity, $capacity], $rows->pluck('capacity')->all());
+        $this->assertSame([1, 1], $rows->pluck('version')->all());
+    }
+
     private function whileHotelLocked(Hotel $hotel, User $admin, array $commands, ?\Closure $beforeCommit = null): array
     {
         $workers = [];

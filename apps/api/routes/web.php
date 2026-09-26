@@ -62,8 +62,10 @@ Route::prefix('api/v1')->middleware([PrivateApiResponse::class, 'auth.session'])
         Route::post('hotels/{hotel}/room-types/{room}/rate-plans', [ManualCatalogController::class, 'savePlan'])->whereNumber(['room', 'plan']);
         Route::put('hotels/{hotel}/room-types/{room}/rate-plans/{plan}', [ManualCatalogController::class, 'savePlan'])->whereNumber(['room', 'plan']);
         Route::get('hotels/{hotel}/room-types/{room}/inventory-nights', [ManualCatalogController::class, 'stockCalendar'])->whereNumber(['room', 'plan']);
+        Route::put('hotels/{hotel}/room-types/{room}/inventory-nights', [ManualCatalogController::class, 'saveStockBatch'])->whereNumber('room');
         Route::put('hotels/{hotel}/room-types/{room}/inventory-nights/{date}', [ManualCatalogController::class, 'saveStock'])->whereNumber(['room', 'plan']);
         Route::get('hotels/{hotel}/room-types/{room}/rate-plans/{plan}/nights', [ManualCatalogController::class, 'rateCalendar'])->whereNumber(['room', 'plan']);
+        Route::put('hotels/{hotel}/room-types/{room}/rate-plans/{plan}/nights', [ManualCatalogController::class, 'saveRateBatch'])->whereNumber(['room', 'plan']);
         Route::put('hotels/{hotel}/room-types/{room}/rate-plans/{plan}/nights/{date}', [ManualCatalogController::class, 'saveRate'])->whereNumber(['room', 'plan']);
         Route::get('hotels/{hotel}/room-types/{room}/photos', [RoomPhotoController::class, 'index'])->whereNumber('room');
         Route::post('hotels/{hotel}/room-types/{room}/photos', [RoomPhotoController::class, 'store'])->whereNumber('room')->middleware('throttle:30,1');

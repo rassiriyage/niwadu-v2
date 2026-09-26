@@ -137,41 +137,82 @@ class ManualCatalogController extends Controller
         return $this->saveNight($request, $hotel, $room, $date, $plan);
     }
 
-    private function saveNight(Request $request, Hotel $hotel, int $room, string $date, ?int $plan = null): JsonResponse
+    public function saveStockBatch(Request $request, Hotel $hotel, int $room): JsonResponse
     {
-        return DB::transaction(function () use ($request, $hotel, $room, $date, $plan) {
+        return $this->saveBatch($request, $hotel, $room);
+    }
+
+    public function saveRateBatch(Request $request, Hotel $hotel, int $room, int $plan): JsonResponse
+    {
+        return $this->saveBatch($request, $hotel, $room, $plan);
+    }
+
+    private function saveBatch(Request $request, Hotel $hotel, int $room, ?int $plan = null): JsonResponse
+    {
+        return DB::transaction(function () use ($request, $hotel, $room, $plan): JsonResponse {
             $hotel = $this->authorizeHotel($hotel, $plan === null ? 'manageInventory' : 'authorRates');
             $this->room($hotel, $room);
-            $pool = $plan === null ? $this->manualPool($room) : $this->rateAuthoringPool($hotel, $room);
-            validator(['date' => $date], ['date' => ['required', 'date_format:Y-m-d', 'after_or_equal:2000-01-01', 'before:2100-01-01']])->validate();
-            $rules = ['capacity' => ['required', 'integer', 'between:0,100000']];
             if ($plan !== null) {
-                $offering = $this->plan($hotel, $room, $plan);
-                abort_if(Gate::denies('manageInventory', $hotel) && $offering->status !== 'draft', 403, 'Onboarding staff may author draft offers only.');
-                $rules = [];
-                foreach (['base_minor', 'tax_minor', 'fee_minor'] as $key) {
-                    $rules[$key] = ['present', 'nullable', 'required_if:mandatory_charges_complete,true', 'integer', 'between:0,1000000000'];
-                }
-                foreach (['mandatory_charges_complete', 'stop_sell', 'closed_to_arrival', 'closed_to_departure'] as $key) {
-                    $rules[$key] = ['required', 'boolean'];
-                }
-                $rules['min_stay'] = ['required', 'integer', 'between:1,30'];
-                $rules['max_stay'] = ['required', 'integer', 'between:1,30', 'gte:min_stay'];
+                $this->plan($hotel, $room, $plan);
             }
-            $data = $this->validateInput($request, $rules);
-            $table = $plan === null ? 'inventory_nights' : 'rate_plan_nights';
-            $identity = [$plan === null ? 'inventory_pool_id' : 'rate_plan_id' => $plan ?? $pool->id, 'stay_date' => $date];
-            $existing = DB::table($table)->where($identity)->first();
-            $this->version($existing->version ?? 0, $data);
-            if ($plan === null) {
-                abort_if($data['capacity'] < ($existing->held ?? 0) + ($existing->sold ?? 0), 409, 'Capacity cannot be below held and sold units.');
+            $this->validateInput($request, [
+                'nights' => ['required', 'array', 'list', 'min:1', 'max:366'],
+                'nights.*' => ['required', 'array'],
+                'nights.*.stay_date' => ['required', 'date_format:Y-m-d', 'distinct', 'after_or_equal:2000-01-01', 'before:2100-01-01'],
+            ], false);
+            $nights = $request->input('nights');
+            usort($nights, fn (array $left, array $right): int => strcmp($left['stay_date'], $right['stay_date']));
+            $saved = [];
+            foreach ($nights as $night) {
+                $date = $night['stay_date'];
+                unset($night['stay_date']);
+                $nightRequest = Request::create('/', 'PUT', $night);
+                $nightRequest->setUserResolver($request->getUserResolver());
+                $saved[] = $this->writeNight($nightRequest, $hotel, $room, $date, $plan);
             }
-            $data['version'] = ($existing->version ?? 0) + 1;
-            DB::table($table)->updateOrInsert($identity, $data);
-            $hotel->recordAccessEvent($request->user(), $plan === null ? 'inventory.stock_saved' : 'inventory.rate_saved');
 
-            return response()->json(['data' => DB::table($table)->where($identity)->first()]);
+            return response()->json(['data' => $saved]);
         });
+    }
+
+    private function saveNight(Request $request, Hotel $hotel, int $room, string $date, ?int $plan = null): JsonResponse
+    {
+        return DB::transaction(fn (): JsonResponse => response()->json(['data' => $this->writeNight($request, $hotel, $room, $date, $plan)]));
+    }
+
+    private function writeNight(Request $request, Hotel $hotel, int $room, string $date, ?int $plan): object
+    {
+        $hotel = $this->authorizeHotel($hotel, $plan === null ? 'manageInventory' : 'authorRates');
+        $this->room($hotel, $room);
+        $pool = $plan === null ? $this->manualPool($room) : $this->rateAuthoringPool($hotel, $room);
+        validator(['date' => $date], ['date' => ['required', 'date_format:Y-m-d', 'after_or_equal:2000-01-01', 'before:2100-01-01']])->validate();
+        $rules = ['capacity' => ['required', 'integer', 'between:0,100000']];
+        if ($plan !== null) {
+            $offering = $this->plan($hotel, $room, $plan);
+            abort_if(Gate::denies('manageInventory', $hotel) && $offering->status !== 'draft', 403, 'Onboarding staff may author draft offers only.');
+            $rules = [];
+            foreach (['base_minor', 'tax_minor', 'fee_minor'] as $key) {
+                $rules[$key] = ['present', 'nullable', 'required_if:mandatory_charges_complete,true', 'integer', 'between:0,1000000000'];
+            }
+            foreach (['mandatory_charges_complete', 'stop_sell', 'closed_to_arrival', 'closed_to_departure'] as $key) {
+                $rules[$key] = ['required', 'boolean'];
+            }
+            $rules['min_stay'] = ['required', 'integer', 'between:1,30'];
+            $rules['max_stay'] = ['required', 'integer', 'between:1,30', 'gte:min_stay'];
+        }
+        $data = $this->validateInput($request, $rules);
+        $table = $plan === null ? 'inventory_nights' : 'rate_plan_nights';
+        $identity = [$plan === null ? 'inventory_pool_id' : 'rate_plan_id' => $plan ?? $pool->id, 'stay_date' => $date];
+        $existing = DB::table($table)->where($identity)->first();
+        $this->version($existing->version ?? 0, $data);
+        if ($plan === null) {
+            abort_if($data['capacity'] < ($existing->held ?? 0) + ($existing->sold ?? 0), 409, 'Capacity cannot be below held and sold units.');
+        }
+        $data['version'] = ($existing->version ?? 0) + 1;
+        DB::table($table)->updateOrInsert($identity, $data);
+        $hotel->recordAccessEvent($request->user(), $plan === null ? 'inventory.stock_saved' : 'inventory.rate_saved');
+
+        return DB::table($table)->where($identity)->first();
     }
 
     public function stockCalendar(Request $request, Hotel $hotel, int $room): JsonResponse

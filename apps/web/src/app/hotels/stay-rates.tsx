@@ -5,7 +5,7 @@ import { FreshLink } from "../fresh-link";
 type Rate = { rate_plan_id: number; name: string; room_name: string; max_adults: number; currency: "LKR" | "USD"; meal_plan: null | "RO" | "BB" | "HB" | "FB"; total_minor: number; policy: { version: string; text: string }; expires_at: string };
 type Rates = { data: Rate[]; meta: { inventory_reserved: false } };
 
-export async function StayRates({ slug, values }: { slug: string; values: SearchValues }) {
+export async function StayRates({ slug, hotelId, values }: { slug: string; hotelId: number; values: SearchValues }) {
   const path = `/hotels/${encodeURIComponent(slug)}`;
   const scalar = (key: string) => typeof values[key] === "string" ? values[key] as string : "";
   const arrival = scalar("arrival"), departure = scalar("departure"), adults = scalar("adults");
@@ -34,6 +34,7 @@ export async function StayRates({ slug, values }: { slug: string; values: Search
     {reply?.data && !problem && <>
       <p>Rates for {arrival} to {departure} · {adults} {adults === "1" ? "adult" : "adults"} · one room. Nothing is reserved. Recheck rates before continuing.</p>
       {reply.data.data.length === 0 ? <p>No room rates are available in {currency} for these dates and guests. Try different dates or choose another currency.</p> : <ul className="stay-rate-list">{reply.data.data.map(rate => <li key={rate.rate_plan_id}>
+        {process.env.BOOKING_PLANNING_ENABLED === "true" && <FreshLink className="discovery-button" href={`/plan/review?${new URLSearchParams({ hotel_slug: slug, hotel_id: String(hotelId), rate_plan_id: String(rate.rate_plan_id), arrival, departure, adults })}`}>Review stay plan</FreshLink>}
         <h3>{rate.room_name} · {rate.name}</h3>
         <p>{new Intl.NumberFormat("en-LK", { style: "currency", currency: rate.currency, currencyDisplay: "code" }).format(rate.total_minor / 100)} total for the stay, including mandatory taxes and fees</p>
         <p>{rate.meal_plan ? meals[rate.meal_plan] : "Meal plan not specified"}</p>

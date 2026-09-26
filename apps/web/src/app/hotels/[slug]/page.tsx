@@ -25,6 +25,6 @@ export default async function HotelPage({ params, searchParams }: { params: Prom
     <div className="discovery-detail-grid"><section><h2>About this stay</h2><p className="discovery-description">{hotel.description}</p><dl><dt>Property type</dt><dd>{label}</dd><dt>Location</dt><dd>{hotel.city}, {hotel.country}</dd>{hotel.destination && <><dt>Destination</dt><dd>{hotel.destination.name}</dd></>}{hotel.district && <><dt>District</dt><dd>{hotel.district.label}</dd></>}{Boolean(hotel.themes?.length) && <><dt>Experience themes</dt><dd>{hotel.themes!.map(key => optionsReply.data?.data.themes?.find(option => option.key === key)?.label || key).join(", ")}</dd></>}{Boolean(hotel.amenities?.length) && <><dt>Amenities</dt><dd>{hotel.amenities!.map(key => optionsReply.data?.data.amenities?.find(option => option.key === key)?.label || key.replaceAll("_", " ")).join(", ")}</dd></>}</dl></section>
       <aside className="discovery-state"><h2>Plan your visit</h2><p>Build your island itinerary with destinations and nights.</p><FreshLink className="primary" href="/plan">Plan a trip</FreshLink></aside>
     </div>
-    <StayRates slug={slug} values={await searchParams} />
+    <StayRates hotelId={hotel.id} slug={slug} values={await searchParams} />
   </article>;
 }

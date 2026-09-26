@@ -3,7 +3,7 @@ export type TravellerSession = { user: Traveller | null; csrf_token: string };
 export type Coverage = { districts: string[]; version: number };
 
 export class TravellerError extends Error {
-  constructor(message: string, public status: number, public fields: Record<string, string[]> = {}) { super(message); }
+  constructor(message: string, public status: number, public fields: Record<string, string[]> = {}, public code?: string, public retryAfter?: number) { super(message); }
 }
 export async function travellerRead<T>(path: "session" | "me/coverage"): Promise<T> {
   return request<T>(path);
@@ -22,7 +22,8 @@ async function request<T>(path: string, method = "GET", data?: unknown, token?: 
   if (!response.ok) {
     const fields = result?.errors && typeof result.errors === "object" ? result.errors : {};
     const message = response.status === 401 ? "Your session has ended. Sign in again to continue." : response.status === 429 ? "Too many attempts. Please wait before trying again." : typeof result?.message === "string" ? result.message : "We could not complete this request. Please try again.";
-    throw new TravellerError(message, response.status, fields);
+    const retryAfter = Number(response.headers.get("Retry-After"));
+    throw new TravellerError(message, response.status, fields, typeof result?.code === "string" ? result.code : undefined, Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : undefined);
   }
   if (!result || typeof result !== "object") throw new TravellerError("Your account service is temporarily unavailable.", 503);
   return result as T;
@@ -45,5 +46,17 @@ export async function itineraryRequest<T>(path: string, expectedUser: number, me
   const result = await request<T>(`me/itineraries${path}`, method, data, method === "GET" ? undefined : before.csrf_token, idempotencyKey);
   const after = await getTravellerSession();
   if (after.user?.id !== expectedUser) throw new TravellerError("The signed-in account changed. Sign in again to continue.", 401);
+  return result;
+}
+
+export async function planningRequest<T>(path: "booking-quotes" | "booking-intents" | `booking-intents/${string}`, expectedUser: number, data?: unknown, key?: string): Promise<T> {
+  const before = await getTravellerSession();
+  if (before.user?.id !== expectedUser) throw new TravellerError("The signed-in account changed. Reload before continuing.", 401);
+  const result = await request<T>(`me/${path}`, data === undefined ? "GET" : "POST", data, data === undefined ? undefined : before.csrf_token, key).catch(async failure => {
+    if ((await getTravellerSession()).user?.id !== expectedUser) throw new TravellerError("The signed-in account changed. Reload before continuing.", 401);
+    throw failure;
+  });
+  const after = await getTravellerSession();
+  if (after.user?.id !== expectedUser) throw new TravellerError("The signed-in account changed. Reload before continuing.", 401);
   return result;
 }

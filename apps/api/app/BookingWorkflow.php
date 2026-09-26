@@ -30,6 +30,9 @@ final class BookingWorkflow
             'arrival' => ['required', 'date_format:Y-m-d'], 'departure' => ['required', 'date_format:Y-m-d', 'after:arrival'],
             'adults' => ['required', 'integer', 'min:1'],
         ]);
+        foreach (['hotel_id', 'rate_plan_id', 'adults'] as $field) {
+            $selection[$field] = (int) $selection[$field];
+        }
         $this->requireOwner($owner);
         $unavailable = ['state' => 'unavailable', 'reason' => 'quote_unavailable', 'quote' => null];
         $resolved = $this->source->resolve($selection, now()->toDateTimeImmutable());

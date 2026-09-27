@@ -27,7 +27,7 @@ export default function Operations({ id, userId, beforeLeaveRef }: { id: number;
   if (expired) return <section className="panel"><h1>Sign in again</h1><p role="alert">Your session ended or changed. Private hotel data and credential inputs have been cleared.</p><a href="/admin">Return to sign in</a></section>;
   if (!hotel) return <p role={error ? "alert" : "status"}>{error || "Loading hotel configuration…"}</p>;
   return <OperationsContext.Provider value={request}><a className="back-link" href={`/admin/hotels/${id}`}>← Hotel profile</a><div className="page-heading"><div><p className="eyebrow">HOTEL CONFIGURATION</p><h1>{hotel.name}</h1><p>Rooms, dated rates and inventory settings</p></div></div><p className="notice">Configuration does not publish this hotel, reserve rooms or process payments.</p>
-    {hotel.permissions.manage_pms && <nav className="setup-steps" aria-label="Configuration area"><button aria-pressed={view === "manual"} className="secondary" onClick={() => { if (canLeaveOperations()) setView("manual"); }}>Manual inventory</button><button aria-pressed={view === "pms"} className="secondary" onClick={() => { if (canLeaveOperations()) setView("pms"); }}>PMS settings</button></nav>}
-    {view === "pms" && hotel.permissions.manage_pms ? <Pms hotelId={id} /> : <Manual hotel={hotel} />}
+    {hotel.permissions.manage_pms && <nav className="setup-steps" aria-label="Configuration area"><button aria-pressed={view === "manual"} className="secondary" onClick={() => { if (canLeaveOperations()) setView("manual"); }}>Manual inventory</button><button aria-pressed={view === "pms"} className="secondary" onClick={() => { if (canLeaveOperations()) setView("pms"); }}>PMS settings{!hotel.capabilities?.pms_configuration && " — Phase 2"}</button></nav>}
+    {view === "pms" && hotel.permissions.manage_pms ? <Pms hotelId={id} editable={hotel.capabilities?.pms_configuration === true} /> : <Manual hotel={hotel} />}
   </OperationsContext.Provider>;
 }

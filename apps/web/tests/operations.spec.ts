@@ -8,7 +8,7 @@ async function call(page: Page, path: string, method = "GET", data?: unknown) {
 async function login(page: Page, email = "admin@example.test") {
   await page.goto("/admin"); await page.getByLabel("Email address").fill(email); await page.getByLabel("Password", { exact: true }).fill("browser-test-password"); await page.getByRole("button", { name: "Sign in", exact: true }).click(); await expect(page.getByRole("heading", { name: "Hotels", exact: true })).toBeVisible();
 }
-async function hotel(page: Page) { await login(page, `operations${["administrator configures", "real stale", "viewer cannot", "PMS credentials", "session expiry", "ambiguous write", "inventory manager", "unsaved form"].findIndex(prefix => test.info().title.startsWith(prefix))}@example.test`); return (await call(page, "hotels", "POST", { name: `Operations fixture ${Date.now()}`, city: "Galle" })).data.id as number; }
+async function hotel(page: Page) { await login(page, `operations${["administrator configures", "real stale", "viewer cannot", "Phase 1 PMS settings", "session expiry", "ambiguous write", "inventory manager", "unsaved form"].findIndex(prefix => test.info().title.startsWith(prefix))}@example.test`); return (await call(page, "hotels", "POST", { name: `Operations fixture ${Date.now()}`, city: "Galle" })).data.id as number; }
 async function room(page: Page, id: number) { return (await call(page, `hotels/${id}/room-types`, "POST", { name: "Double room", max_occupancy: 2, status: "active" })).data; }
 
 test("existing inventory editor retains USD identity and unknown charges from wizard offers", async ({ page }) => {
@@ -52,11 +52,19 @@ test("real stale room save preserves inputs and requires explicit discard/reload
 
 test("viewer cannot edit or see PMS settings; mobile layout stays within viewport", async ({ page }) => {
   const id = await hotel(page); await room(page, id); await call(page, `hotels/${id}/staff`, "POST", { name: "Test Manager", email: "manager@example.test", role: "viewer" }); await call(page, "logout", "POST"); await login(page, "manager@example.test"); await page.setViewportSize({ width: 320, height: 800 }); await page.goto(`/admin/hotels/${id}/inventory`);
-  await expect(page.getByRole("button", { name: "PMS settings", exact: true })).toHaveCount(0); await expect(page.getByRole("button", { name: "Add room type", exact: true })).toHaveCount(0); await page.getByRole("button", { name: "Double room", exact: true }).click(); await expect(page.getByLabel("Room type name")).toBeDisabled(); expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await expect(page.getByRole("button", { name: /PMS settings/ })).toHaveCount(0); await expect(page.getByRole("button", { name: "Add room type", exact: true })).toHaveCount(0); await page.getByRole("button", { name: "Double room", exact: true }).click(); await expect(page.getByLabel("Room type name")).toBeDisabled(); expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
-test("PMS credentials are masked, saved redacted and cleared; configuration is not live verification", async ({ page }) => {
-  const id = await hotel(page); await page.goto(`/admin/hotels/${id}/inventory`); await page.getByRole("button", { name: "PMS settings", exact: true }).click(); await page.getByLabel("Provider property ID").fill("fixture-property"); await page.getByLabel("HTTPS endpoint origin").fill("https://pms.example.test"); await page.getByLabel("Credential 1 name").fill("api_key"); await page.getByLabel("Credential 1 value").fill("synthetic-secret-only"); await expect(page.getByLabel("Credential 1 value")).toHaveAttribute("type", "password"); await page.getByRole("button", { name: "Save PMS settings", exact: true }).click(); await expect(page.getByRole("heading", { name: "Edit saved configuration" })).toBeVisible(); await expect(page.getByLabel("Credential 1 value")).toHaveValue(""); await expect(page.getByText("Never verified", { exact: true })).toBeVisible(); const result = await call(page, `hotels/${id}/pms-connections`); expect(JSON.stringify(result)).not.toContain("synthetic-secret-only"); expect(result.data[0].enabled).toBe(false);
+test("Phase 1 PMS settings are deferred and expose no write controls", async ({ page }, testInfo) => {
+  const id = await hotel(page);
+  await page.goto(`/admin/hotels/${id}/inventory`);
+  await page.getByRole("button", { name: "PMS settings — Phase 2", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "PMS configuration — deferred to Phase 2" })).toBeVisible();
+  await expect(page.getByText("Existing settings are read-only", { exact: false })).toBeVisible();
+  await expect(page.getByRole("button", { name: "New PMS configuration" })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Save PMS settings" })).toHaveCount(0);
+  await expect(page.getByLabel("Credential 1 value")).toHaveCount(0);
+  await page.screenshot({ path: testInfo.outputPath("deferred-pms-settings.png"), fullPage: true });
 });
 
 test("session expiry clears private forms and prevents a write", async ({ page }) => {
@@ -72,7 +80,7 @@ test("ambiguous write stays blocked until explicit reload resets unchanged-versi
 });
 
 test("inventory manager edits stock without room, ownership or PMS powers", async ({ page }) => {
-  const id = await hotel(page), r = await room(page, id); await call(page, `hotels/${id}/room-types/${r.id}/inventory-pool`, "PUT", { owner: "manual", sales_state: "closed", timezone: "Asia/Colombo", version: 0 }); await call(page, `hotels/${id}/staff`, "POST", { name: "Test Manager", email: "manager@example.test", role: "inventory_manager" }); await call(page, "logout", "POST"); await login(page, "manager@example.test"); await page.goto(`/admin/hotels/${id}/inventory`); await page.getByRole("button", { name: "Double room", exact: true }).click(); await expect(page.getByLabel("Room type name")).toBeDisabled(); await page.getByRole("button", { name: "2. Inventory ownership" }).click(); await expect(page.getByLabel("Hotel timezone (IANA name)")).toBeDisabled(); await page.getByRole("button", { name: "4. Dated stock and prices" }).click(); await page.getByLabel("Total allocated room capacity").fill("4"); await page.getByRole("button", { name: "Save stock for this date" }).click(); await expect(page.locator(".ops-form[data-unsaved]")).toHaveCount(0); await expect(page.getByRole("button", { name: "PMS settings", exact: true })).toHaveCount(0);
+  const id = await hotel(page), r = await room(page, id); await call(page, `hotels/${id}/room-types/${r.id}/inventory-pool`, "PUT", { owner: "manual", sales_state: "closed", timezone: "Asia/Colombo", version: 0 }); await call(page, `hotels/${id}/staff`, "POST", { name: "Test Manager", email: "manager@example.test", role: "inventory_manager" }); await call(page, "logout", "POST"); await login(page, "manager@example.test"); await page.goto(`/admin/hotels/${id}/inventory`); await page.getByRole("button", { name: "Double room", exact: true }).click(); await expect(page.getByLabel("Room type name")).toBeDisabled(); await page.getByRole("button", { name: "2. Inventory ownership" }).click(); await expect(page.getByLabel("Hotel timezone (IANA name)")).toBeDisabled(); await page.getByRole("button", { name: "4. Dated stock and prices" }).click(); await page.getByLabel("Total allocated room capacity").fill("4"); await page.getByRole("button", { name: "Save stock for this date" }).click(); await expect(page.locator(".ops-form[data-unsaved]")).toHaveCount(0); await expect(page.getByRole("button", { name: /PMS settings/ })).toHaveCount(0);
 });
 
 test("unsaved form navigation can be cancelled and keyboard focus remains usable", async ({ page }) => {

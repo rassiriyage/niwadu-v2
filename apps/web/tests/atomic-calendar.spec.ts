@@ -166,7 +166,7 @@ test("inventory manager can batch stock but a viewer cannot select dates or save
   await page.getByLabel("Total allocated room capacity").fill("4");
   await batchSave(page, "stock").click();
   await expect(page.locator(".ops-form[data-unsaved]")).toHaveCount(0);
-  await expect(page.getByRole("button", { name: "PMS settings", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /PMS settings/ })).toHaveCount(0);
   await call(page, "logout", "POST"); await login(page, "operations5@example.test");
   await call(page, `hotels/${hotel.id}/staff`, "POST", { name: "Test Manager", email: "manager@example.test", role: "viewer" });
   await call(page, "logout", "POST"); await login(page, "manager@example.test");

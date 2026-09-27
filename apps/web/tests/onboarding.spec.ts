@@ -46,6 +46,8 @@ test("employee workflow saves, resumes, uploads photos and reviews a private hot
   await page.getByRole("button", { name: "Upload room photo", exact: true }).click();
   await expect(page.getByRole("img", { name: "Deluxe double bed" })).toBeVisible();
   await next(page, "Rates & availability");
+  await expect(page.getByLabel("Availability setup", { exact: true }).locator('option[value="pms"]')).toHaveCount(0);
+  await expect(page.getByText("Phase 1 uses Niwadu-managed room inventory and pricing.", { exact: false })).toBeVisible();
   await page.getByLabel("Availability setup", { exact: true }).selectOption("manual");
   await page.locator(".meal-options section").filter({ hasText: "(RO)" }).getByRole("button", { name: "Add LKR prices" }).click();
   await page.getByLabel("Base price (LKR)").fill("25000");
@@ -340,4 +342,23 @@ test("room edits recover before debounce and sign out clears drafts left by brow
   await page.goto(url);
   await expect(page.getByRole("heading", { name: "Room types", exact: true })).toBeVisible();
   await expect(page.getByLabel("Room type name", { exact: true })).toHaveCount(0);
+});
+
+
+test("legacy PMS preference is visibly deferred and cannot be newly selected", async ({ page }, testInfo) => {
+  await createDraft(page, "operations6@example.test");
+  await page.route("**/api/v1/hotels/*/onboarding", async route => {
+    if (route.request().method() !== "GET") return route.continue();
+    const response = await route.fetch();
+    const draft = await response.json();
+    await route.fulfill({ response, json: { ...draft, step: 4, fields: { ...draft.fields, inventory_request: "pms" } } });
+  });
+  await page.reload();
+  await expect(page.getByLabel("Availability setup", { exact: true })).toHaveValue("pms");
+  await expect(page.getByRole("option", { name: "PMS request — deferred to Phase 2" })).toHaveAttribute("disabled", "");
+  await expect(page.getByText("No provider connection or synchronization is available.", { exact: false })).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath("deferred-pms-onboarding.png"), fullPage: true });
+  await page.getByLabel("Availability setup", { exact: true }).selectOption("manual");
+  await expect(page.getByText("All changes saved", { exact: true })).toBeVisible();
+  await expect(page.getByLabel("Availability setup", { exact: true }).locator('option[value="pms"]')).toHaveCount(0);
 });

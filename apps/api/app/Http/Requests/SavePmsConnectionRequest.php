@@ -10,7 +10,7 @@ class SavePmsConnectionRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->platform_role === 'administrator';
+        return $this->user()?->platform_role === 'administrator' && config('services.pms.configuration_enabled', false);
     }
 
     public function rules(): array

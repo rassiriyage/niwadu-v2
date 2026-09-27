@@ -14,6 +14,7 @@ class HotelResource extends JsonResource
             'id' => $this->id, 'version' => $this->onboarding_version, 'name' => $this->name, 'city' => $this->city, 'country' => $this->country,
             'address' => $this->address, 'description' => $this->description,
             'contact_email' => $this->contact_email, 'phone' => $this->phone, 'status' => $this->status,
+            'capabilities' => ['pms_configuration' => (bool) config('services.pms.configuration_enabled', false)],
             'permissions' => [
                 'manage_inventory' => Gate::allows('manageInventory', $this->resource),
                 'manage_pms' => $request->user()?->platform_role === 'administrator',

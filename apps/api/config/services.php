@@ -14,6 +14,10 @@ return [
     |
     */
 
+    'pms' => [
+        'configuration_enabled' => false,
+    ],
+
     'postmark' => [
         'key' => env('POSTMARK_API_KEY'),
     ],

@@ -13,6 +13,29 @@ class PmsConnectionTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        config(['services.pms.configuration_enabled' => true]);
+    }
+
+    public function test_phase_one_keeps_records_read_only_even_for_administrators(): void
+    {
+        config(['services.pms.configuration_enabled' => false]);
+        $admin = User::factory()->create(['platform_role' => 'administrator']);
+        $hotel = Hotel::factory()->create();
+        $connection = PmsConnection::create([...$this->payload(), 'hotel_id' => $hotel->id, 'created_by' => $admin->id]);
+        $this->actingAs($admin)->getJson('/api/v1/hotels/'.$hotel->id)
+            ->assertOk()->assertJsonPath('data.capabilities.pms_configuration', false)->assertJsonPath('data.permissions.manage_pms', true);
+        $this->getJson('/api/v1/hotels/'.$hotel->id.'/pms-connections')->assertOk()->assertJsonCount(1, 'data')->assertJsonMissingPath('data.0.credentials');
+        $this->postJson('/api/v1/hotels/'.$hotel->id.'/pms-connections', $this->payload())->assertForbidden();
+        $this->patchJson('/api/v1/pms-connections/'.$connection->id, ['enabled' => true])->assertForbidden();
+        $this->patchJson('/api/v1/pms-connections/'.$connection->id, ['credentials' => ['api_key' => 'replacement']])->assertForbidden();
+        $this->assertDatabaseCount('pms_connections', 1);
+        $this->assertFalse($connection->fresh()->enabled);
+        $this->assertSame(['api_key' => 'super-secret-token'], $connection->fresh()->credentials);
+    }
+
     public function test_only_platform_administrators_can_read_provider_catalog_or_connections(): void
     {
         $hotel = Hotel::factory()->create();

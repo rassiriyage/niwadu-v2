@@ -10,6 +10,7 @@ use App\Models\RoomType;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\ValidationException;
 
 class HotelOnboardingController extends Controller
 {
@@ -31,6 +32,9 @@ class HotelOnboardingController extends Controller
             $data = $request->validated();
             abort_if($hotel->onboarding_version !== $data['version'], 409, 'This draft changed in another window. Copy any unsaved text, then reload to use the latest version.');
             $fields = $data['fields'] ?? [];
+            if (($fields['inventory_request'] ?? null) === 'pms' && ($hotel->onboarding_data['inventory_request'] ?? null) !== 'pms') {
+                throw ValidationException::withMessages(['fields.inventory_request' => 'PMS integration is deferred to Phase 2. Choose Niwadu-managed availability.']);
+            }
             abort_if(array_key_exists('rooms', $fields) && DB::table('catalog_conversions')->where('hotel_id', $hotel->id)->exists(), 409, 'Use catalog room IDs after conversion; other wizard fields remain editable.');
             $hotel->fill(array_intersect_key($fields, array_flip(self::PROFILE)));
             $hotel->onboarding_data = array_replace($hotel->onboarding_data ?? [], array_diff_key($fields, array_flip(self::PROFILE)));
@@ -88,6 +92,6 @@ class HotelOnboardingController extends Controller
 
         $conversion = DB::table('catalog_conversions')->where('hotel_id', $hotel->id)->first();
 
-        return response()->json(['catalog_room_count' => $catalogRooms->count(), 'catalog_conversion' => $conversion ? ['id' => $conversion->id, 'rooms' => json_decode($conversion->rooms, true, flags: JSON_THROW_ON_ERROR)] : null, 'hotel_id' => $hotel->id, 'step' => $hotel->onboarding_step, 'version' => $hotel->onboarding_version, 'fields' => $fields, 'missing' => $missing, 'can_publish' => false, 'launch_requirements' => ['Room photographs and complete listing review', 'Verified rooms, rate plans and dated availability', 'Booking and payment setup']]);
+        return response()->json(['pms_available' => false, 'inventory_setup_options' => ['manual'], 'catalog_room_count' => $catalogRooms->count(), 'catalog_conversion' => $conversion ? ['id' => $conversion->id, 'rooms' => json_decode($conversion->rooms, true, flags: JSON_THROW_ON_ERROR)] : null, 'hotel_id' => $hotel->id, 'step' => $hotel->onboarding_step, 'version' => $hotel->onboarding_version, 'fields' => $fields, 'missing' => $missing, 'can_publish' => false, 'launch_requirements' => ['Room photographs and complete listing review', 'Verified rooms, rate plans and dated availability', 'Booking and payment setup']]);
     }
 }

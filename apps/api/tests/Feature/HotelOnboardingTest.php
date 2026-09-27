@@ -3,8 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\Hotel;
+use App\Models\RoomType;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class HotelOnboardingTest extends TestCase
@@ -22,6 +24,31 @@ class HotelOnboardingTest extends TestCase
         $this->getJson($url)->assertJsonPath('fields.description', 'A seaside hotel')->assertJsonPath('fields.amenities.0', 'wifi');
         $this->assertSame('draft', $hotel->fresh()->status);
         $this->assertDatabaseHas('hotel_access_events', ['action' => 'onboarding.saved', 'hotel_id' => $hotel->id]);
+    }
+
+    public function test_phase_one_rejects_new_pms_requests_but_preserves_legacy_autosaves(): void
+    {
+        $admin = User::factory()->create(['platform_role' => 'administrator']);
+        $hotel = Hotel::factory()->create();
+        $url = '/api/v1/hotels/'.$hotel->id.'/onboarding';
+        $this->actingAs($admin)->getJson($url)->assertOk()->assertJsonPath('pms_available', false);
+        $this->patchJson($url, ['version' => 0, 'fields' => ['inventory_request' => 'pms', 'city' => 'Ella']])
+            ->assertUnprocessable()->assertJsonValidationErrors('fields.inventory_request');
+        $this->assertSame(0, $hotel->fresh()->onboarding_version);
+        $hotel->forceFill(['onboarding_data' => ['inventory_request' => 'pms']])->save();
+        $this->patchJson($url, ['version' => 0, 'fields' => ['inventory_request' => 'pms', 'city' => 'Ella']])
+            ->assertOk()->assertJsonPath('fields.inventory_request', 'pms')->assertJsonPath('fields.city', 'Ella');
+        $this->patchJson($url, ['version' => 1, 'fields' => ['description' => 'Existing draft']])
+            ->assertOk()->assertJsonPath('fields.inventory_request', 'pms');
+        $this->patchJson($url, ['version' => 2, 'fields' => ['inventory_request' => 'manual']])
+            ->assertOk()->assertJsonPath('fields.inventory_request', 'manual');
+        $this->assertDatabaseCount('inventory_pools', 0);
+        $room = new RoomType(['name' => 'Legacy PMS room', 'max_occupancy' => 2]);
+        $room->hotel_id = $hotel->id;
+        $room->save();
+        DB::table('inventory_pools')->insert(['hotel_id' => $hotel->id, 'room_type_id' => $room->id, 'owner' => 'pms', 'sales_state' => 'closed']);
+        $this->patchJson($url, ['version' => 3, 'fields' => ['inventory_request' => 'manual']])->assertOk();
+        $this->assertDatabaseHas('inventory_pools', ['room_type_id' => $room->id, 'owner' => 'pms', 'sales_state' => 'closed']);
     }
 
     public function test_stale_updates_do_not_overwrite_newer_work_including_profile_edits(): void

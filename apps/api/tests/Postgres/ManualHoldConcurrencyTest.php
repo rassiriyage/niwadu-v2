@@ -75,6 +75,31 @@ class ManualHoldConcurrencyTest extends TestCase
         $this->assertSame([3, 3], DB::table('inventory_nights')->orderBy('stay_date')->pluck('version')->all());
     }
 
+    public function test_stock_batch_and_hold_serialize_without_partial_calendar_or_overselling(): void
+    {
+        [$owner, $selection, $plan] = $this->offering();
+        $intent = $this->intent($owner, $selection);
+        $admin = User::factory()->create(['platform_role' => 'administrator']);
+        $results = $this->whileHotelLocked(Hotel::findOrFail($plan->hotel_id), $owner, [
+            ['stock-batch', ['admin_id' => $admin->id, 'hotel_id' => $plan->hotel_id, 'room_id' => $plan->room_type_id,
+                'nights' => [['stay_date' => '2026-10-10', 'version' => 1, 'capacity' => 0], ['stay_date' => '2026-10-11', 'version' => 1, 'capacity' => 0]]]],
+            ['acquire', ['owner_id' => $owner->id, 'intent_id' => $intent['id']]],
+        ]);
+        $statuses = array_column($results, 'status');
+        sort($statuses);
+        $this->assertSame([200, 409], $statuses);
+        $batchWon = $results[0]['status'] === 200;
+        foreach (DB::table('inventory_nights')->orderBy('stay_date')->get() as $night) {
+            $this->assertSame($batchWon ? 0 : 1, $night->capacity);
+            $this->assertSame($batchWon ? 0 : 1, $night->held);
+            $this->assertSame(0, $night->sold);
+            $this->assertSame(2, $night->version);
+        }
+        $this->assertDatabaseCount('manual_inventory_holds', $batchWon ? 0 : 1);
+        $this->assertDatabaseCount('manual_inventory_hold_nights', $batchWon ? 0 : 2);
+        $this->assertSame($batchWon ? 2 : 0, DB::table('hotel_access_events')->where('action', 'inventory.stock_saved')->count());
+    }
+
     private function intent(User $owner, array $selection): array
     {
         $workflow = app(BookingWorkflow::class);

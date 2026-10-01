@@ -18,6 +18,10 @@
             <file>tests/Feature/PmsConnectionTest.php</file>
             <file>tests/Feature/WizardRoomSetupTest.php</file>
             <file>tests/Feature/AtomicCalendarTest.php</file>
+            <file>tests/Feature/ManualBookingWorkflowTest.php</file>
+            <file>tests/Feature/BookingWorkflowTest.php</file>
+            <file>tests/Feature/BookingPlanningTest.php</file>
+            <file>tests/Feature/ManualInventoryHoldTest.php</file>
             <file>tests/Feature/HotelAccessTest.php</file>
             <file>tests/Feature/HotelPhotoTest.php</file>
             <file>tests/Feature/HotelOnboardingTest.php</file>

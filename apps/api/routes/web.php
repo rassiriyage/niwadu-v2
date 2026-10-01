@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingPlanningController;
 use App\Http\Controllers\CatalogConversionController;
 use App\Http\Controllers\CoverageController;
 use App\Http\Controllers\HotelClassificationController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\PublicRatePlanController;
 use App\Http\Controllers\RoomPhotoController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\SessionController;
+use App\Http\Middleware\BookingPlanningEnabled;
 use App\Http\Middleware\PrivateApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +37,11 @@ Route::prefix('api/v1')->middleware([PrivateApiResponse::class, 'auth.session'])
     Route::post('login', [SessionController::class, 'store'])->middleware('throttle:login');
     Route::post('password/setup', [PasswordController::class, 'store'])->middleware('throttle:10,1');
     Route::middleware('auth')->group(function () {
+        Route::middleware(BookingPlanningEnabled::class)->group(function () {
+            Route::post('me/booking-quotes', [BookingPlanningController::class, 'quote'])->middleware('throttle:30,1');
+            Route::post('me/booking-intents', [BookingPlanningController::class, 'storeIntent'])->middleware('throttle:30,1');
+            Route::get('me/booking-intents/{intent}', [BookingPlanningController::class, 'showIntent'])->whereUuid('intent')->middleware('throttle:60,1');
+        });
         Route::get('me/itineraries', [ItineraryController::class, 'index']);
         Route::get('me/itineraries/{itinerary}', [ItineraryController::class, 'show'])->whereNumber('itinerary');
         Route::post('me/itineraries', [ItineraryController::class, 'store'])->middleware('throttle:30,1');

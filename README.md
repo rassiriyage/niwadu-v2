@@ -56,6 +56,7 @@ npm run test:api
 - `apps/api`: Laravel, domain operations, authorization and integration workers.
 - `docs/requirements.md`: confirmed product requirements and architecture context.
 - `docs/setup-checklist.md`: external accounts and migration inputs.
+- `docs/second-agent-setup.md`: setting up a second Claude agent (Windows) and rules for working in parallel.
 - `tasks/`: implementation plan and current progress.
 
 Each application owns its dependency lockfile. Never commit credentials, customer exports, database files or build outputs. See AGENTS.md for project boundaries.
